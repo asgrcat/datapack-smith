@@ -134,6 +134,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.3-snapshot-6`](../snapshots/26.3-snapshot-6.md) | 113.0 | fuel／compostableのinline数値、noise／density function再編 |
 | [`26.3-snapshot-7`](../snapshots/26.3-snapshot-7.md) | 115.0 | block state field、animation component、exploration map、density function精度の変更 |
 | [`26.3-snapshot-8`](../snapshots/26.3-snapshot-8.md) | 116.0 | desert wellデータ駆動化、placement／block predicate追加、Explorer Map ID rename |
+| [`26.3-snapshot-9`](../snapshots/26.3-snapshot-9.md) | 117.0 | advancement背景検証、number provider再編・追加、teleportation／brewing／potion tag追加 |
 
 ## 対象バージョンの機械カタログ
 

@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.08.2
+
+- Java Edition `26.3-snapshot-9`プロファイルとdata pack format 117.0を追加
+- advancement背景検証、slot source／loot functionのトップレベル定義制約、number provider再編・追加を収録
+- teleportation、brewing、potion挙動を制御するblock／item／potion tagとdamage type tagを収録
+- Snapshot 9を最新収録スナップショットとして仕様索引、ハーネス、テストへ反映
+
 ## 2026.08.1
 
 - 最初のGitHub Releaseとして、バージョン表記をCalVerの`YYYY.MM.N`へ移行

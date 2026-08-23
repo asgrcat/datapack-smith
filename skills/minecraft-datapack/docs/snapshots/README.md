@@ -14,10 +14,11 @@
 | [`26.3-snapshot-6`](26.3-snapshot-6.md) | 2026-07-28 | 113.0 | 26.3-snapshot-5 |
 | [`26.3-snapshot-7`](26.3-snapshot-7.md) | 2026-08-04 | 115.0 | 26.3-snapshot-6 |
 | [`26.3-snapshot-8`](26.3-snapshot-8.md) | 2026-08-12 | 116.0 | 26.3-snapshot-7 |
+| [`26.3-snapshot-9`](26.3-snapshot-9.md) | 2026-08-17 | 117.0 | 26.3-snapshot-8 |
 
 ## 使用上の制約
 
-- `26.3` を `26.3-snapshot-8` の別名として扱わない
+- `26.3` を `26.3-snapshot-9` の別名として扱わない
 - 既存 world、本番 server、正式リリース用 pack の上書き検証に使わない
 - `pack.mcmeta` は対象スナップショットの format へ厳密に固定する
 - 次のスナップショットへ移るたびに公式 server JAR の report、reload、機能テストをやり直す
