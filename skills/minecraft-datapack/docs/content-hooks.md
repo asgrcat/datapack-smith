@@ -193,7 +193,7 @@ unknown entity predicate keyを拒否する26.2の厳格化を適用し、26.1.x
 
 ### 26.3スナップショット: Dappled Forestとcamp
 
-26.3 Snapshot 1〜9ではDappled Forest、Poplar、Shelf Mushroom、Red Shrub、Abandoned Camp、Cushion、Straw Bed、Concrete Stairs／Slabs、追加Explorer Mapが開発中です。
+26.3 Snapshot 1〜10ではDappled Forest、Poplar、Shelf Mushroom、Red Shrub、Abandoned Camp、Cushion、Straw Bed、Concrete Stairs／Slabs、追加Explorer Mapが開発中です。
 
 活用面:
 
@@ -303,5 +303,6 @@ ID追加だけでは、AI、drop、interaction、block state、tag membershipの
 - [Mojang: Minecraft 26.3 Snapshot 7](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-7)
 - [Mojang: Minecraft 26.3 Snapshot 8](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-8)
 - [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
+- [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
 - [Minecraft Wiki: Data pack](https://minecraft.wiki/w/Data_pack)
 - [Minecraft Wiki: Java Edition version history](https://minecraft.wiki/w/Java_Edition_version_history)

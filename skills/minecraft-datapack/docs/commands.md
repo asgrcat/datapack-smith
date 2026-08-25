@@ -298,6 +298,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 | 26.3-snapshot-7 | `/swing`へ`whack`／`stab` animationとdurationを追加。playerのattack strengthをresetしないよう変更 |
 | 26.3-snapshot-8 | command tree固有差分なし（Snapshot 7と生成済み`commands.json`が同一） |
 | 26.3-snapshot-9 | command tree固有差分なし（Snapshot 8と生成済み`commands.json`が同一） |
+| 26.3-snapshot-10 | `/compute`と`data modify ... compute`を追加。`/swing`へ`none` animationを再追加 |
 
 スナップショットのcommandは開発中です。正式リリース表の「現行コマンド」へ合成せず、対象IDの`commands.json`を正本にします。
 

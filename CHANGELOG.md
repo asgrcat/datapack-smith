@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.08.3
+
+- Java Edition `26.3-snapshot-10`プロファイルとdata pack format 118.0を追加
+- `/compute`と`data modify ... compute`、command compute用loot contextを収録
+- block transformer registry化、`set_loot_table`、animation component、noise settings／density function／material ruleの変更を収録
+- block／structure／fluid tagの追加・renameを収録し、Snapshot 10を最新収録スナップショットとして索引、ハーネス、テストへ反映
+
 ## 2026.08.2
 
 - Java Edition `26.3-snapshot-9`プロファイルとdata pack format 117.0を追加

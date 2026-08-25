@@ -41,6 +41,7 @@
 - [Mojang: 26.3 Snapshot 7](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-7): block state、item animation、exploration map、density function精度
 - [Mojang: 26.3 Snapshot 8](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-8): desert wellデータ駆動化、placement modifier、block predicate、Explorer Map rename
 - [Mojang: 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9): advancement背景検証、number provider再編・追加、teleportation／brewing／potion tag
+- [Mojang: 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10): computeコマンド、block transformer registry、loot function、noise／material rule再編
 
 26.2以降のdata generatorが出力する`reports/datapack.json`は、data packから要素を定義できるregistry、tag対応、安定性を列挙します。`registries.json`だけでは「IDが存在すること」と「data packから新規entryを追加できること」を区別できないため、両方を照合します。
 
@@ -87,8 +88,8 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 
 ## 更新日
 
-最終照合日: 2026-08-23（JST）
+最終照合日: 2026-08-26（JST）
 
 対象となる最新正式リリース: Java Edition 26.2（2026-06-16、data pack format 107.1）
 
-対象となる最新収録スナップショット: Java Edition 26.3 Snapshot 9（2026-08-17、data pack format 117.0）
+対象となる最新収録スナップショット: Java Edition 26.3 Snapshot 10（2026-08-25、data pack format 118.0）

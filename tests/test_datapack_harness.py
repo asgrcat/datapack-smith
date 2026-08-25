@@ -31,9 +31,9 @@ class ProfileTests(unittest.TestCase):
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(59, len(order))
+        self.assertEqual(60, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual("26.3-snapshot-9", order[-1])
+        self.assertEqual("26.3-snapshot-10", order[-1])
 
     def test_compatibility_is_normalized(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -52,17 +52,17 @@ class ProfileTests(unittest.TestCase):
 
     def test_snapshot_chain_and_channel_are_explicit(self) -> None:
         profiles = HARNESS.load_profiles()
-        chain = HARNESS.resolve_chain("26.3-snapshot-9", profiles)
-        self.assertEqual(59, len(chain))
-        self.assertEqual("26.2", chain[-10]["version"])
-        self.assertEqual("26.3-snapshot-9", chain[-1]["version"])
+        chain = HARNESS.resolve_chain("26.3-snapshot-10", profiles)
+        self.assertEqual(60, len(chain))
+        self.assertEqual("26.2", chain[-11]["version"])
+        self.assertEqual("26.3-snapshot-10", chain[-1]["version"])
         payload = HARNESS.resolved_profile_payload(
-            "26.3-snapshot-9",
+            "26.3-snapshot-10",
             profiles,
         )
         self.assertEqual("snapshot", payload["profile"]["channel"])
         self.assertEqual("26.3", payload["profile"]["snapshot_for"])
-        self.assertEqual("117.0", payload["profile"]["data_pack_format"])
+        self.assertEqual("118.0", payload["profile"]["data_pack_format"])
 
     def test_resolve_separates_active_rules_from_history(self) -> None:
         profiles = HARNESS.load_profiles()
