@@ -31,9 +31,9 @@ class ProfileTests(unittest.TestCase):
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(60, len(order))
+        self.assertEqual(61, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual("26.3-snapshot-10", order[-1])
+        self.assertEqual("26.3-pre-1", order[-1])
 
     def test_compatibility_is_normalized(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -50,19 +50,19 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual("26.2", chain[-1]["version"])
         self.assertEqual(50, len(chain))
 
-    def test_snapshot_chain_and_channel_are_explicit(self) -> None:
+    def test_development_chain_and_channel_are_explicit(self) -> None:
         profiles = HARNESS.load_profiles()
-        chain = HARNESS.resolve_chain("26.3-snapshot-10", profiles)
-        self.assertEqual(60, len(chain))
-        self.assertEqual("26.2", chain[-11]["version"])
-        self.assertEqual("26.3-snapshot-10", chain[-1]["version"])
+        chain = HARNESS.resolve_chain("26.3-pre-1", profiles)
+        self.assertEqual(61, len(chain))
+        self.assertEqual("26.2", chain[-12]["version"])
+        self.assertEqual("26.3-pre-1", chain[-1]["version"])
         payload = HARNESS.resolved_profile_payload(
-            "26.3-snapshot-10",
+            "26.3-pre-1",
             profiles,
         )
         self.assertEqual("snapshot", payload["profile"]["channel"])
         self.assertEqual("26.3", payload["profile"]["snapshot_for"])
-        self.assertEqual("118.0", payload["profile"]["data_pack_format"])
+        self.assertEqual("119.0", payload["profile"]["data_pack_format"])
 
     def test_resolve_separates_active_rules_from_history(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -570,25 +570,25 @@ class FetchTests(unittest.TestCase):
             self.assertEqual(digest, HARNESS.sha1_file(jar))
             self.assertEqual("1.20.5", fetched["id"])
 
-    def test_fetch_uses_exact_snapshot_channel(self) -> None:
-        payload = b"snapshot server jar fixture"
+    def test_fetch_uses_exact_development_channel(self) -> None:
+        payload = b"development server jar fixture"
         digest = hashlib.sha1(payload).hexdigest()
         manifest = {
             "versions": [
                 {
-                    "id": "26.3-snapshot-6",
+                    "id": "26.3-pre-1",
                     "type": "release",
                     "url": "wrong",
                 },
                 {
-                    "id": "26.3-snapshot-6",
+                    "id": "26.3-pre-1",
                     "type": "snapshot",
                     "url": "metadata",
                 },
             ]
         }
         metadata = {
-            "id": "26.3-snapshot-6",
+            "id": "26.3-pre-1",
             "downloads": {
                 "server": {
                     "url": "server",
@@ -616,12 +616,12 @@ class FetchTests(unittest.TestCase):
                 ),
             ):
                 jar, fetched = HARNESS.fetch_release(
-                    "26.3-snapshot-6",
+                    "26.3-pre-1",
                     cache,
                 )
             self.assertEqual(payload, jar.read_bytes())
             self.assertEqual(digest, HARNESS.sha1_file(jar))
-            self.assertEqual("26.3-snapshot-6", fetched["id"])
+            self.assertEqual("26.3-pre-1", fetched["id"])
 
 
 class ReportTests(unittest.TestCase):

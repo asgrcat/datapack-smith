@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.1
+
+- Java Edition `26.3-pre-1`プロファイルとdata pack format 119.0を追加
+- context依存number providerのinteger／float registry分割と、`/compute`／`data modify ... compute`の構文変更を収録
+- item component、loot、predicate、cooking recipe、block state provider、villager tradeのprovider移行を収録
+- `-pre-N` launcher IDを開発バージョンとして厳密に検証・取得できるようprofile schema、ハーネス、テスト、索引を更新
+
 ## 2026.08.3
 
 - Java Edition `26.3-snapshot-10`プロファイルとdata pack format 118.0を追加

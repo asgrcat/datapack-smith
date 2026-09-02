@@ -120,7 +120,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 
 この表の`継承`はpack formatが同じという意味ではありません。familyに直接のparameter変更が記録されていない場合でも、folder、text component、predicate、resource IDなど周辺codecが変わることがあります。
 
-## 26.3スナップショット境界
+## 26.3開発バージョン境界
 
 次は開発中の差分です。正式リリース表へ合成せず、各 [`snapshots/<launcher-id>.md`](../snapshots/README.md) の9 family差分を`inherits`順に適用します。
 
@@ -136,6 +136,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.3-snapshot-8`](../snapshots/26.3-snapshot-8.md) | 116.0 | desert wellデータ駆動化、placement／block predicate追加、Explorer Map ID rename |
 | [`26.3-snapshot-9`](../snapshots/26.3-snapshot-9.md) | 117.0 | advancement背景検証、number provider再編・追加、teleportation／brewing／potion tag追加 |
 | [`26.3-snapshot-10`](../snapshots/26.3-snapshot-10.md) | 118.0 | computeコマンド、block transformer registry化、loot function／noise／material rule再編 |
+| [`26.3-pre-1`](../snapshots/26.3-pre-1.md) | 119.0 | context依存number providerの整数／float分割、関連field、cooking recipe、block state provider再編 |
 
 ## 対象バージョンの機械カタログ
 

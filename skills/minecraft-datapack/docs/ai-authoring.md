@@ -20,8 +20,8 @@ python3 <harness-root>/tools/datapack_harness.py \
 - 省略された任意fieldにはハーネスの既定値を適用する。必須fieldは `schema_version`、`target_version`、`namespace`、`pack_root`、`validation_level`
 - 実装要件はproject設定とは別に管理する
 - `edition` は `java` だけを受け付ける
-- versionは [`versions/README.md`](versions/README.md) の正式リリース、または [`snapshots/README.md`](snapshots/README.md) の収録済みスナップショットIDに完全一致させる
-- 一覧にないsnapshot/pre-release/Bedrock Editionを最寄りバージョンへ丸めない。`26.3`を最新の26.3スナップショットとして解釈しない
+- versionは [`versions/README.md`](versions/README.md) の正式リリース、または [`snapshots/README.md`](snapshots/README.md) の収録済み開発バージョンIDに完全一致させる
+- 一覧にないsnapshot/pre-release/Bedrock Editionを最寄りバージョンへ丸めない。`26.3`を最新の26.3開発バージョンとして解釈しない
 - `26.1` を `1.26.1` に変換しない。文字列の辞書順や単純なsemver比較を使わず、version indexの順序を使う
 
 ## 解決アルゴリズム
@@ -159,11 +159,11 @@ resource locationはどちらも `example:init` ですが、物理pathが異な�
 
 26.2ではunknown fieldを拒否するため、旧 `type` を互換用に併記しません。
 
-### 26.3スナップショット
+### 26.3開発バージョン
 
-26.3の開発バージョンは `26.3-snapshot-1`〜`26.3-snapshot-10` を完全一致で選びます。各スナップショットでdata pack formatと破壊的変更が進むため、「26.3向け」や「最新snapshot向け」という曖昧な対象では生成しません。
+26.3の開発バージョンは `26.3-snapshot-1`〜`26.3-snapshot-10`と`26.3-pre-1`を完全一致で選びます。各開発バージョンでdata pack formatと破壊的変更が進むため、「26.3向け」や「最新snapshot向け」という曖昧な対象では生成しません。
 
-スナップショット向け生成では、隔離した実験world、対象JARのreport、対象formatへ固定したmetadataを必須にし、正式リリース互換とは報告しません。
+開発バージョン向け生成では、隔離した実験world、対象JARのreport、対象formatへ固定したmetadataを必須にし、正式リリース互換とは報告しません。
 
 ## 複数バージョン
 
@@ -172,7 +172,7 @@ resource locationはどちらも `example:init` ですが、物理pathが異な�
 3. 同一pathで両立しないfileをoverlayへ
 4. 1.20.2未満を含む場合、overlayを利用できないため別pack配布も検討
 5. 1.21.9のmetadata境界をまたぐ場合、旧reader用fieldを残す条件を適用
-6. 対象範囲の全正式リリース／スナップショットでtestできない場合、「対応済み」と断定しない
+6. 対象範囲の全正式リリース／開発バージョンでtestできない場合、「対応済み」と断定しない
 
 ## 検証levelと報告
 

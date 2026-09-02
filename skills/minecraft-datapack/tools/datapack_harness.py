@@ -308,11 +308,19 @@ def validate_profile(
     is_snapshot_path = path.parent == SNAPSHOTS_DIR
     if is_snapshot_path:
         if channel != "snapshot":
-            errors.append(f"{path}: snapshot profile must set channel: snapshot")
+            errors.append(
+                f"{path}: development profile must set channel: snapshot"
+            )
         if not isinstance(snapshot_for, str):
-            errors.append(f"{path}: snapshot profile must set snapshot_for")
-        if isinstance(version, str) and "-snapshot-" not in version:
-            errors.append(f"{path}: snapshot profile version must use -snapshot-N")
+            errors.append(f"{path}: development profile must set snapshot_for")
+        if isinstance(version, str) and not re.search(
+            r"(?:-snapshot-|-pre-)[1-9][0-9]*$",
+            version,
+        ):
+            errors.append(
+                f"{path}: development profile version must use "
+                "-snapshot-N or -pre-N"
+            )
     else:
         if channel != "release":
             errors.append(f"{path}: release profile channel must be release")
@@ -513,7 +521,11 @@ def download_file(url: str, destination: Path) -> None:
 
 def fetch_release(version: str, cache_dir: Path) -> tuple[Path, dict[str, Any]]:
     manifest = fetch_json(VERSION_MANIFEST_URL)
-    expected_type = "snapshot" if "-snapshot-" in version else "release"
+    expected_type = (
+        "snapshot"
+        if re.search(r"(?:-snapshot-|-pre-)[1-9][0-9]*$", version)
+        else "release"
+    )
     matches = [
         item
         for item in manifest.get("versions", [])
@@ -1163,7 +1175,7 @@ def validate_project_config(
         and not config["experimental_features"]
     ):
         result.error(
-            f"{project_path}: snapshot target_version requires "
+            f"{project_path}: development target_version requires "
             "experimental_features: true"
         )
     if config.get("server_type") != "vanilla":

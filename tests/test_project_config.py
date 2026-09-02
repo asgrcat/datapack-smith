@@ -186,12 +186,12 @@ class ProjectConfigurationTests(unittest.TestCase):
             any("outside supported_versions" in error for error in result.errors)
         )
 
-    def test_snapshot_target_requires_explicit_experimental_opt_in(self) -> None:
+    def test_development_target_requires_explicit_experimental_opt_in(self) -> None:
         config = template_config()
-        config["target_version"] = "26.3-snapshot-6"
+        config["target_version"] = "26.3-pre-1"
         config["supported_versions"] = {
-            "min": "26.3-snapshot-6",
-            "max": "26.3-snapshot-6",
+            "min": "26.3-pre-1",
+            "max": "26.3-pre-1",
         }
         with tempfile.TemporaryDirectory() as temporary:
             project = self.write_project(Path(temporary), config)
@@ -248,7 +248,7 @@ class ProjectConfigurationTests(unittest.TestCase):
             )
 
         self.assertEqual(0, completed.returncode, completed.stderr)
-        self.assertIn("validated 60 profiles", completed.stdout)
+        self.assertIn("validated 61 profiles", completed.stdout)
 
     def test_validate_project_uses_configured_pack_root(self) -> None:
         config = template_config()

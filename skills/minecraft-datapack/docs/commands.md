@@ -285,7 +285,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 | 26.1 | `/time` が world clock/timeline 対応へ変更 |
 | 26.2 | `/unpublish`、team/waypoint の色名を lowercase snake_case のみに制限 |
 
-### 26.3スナップショット
+### 26.3開発バージョン
 
 | launcher ID | 追加・変更 |
 |---|---|
@@ -299,8 +299,9 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 | 26.3-snapshot-8 | command tree固有差分なし（Snapshot 7と生成済み`commands.json`が同一） |
 | 26.3-snapshot-9 | command tree固有差分なし（Snapshot 8と生成済み`commands.json`が同一） |
 | 26.3-snapshot-10 | `/compute`と`data modify ... compute`を追加。`/swing`へ`none` animationを再追加 |
+| 26.3-pre-1 | `/compute <target> integer|float ...`と`data modify ... compute <target> integer|float ...`へ変更。provider評価失敗時はコマンドも失敗 |
 
-スナップショットのcommandは開発中です。正式リリース表の「現行コマンド」へ合成せず、対象IDの`commands.json`を正本にします。
+開発バージョンのcommandは変更中です。正式リリース表の「現行コマンド」へ合成せず、対象IDの`commands.json`を正本にします。
 
 ## 現行コマンドの分類
 

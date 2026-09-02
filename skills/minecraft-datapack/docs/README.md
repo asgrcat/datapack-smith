@@ -1,6 +1,6 @@
 # Minecraft Java Edition データパック仕様
 
-このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.2 までの正式リリースと、26.3 Snapshot 1〜10を対象にした実装用の仕様索引です。スナップショットは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
+このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.2 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
 
 ## 最短の使い方
 
@@ -23,7 +23,7 @@ Agent Skillから参照する場合も、次の順序で対象仕様を決定し
 | 文書 | 用途 |
 |---|---|
 | [`versions/README.md`](versions/README.md) | 全正式リリース、公開日、data pack format の対応表 |
-| [`snapshots/README.md`](snapshots/README.md) | 収録済み26.3スナップショット、公開日、data pack format の対応表 |
+| [`snapshots/README.md`](snapshots/README.md) | 収録済み26.3開発バージョン、公開日、data pack format の対応表 |
 | [`versions/<version>.md`](versions/README.md) | そのゲームバージョンの確定プロファイル、前バージョンとの差分、互換性 |
 | [`ai-authoring.md`](ai-authoring.md) | AIがバージョンを解決し、ファイルを生成する決定手順 |
 | [`commands.md`](commands.md) | `.mcfunction` の書式、引数、実行文脈、コマンドのバージョン境界 |
@@ -76,7 +76,7 @@ project設定、公式JARの任意取得、report生成、pack静的検査、ser
 
 入力にゲームバージョンがある場合、次の順序を変えてはいけません。
 
-1. 文字列を収録済みIDとして完全一致させる。`1.20` と `1.20.1`、`26.1` と `1.26.1`、`26.3` と `26.3-snapshot-10` は別物である
+1. 文字列を収録済みIDとして完全一致させる。`1.20` と `1.20.1`、`26.1` と `1.26.1`、`26.3` と `26.3-pre-1` は別物である
 2. 対応するバージョンファイルの YAML front matter を読み、`data_pack_format` と `directory_schema` を採用する
 3. `inherits` はmetadataと規則の履歴追跡に使い、生成へ適用するのは対象バージョン自体の `AI 生成規則` だけとする。コマンド・registry・vanilla JSONの機械判定は自然言語の見出しでなく、対象バージョンのJARのreport/dataで確定する
 4. 未指定の機能を、対象バージョンより後に導入されたという理由だけで代替実装なしに使わない
@@ -106,11 +106,11 @@ project設定、公式JARの任意取得、report生成、pack静的検査、ser
 | 1.21.11 | 94.1 | gamerule の namespaced snake_case 化、timeline、slot source |
 | 26.1 | 101.1 | 年ベースのゲームバージョン番号、world clock、trade/variant のデータ駆動化 |
 | 26.2 | 107.1 | entity predicate の component-map 化と厳格化 |
-| 26.3-snapshot-1〜10 | 108.0〜118.0 | slot source、worldgen再編、brewing、loot/predicate参照統一、block state／map／animation変更、number provider拡張、block transformer registry化、computeコマンド（開発中） |
+| 26.3-snapshot-1〜26.3-pre-1 | 108.0〜119.0 | slot source、worldgen再編、brewing、loot/predicate参照統一、block state／map／animation変更、block transformer registry化、computeコマンド、number providerの整数／float分割（開発中） |
 
 ## 完全性の意味
 
-このリポジトリで「網羅」は、正式リリースと収録済みスナップショットごとに次を一意に決められることを指します。
+このリポジトリで「網羅」は、正式リリースと収録済み開発バージョンごとに次を一意に決められることを指します。
 
 - pack metadata とフォルダ構造
 - `.mcfunction` の字句規則と、使用可能なコマンド/引数
