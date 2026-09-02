@@ -15,7 +15,7 @@ from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skills" / "minecraft-datapack"
+SKILL = ROOT / "skills" / "datapack-smith"
 SPEC = importlib.util.spec_from_file_location(
     "datapack_harness",
     SKILL / "tools" / "datapack_harness.py",

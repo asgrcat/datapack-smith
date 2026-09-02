@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minecraft Java Edition data pack profile and validation harness.
+"""Datapack Smith profile and validation harness.
 
 The standard library is sufficient. Network access is used only by ``fetch`` and
 commands that call it. Minecraft itself remains the authority for Brigadier and
@@ -488,7 +488,7 @@ def resolved_profile_payload(
 def fetch_json(url: str) -> dict[str, Any]:
     request = urllib.request.Request(
         url,
-        headers={"User-Agent": "mc-datapack-harness/1"},
+        headers={"User-Agent": "datapack-smith/1"},
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         return json.load(response)
@@ -506,7 +506,7 @@ def download_file(url: str, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     request = urllib.request.Request(
         url,
-        headers={"User-Agent": "mc-datapack-harness/1"},
+        headers={"User-Agent": "datapack-smith/1"},
     )
     temporary = destination.with_suffix(destination.suffix + ".part")
     try:
@@ -1617,7 +1617,7 @@ def server_test(
     if not accept_eula:
         raise HarnessError("server-test requires explicit --accept-eula")
     jar_path, _ = fetch_release(version, cache_dir)
-    with tempfile.TemporaryDirectory(prefix="mc-datapack-harness-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="datapack-smith-") as temporary:
         server_dir = Path(temporary)
         (server_dir / "eula.txt").write_text("eula=true\n", encoding="utf-8")
         (server_dir / "server.properties").write_text(

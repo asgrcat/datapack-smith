@@ -1,4 +1,4 @@
-# Minecraft Java Edition データパック仕様
+# Datapack Smith仕様リファレンス
 
 このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.2 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
 

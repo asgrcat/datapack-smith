@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skills" / "minecraft-datapack"
+SKILL = ROOT / "skills" / "datapack-smith"
 DOCS = SKILL / "docs"
 MARKDOWN_LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 VERSION_TABLE_LINK = re.compile(
@@ -144,10 +144,13 @@ class DocumentationTests(unittest.TestCase):
 
     def test_readme_uses_ai_first_skill_setup(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertTrue(readme.startswith("# Datapack Smith\n"))
         self.assertIn("Claude Code", readme)
         self.assertIn("Codex", readme)
         self.assertIn("Cursor", readme)
-        self.assertIn("skills/minecraft-datapack", readme)
+        self.assertIn("skills/datapack-smith", readme)
+        self.assertIn("NOT AN OFFICIAL MINECRAFT PRODUCT", readme)
+        self.assertNotIn("minecraft-datapack-skill", readme)
         for command in ("npx ", "npm ", "git submodule add", "git subtree add"):
             self.assertNotIn(command, readme)
 

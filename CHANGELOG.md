@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.3
+
+- プロジェクトとAgent Skillを`Datapack Smith`／`datapack-smith`へリブランド
+- 正本ディレクトリ、明示呼び出し、導入URL、テンプレート内の配置先を新名称へ置換
+- READMEへMojangおよびMicrosoftの公式・承認・提携製品ではない旨と管理者、問い合わせ先を明記
+- GitHubリポジトリを`asgrcat/datapack-smith`へ改名
+
 ## 2026.09.2
 
 - 26.3-pre-1のcontext依存number provider詳細リファレンスを追加

@@ -1,9 +1,11 @@
 ---
-name: minecraft-datapack
+name: datapack-smith
 description: Minecraft Java Editionのデータパックを、対象の正式リリースまたは収録済み開発バージョンに合わせて設計、生成、修正、移行、調査、検証する。`.mcfunction`、`pack.mcmeta`、advancement、predicate、loot table、recipe、item component、worldgen、複数バージョン対応を扱う依頼や、既存データパックの互換性確認に使用する。Bedrock EditionとMod固有実装には使用しない。
 ---
 
-# Minecraft Java Editionデータパック
+# Datapack Smith
+
+Minecraft Java Edition向けの非公式ツールであり、MojangまたはMicrosoftによる承認・提携製品ではない。
 
 対象ゲームバージョンの仕様を先に固定し、そのリリースで存在が確認できる構文とデータだけで実装する。
 

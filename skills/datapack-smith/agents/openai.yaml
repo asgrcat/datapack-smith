@@ -1,0 +1,4 @@
+interface:
+  display_name: "Datapack Smith"
+  short_description: "Minecraft Java Edition向けデータパックを実装・検証"
+  default_prompt: "Use $datapack-smith to build and validate a Java Edition data pack for my exact target version."

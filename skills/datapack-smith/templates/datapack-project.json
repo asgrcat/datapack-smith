@@ -1,5 +1,5 @@
 {
-  "$schema": "tools/mc-datapack-harness/schemas/datapack-project.schema.json",
+  "$schema": "tools/datapack-smith/schemas/datapack-project.schema.json",
   "schema_version": 1,
   "target_version": "1.20.5",
   "namespace": "example",

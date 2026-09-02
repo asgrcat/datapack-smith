@@ -1,30 +1,32 @@
-# Minecraft Java Edition Data Pack Skill
+# Datapack Smith
 
 [日本語](README.md) | [English](README.en.md)
 
-An Agent Skill for designing, implementing, and validating Minecraft Java Edition data packs across official releases from 1.13 through 26.2 and the bundled 26.3 snapshots. It resolves the target game version exactly and selects only the commands, data formats, and directory layout available in that version.
+> **NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
-Claude Code, Codex, and Cursor use the same [`SKILL.md`](skills/minecraft-datapack/SKILL.md). The skill bundles the detailed specification, release profiles, templates, and validation harness.
+Datapack Smith is an unofficial Agent Skill for designing, implementing, and validating data packs for Minecraft: Java Edition across official releases from 1.13 through 26.2 and the bundled 26.3 snapshots. It resolves the target game version exactly and selects only the commands, data formats, and directory layout available in that version.
+
+Claude Code, Codex, and Cursor use the same [`SKILL.md`](skills/datapack-smith/SKILL.md). The skill bundles the detailed specification, release profiles, templates, and validation harness.
 
 ## Add the skill
 
 Give your AI the repository URL and ask it to add the skill:
 
-> Add `skills/minecraft-datapack` from this repository as an Agent Skill: https://github.com/asgrcat/minecraft-datapack-skill
+> Add `skills/datapack-smith` from this repository as an Agent Skill: https://github.com/asgrcat/datapack-smith
 
 The AI can identify the active environment and place the complete skill in its supported skill location. After it is added, invoke it explicitly with:
 
 | Environment | Invocation |
 |---|---|
-| Claude Code | `/minecraft-datapack` |
-| Codex | `$minecraft-datapack` |
-| Cursor | `/minecraft-datapack` |
+| Claude Code | `/datapack-smith` |
+| Codex | `$datapack-smith` |
+| Cursor | `/datapack-smith` |
 
 The AI may also select the skill automatically when a request matches its description.
 
 ## Versioning
 
-Releases use the `YYYY.MM.N` CalVer scheme. `N` is the release sequence within a month and resets to `1` when the month changes. [`skills/minecraft-datapack/VERSION`](skills/minecraft-datapack/VERSION) is the authoritative skill version, and Git tags add a `v` prefix (for example, `v2026.08.1`).
+Releases use the `YYYY.MM.N` CalVer scheme. `N` is the release sequence within a month and resets to `1` when the month changes. [`skills/datapack-smith/VERSION`](skills/datapack-smith/VERSION) is the authoritative skill version, and Git tags add a `v` prefix (for example, `v2026.08.1`).
 
 ## Example requests
 
@@ -58,13 +60,13 @@ If the game version, namespace, output path, or requested validation level is mi
 
 | Path | Purpose |
 |---|---|
-| [`skills/minecraft-datapack/SKILL.md`](skills/minecraft-datapack/SKILL.md) | Implementation and validation workflow followed by the AI |
-| [`skills/minecraft-datapack/docs/README.md`](skills/minecraft-datapack/docs/README.md) | Specification index and version-selection workflow |
-| [`skills/minecraft-datapack/docs/versions/README.md`](skills/minecraft-datapack/docs/versions/README.md) | Official release and data pack format index |
-| [`skills/minecraft-datapack/docs/snapshots/README.md`](skills/minecraft-datapack/docs/snapshots/README.md) | Bundled 26.3 snapshot and data pack format index |
-| [`skills/minecraft-datapack/docs/ai-authoring.md`](skills/minecraft-datapack/docs/ai-authoring.md) | Generation decisions and reporting contract |
-| [`skills/minecraft-datapack/templates/datapack-project.json`](skills/minecraft-datapack/templates/datapack-project.json) | Project configuration template |
-| [`skills/minecraft-datapack/tools/datapack_harness.py`](skills/minecraft-datapack/tools/datapack_harness.py) | Profile resolution and staged validation |
+| [`skills/datapack-smith/SKILL.md`](skills/datapack-smith/SKILL.md) | Implementation and validation workflow followed by the AI |
+| [`skills/datapack-smith/docs/README.md`](skills/datapack-smith/docs/README.md) | Specification index and version-selection workflow |
+| [`skills/datapack-smith/docs/versions/README.md`](skills/datapack-smith/docs/versions/README.md) | Official release and data pack format index |
+| [`skills/datapack-smith/docs/snapshots/README.md`](skills/datapack-smith/docs/snapshots/README.md) | Bundled 26.3 snapshot and data pack format index |
+| [`skills/datapack-smith/docs/ai-authoring.md`](skills/datapack-smith/docs/ai-authoring.md) | Generation decisions and reporting contract |
+| [`skills/datapack-smith/templates/datapack-project.json`](skills/datapack-smith/templates/datapack-project.json) | Project configuration template |
+| [`skills/datapack-smith/tools/datapack_harness.py`](skills/datapack-smith/tools/datapack_harness.py) | Profile resolution and staged validation |
 
 The documentation and templates are sufficient for design and generation. Where the bundled harness can run, it adds profile resolution and static checking. Checks that use an official server JAR run only after the user evaluates the need and execution conditions.
 
@@ -74,4 +76,6 @@ This skill covers official Java Edition releases and explicitly bundled 26.3 sna
 
 Mojang release notes and the exact release's official server JAR are authoritative. Minecraft Wiki is used to cross-check boundaries and explanations.
 
-See the repository-root [`LICENSE`](LICENSE). The skill distribution includes the same canonical file at [`skills/minecraft-datapack/LICENSE`](skills/minecraft-datapack/LICENSE).
+Datapack Smith is published and maintained by [asgrcat](https://github.com/asgrcat). Please use [GitHub Issues](https://github.com/asgrcat/datapack-smith/issues) for contact and support.
+
+See the repository-root [`LICENSE`](LICENSE). The skill distribution includes the same canonical file at [`skills/datapack-smith/LICENSE`](skills/datapack-smith/LICENSE).

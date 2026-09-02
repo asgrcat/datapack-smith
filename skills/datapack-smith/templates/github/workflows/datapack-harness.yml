@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 env:
-  DATAPACK_HARNESS_ROOT: tools/mc-datapack-harness
+  DATAPACK_HARNESS_ROOT: tools/datapack-smith
   DATAPACK_PROJECT: datapack-project.json
 
 jobs:

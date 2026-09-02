@@ -14,7 +14,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skills" / "minecraft-datapack"
+SKILL = ROOT / "skills" / "datapack-smith"
 SPEC = importlib.util.spec_from_file_location(
     "datapack_harness_project_tests",
     SKILL / "tools" / "datapack_harness.py",
@@ -112,7 +112,7 @@ class ProjectConfigurationTests(unittest.TestCase):
         config = template_config()
         config["harness"] = {
             "version": HARNESS.HARNESS_VERSION,
-            "source": "https://github.com/asgrcat/minecraft-datapack-skill",
+            "source": "https://github.com/asgrcat/datapack-smith",
             "commit": installed_or_archive_commit(),
         }
         with tempfile.TemporaryDirectory() as temporary:
@@ -232,7 +232,7 @@ class ProjectConfigurationTests(unittest.TestCase):
     def test_cli_runs_after_distribution_is_nested(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             consumer = Path(temporary) / "consumer"
-            harness_root = consumer / "tools" / "mc-datapack-harness"
+            harness_root = consumer / "tools" / "datapack-smith"
             shutil.copytree(SKILL, harness_root)
 
             completed = subprocess.run(
