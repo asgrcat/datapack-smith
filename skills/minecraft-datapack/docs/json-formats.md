@@ -27,22 +27,11 @@ fieldごとの型、既定値、参照関係、26.2の全resource種別は [`ref
 
 ### SNBT
 
-command 引数、entity/block entity NBT、storage、structure の文字列表現等に使います。
-
-```snbt
-{Tags:["example.active"],NoGravity:1b,Health:20.0f}
-```
-
-- key や単純な string は引用を省ける場合がある
-- byte/short/long/float/double の suffix (`b`, `s`, `L`, `f`, `d`) がある
-- typed array は `[I;1,2,3]` のように書く
-- 1.21.5 以降は heterogeneous list を扱えるが、古いバージョン向け SNBT へ混在型 list を出力しない
+command引数、entity／block entity NBT、storage、structureの文字列表現等に使います。数値suffix、typed array、quoted key、NBT path、`/data`の詳細は [`reference/nbt-snbt-and-data.md`](reference/nbt-snbt-and-data.md) を正本とします。
 
 ### text component
 
-- 1.20.4 以前の多くの command/NBT 例は「JSON 文字列を SNBT string に入れる」二重 quoting を使う
-- 1.21.5 で text component の保存と command 引数が大きく変わり、多くの場面で JSON 文字列ではなく SNBT object を直接取る
-- text component は使う場所ごとに許容表現が異なる。対象バージョンの vanilla data または command graph で確認する
+1.21.5を境に、JSON文字列をSNBT stringへ入れる旧表現と、SNBT componentを直接取る表現を区別します。内容、style、click／hover event、バージョン境界は [`reference/text-components.md`](reference/text-components.md) を正本とします。
 
 ## namespace と resource path
 
@@ -512,32 +501,11 @@ root、pool、entry、condition、function、provider、contextのparameterと�
 
 ## damage type
 
-1.19.4 以降:
-
-```json
-{
-  "message_id": "example",
-  "scaling": "never",
-  "exhaustion": 0.1
-}
-```
-
-damage の性質は旧 boolean field ではなく damage type tag で分類します。
-
-```mcfunction
-damage @s 4 example:custom
-```
-
-data-driven registry を追加すると experimental 扱いになるバージョンがあります。world 作成/読み込み時の警告も検査してください。
+1.19.4以降のdamage type JSON、分類tag、damage source、predicate、item／enchantmentとの関係は [`reference/damage-system.md`](reference/damage-system.md) を正本とします。data-driven registry追加時はworld作成・読み込み時の警告も検査してください。
 
 ## structure
 
-`structure` は JSON ではなく gzip 圧縮 NBT (`.nbt`) です。
-
-- structure block で保存するか、data generator で `.snbt` と相互変換する
-- resource path は 1.20.6 以前の `structures/`、1.21 以降の `structure/`
-- 直接 binary をテキスト編集しない
-- block/entity palette と data version の変換は対象バージョンで実際に load/save して確認する
+structure templateはJSONではなくgzip圧縮NBTです。配置、palette、template pool、processor、structure set、jigsaw、GameTestの関係は [`reference/structures-and-jigsaw.md`](reference/structures-and-jigsaw.md) を正本とします。
 
 ## world generation
 

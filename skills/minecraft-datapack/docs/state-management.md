@@ -22,62 +22,13 @@
 
 ## scoreboard
 
-### score holder
+scoreboardは32-bit整数をplayer、entity、UUID、fake playerへ関連付けます。未設定と0は別であり、offline playerのscoreもworldに残ります。保持期間、初期化、cleanup、pack uninstallまで設計してください。
 
-score holderはplayer名だけではありません。entity、UUID、`#timer` のようなfake playerも値を持てます。
-
-```mcfunction
-scoreboard objectives add example.state dummy
-scoreboard players set #phase example.state 1
-scoreboard players add @s example.state 1
-```
-
-- objective名はresource locationではない
-- fake playerはログインplayerと衝突しにくい接頭辞を付ける
-- selector対象のscoreが未設定の場合、`scores={...}` の条件には一致しない
-- `scoreboard players add <holder> <objective> 0` は未設定scoreの初期化に使える
-- `reset` はscore holderの値を未設定へ戻す。0を代入するのとは異なる
-
-### 演算
-
-```mcfunction
-scoreboard players operation #out example.tmp = #in example.tmp
-scoreboard players operation #out example.tmp += #delta example.tmp
-scoreboard players operation #out example.tmp >< #other example.tmp
-```
-
-代表operation:
-
-| operation | 意味 |
-|---|---|
-| `=` | 代入 |
-| `+=`, `-=`, `*=`, `/=`, `%=` | 整数演算 |
-| `<`, `>` | 小さい方／大きい方を代入 |
-| `><` | swap |
-
-除算・剰余の負数、0除算、32-bit境界を利用する設計は対象バージョンでtestします。command失敗時に処理全体がrollbackされることはありません。
-
-### player単位の状態
-
-```mcfunction
-scoreboard players add @a example.cooldown 0
-execute as @a[scores={example.cooldown=1..}] run scoreboard players remove @s example.cooldown 1
-execute as @a[scores={example.cooldown=0}] at @s run function example:ready
-```
-
-offline playerのscoreもworldに残ります。player名変更、cleanup、pack uninstallまで含めるなら、保持期間と削除手順を決めます。
+score holder、演算、表示、`execute store`、success/resultの完全な扱いは [`reference/scoreboards-and-results.md`](reference/scoreboards-and-results.md) を正本とします。
 
 ## command storage
 
-storageは1.15以降で利用でき、worldに保存されるnamespacedなSNBT compoundです。
-
-```mcfunction
-data modify storage example:state config set value {schema:3,enabled:true}
-data modify storage example:state players set value []
-data get storage example:state
-```
-
-storage IDとroot compoundを分けて設計します。
+storageは1.15以降で利用でき、worldに保存されるnamespacedなSNBT compoundです。storage IDとroot compoundを分けて設計します。
 
 ```text
 example:state
@@ -87,63 +38,7 @@ example:state
 └── migration
 ```
 
-packごとに1個へ詰め込む必要はありません。更新頻度や責務が異なる状態は `example:config`, `example:runtime` のように分けられます。
-
-### NBT path
-
-代表的なpath:
-
-```text
-config.schema
-queue[0]
-queue[-1]
-queue[]
-players[{uuid:[I;1,2,3,4]}]
-"key.with.dot"
-```
-
-- `.` はcompoundの子へ進む
-- `[n]` はlist index。負数は末尾側から数える
-- `[]` はlistの全要素へmatchする
-- `[{...}]` はpatternに一致するlist要素へmatchする
-- `.`や空白などを含むkeyはquoted keyを使う
-- pathが0件、1件、複数件になる場合を分けてtestする
-
-macroでpath自体を組み立てる設計は入力検証が難しくなります。可能なら固定pathとlist filterを使います。
-
-### 変更操作
-
-```mcfunction
-data modify storage example:state config merge value {enabled:true}
-data modify storage example:state queue append value {type:"example:job",ticks:20}
-data modify storage example:state queue prepend from storage example:incoming job
-data modify storage example:state queue insert 1 value {type:"example:priority"}
-data remove storage example:state queue[0]
-```
-
-使い分け:
-
-- `set`: 対象値を置換
-- `merge`: compoundを再帰的にmerge
-- `append`/`prepend`/`insert`: listへ追加
-- `remove`: pathに一致する値を削除
-- `from`: entity/block/storageの既存値をcopy
-- `value`: commandに書いたSNBTを使用
-- `string`: source stringのsubstringを使用できるバージョンがある
-
-型不一致やsource path欠損はruntime failureです。複数の変更を1command transactionとして扱う仕組みはないため、途中失敗しても先行変更は残ります。
-
-### scoreboardとの変換
-
-```mcfunction
-execute store result storage example:state runtime.score int 1 run scoreboard players get @s example.value
-execute store result score #value example.tmp run data get storage example:state runtime.score 1
-```
-
-- storageへ保存できるのはcommandの数値result
-- `success` を保存すれば通常は成否の1/0
-- `type` と `scale` によりNBT数値型へ変換される
-- 文字列、compound、listは `data modify ... from` で移す
+packごとに1個へ詰め込む必要はありません。更新頻度や責務が異なる状態は`example:config`、`example:runtime`のように分けられます。NBT path、変更操作、型、scoreboardとの変換は [`reference/nbt-snbt-and-data.md`](reference/nbt-snbt-and-data.md) を正本とします。
 
 ## entity tag
 

@@ -20,6 +20,18 @@
 |---|---|
 | [`pack-and-paths.md`](pack-and-paths.md) | `pack.mcmeta`、namespace、resource location、ディレクトリ、tag、overlay |
 | [`command-tree.md`](command-tree.md) | `commands.json`、argument parser、構文分岐、result検証 |
+| [`command-arguments-and-selectors.md`](command-arguments-and-selectors.md) | 座標、範囲、resource location、selector、block state、item stack、macro |
+| [`scoreboards-and-results.md`](scoreboards-and-results.md) | objective、score holder、整数演算、success、result、`execute store` |
+| [`nbt-snbt-and-data.md`](nbt-snbt-and-data.md) | NBT型、SNBT、NBT path、`/data`、storage、item境界 |
+| [`text-components.md`](text-components.md) | text componentの内容、style、event、JSON／SNBT境界 |
+| [`registry-elements.md`](registry-elements.md) | registry ID、tag、inline entry、list、holder set、参照の安定性 |
+| [`number-providers.md`](number-providers.md) | 26.3-pre-1のcontext依存number provider、四則演算、丸め、三角関数、分岐、失敗条件 |
+| [`slot-sources.md`](slot-sources.md) | 1.21.11／26.3のslot source、command・lootとの接続、全type |
+| [`block-transformation.md`](block-transformation.md) | block transformer、block state provider、rule、配置、migration |
+| [`damage-system.md`](damage-system.md) | damage type、分類tag、source、predicate、item・enchantmentとの接続 |
+| [`structures-and-jigsaw.md`](structures-and-jigsaw.md) | structure NBT、template pool、processor、structure set、jigsaw、GameTest |
+| [`dialogs-and-actions.md`](dialogs-and-actions.md) | 1.21.6以降のdialog、body、input、button、dynamic action、安全性 |
+| [`sounds-and-particles.md`](sounds-and-particles.md) | `playsound`、`stopsound`、`particle`、resource pack境界、負荷 |
 | [`world-and-environment.md`](world-and-environment.md) | `dimension`、`dimension_type`、biome、environment attributes、timeline、world clock |
 | [`registry-formats.md`](registry-formats.md) | 26.2でデータパックから定義できるregistry entryの配置とパラメータ |
 | [`components-and-predicates.md`](components-and-predicates.md) | item stack、data component、entity component、predicate、advancement条件 |

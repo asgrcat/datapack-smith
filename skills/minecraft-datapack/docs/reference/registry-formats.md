@@ -63,23 +63,7 @@ data/<namespace>/<registry-path>/<resource-path>.json
 
 ### `damage_type`
 
-```json
-{
-  "message_id": "example",
-  "scaling": "never",
-  "exhaustion": 0.1
-}
-```
-
-| field | 必須性 | 型 | 説明 |
-|---|---|---|---|
-| `message_id` | 必須 | string | death message keyのsuffix |
-| `scaling` | 必須 | enum | difficultyによるdamage scale。`never`、`when_caused_by_living_non_player`、`always`等 |
-| `exhaustion` | 必須 | 非負float | playerへ加えるfood exhaustion |
-| `effects` | 任意 | enum | hurt effect／soundの分類 |
-| `death_message_type` | 任意 | enum | death messageの組み立て方 |
-
-armor bypass、fire、projectile等の性質はdamage type JSONのbooleanではなく`tags/damage_type/`で分類します。
+damage typeのfield、分類tag、damage source、predicate、`/damage`、防具・enchantmentとの接続は [`damage-system.md`](damage-system.md) を参照してください。このページでは`damage_type`がデータ駆動registryであることだけを索引します。
 
 ### `instrument`
 
@@ -412,47 +396,7 @@ effectごとの条件はloot conditionと同系統ですが、利用可能なcon
 
 ## `dialog`
 
-dialogは1.21.6以降です。
-
-```json
-{
-  "type": "minecraft:notice",
-  "title": {
-    "text": "Notice"
-  },
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "Message"
-    }
-  }
-}
-```
-
-26.2のdialog type:
-
-| type | 主な目的・field |
-|---|---|
-| `minecraft:notice` | 通知。`title`、`body`、終了action |
-| `minecraft:confirmation` | 確認。yes/no action |
-| `minecraft:dialog_list` | 別dialogの一覧。`dialogs`、`columns`、`button_width` |
-| `minecraft:multi_action` | 複数action button |
-| `minecraft:server_links` | server links表示 |
-
-共通またはtype間で再利用されるfield:
-
-| field | 型 | 説明 |
-|---|---|---|
-| `type` | dialog type ID | root codecを選択 |
-| `title` | text component | 内部title |
-| `external_title` | text component | dialogを参照するbutton等の外部表示名 |
-| `body` | body objectまたはlist | `plain_message`、`item`等 |
-| `exit_action` | action object | 閉じるbuttonのlabel、width、実行action |
-| `dialogs` | dialog ID／list／tag | `dialog_list`に表示するentry |
-| `columns` | 正のinteger | button列数 |
-| `button_width` | 正のinteger | button幅 |
-
-26.2のbody typeは`minecraft:plain_message`と`minecraft:item`です。action typeは`run_command`、`suggest_command`、`show_dialog`、`open_url`、`copy_to_clipboard`、`custom`等です。client actionはsecurityとUIの影響があるため、対象typeの公式vanilla例を最小化します。
+dialogは1.21.6以降です。type別field、body、input、button action、dynamic action、入力の信頼境界は [`dialogs-and-actions.md`](dialogs-and-actions.md) を正本とします。
 
 ## `trial_spawner`
 

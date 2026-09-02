@@ -2,6 +2,14 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.2
+
+- 26.3-pre-1のcontext依存number provider詳細リファレンスを追加
+- integer 23 type／float 28 typeの四則演算、剰余、累乗、集約、丸め、型変換、三角関数、乱数、値取得、分岐を収録
+- 公式server JARのregistryとvanilla JSONを照合し、`conditional`のfieldを実装どおり単数形の`condition`として明記
+- registry element、slot source、block変換、コマンド引数、scoreboard／result、NBT／SNBT、text component、damage、structure／jigsaw、dialog／action、サウンド／パーティクルの専門リファレンスを追加
+- 総合ページの重複する型一覧、field表、長い例を専門リファレンスへ集約し、入口文書を用途別の導線へ整理
+
 ## 2026.09.1
 
 - Java Edition `26.3-pre-1`プロファイルとdata pack format 119.0を追加

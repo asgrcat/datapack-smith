@@ -357,104 +357,19 @@ typeごとのfield名は`minecraft:density_function_type` registryと同型vanil
 
 ## structure
 
-configured structure:
-
-```json
-{
-  "type": "minecraft:jigsaw",
-  "biomes": "#example:has_structure/example",
-  "step": "surface_structures",
-  "spawn_overrides": {},
-  "terrain_adaptation": "beard_thin",
-  "start_pool": "example:start_pool",
-  "size": 6,
-  "max_distance_from_center": 80,
-  "use_expansion_hack": false
-}
-```
-
-共通field:
-
-| field | 説明 |
-|---|---|
-| `type` | structure type ID |
-| `biomes` | biome ID／list／tag |
-| `step` | generation step |
-| `spawn_overrides` | mob categoryごとのbounding boxとspawn list |
-| `terrain_adaptation` | `none`、`bury`、`beard_thin`、`beard_box`、`encapsulate`等 |
-
-`start_pool`、`size`、`start_height`、`project_start_to_heightmap`、`max_distance_from_center`等はjigsaw固有です。
+structure、structure set、template pool、processor list、jigsaw接続、structure NBT、GameTestの横断仕様は [`structures-and-jigsaw.md`](structures-and-jigsaw.md) を正本とします。このページではfeature、noise、dimension generatorとの位置関係だけを扱います。
 
 ## structure set
 
-```json
-{
-  "structures": [
-    {
-      "structure": "example:structure",
-      "weight": 1
-    }
-  ],
-  "placement": {
-    "type": "minecraft:random_spread",
-    "salt": 123456,
-    "spacing": 32,
-    "separation": 8
-  }
-}
-```
-
-| field | 説明 |
-|---|---|
-| `structures` | structure IDとpositive weightのlist |
-| `placement` | structure placement object |
-
-placementはrandom spread、concentric rings等でfieldが異なります。`spacing`は`separation`より大きくします。既存structure setとsaltが衝突した場合の分布も検査します。
+structure候補と配置規則を結びます。spacing、separation、salt、biome tag、未生成chunkでの検証は [`structures-and-jigsaw.md`](structures-and-jigsaw.md) を参照してください。
 
 ## template pool
 
-```json
-{
-  "fallback": "minecraft:empty",
-  "elements": [
-    {
-      "weight": 1,
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "example:room",
-        "processors": "minecraft:empty",
-        "projection": "rigid"
-      }
-    }
-  ]
-}
-```
-
-| field | 説明 |
-|---|---|
-| `fallback` | 配置不能時に使うtemplate pool ID |
-| `elements` | weighted pool element list |
-| `elements[].weight` | positive integer |
-| `elements[].element` | pool element type固有objectまたは参照 |
-
-single elementはstructure NBT ID、processor list、projectionを結び付けます。
+weighted pool element、fallback、projection、structure NBT、processor listの接続は [`structures-and-jigsaw.md`](structures-and-jigsaw.md) を参照してください。
 
 ## processor list
 
-```json
-{
-  "processors": [
-    {
-      "processor_type": "minecraft:block_ignore",
-      "blocks": [
-        "minecraft:structure_block"
-      ]
-    }
-  ]
-}
-```
-
-processorは配列順にblock infoを変換します。rule、block ignore、gravity、jigsaw replacement、protected block等でfieldが異なります。
+processorは配列順にblock infoを変換します。typeごとの役割、順序依存、jigsaw replacement、保護blockの検証は [`structures-and-jigsaw.md`](structures-and-jigsaw.md) を参照してください。
 
 ## world preset
 

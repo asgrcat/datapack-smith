@@ -12,9 +12,10 @@ family間の参照関係は次の順で確認します。
 4. [`loot-recipes.md`](loot-recipes.md) でloot table、item modifier、recipeと各contextを区別する
 5. [`dimensions-worldgen.md`](dimensions-worldgen.md) でdimension typeと地形generatorを区別する
 6. [`enchantments-variants.md`](enchantments-variants.md) で固定されたvanilla要素とdata-driven registryを区別する
-7. 下の表と各versionページで対象バージョンの境界を決める
-8. 公式server JARから同じバージョンのcatalogとvanilla例を生成する
-9. 新規テストworldで読み込みと実際の挙動を確認する
+7. registry参照は [`../reference/registry-elements.md`](../reference/registry-elements.md)、26.3-pre-1の数値fieldは [`../reference/number-providers.md`](../reference/number-providers.md) で表現と演算規則を選ぶ
+8. 下の表と各versionページで対象バージョンの境界を決める
+9. 公式server JARから同じバージョンのcatalogとvanilla例を生成する
+10. 新規テストworldで読み込みと実際の挙動を確認する
 
 JSONは「Minecraftのあらゆる物を自由に定義できる設定ファイル」ではありません。各保存場所にはcodecという入力規則があり、同じ`type`でも別の場所では別のパラメータを取ることがあります。itemの見た目、dimensionの光、mobのspawn条件のように、似た結果に見えても別のclient表示・registry・gameplay判定へ分かれます。
 

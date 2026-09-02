@@ -41,6 +41,8 @@ Agent Skillから参照する場合も、次の順序で対象仕様を決定し
 | [`validation.md`](validation.md) | 公式 JAR から正確なコマンド木・レジストリ・vanilla JSON を得る方法 |
 | [`sources.md`](sources.md) | 採用した一次資料と Minecraft Wiki の使い分け |
 
+`reference/README.md`から、コマンド引数、scoreboard、NBT／SNBT、text component、registry、number provider、slot source、block変換、damage、structure、dialog、サウンド／パーティクルの専門ページを選びます。ここには個別referenceを重複掲載しません。
+
 ## 目的別の参照経路
 
 ### 最小pack

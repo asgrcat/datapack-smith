@@ -66,76 +66,13 @@ function example:teleport_up with storage example:args current
 | `a\|b` | いずれか一つ | `if\|unless` |
 | `...` | もう一つの完全なコマンド | `execute ... run ...` |
 
-### 座標
+座標、範囲、resource location、selector、block state、item stack、text componentの詳細とバージョン境界は [`reference/command-arguments-and-selectors.md`](reference/command-arguments-and-selectors.md) を正本とします。NBT／SNBTは [`reference/nbt-snbt-and-data.md`](reference/nbt-snbt-and-data.md)、text componentは [`reference/text-components.md`](reference/text-components.md)を併用してください。
 
-- 絶対座標: `10 64 -5`
-- 相対座標: `~ ~1 ~`
-- ローカル座標: `^ ^ ^1`。実行者の向きに対して左・上・前
-- 1つの3次元座標内で `^` と `~`/絶対値を混在させない
-- `positioned`, `at`, `in`, `rotated`, `anchored` などで execute context を明示する
+引数が同じ文字列に見えてもparserが異なる場合があります。`entity`と`entities`、IDとtag対応holder set、integer rangeとfloat rangeを`reports/commands.json`で区別します。
 
-### 範囲
-
-```text
-5       # ちょうど5
-..5     # 5以下
-5..     # 5以上
-5..10   # 5以上10以下
-```
-
-整数範囲と浮動小数範囲は引数型が異なります。`commands.json` の parser を確認してください。
-
-### resource location
-
-```text
-example:combat/on_hit
-#example:entity/hostile
-```
-
-- 省略した namespace は通常 `minecraft` になるため、自作 ID は常に namespace を明示する
-- namespace は原則 `[a-z0-9_.-]+`、path は `[a-z0-9/._-]+`
-- `#` は tag を受け付ける引数だけで使える
-- function `data/example/function/combat/on_hit.mcfunction` は `example:combat/on_hit`
-
-### target selector
-
-```text
-@s
-@a
-@e[type=minecraft:zombie,tag=example.active,distance=..16,limit=1,sort=nearest]
-@p[scores={example.timer=1..}]
-```
-
-| selector | 集合 |
+| selector | 互換性上の境界 |
 |---|---|
-| `@s` | 現在の実行者。実行者が entity でない文脈では空 |
-| `@a` | 全 player |
-| `@e` | 全 entity |
-| `@p` | 最寄り player |
-| `@r` | ランダム player |
 | `@n` | 最寄り entity。1.21 以降 |
-
-`limit=1` を付けても「単一 entity 引数に許される selector」とは限りません。引数 parser が `entity` か `entities`、`player` か `players` かを `commands.json` で確認します。
-
-### block state、item stack、NBT
-
-```mcfunction
-setblock ~ ~-1 ~ minecraft:stone
-setblock ~ ~-1 ~ minecraft:oak_log[axis=y]
-summon minecraft:marker ~ ~ ~ {Tags:["example.anchor"]}
-```
-
-item stack の書式は 1.20.5 で破壊的に変わります。
-
-```mcfunction
-# 1.20.4以前: item ID + 旧 item NBT
-give @s minecraft:diamond_sword{display:{Name:'{"text":"Blade"}'}}
-
-# 1.20.5以降: item ID + data component patch
-give @s minecraft:diamond_sword[minecraft:custom_name='{"text":"Blade"}']
-```
-
-1.21.5 以降の text component はコマンド引数で SNBT component を取る場面が増えます。対象バージョンファイルの text component 変更を必ず適用してください。
 
 ## function の起動
 
@@ -220,32 +157,11 @@ execute if function example:check run say passed
 
 ### scoreboard
 
-```mcfunction
-scoreboard objectives add example.timer dummy
-scoreboard players add @s example.timer 1
-execute if score @s example.timer matches 20.. run function example:trigger
-scoreboard players operation #out example.tmp = #in example.tmp
-```
-
-- objective 名と fake player 名は他パックと衝突しない接頭辞にする
-- objective の長さ制限などは 1.18 で緩和されたが、古いバージョン対応なら最古バージョンの制約に合わせる
-- 1.20.3 で score holder の表示名と number format が追加
-- 1.21.11 で gamerule 名は namespaced snake_case へ変わったが scoreboard objective の resource location 化ではない
+objective、score holder、演算、未設定値、`execute store`、success/resultの詳細は [`reference/scoreboards-and-results.md`](reference/scoreboards-and-results.md) を正本とします。objective名とfake player名にはpack固有の接頭辞を付けます。
 
 ### command storage と `/data`
 
-1.15 以降:
-
-```mcfunction
-data modify storage example:state current set value {phase:"idle",count:0}
-data modify storage example:state current.count set value 1
-execute store result storage example:state current.score int 1 run scoreboard players get @s example.timer
-```
-
-- storage ID は resource location
-- JSON ではなく SNBT
-- `/data` で player entity の NBT は変更できない。item component や対応コマンドを使う
-- 1.19.4 で `data modify ... string` source、1.20 で負の境界、1.21.5 で heterogeneous list の扱いが変更
+storage、NBT path、`/data`の変更操作、scoreboardとの変換は [`reference/nbt-snbt-and-data.md`](reference/nbt-snbt-and-data.md) を正本とします。storageは1.15以降で、内容はJSONではなくSNBTです。
 
 ### entity tag
 
@@ -303,6 +219,8 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 
 開発バージョンのcommandは変更中です。正式リリース表の「現行コマンド」へ合成せず、対象IDの`commands.json`を正本にします。
 
+26.3-pre-1の`/compute`と`data modify ... compute`で使うinteger／float providerの全type、演算規則、resource例は [`reference/number-providers.md`](reference/number-providers.md) を参照してください。
+
 ## 現行コマンドの分類
 
 26.2 の通常 command set を、AI が用途を選ぶために分類します。対象バージョンに存在するかは上表と `commands.json` で制限してください。
@@ -321,15 +239,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 
 ## 失敗、success、result
 
-Java Edition command は少なくとも次を区別します。
-
-- **unparseable**: 構文木に一致せず、function 自体を読み込めない
-- **failed**: 構文は正しいが対象なし、未ロード chunk、変更なし等で実行失敗
-- **success**: `execute store success` で通常 1/0 として扱う成否
-- **result**: `data get` の値、変更件数など command 固有の整数値
-- **void**: result/success を返さない flow。1.20.3 以降の return なし function で重要
-
-result の意味を推測して演算へ使わず、対象 command の Wiki ページまたは実ゲームで確認します。
+parse不能、runtime failure、success、result、voidは別の状態です。保存・分岐・functionの戻り値を含む詳細は [`reference/scoreboards-and-results.md`](reference/scoreboards-and-results.md) を参照し、command固有resultは実ゲームで確認します。
 
 ## 参照
 
