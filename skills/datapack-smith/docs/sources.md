@@ -43,6 +43,7 @@
 - [Mojang: 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9): advancement背景検証、number provider再編・追加、teleportation／brewing／potion tag
 - [Mojang: 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10): computeコマンド、block transformer registry、loot function、noise／material rule再編
 - [Mojang: 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1): context依存number providerの整数／float分割、関連field、cooking recipe、block state provider再編
+- [Mojang: 26.3 Pre-Release 2](https://feedback.minecraft.net/hc/en-us/articles/48670034106253-Minecraft-Java-Edition-26-3-Pre-release-2): data pack format 120.0、structure tag改名
 
 26.2以降のdata generatorが出力する`reports/datapack.json`は、data packから要素を定義できるregistry、tag対応、安定性を列挙します。`registries.json`だけでは「IDが存在すること」と「data packから新規entryを追加できること」を区別できないため、両方を照合します。
 
@@ -89,8 +90,8 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 
 ## 更新日
 
-最終照合日: 2026-09-02（JST）
+最終照合日: 2026-09-05（JST）
 
 対象となる最新正式リリース: Java Edition 26.2（2026-06-16、data pack format 107.1）
 
-対象となる最新収録開発バージョン: Java Edition 26.3 Pre-Release 1（launcher ID `26.3-pre-1`、2026-09-01、data pack format 119.0）
+対象となる最新収録開発バージョン: Java Edition 26.3 Pre-Release 2（launcher ID `26.3-pre-2`、2026-09-04、data pack format 120.0）

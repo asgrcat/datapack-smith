@@ -1,6 +1,6 @@
 # Datapack Smith仕様リファレンス
 
-このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.2 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
+このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.2 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜2を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
 
 ## 最短の使い方
 
@@ -78,7 +78,7 @@ project設定、公式JARの任意取得、report生成、pack静的検査、ser
 
 入力にゲームバージョンがある場合、次の順序を変えてはいけません。
 
-1. 文字列を収録済みIDとして完全一致させる。`1.20` と `1.20.1`、`26.1` と `1.26.1`、`26.3` と `26.3-pre-1` は別物である
+1. 文字列を収録済みIDとして完全一致させる。`1.20` と `1.20.1`、`26.1` と `1.26.1`、`26.3` と `26.3-pre-2` は別物である
 2. 対応するバージョンファイルの YAML front matter を読み、`data_pack_format` と `directory_schema` を採用する
 3. `inherits` はmetadataと規則の履歴追跡に使い、生成へ適用するのは対象バージョン自体の `AI 生成規則` だけとする。コマンド・registry・vanilla JSONの機械判定は自然言語の見出しでなく、対象バージョンのJARのreport/dataで確定する
 4. 未指定の機能を、対象バージョンより後に導入されたという理由だけで代替実装なしに使わない
@@ -108,7 +108,7 @@ project設定、公式JARの任意取得、report生成、pack静的検査、ser
 | 1.21.11 | 94.1 | gamerule の namespaced snake_case 化、timeline、slot source |
 | 26.1 | 101.1 | 年ベースのゲームバージョン番号、world clock、trade/variant のデータ駆動化 |
 | 26.2 | 107.1 | entity predicate の component-map 化と厳格化 |
-| 26.3-snapshot-1〜26.3-pre-1 | 108.0〜119.0 | slot source、worldgen再編、brewing、loot/predicate参照統一、block state／map／animation変更、block transformer registry化、computeコマンド、number providerの整数／float分割（開発中） |
+| 26.3-snapshot-1〜26.3-pre-2 | 108.0〜120.0 | slot source、worldgen再編、brewing、loot/predicate参照統一、block state／map／animation変更、block transformer registry化、computeコマンド、number providerの整数／float分割、structure tag改名（開発中） |
 
 ## 完全性の意味
 

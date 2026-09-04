@@ -5,7 +5,7 @@
 > **Minecraft向けの非公式ツールです。MojangまたはMicrosoftによる承認・提携製品ではありません。**
 > **NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
-Datapack Smithは、Minecraft Java Edition 1.13から26.2までの正式リリースと、収録済みの26.3スナップショットを対象に、AIがデータパックを設計・実装・検証するための非公式Agent Skillです。対象ゲームバージョンを完全一致で解決し、そのバージョンで利用できるコマンド、データ形式、ディレクトリ構造だけを選びます。
+Datapack Smithは、Minecraft Java Edition 1.13から26.2までの正式リリースと、収録済みの26.3開発バージョンを対象に、AIがデータパックを設計・実装・検証するための非公式Agent Skillです。対象ゲームバージョンを完全一致で解決し、そのバージョンで利用できるコマンド、データ形式、ディレクトリ構造だけを選びます。
 
 Claude Code、Codex、Cursorで共通の[`SKILL.md`](skills/datapack-smith/SKILL.md)を利用できます。詳細な仕様、バージョン別プロファイル、テンプレート、検証ハーネスはスキルへ同梱されています。
 
@@ -41,7 +41,7 @@ AIは利用中の環境を判別し、スキル一式を対応する領域へ配
 
 ## できること
 
-- 正式リリース／収録済みスナップショットID、data pack format、ディレクトリ構造の完全一致
+- 正式リリース／収録済み開発バージョンID、data pack format、ディレクトリ構造の完全一致
 - `.mcfunction`、JSON、SNBT、resource locationのバージョン別生成
 - item component、predicate、advancement、loot、recipe、worldgenなどの仕様参照
 - 単一バージョン実装、既存データパックの移行、複数バージョン対応
@@ -64,7 +64,7 @@ AIは利用中の環境を判別し、スキル一式を対応する領域へ配
 | [`skills/datapack-smith/SKILL.md`](skills/datapack-smith/SKILL.md) | AIが適用する実装・検証ワークフロー |
 | [`skills/datapack-smith/docs/README.md`](skills/datapack-smith/docs/README.md) | 仕様索引と対象バージョンの選択手順 |
 | [`skills/datapack-smith/docs/versions/README.md`](skills/datapack-smith/docs/versions/README.md) | 全正式リリースとdata pack formatの対応 |
-| [`skills/datapack-smith/docs/snapshots/README.md`](skills/datapack-smith/docs/snapshots/README.md) | 収録済み26.3スナップショットとdata pack formatの対応 |
+| [`skills/datapack-smith/docs/snapshots/README.md`](skills/datapack-smith/docs/snapshots/README.md) | 収録済み26.3開発バージョンとdata pack formatの対応 |
 | [`skills/datapack-smith/docs/ai-authoring.md`](skills/datapack-smith/docs/ai-authoring.md) | 生成時の決定規則と報告契約 |
 | [`skills/datapack-smith/templates/datapack-project.json`](skills/datapack-smith/templates/datapack-project.json) | プロジェクト設定のひな形 |
 | [`skills/datapack-smith/tools/datapack_harness.py`](skills/datapack-smith/tools/datapack_harness.py) | プロファイル解決と段階的な検証 |
@@ -73,7 +73,7 @@ AIは利用中の環境を判別し、スキル一式を対応する領域へ配
 
 ## 対象範囲
 
-Java Editionの正式リリースと、明示的に収録した26.3スナップショットを対象とします。Bedrock Edition、Modローダー固有仕様、リソースパックだけの仕様、未収録の開発バージョンは対象外です。
+Java Editionの正式リリースと、明示的に収録した26.3開発バージョンを対象とします。Bedrock Edition、Modローダー固有仕様、リソースパックだけの仕様、未収録の開発バージョンは対象外です。
 
 仕様の正本はMojangのリリースノートと対象バージョンの公式server JARです。Minecraft Wikiは境界と説明の照合に使用します。
 

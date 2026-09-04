@@ -191,9 +191,9 @@ damageの原因、direct entity、vehicle/riderのどれをscoreへ帰属させ�
 
 unknown entity predicate keyを拒否する26.2の厳格化を適用し、26.1.x形式の `type` fieldを混在させません。
 
-### 26.3スナップショット: Dappled Forestとcamp
+### 26.3開発バージョン: Dappled Forestとcamp
 
-26.3 Snapshot 1〜10ではDappled Forest、Poplar、Shelf Mushroom、Red Shrub、Abandoned Camp、Cushion、Straw Bed、Concrete Stairs／Slabs、追加Explorer Mapが開発中です。
+26.3 Snapshot 1からPre-Release 2ではDappled Forest、Poplar、Shelf Mushroom、Red Shrub、Abandoned Camp、Cushion、Straw Bed、Concrete Stairs／Slabs、追加Explorer Mapが開発中です。
 
 活用面:
 
@@ -205,7 +205,7 @@ unknown entity predicate keyを拒否する26.2の厳格化を適用し、26.1.x
 - Abandoned Campのexplorer mapを次の探索目標へつなぎ、map生成失敗時は`minecraft:map_id`なしのitemを除外する
 - Concrete Stairs／Slabsのblock／item tagを建築素材の選択や判定へ使う
 
-スナップショットのentity／block interactionを正式仕様として固定せず、専用eventがない挙動を推測したadvancement triggerで実装しません。worldgenは既存worldで検証せず、対象スナップショットごとの実験worldと未生成chunkを使います。
+開発バージョンのentity／block interactionを正式仕様として固定せず、専用eventがない挙動を推測したadvancement triggerで実装しません。worldgenは既存worldで検証せず、対象launcher IDごとの実験worldと未生成chunkを使います。
 
 ## コンテンツカード
 

@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.4
+
+- Java Edition `26.3-pre-2`プロファイルとdata pack format 120.0を追加
+- Abandoned Campのstructure tag `on_abandoned_camp_windswept`から`on_abandoned_camp_windswept_forest`への改名を収録
+- 公式JARで確認した`context_key_set` registry、loot context／`compute`の修正、vanilla kelp配置条件の変更を収録
+- Pre-Release 2を最新収録開発バージョンとして仕様索引、ハーネス、テストへ反映
+
 ## 2026.09.3
 
 - プロジェクトとAgent Skillを`Datapack Smith`／`datapack-smith`へリブランド

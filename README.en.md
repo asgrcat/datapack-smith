@@ -4,7 +4,7 @@
 
 > **NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
-Datapack Smith is an unofficial Agent Skill for designing, implementing, and validating data packs for Minecraft: Java Edition across official releases from 1.13 through 26.2 and the bundled 26.3 snapshots. It resolves the target game version exactly and selects only the commands, data formats, and directory layout available in that version.
+Datapack Smith is an unofficial Agent Skill for designing, implementing, and validating data packs for Minecraft: Java Edition across official releases from 1.13 through 26.2 and the bundled 26.3 development versions. It resolves the target game version exactly and selects only the commands, data formats, and directory layout available in that version.
 
 Claude Code, Codex, and Cursor use the same [`SKILL.md`](skills/datapack-smith/SKILL.md). The skill bundles the detailed specification, release profiles, templates, and validation harness.
 
@@ -40,7 +40,7 @@ If the game version, namespace, output path, or requested validation level is mi
 
 ## Capabilities
 
-- Exact official release or bundled snapshot, data pack format, and directory-layout resolution
+- Exact official release or bundled development version, data pack format, and directory-layout resolution
 - Release-specific `.mcfunction`, JSON, SNBT, and resource-location generation
 - References for item components, predicates, advancements, loot, recipes, world generation, and other data-driven formats
 - Single-release implementation, existing-pack migration, and multi-release support
@@ -63,7 +63,7 @@ If the game version, namespace, output path, or requested validation level is mi
 | [`skills/datapack-smith/SKILL.md`](skills/datapack-smith/SKILL.md) | Implementation and validation workflow followed by the AI |
 | [`skills/datapack-smith/docs/README.md`](skills/datapack-smith/docs/README.md) | Specification index and version-selection workflow |
 | [`skills/datapack-smith/docs/versions/README.md`](skills/datapack-smith/docs/versions/README.md) | Official release and data pack format index |
-| [`skills/datapack-smith/docs/snapshots/README.md`](skills/datapack-smith/docs/snapshots/README.md) | Bundled 26.3 snapshot and data pack format index |
+| [`skills/datapack-smith/docs/snapshots/README.md`](skills/datapack-smith/docs/snapshots/README.md) | Bundled 26.3 development version and data pack format index |
 | [`skills/datapack-smith/docs/ai-authoring.md`](skills/datapack-smith/docs/ai-authoring.md) | Generation decisions and reporting contract |
 | [`skills/datapack-smith/templates/datapack-project.json`](skills/datapack-smith/templates/datapack-project.json) | Project configuration template |
 | [`skills/datapack-smith/tools/datapack_harness.py`](skills/datapack-smith/tools/datapack_harness.py) | Profile resolution and staged validation |
@@ -72,7 +72,7 @@ The documentation and templates are sufficient for design and generation. Where 
 
 ## Scope
 
-This skill covers official Java Edition releases and explicitly bundled 26.3 snapshots. Bedrock Edition, mod-loader-specific behavior, resource-pack-only formats, and unbundled development versions are out of scope.
+This skill covers official Java Edition releases and explicitly bundled 26.3 development versions. Bedrock Edition, mod-loader-specific behavior, resource-pack-only formats, and unbundled development versions are out of scope.
 
 Mojang release notes and the exact release's official server JAR are authoritative. Minecraft Wiki is used to cross-check boundaries and explanations.
 

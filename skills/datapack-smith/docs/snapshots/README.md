@@ -17,10 +17,11 @@
 | [`26.3-snapshot-9`](26.3-snapshot-9.md) | 2026-08-17 | 117.0 | 26.3-snapshot-8 |
 | [`26.3-snapshot-10`](26.3-snapshot-10.md) | 2026-08-25 | 118.0 | 26.3-snapshot-9 |
 | [`26.3-pre-1`](26.3-pre-1.md) | 2026-09-01 | 119.0 | 26.3-snapshot-10 |
+| [`26.3-pre-2`](26.3-pre-2.md) | 2026-09-04 | 120.0 | 26.3-pre-1 |
 
 ## 使用上の制約
 
-- `26.3`、`26.3-snapshot-10`、`26.3-pre-1`を別のlauncher IDとして扱う
+- `26.3`、`26.3-snapshot-10`、`26.3-pre-1`、`26.3-pre-2`を別のlauncher IDとして扱う
 - 既存 world、本番 server、正式リリース用 pack の上書き検証に使わない
 - `pack.mcmeta` は対象開発バージョンの format へ厳密に固定する
 - 次の開発バージョンへ移るたびに公式 server JAR の report、reload、機能テストをやり直す

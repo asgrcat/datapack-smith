@@ -138,6 +138,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.3-snapshot-9`](../snapshots/26.3-snapshot-9.md) | 117.0 | advancement背景検証、number provider再編・追加、teleportation／brewing／potion tag追加 |
 | [`26.3-snapshot-10`](../snapshots/26.3-snapshot-10.md) | 118.0 | computeコマンド、block transformer registry化、loot function／noise／material rule再編 |
 | [`26.3-pre-1`](../snapshots/26.3-pre-1.md) | 119.0 | context依存number providerの整数／float分割、関連field、cooking recipe、block state provider再編 |
+| [`26.3-pre-2`](../snapshots/26.3-pre-2.md) | 120.0 | Abandoned Campのstructure tag、`context_key_set`、vanilla kelp配置条件の変更 |
 
 ## 対象バージョンの機械カタログ
 
