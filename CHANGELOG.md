@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.5
+
+- Java Edition `26.3-pre-3`プロファイルとdata pack format 121.0を追加
+- float `minecraft:mod`の剰余規則と`minecraft:pow`の`0^0`評価中止を収録
+- number provider referenceへPre-Release 1〜3のバージョン境界、負数の剰余例、移行・検証項目を集約
+- 最新収録開発バージョンの索引、AI生成規則、ハーネステストをPre-Release 3へ更新
+
 ## 2026.09.4
 
 - Java Edition `26.3-pre-2`プロファイルとdata pack format 120.0を追加

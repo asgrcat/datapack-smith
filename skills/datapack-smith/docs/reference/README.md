@@ -25,7 +25,7 @@
 | [`nbt-snbt-and-data.md`](nbt-snbt-and-data.md) | NBT型、SNBT、NBT path、`/data`、storage、item境界 |
 | [`text-components.md`](text-components.md) | text componentの内容、style、event、JSON／SNBT境界 |
 | [`registry-elements.md`](registry-elements.md) | registry ID、tag、inline entry、list、holder set、参照の安定性 |
-| [`number-providers.md`](number-providers.md) | 26.3-pre-1のcontext依存number provider、四則演算、丸め、三角関数、分岐、失敗条件 |
+| [`number-providers.md`](number-providers.md) | 26.3-pre-1〜pre-3のcontext依存number provider、四則演算、丸め、三角関数、分岐、失敗条件とpre-3の演算変更 |
 | [`slot-sources.md`](slot-sources.md) | 1.21.11／26.3のslot source、command・lootとの接続、全type |
 | [`block-transformation.md`](block-transformation.md) | block transformer、block state provider、rule、配置、migration |
 | [`damage-system.md`](damage-system.md) | damage type、分類tag、source、predicate、item・enchantmentとの接続 |

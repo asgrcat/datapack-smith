@@ -219,7 +219,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 
 開発バージョンのcommandは変更中です。正式リリース表の「現行コマンド」へ合成せず、対象IDの`commands.json`を正本にします。
 
-26.3-pre-1の`/compute`と`data modify ... compute`で使うinteger／float providerの全type、演算規則、resource例は [`reference/number-providers.md`](reference/number-providers.md) を参照してください。
+26.3-pre-1〜pre-3の`/compute`と`data modify ... compute`で使うinteger／float providerの全type、演算規則、resource例は [`reference/number-providers.md`](reference/number-providers.md) を参照してください。
 
 ## 現行コマンドの分類
 

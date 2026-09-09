@@ -1,10 +1,20 @@
 # Context依存number provider
 
-この文書は Java Edition `26.3-pre-1`（data pack format 119.0）の`minecraft:context_int_provider`と`minecraft:context_float_provider`を扱います。四則演算、剰余、累乗、集約、丸め、型変換、三角関数、乱数、値の取得、条件分岐を、入力fieldと失敗条件まで含めて引くためのリファレンスです。
+この文書は Java Edition `26.3-pre-1`〜`26.3-pre-3`（data pack format 119.0〜121.0）の`minecraft:context_int_provider`と`minecraft:context_float_provider`を扱います。四則演算、剰余、累乗、集約、丸め、型変換、三角関数、乱数、値の取得、条件分岐を、入力fieldと失敗条件まで含めて引くためのリファレンスです。
 
 resource ID、tag、inline定義、listを受け付ける箇所の共通規則は [`registry-elements.md`](registry-elements.md) を参照してください。このページはnumber provider固有の型、演算、評価失敗に集中します。
 
 これらは開発中の仕様です。26.2以前の正式リリース、26.3 Snapshot 10以前、将来の26.3正式リリースへそのまま適用せず、対象launcher IDの公式server JARで再検証してください。
+
+## バージョン境界
+
+| launcher ID | data pack format | このページへの適用 |
+|---|---:|---|
+| `26.3-pre-1` | 119.0 | integer／float registry分割と下記type／fieldを導入 |
+| `26.3-pre-2` | 120.0 | 一部providerの`/compute` error、loot contextの不具合を修正 |
+| `26.3-pre-3` | 121.0 | float `mod`を通常の剰余へ変更、float `pow`の`0^0`を評価中止へ変更 |
+
+type／field一覧はPre-Release 1を基底とし、演算規則には対象バージョンの差分を適用します。
 
 ## 2種類のregistry
 
@@ -152,8 +162,8 @@ float providerはsingle-precision floating-pointで計算します。結果がNa
 | `minecraft:sub` | `left`, `right` | `left - right` |
 | `minecraft:mul` | `inputs` | 1個以上の入力の積 |
 | `minecraft:div` | `left`, `right` | `left / right`。NaN／Infinityになる入力へ依存しない |
-| `minecraft:mod` | `left`, `right` | floatの剰余。NaN／Infinityになる入力へ依存しない |
-| `minecraft:pow` | `base`, `exponent` | floatの累乗。定義域外や非有限結果へ依存しない |
+| `minecraft:mod` | `left`, `right` | pre-1〜2はfloor modulus、pre-3は0方向へ丸める除算に対応した剰余。NaN／Infinityになる入力へ依存しない |
+| `minecraft:pow` | `base`, `exponent` | floatの累乗。pre-3では`0^0`で中止。定義域外や非有限結果へ依存しない |
 | `minecraft:abs` | `input` | 絶対値 |
 | `minecraft:negate` | `input` | 符号反転 |
 | `minecraft:min` | `inputs` | 1個以上の入力の最小値 |
@@ -177,6 +187,32 @@ float providerはsingle-precision floating-pointで計算します。結果がNa
 | `minecraft:enchantment_level` | `amount` | enchantment level-based valueを現在のenchantment levelで評価 |
 
 `from_int`の出力もsingle precisionです。大きなintegerは隣接値を区別できない場合があるため、変換後に元の32-bit値を完全保持できるとは仮定しません。
+
+### Pre-Release 3の演算変更
+
+`26.3-pre-3`のcontext依存float `minecraft:mod`は、integer `mod`と同様に0方向へ丸める除算に対応した剰余を使います。pre-1〜2のfloor modulusとは負数入力で結果が異なります。
+
+| float式 | pre-1〜2（floor modulus） | pre-3（通常の剰余） |
+|---|---:|---:|
+| `4.0 mod -3.0` | -2.0 | 1.0 |
+| `-4.0 mod 3.0` | 2.0 | -1.0 |
+| `4.0 mod 3.0` | 1.0 | 1.0 |
+
+表は公式記事に記載された剰余規則から計算した期待値です。入力fieldは引き続き`left`／`right`です。
+
+```json
+{
+  "type": "minecraft:mod",
+  "left": 4.0,
+  "right": -3.0
+}
+```
+
+pre-3でこの式をfloat providerとして評価する期待値は`1.0`です。周期や座標の正規化で負数を含む場合は、旧結果へ依存していないか確認します。integerの`floor_mod`とfloatの`mod`を同じ演算として扱いません。
+
+float `minecraft:pow`はpre-3で底`base`と指数`exponent`がともに0の場合にerrorで計算を中止します。pre-1〜2で得られた値に依存する式は、入力制約または`conditional`などの分岐でこの組合せを避けます。integer `pow`はpre-1から同じ失敗条件です。
+
+検証では、上表の正負の組合せ、`pow(0.0, 0.0)`の失敗、通常の`pow(2.0, 3.0)`の期待値`8.0`を確認します。`/compute`や`data modify ... compute`の評価失敗を成功・書き込み完了として扱わないでください。
 
 ### 三角関数とvector length
 
@@ -332,7 +368,8 @@ integer branchはinteger tag、float branchはfloat tagを書き込みます。p
 
 ## 生成規則
 
-- targetを`26.3-pre-1`、data pack formatを119.0へ固定する
+- targetを収録済みlauncher IDへ完全一致させ、pre-1は119.0、pre-2は120.0、pre-3は121.0へ固定する
+- float `mod`／`pow`には対象バージョンの演算規則を適用し、pre-3の変更をpre-1〜2へ書き戻さない
 - provider resource、provider tag、consumer fieldの値種類を一致させる
 - 旧`minecraft:number_provider`、旧type名、`operands`を119.0へ残さない
 - 四則演算でinteger／floatのどちらが必要か、負数の除算規則、overflow、0除算を先に決める
@@ -344,13 +381,15 @@ integer branchはinteger tag、float branchはfloat tagを書き込みます。p
 
 ## 検証
 
-この文書は次で照合しました。
+基底となるPre-Release 1のtype／fieldは次で照合しました。
 
 - Mojang公式Pre-Release 1記事のtype／field／丸め／失敗条件
 - version manifestのlauncher ID `26.3-pre-1`
 - SHA-1 `1e6e3a06cc13cf6975a0921b272ab544798d4b06`の公式server JAR
 - 公式JARが生成した`reports/registries.json`のinteger 23 type、float 28 type
 - 公式JARが生成したvanilla `context_int_provider`／`context_float_provider` resource
+
+Pre-Release 3の演算差分はMojang公式記事とversion manifestで照合しました。SHA-1 `74b30963f532fa08c5f32311cc7caa0de41bf29e`の公式server JARでreport／vanilla dataを生成し、Pre-Release 2と比較して`commands.json`、`registries.json`、`datapack.json`、vanilla provider JSONに差分がないことを確認しました。上記の境界値は仕様からの期待値であり、ゲーム内の実行結果ではありません。
 
 独自式は隔離した実験worldでreloadし、通常値だけでなく0除算、負数、32-bit境界、NaNになり得る入力、欠落score／storage、predicateが必要とするcontextも機能テストしてください。
 
@@ -359,3 +398,5 @@ integer branchはinteger tag、float branchはfloat tagを書き込みます。p
 - [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
 - [Mojang 公式 version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
 - [Minecraft Wiki: Java Edition 26.3 Pre-Release 1](https://minecraft.wiki/w/Java_Edition_26.3-pre1)
+
+- [Mojang: Minecraft 26.3 Pre-Release 3](https://feedback.minecraft.net/hc/en-us/articles/48740521840909-Minecraft-Java-Edition-26-3-Pre-release-3)
