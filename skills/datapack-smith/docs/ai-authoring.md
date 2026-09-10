@@ -21,7 +21,7 @@ python3 <harness-root>/tools/datapack_harness.py \
 - 実装要件はproject設定とは別に管理する
 - `edition` は `java` だけを受け付ける
 - versionは [`versions/README.md`](versions/README.md) の正式リリース、または [`snapshots/README.md`](snapshots/README.md) の収録済み開発バージョンIDに完全一致させる
-- 一覧にないsnapshot/pre-release/Bedrock Editionを最寄りバージョンへ丸めない。`26.3`を最新の26.3開発バージョンとして解釈しない
+- 一覧にないsnapshot/pre-release/release candidate/Bedrock Editionを最寄りバージョンへ丸めない。`26.3`を最新の26.3開発バージョンとして解釈しない
 - `26.1` を `1.26.1` に変換しない。文字列の辞書順や単純なsemver比較を使わず、version indexの順序を使う
 
 ## 解決アルゴリズム
@@ -161,7 +161,7 @@ resource locationはどちらも `example:init` ですが、物理pathが異な�
 
 ### 26.3開発バージョン
 
-26.3の開発バージョンは `26.3-snapshot-1`〜`26.3-snapshot-10`と`26.3-pre-1`〜`26.3-pre-3`を完全一致で選びます。各開発バージョンでdata pack formatと破壊的変更が進むため、「26.3向け」や「最新snapshot向け」という曖昧な対象では生成しません。
+26.3の開発バージョンは `26.3-snapshot-1`〜`26.3-snapshot-10`と`26.3-pre-1`〜`26.3-pre-3`、`26.3-rc-1`を完全一致で選びます。各開発バージョンでdata pack formatと破壊的変更が進むため、「26.3向け」や「最新snapshot向け」という曖昧な対象では生成しません。
 
 開発バージョン向け生成では、隔離した実験world、対象JARのreport、対象formatへ固定したmetadataを必須にし、正式リリース互換とは報告しません。
 

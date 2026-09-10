@@ -138,7 +138,7 @@ biome、worldgen、item component、enchantment effect、entity effectなどもs
 | 1.21.4 | `trail`等の型固有fieldを対象バージョンで確認する |
 | 1.21.6 | sound sourceに`ui`を追加。area effect cloud等のparticle field変更も個別に確認する |
 | 1.21.11 | environment attributesによる環境表現と、明示的なコマンド演出を分ける |
-| 26.3開発バージョン | 新規IDと型固有codecをsnapshot／pre-releaseごとに再生成する |
+| 26.3開発バージョン | 新規IDと型固有codecをsnapshot／pre-release／release candidateごとに再生成する |
 
 ## 検証
 

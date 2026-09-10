@@ -188,10 +188,10 @@ class ProjectConfigurationTests(unittest.TestCase):
 
     def test_development_target_requires_explicit_experimental_opt_in(self) -> None:
         config = template_config()
-        config["target_version"] = "26.3-pre-1"
+        config["target_version"] = "26.3-rc-1"
         config["supported_versions"] = {
-            "min": "26.3-pre-1",
-            "max": "26.3-pre-1",
+            "min": "26.3-rc-1",
+            "max": "26.3-rc-1",
         }
         with tempfile.TemporaryDirectory() as temporary:
             project = self.write_project(Path(temporary), config)
@@ -248,7 +248,7 @@ class ProjectConfigurationTests(unittest.TestCase):
             )
 
         self.assertEqual(0, completed.returncode, completed.stderr)
-        self.assertIn("validated 63 profiles", completed.stdout)
+        self.assertIn("validated 64 profiles", completed.stdout)
 
     def test_validate_project_uses_configured_pack_root(self) -> None:
         config = template_config()

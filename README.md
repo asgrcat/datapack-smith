@@ -51,7 +51,7 @@ AIは利用中の環境を判別し、スキル一式を対応する領域へ配
 
 ## 安全な動作
 
-- 一覧にないsnapshot、pre-release、Bedrock Editionを近い収録済みバージョンへ置き換えません。
+- 一覧にないsnapshot、pre-release、release candidate、Bedrock Editionを近い収録済みバージョンへ置き換えません。
 - 対象バージョンで確認できないコマンド、ID、JSON fieldを推測で生成しません。
 - 公式server JARの取得やserver起動へ暗黙に進みません。
 - Minecraft EULAへの同意、既存worldの更新、本番serverへの配置を代行しません。

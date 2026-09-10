@@ -50,7 +50,7 @@ If the game version, namespace, output path, or requested validation level is mi
 
 ## Safety
 
-- Unbundled snapshots, pre-releases, and Bedrock Edition versions are not rounded to a nearby supported Java Edition version.
+- Unbundled snapshots, pre-releases, release candidates, and Bedrock Edition versions are not rounded to a nearby supported Java Edition version.
 - Commands, IDs, and JSON fields that cannot be confirmed for the target release are not guessed.
 - Official server JAR downloads and server startup are never implicit.
 - The skill does not accept the Minecraft EULA, update existing worlds, or deploy to production servers for the user.

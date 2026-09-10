@@ -22,12 +22,12 @@ Minecraft Java Edition向けの非公式ツールであり、MojangまたはMicr
 ## バージョンの確定
 
 - `1.20`と`1.20.1`、`26.1`と`26.1.1`を別の正式リリースとして扱う。
-- `26.3`、`26.3-snapshot-1`、`26.3-snapshot-10`、`26.3-pre-1`、`26.3-pre-2`、`26.3-pre-3`を別のIDとして扱い、開発バージョンの短縮名を作らない。
+- `26.3`、`26.3-snapshot-1`、`26.3-snapshot-10`、`26.3-pre-1`、`26.3-pre-2`、`26.3-pre-3`、`26.3-rc-1`を別のIDとして扱い、開発バージョンの短縮名を作らない。
 - `pack_format`が同じでも、コマンド、NBT、registry、JSON field、ディレクトリ名が同じとは仮定しない。
 - 対象プロファイルの`data_pack_format`、`directory_schema`、`AI 生成規則`を適用する。
 - 継承元の規則は変更履歴として読み、対象バージョンへ禁止事項を累積適用しない。
 - コマンド、registry ID、vanilla JSONの最終的な正本は、対象バージョンの公式server JARが生成するreportとdataとする。
-- snapshotとpre-releaseは隔離した実験worldだけで検証し、既存worldや本番serverへ適用しない。
+- snapshot、pre-release、release candidateは隔離した実験worldだけで検証し、既存worldや本番serverへ適用しない。
 
 ## 資料の選択
 

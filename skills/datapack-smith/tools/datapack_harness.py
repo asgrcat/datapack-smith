@@ -314,12 +314,12 @@ def validate_profile(
         if not isinstance(snapshot_for, str):
             errors.append(f"{path}: development profile must set snapshot_for")
         if isinstance(version, str) and not re.search(
-            r"(?:-snapshot-|-pre-)[1-9][0-9]*$",
+            r"(?:-snapshot-|-pre-|-rc-)[1-9][0-9]*$",
             version,
         ):
             errors.append(
                 f"{path}: development profile version must use "
-                "-snapshot-N or -pre-N"
+                "-snapshot-N, -pre-N or -rc-N"
             )
     else:
         if channel != "release":
@@ -523,7 +523,7 @@ def fetch_release(version: str, cache_dir: Path) -> tuple[Path, dict[str, Any]]:
     manifest = fetch_json(VERSION_MANIFEST_URL)
     expected_type = (
         "snapshot"
-        if re.search(r"(?:-snapshot-|-pre-)[1-9][0-9]*$", version)
+        if re.search(r"(?:-snapshot-|-pre-|-rc-)[1-9][0-9]*$", version)
         else "release"
     )
     matches = [

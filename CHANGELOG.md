@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.6
+
+- Java Edition `26.3-rc-1`プロファイルを追加（data pack format 121.0を継続）
+- profile schemaとハーネスへ`-rc-N`の完全一致・snapshot channel取得を追加
+- 防御無効化と`match_block`の修正を収録し、component／predicate referenceへ確認項目を集約
+- 開発バージョン索引、生成規則、実験利用条件、テストをRelease Candidate 1へ更新
+
 ## 2026.09.5
 
 - Java Edition `26.3-pre-3`プロファイルとdata pack format 121.0を追加

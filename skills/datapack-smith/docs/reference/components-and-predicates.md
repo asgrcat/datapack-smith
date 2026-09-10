@@ -1,5 +1,20 @@
 # item stack、component、predicate
 
+## 26.3 Release Candidate 1の挙動修正
+
+`26.3-rc-1`（data pack format 121.0）は次の不具合を修正します。正式リリースの仕様とは分離し、同formatの`26.3-pre-3`でも同じ判定結果になるとは仮定しません。
+
+| 対象 | 修正と検証項目 |
+|---|---|
+| `minecraft:weapon`／`minecraft:blocks_attacks` | `disable_blocking_for_seconds`を設定した武器の防御無効化と、axeによるshield無効化を再確認する（MC-311607、MC-311705） |
+| loot predicate `minecraft:match_block` | block entityを常に要求していた不具合を修正。block entityを持たないblockでも、指定した条件に応じて判定できるか確認する（MC-311725） |
+
+公式JARでは`BLOCK_STATE`は引き続き要求し、NBT条件があるかcomponent matcherが空でない場合に`BLOCK_ENTITY`も要求します。
+
+`match_block`の修正を、block entityのNBT等を実際に要求する条件まで無条件で成功する変更と解釈しません。呼出元のcontextとpredicate自体の条件を区別します。fieldの追加・改名ではなく、既存component／predicateの挙動修正として扱います。
+
+対象プロファイルと出典は [`../snapshots/26.3-rc-1.md`](../snapshots/26.3-rc-1.md) を参照してください。ゲーム内の検証は未実施です。
+
 ## item stackのバージョン境界
 
 ### 1.20.4以前

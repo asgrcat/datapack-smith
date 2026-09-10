@@ -10,7 +10,7 @@ MinecraftのBrigadierとcodecを再実装しません。静的に確定できな
 
 必須fieldは `schema_version`、`target_version`、`namespace`、`pack_root`、`validation_level` です。対応範囲は省略すると対象バージョンだけ、editionはJava、experimentalは無効、server typeはvanillaになります。cacheは `.cache/minecraft`、reportは `build/minecraft/<target_version>/generated` を使います。配布元のversion/source/commitをprojectにも残す場合は、任意の `harness` objectを追加できます。導入済みのバージョンの正本は `VERSION` です。
 
-収録済みsnapshotまたはpre-releaseを `target_version` にする場合は、意図的な実験利用を示すため `experimental_features: true` が必須です。
+収録済みsnapshot、pre-releaseまたはrelease candidateを `target_version` にする場合は、意図的な実験利用を示すため `experimental_features: true` が必須です。
 
 ```bash
 python3 <harness-root>/tools/datapack_harness.py \
@@ -61,7 +61,7 @@ JSON出力:
 - command/registry/vanilla dataの正本path
 - server検査に必要なJava major
 
-versionは完全一致です。[`snapshots/README.md`](snapshots/README.md)にないsnapshot／pre-release、Bedrock Edition、近似semverを受け付けません。収録済みpre-releaseはMojang version manifestの`type: snapshot`として取得します。
+versionは完全一致です。[`snapshots/README.md`](snapshots/README.md)にないsnapshot／pre-release／release candidate、Bedrock Edition、近似semverを受け付けません。収録済みpre-release／release candidateはMojang version manifestの`type: snapshot`として取得します。
 
 `rule_history` は変更理由を追跡するための参考情報です。過去バージョンの禁止規則を対象バージョンへ累積適用しません。`json_parameter_history`はバージョン別プロファイルの差分を時系列で提示しますが、対象バージョンで使用可能なcommand、registry、vanilla resourceは自然言語だけで合成せず、対象バージョンのreport/dataで決定します。
 
@@ -75,7 +75,7 @@ python3 tools/datapack_harness.py fetch 1.20.5 \
 処理:
 
 1. 公式version manifest v2を取得
-2. `id`完全一致かつ正式リリースでは`type: release`、snapshot／pre-releaseでは`type: snapshot`を1件選択
+2. `id`完全一致かつ正式リリースでは`type: release`、snapshot／pre-release／release candidateでは`type: snapshot`を1件選択
 3. version metadataからserver URLとSHA-1を取得
 4. JARをdownload
 5. local JARのSHA-1を検証
@@ -216,7 +216,7 @@ release前には、EULAへ同意できる隔離環境でバージョンごとに
 | 1.20.5 | 21 | item component |
 | 1.21.9 | 21 | minor pack format metadata |
 | 26.2 | 25 | 最新正式リリース |
-| 26.3-pre-3 | 25 | 最新収録開発バージョン |
+| 26.3-rc-1 | 25 | 最新収録開発バージョン |
 
 各バージョンで `--expect-log` を指定し、成功logを保存します。実行していないバージョンについて「server-test互換性確認済み」と記録しません。
 
