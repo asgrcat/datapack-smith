@@ -46,6 +46,7 @@
 - [Mojang: 26.3 Pre-Release 2](https://feedback.minecraft.net/hc/en-us/articles/48670034106253-Minecraft-Java-Edition-26-3-Pre-release-2): data pack format 120.0、structure tag改名
 - [Mojang: 26.3 Pre-Release 3](https://feedback.minecraft.net/hc/en-us/articles/48740521840909-Minecraft-Java-Edition-26-3-Pre-release-3): data pack format 121.0、float `mod`／`pow`の評価規則
 - [Mojang: 26.3 Release Candidate 1](https://www.minecraft.net/en-us/article/minecraft-26-3-release-candidate-1): 記事本文は取得未完了。防御無効化と`match_block`の修正は公式JAR差分で確認（[検証記録](snapshots/26.3-rc-1.md#検証)）
+- [Mojang: 26.3 Release Candidate 2](https://www.minecraft.net/en-us/article/minecraft-26-3-release-candidate-2): フォルダーを開くUIの停止を修正（MC-311782）、データパック固有の変更記載なし
 
 26.2以降のdata generatorが出力する`reports/datapack.json`は、data packから要素を定義できるregistry、tag対応、安定性を列挙します。`registries.json`だけでは「IDが存在すること」と「data packから新規entryを追加できること」を区別できないため、両方を照合します。
 
@@ -96,4 +97,4 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 
 対象となる最新正式リリース: Java Edition 26.2（2026-06-16、data pack format 107.1）
 
-対象となる最新収録開発バージョン: Java Edition 26.3 Release Candidate 1（launcher ID `26.3-rc-1`、2026-09-10、data pack format 121.0）
+対象となる最新収録開発バージョン: Java Edition 26.3 Release Candidate 2（launcher ID `26.3-rc-2`、2026-09-11、data pack format 121.0）

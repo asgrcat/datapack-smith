@@ -193,7 +193,7 @@ unknown entity predicate keyを拒否する26.2の厳格化を適用し、26.1.x
 
 ### 26.3開発バージョン: Dappled Forestとcamp
 
-26.3 Snapshot 1からRelease Candidate 1ではDappled Forest、Poplar、Shelf Mushroom、Red Shrub、Abandoned Camp、Cushion、Straw Bed、Concrete Stairs／Slabs、追加Explorer Mapが開発中です。
+26.3 Snapshot 1からRelease Candidate 2ではDappled Forest、Poplar、Shelf Mushroom、Red Shrub、Abandoned Camp、Cushion、Straw Bed、Concrete Stairs／Slabs、追加Explorer Mapが開発中です。
 
 活用面:
 
