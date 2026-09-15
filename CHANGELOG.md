@@ -2,6 +2,12 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.8
+
+- Java Edition `26.3-rc-3`プロファイルを追加（data pack format 121.0を継続）
+- 対人sprint攻撃後の減速、VSync、server resource pack設定保存の修正を収録
+- データパック仕様はRC2を継承し、索引、AI生成規則、ハーネステストをRelease Candidate 3へ更新
+
 ## 2026.09.7
 
 - Java Edition `26.3-rc-2`プロファイルを追加（data pack format 121.0を継続）

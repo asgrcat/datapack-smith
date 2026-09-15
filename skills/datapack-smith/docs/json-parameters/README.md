@@ -142,6 +142,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.3-pre-3`](../snapshots/26.3-pre-3.md) | 121.0 | float number providerの`mod`／`pow`評価規則を修正（[詳細](../reference/number-providers.md#pre-release-3の演算変更)） |
 | [`26.3-rc-1`](../snapshots/26.3-rc-1.md) | 121.0 | `weapon`／`blocks_attacks`と`match_block`の挙動修正 |
 | [`26.3-rc-2`](../snapshots/26.3-rc-2.md) | 121.0 | RC1を継承。フォルダーを開くUIの停止を修正、データパック固有の変更なし |
+| [`26.3-rc-3`](../snapshots/26.3-rc-3.md) | 121.0 | RC2を継承。対人sprint攻撃後の減速、VSync、server設定保存を修正 |
 
 ## 対象バージョンの機械カタログ
 
