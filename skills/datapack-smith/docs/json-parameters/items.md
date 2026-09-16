@@ -1,5 +1,7 @@
 # item stack・data component パラメータ
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書は Java Edition 1.13〜26.2 の item 系データについて、用語、値の文脈、主要parameter、バージョン境界、検証手順を整理します。全 item ID と全 component codec を Markdown に固定して複製するものではありません。存在する ID、item ごとの既定値、実際に読み込める field は、対象バージョンの公式 server JAR が生成する report、vanilla data、対象 server の reload 結果を正本とします。
 
 ## 用語区分

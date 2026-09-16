@@ -1,8 +1,8 @@
 # Block transformerとblock state provider
 
-この文書はJava Edition 26.3の`minecraft:block_transformer` item component／registryと、変換後のblock stateを決める`minecraft:worldgen/block_state_provider`を扱います。開発中の仕様なので、対象launcher IDを固定して使います。
+この文書はJava Edition 26.3の`minecraft:block_transformer` item component／registryと、変換後のblock stateを決める`minecraft:worldgen/block_state_provider`を扱います。本文は正式26.3の確定形です。開発履歴はバージョン境界で区別します。
 
-## バージョン境界
+## 開発バージョンの履歴
 
 | バージョン | 境界 |
 |---|---|
@@ -28,7 +28,7 @@ item stack
             └── drop、更新、消費設定
 ```
 
-Pre-Release 1の配置:
+正式26.3の配置:
 
 ```text
 data/<namespace>/block_transformer/<path>.json
@@ -104,7 +104,7 @@ providerのpredicate、loot table、block entity、neighbor updateが失敗し�
 
 ## Block stateの省略形
 
-Pre-Release 1ではinline block state objectが`minecraft:simple` providerの省略形です。
+正式26.3ではinline block state objectが`minecraft:simple` providerの省略形です。
 
 ```json
 {
@@ -142,7 +142,7 @@ block ID文字列だけのroot省略形は認められません。propertiesな�
 | `minecraft:rotated` | type固有field | 対応blockの向きをrandom化 |
 | `minecraft:random_block` | type固有field | block候補をrandom選択 |
 
-Pre-Release 1では旧type名のsuffixを削除します。
+正式26.3では旧type名のsuffixを削除します。
 
 | 118.0まで | 119.0 |
 |---|---|
@@ -215,7 +215,7 @@ Pre-Release 1では旧type名のsuffixを削除します。
 }
 ```
 
-Pre-Release 1ではruleが結果を返さない場合に後続ruleを評価します。全ruleとfallbackが結果を返さなければprovider全体も結果なしとなり、block transformerでは次のtransformer ruleを試せます。
+正式26.3ではruleが結果を返さない場合に後続ruleを評価します。全ruleとfallbackが結果を返さなければprovider全体も結果なしとなり、block transformerでは次のtransformer ruleを試せます。
 
 ### copy_properties
 
@@ -246,7 +246,7 @@ Pre-Release 1ではruleが結果を返さない場合に後続ruleを評価し�
 
 - launcher IDとdata pack formatを完全一致させる
 - Snapshot 10以降はcomponentへtransformer IDだけを設定する
-- Pre-Release 1では旧`*_provider` type名を出力しない
+- 正式26.3では旧`*_provider` type名を出力しない
 - block ID文字列だけをroot providerの省略形として出力しない
 - ruleの順序、結果なし、disallowed faceを設計する
 - property copy後のblock stateが有効か検証する
@@ -255,6 +255,8 @@ Pre-Release 1ではruleが結果を返さない場合に後続ruleを評価し�
 
 ## 検証
 
+正式26.3のreport／vanilla dataはRC3と一致し、本文のresource配置・type registryを照合済みです。reload・機能テストは未実施です。
+
 Pre-Release 1の公式JARでは、transformer resource `axe`、`hoe`、`shovel`と、block state provider resource 8件が生成されます。これらを同じtypeの最小例として使い、公式registryの10 provider typeと照合します。隔離した実験worldで、各clicked face、両手、creative／survival、耐久0直前、block entity、neighbor updateを確認してください。
 
 ## 出典
@@ -262,3 +264,5 @@ Pre-Release 1の公式JARでは、transformer resource `axe`、`hoe`、`shovel`�
 - [Mojang: Minecraft 26.3 Snapshot 2](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2)
 - [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
 - [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
+
+- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)

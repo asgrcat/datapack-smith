@@ -1,5 +1,7 @@
 # ダイアログ、入力、アクション
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 Java Edition 1.21.6以降のデータ駆動ダイアログと、ボタンから実行するアクションを扱います。ダイアログはサーバー側の処理を置き換えるものではなく、入力値をコマンドまたはcustom payloadへ渡すUIです。信頼境界は常にサーバー側へ置きます。
 
 ## 配置と参照
@@ -114,7 +116,7 @@ item stackをinventory slotと同様に表示します。`item`が必須で、�
 
 ## action
 
-ボタンは通常`label`、任意の`tooltip`、1〜1024の`width`（既定値150）、実行する`action`を持ちます。26.3-pre-1でreportに現れるaction typeは次のとおりです。
+ボタンは通常`label`、任意の`tooltip`、1〜1024の`width`（既定値150）、実行する`action`を持ちます。26.3でreportに現れるaction typeは次のとおりです。
 
 | action type | 役割 | 注意 |
 |---|---|---|
@@ -190,5 +192,5 @@ field名とactionのnamespace省略可否は対象バージョンで再検証し
 ## 出典
 
 - [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
-- `build/minecraft/26.3-pre-1/generated/reports/registries.json`（26.3-pre-1公式server JARから生成、commit対象外）
-- `build/minecraft/26.3-pre-1/generated/data/minecraft/dialog/`（同上）
+- `build/minecraft/26.3/generated/reports/registries.json`（26.3公式server JARから生成、commit対象外）
+- `build/minecraft/26.3/generated/data/minecraft/dialog/`（同上）

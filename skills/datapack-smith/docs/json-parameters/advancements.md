@@ -1,5 +1,7 @@
 # advancement JSON パラメータ
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書は Minecraft Java Edition 1.13〜26.2 の advancement definitionについて、root field、表示、criterion、trigger condition、requirements、reward、telemetry、predicateとの文脈差、バージョン境界を整理します。playerごとの状態管理、反復event、`/advancement`の運用例は [`../advancements.md`](../advancements.md) を参照してください。
 
 ここに示す表は設計時の索引です。全triggerの全condition codecを1つの固定schemaとして複製するものではありません。利用可能なtrigger IDは対象正式リリースのserver JARが生成する`registries.json`、各triggerの実際の形は同じバージョンのvanilla advancementとMojang release note、受理可否は同じバージョンのserverのreload結果を正本とします。

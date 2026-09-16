@@ -90,12 +90,14 @@ Minecraft Wiki はコミュニティ運営であり Mojang 公式ではありま
 
 公式version manifestの `releaseTime` はartifact metadataのtimestampであり、`release_date` と一致することを要求しません。JAR取得、対象IDの完全一致、並び順の機械処理には `release_date` を使わず、manifestのID、type、`releaseTime`、download URL、SHA-1を使います。
 
-Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る場合があります。本リポジトリでは安定リリースの値を各公式 release note、公式 version manifest、Wiki のバージョン別ページおよび `Template:Data_pack_format` と照合しました。26.3の開発値は安定リリース一覧から除外し、[`snapshots/README.md`](snapshots/README.md) へ分離しています。
+Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る場合があります。本リポジトリでは安定リリースの値を各公式 release note、公式 version manifest、Wiki のバージョン別ページおよび `Template:Data_pack_format` と照合しました。正式26.3は公式記事・JAR・manifestで照合済みですが、Wikiは取得できず照合未実施です。26.3の開発値は安定リリース一覧から除外し、[`snapshots/README.md`](snapshots/README.md) へ分離しています。
 
 ## 更新日
 
-最終照合日: 2026-09-05（JST）
+最終照合日: 2026-09-16（JST）
 
-対象となる最新正式リリース: Java Edition 26.2（2026-06-16、data pack format 107.1）
+対象となる最新正式リリース: Java Edition 26.3（2026-09-15、data pack format 121.0）
 
-対象となる最新収録開発バージョン: Java Edition 26.3 Release Candidate 3（launcher ID `26.3-rc-3`、2026-09-14、data pack format 121.0）
+対象となる保存済み開発履歴: Java Edition 26.3 Release Candidate 3（launcher ID `26.3-rc-3`、2026-09-14、data pack format 121.0）
+
+- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3): 正式121.0、26.2からの確定差分

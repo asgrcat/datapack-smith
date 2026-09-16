@@ -14,7 +14,7 @@ Minecraft Java Edition向けの非公式ツールであり、MojangまたはMicr
 1. 利用者リポジトリの指示ファイルと既存データパックを確認する。
 2. `datapack-project.json`があれば正本として読み、なければ既存ファイルと依頼から値を推定する。安全に確定できない`target_version`、`namespace`、`pack_root`、`validation_level`だけを確認し、必要なら[プロジェクト設定テンプレート](templates/datapack-project.json)を基に作成する。
 3. [仕様索引](docs/README.md)と[AI生成契約](docs/ai-authoring.md)を最後まで読む。
-4. `target_version`を[正式リリース索引](docs/versions/README.md)または[開発バージョン索引](docs/snapshots/README.md)へ完全一致させ、対応するプロファイルを読む。一覧にない値を近いバージョンへ丸めない。
+4. 正式`26.3`は[確定プロファイル](docs/versions/26.3.md)と[移行リファレンス](docs/reference/26.3-migration.md)を使う。`target_version`を[正式リリース索引](docs/versions/README.md)または[開発バージョン索引](docs/snapshots/README.md)へ完全一致させ、対応するプロファイルを読む。一覧にない値を近いバージョンへ丸めない。
 5. 要件に応じて下の「資料の選択」から必要な文書を読む。対象バージョンより新しい例をそのまま流用しない。
 6. 完全なファイル群を実装する。既存プロジェクトでは利用者の変更を保ち、依頼範囲外のファイルを変更しない。
 7. 要求された検証レベルまで検証し、実行済みの証拠、warning、未実施の上位検証を分けて報告する。

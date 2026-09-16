@@ -244,7 +244,7 @@ class DocumentationTests(unittest.TestCase):
             for profile in (DOCS / "versions").glob("*.md")
             if profile.name != "README.md"
         }
-        self.assertEqual(50, len(release_profiles))
+        self.assertEqual(51, len(release_profiles))
         self.assertEqual(release_profiles, set(versions))
 
     def test_event_json_parameter_table_has_valid_unique_rows(self) -> None:

@@ -1,5 +1,7 @@
 # サウンドとパーティクル
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 データパックから音と粒子を再生する際のID、コマンド引数、到達範囲、対象player、バージョン境界をまとめます。音源ファイルやtexture自体はresource pack側の資産です。データパックは再生タイミング、位置、対象、登録済みIDを制御します。
 
 ## 役割の分離
@@ -35,7 +37,7 @@ playsound minecraft:block.note_block.pling master @a ~ ~ ~ 1 1 0
 
 UI通知のように位置減衰させたくない用途と、world内の音源表現を同じ設計にしません。対象playerごとに`execute as ... at @s`して鳴らす場合と、固定地点から一度だけ鳴らす場合では結果が異なります。
 
-26.3-pre-1のcommand treeでは`volume`は0以上、`pitch`は0〜2、`minVolume`は0〜1です。別バージョンへ値域を一般化せず、対象JARのargument propertiesを確認します。
+26.3のcommand treeでは`volume`は0以上、`pitch`は0〜2、`minVolume`は0〜1です。別バージョンへ値域を一般化せず、対象JARのargument propertiesを確認します。
 
 ## `/stopsound`
 
@@ -160,5 +162,5 @@ biome、worldgen、item component、enchantment effect、entity effectなどもs
 
 - [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
 - [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
-- `build/minecraft/26.3-pre-1/generated/reports/commands.json`（26.3-pre-1公式server JARから生成、commit対象外）
-- `build/minecraft/26.3-pre-1/generated/reports/registries.json`（同上）
+- `build/minecraft/26.3/generated/reports/commands.json`（26.3公式server JARから生成、commit対象外）
+- `build/minecraft/26.3/generated/reports/registries.json`（同上）

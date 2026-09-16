@@ -1,62 +1,23 @@
 # Context依存number provider
 
-この文書は Java Edition `26.3-pre-1`〜`26.3-pre-3`（data pack format 119.0〜121.0）の`minecraft:context_int_provider`と`minecraft:context_float_provider`を扱います。四則演算、剰余、累乗、集約、丸め、型変換、三角関数、乱数、値の取得、条件分岐を、入力fieldと失敗条件まで含めて引くためのリファレンスです。
+この文書は正式Java Edition `26.3`（data pack format 121.0）の`minecraft:context_int_provider`と`minecraft:context_float_provider`を扱います。四則演算、剰余、累乗、集約、丸め、型変換、三角関数、乱数、値の取得、条件分岐を、入力fieldと失敗条件まで含めて引くためのリファレンスです。
 
 resource ID、tag、inline定義、listを受け付ける箇所の共通規則は [`registry-elements.md`](registry-elements.md) を参照してください。このページはnumber provider固有の型、演算、評価失敗に集中します。
 
-これらは開発中の仕様です。26.2以前の正式リリース、26.3 Snapshot 10以前、将来の26.3正式リリースへそのまま適用せず、対象launcher IDの公式server JARで再検証してください。
-
-## バージョン境界
-
-| launcher ID | data pack format | このページへの適用 |
-|---|---:|---|
-| `26.3-pre-1` | 119.0 | integer／float registry分割と下記type／fieldを導入 |
-| `26.3-pre-2` | 120.0 | 一部providerの`/compute` error、loot contextの不具合を修正 |
-| `26.3-pre-3` | 121.0 | float `mod`を通常の剰余へ変更、float `pow`の`0^0`を評価中止へ変更 |
-
-type／field一覧はPre-Release 1を基底とし、演算規則には対象バージョンの差分を適用します。
+本文のtype／fieldと演算は正式26.3向けです。開発IDを指定する場合だけ下記の履歴差分を適用し、26.2以前へは先取りしません。
 
 ## 2種類のregistry
 
-119.0では、Snapshot 10までの`minecraft:number_provider`と`minecraft:number_provider_type`を次へ分割します。
+正式26.3では、context依存数値を次の2種類のregistryへ分けます。旧number_providerからの開発中の移行は末尾の履歴を参照してください。
 
 | 値の種類 | element registry | type registry | resource path | tag path |
 |---|---|---|---|---|
 | 32-bit integer | `minecraft:context_int_provider` | `minecraft:context_int_provider_type` | `data/<namespace>/context_int_provider/<path>.json` | `data/<namespace>/tags/context_int_provider/<path>.json` |
 | single-precision float | `minecraft:context_float_provider` | `minecraft:context_float_provider_type` | `data/<namespace>/context_float_provider/<path>.json` | `data/<namespace>/tags/context_float_provider/<path>.json` |
 
-名前に`context`がない`minecraft:int_provider_type`と`minecraft:float_provider_type`は、主にworldgenで使うcontext非依存providerです。119.0のcontext依存providerとregistry、resource path、受理するfieldを共有するとは限りません。
+名前に`context`がない`minecraft:int_provider_type`と`minecraft:float_provider_type`は、主にworldgenで使うcontext非依存providerです。正式26.3のcontext依存providerとregistry、resource path、受理するfieldを共有するとは限りません。
 
 providerを評価できるparameterは利用場所のcontextで決まります。例えば`/compute default`、`/compute block`、`/compute entity`が供給するblock state、block entity、target entityは異なります。provider内のpredicateやenvironment attributeが必要とするparameterを、利用場所が供給するか確認してください。
-
-## Snapshot 10からの移行
-
-### registryとtype名
-
-| 118.0まで | 119.0 | 移行先 |
-|---|---|---|
-| `minecraft:number_provider` | 削除 | 利用fieldに応じて`minecraft:context_int_provider`または`minecraft:context_float_provider` |
-| `minecraft:number_provider_type` | 削除 | 対応するinteger／float type registry |
-| `minecraft:sum` | `minecraft:add` | integer／floatの両方 |
-| `minecraft:product` | `minecraft:mul` | integer／floatの両方 |
-| `minecraft:minimum` | `minecraft:min` | integer／floatの両方 |
-| `minecraft:maximum` | `minecraft:max` | integer／floatの両方 |
-| `minecraft:average` | `minecraft:avg` | integer／floatの両方 |
-| `operands` | `inputs` | `add`、`mul`、`min`、`max`、`avg` |
-| `minecraft:binomial` | 同名 | integerだけ |
-| `minecraft:score` | 同名 | integerだけ |
-| `minecraft:enchantment_level` | 同名 | floatだけ |
-
-`constant`、`uniform`、`storage`、`weighted_list`、`conditional`、`number_dispatcher`、`environment_attribute`は同名のinteger／float variantへ分かれます。旧registryのIDやtagを互換用に残さず、参照するconsumerとprovider resourceを一括で移行します。
-
-### 新しく使える演算
-
-119.0では新registryの導入に加え、次の演算が利用できます。
-
-- integer: `abs`、`sub`、`negate`、`pow`、`div`、`floor_div`、`mod`、`floor_mod`、`from_float`
-- float: `abs`、`sub`、`negate`、`pow`、`div`、`mod`、`ceil`、`floor`、`round`、`truncate`、`sin`、`cos`、`sqrt`、`length`、`from_int`
-
-`tan`、逆三角関数、対数、指数関数、専用のclamp typeは、Pre-Release 1の公式JARが出力したtype registryにはありません。
 
 ## 共通の値表現
 
@@ -109,7 +70,7 @@ integer providerは32-bit signed integer、すなわち`-2147483648`〜`21474836
 | `minecraft:storage` | `storage`, `path`, 任意`fallback` | command storageのinteger。欠落、非数値、複数match時はfallback、既定は`0` |
 | `minecraft:environment_attribute` | `attribute` | integerで表せるenvironment attribute値 |
 
-Mojangの記事は`minecraft:conditional`のfieldを`conditions`と記載していますが、Pre-Release 1の公式JARが生成したvanilla providerは`condition`を使用しています。このリポジトリでは公式JARの`condition`を正本とします。
+`minecraft:conditional`は単数fieldの`condition`を使います。正式記事と正式JARのvanilla providerもこの形です。開発初期の記事の`conditions`は使いません。
 
 ### 四則演算と剰余
 
@@ -162,8 +123,8 @@ float providerはsingle-precision floating-pointで計算します。結果がNa
 | `minecraft:sub` | `left`, `right` | `left - right` |
 | `minecraft:mul` | `inputs` | 1個以上の入力の積 |
 | `minecraft:div` | `left`, `right` | `left / right`。NaN／Infinityになる入力へ依存しない |
-| `minecraft:mod` | `left`, `right` | pre-1〜2はfloor modulus、pre-3は0方向へ丸める除算に対応した剰余。NaN／Infinityになる入力へ依存しない |
-| `minecraft:pow` | `base`, `exponent` | floatの累乗。pre-3では`0^0`で中止。定義域外や非有限結果へ依存しない |
+| `minecraft:mod` | `left`, `right` | 0方向へ丸める除算に対応した剰余。NaN／Infinityになる入力へ依存しない |
+| `minecraft:pow` | `base`, `exponent` | floatの累乗。`0^0`で中止。定義域外や非有限結果へ依存しない |
 | `minecraft:abs` | `input` | 絶対値 |
 | `minecraft:negate` | `input` | 符号反転 |
 | `minecraft:min` | `inputs` | 1個以上の入力の最小値 |
@@ -190,7 +151,7 @@ float providerはsingle-precision floating-pointで計算します。結果がNa
 
 ### Pre-Release 3の演算変更
 
-`26.3-pre-3`のcontext依存float `minecraft:mod`は、integer `mod`と同様に0方向へ丸める除算に対応した剰余を使います。pre-1〜2のfloor modulusとは負数入力で結果が異なります。
+正式26.3と`26.3-pre-3`のcontext依存float `minecraft:mod`は、integer `mod`と同様に0方向へ丸める除算に対応した剰余を使います。pre-1〜2のfloor modulusとは負数入力で結果が異なります。
 
 | float式 | pre-1〜2（floor modulus） | pre-3（通常の剰余） |
 |---|---:|---:|
@@ -357,7 +318,7 @@ integer branchはinteger tag、float branchはfloat tagを書き込みます。p
 
 ## providerを受ける主なfield
 
-119.0で明示された主なconsumerは次のとおりです。完全な一覧は対象JARのcodecとvanilla dataで閉じます。
+正式26.3の主なconsumerは次のとおりです。完全な一覧は対象JARのcodecとvanilla dataで閉じます。
 
 | 値種類 | 主なfield |
 |---|---|
@@ -368,7 +329,7 @@ integer branchはinteger tag、float branchはfloat tagを書き込みます。p
 
 ## 生成規則
 
-- targetを収録済みlauncher IDへ完全一致させ、pre-1は119.0、pre-2は120.0、pre-3は121.0へ固定する
+- 正式targetは26.3、formatは121.0へ固定する。開発IDの明示指定時だけ履歴のformatと演算を適用する
 - float `mod`／`pow`には対象バージョンの演算規則を適用し、pre-3の変更をpre-1〜2へ書き戻さない
 - provider resource、provider tag、consumer fieldの値種類を一致させる
 - 旧`minecraft:number_provider`、旧type名、`operands`を119.0へ残さない
@@ -380,6 +341,8 @@ integer branchはinteger tag、float branchはfloat tagを書き込みます。p
 - `conditional`には公式JARで確認した単数field `condition`を使う
 
 ## 検証
+
+正式26.3のJAR（SHA-1 `33680f5f2ac32864d6d7cf5e56a705fdb3e05f4c`）のreport／vanilla dataで整数23 type、float28 typeを照合しました。ゲーム内の境界値テストは未実施です。
 
 基底となるPre-Release 1のtype／fieldは次で照合しました。
 
@@ -393,6 +356,46 @@ Pre-Release 3の演算差分はMojang公式記事とversion manifestで照合し
 
 独自式は隔離した実験worldでreloadし、通常値だけでなく0除算、負数、32-bit境界、NaNになり得る入力、欠落score／storage、predicateが必要とするcontextも機能テストしてください。
 
+## 開発バージョンの履歴
+
+| launcher ID | data pack format | このページへの適用 |
+|---|---:|---|
+| `26.3-pre-1` | 119.0 | integer／float registry分割と下記type／fieldを導入 |
+| `26.3-pre-2` | 120.0 | 一部providerの`/compute` error、loot contextの不具合を修正 |
+| `26.3-pre-3` | 121.0 | float `mod`を通常の剰余へ変更、float `pow`の`0^0`を評価中止へ変更 |
+
+正式26.3はpre-3で確定したmod／pow規則を採用します。以下の本文は正式JARのregistry／vanilla dataで照合済みです。
+
+
+## Snapshot 10からの移行
+
+### registryとtype名
+
+| 118.0まで | 119.0 | 移行先 |
+|---|---|---|
+| `minecraft:number_provider` | 削除 | 利用fieldに応じて`minecraft:context_int_provider`または`minecraft:context_float_provider` |
+| `minecraft:number_provider_type` | 削除 | 対応するinteger／float type registry |
+| `minecraft:sum` | `minecraft:add` | integer／floatの両方 |
+| `minecraft:product` | `minecraft:mul` | integer／floatの両方 |
+| `minecraft:minimum` | `minecraft:min` | integer／floatの両方 |
+| `minecraft:maximum` | `minecraft:max` | integer／floatの両方 |
+| `minecraft:average` | `minecraft:avg` | integer／floatの両方 |
+| `operands` | `inputs` | `add`、`mul`、`min`、`max`、`avg` |
+| `minecraft:binomial` | 同名 | integerだけ |
+| `minecraft:score` | 同名 | integerだけ |
+| `minecraft:enchantment_level` | 同名 | floatだけ |
+
+`constant`、`uniform`、`storage`、`weighted_list`、`conditional`、`number_dispatcher`、`environment_attribute`は同名のinteger／float variantへ分かれます。旧registryのIDやtagを互換用に残さず、参照するconsumerとprovider resourceを一括で移行します。
+
+### 新しく使える演算
+
+119.0では新registryの導入に加え、次の演算が利用できます。
+
+- integer: `abs`、`sub`、`negate`、`pow`、`div`、`floor_div`、`mod`、`floor_mod`、`from_float`
+- float: `abs`、`sub`、`negate`、`pow`、`div`、`mod`、`ceil`、`floor`、`round`、`truncate`、`sin`、`cos`、`sqrt`、`length`、`from_int`
+
+`tan`、逆三角関数、対数、指数関数、専用のclamp typeは、正式26.3の公式JARが出力したtype registryにはありません。
+
 ## 出典
 
 - [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
@@ -400,3 +403,5 @@ Pre-Release 3の演算差分はMojang公式記事とversion manifestで照合し
 - [Minecraft Wiki: Java Edition 26.3 Pre-Release 1](https://minecraft.wiki/w/Java_Edition_26.3-pre1)
 
 - [Mojang: Minecraft 26.3 Pre-Release 3](https://feedback.minecraft.net/hc/en-us/articles/48740521840909-Minecraft-Java-Edition-26-3-Pre-release-3)
+
+- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)

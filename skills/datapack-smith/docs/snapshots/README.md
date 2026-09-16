@@ -1,4 +1,6 @@
-# 26.3 開発バージョンプロファイル一覧
+# 26.3 開発バージョン履歴
+
+正式26.3向けの生成は [`../versions/26.3.md`](../versions/26.3.md) を使います。以下は再現・移行用の履歴で、正式仕様への参照経路ではありません。
 
 このディレクトリは Java Edition 26.3 のsnapshot、pre-release、release candidateを、Mojang 公式 version manifest の ID へ完全一致させて扱います。開発バージョンは仕様変更・削除や world 破損の可能性があるため、正式リリースの [`../versions/README.md`](../versions/README.md) とは分離しています。version manifestではいずれも`type: snapshot`です。
 
@@ -29,7 +31,7 @@
 - 既存 world、本番 server、正式リリース用 pack の上書き検証に使わない
 - `pack.mcmeta` は対象開発バージョンの format へ厳密に固定する
 - 次の開発バージョンへ移るたびに公式 server JAR の report、reload、機能テストをやり直す
-- 26.3 正式リリース後は、正式リリースプロファイルを新規作成し、開発バージョンの値をそのまま確定仕様にしない
+- 正式26.3は26.2から別の枝として確定済み。ここに保存したlauncher ID・format・仕様は上書きしない
 
 ## 出典
 

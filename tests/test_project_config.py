@@ -186,6 +186,25 @@ class ProjectConfigurationTests(unittest.TestCase):
             any("outside supported_versions" in error for error in result.errors)
         )
 
+    def test_release_and_development_ranges_follow_the_selected_branch(self) -> None:
+        cases = [
+            ("26.3", "26.2", "26.3", False, True),
+            ("26.3-rc-3", "26.2", "26.3", True, False),
+            ("26.3", "26.3-rc-3", "26.3", True, False),
+            ("26.3-rc-3", "26.2", "26.3-rc-3", True, True),
+            ("26.2", "26.3", "26.3", False, False),
+        ]
+        for target, minimum, maximum, experimental, valid in cases:
+            with self.subTest(target=target, minimum=minimum, maximum=maximum):
+                config = template_config()
+                config["target_version"] = target
+                config["supported_versions"] = {"min": minimum, "max": maximum}
+                config["experimental_features"] = experimental
+                with tempfile.TemporaryDirectory() as temporary:
+                    project = self.write_project(Path(temporary), config)
+                    _, result = HARNESS.validate_project_config(project, self.profiles)
+                self.assertEqual(valid, not result.errors, result.errors)
+
     def test_development_target_requires_explicit_experimental_opt_in(self) -> None:
         config = template_config()
         config["target_version"] = "26.3-rc-3"
@@ -248,7 +267,7 @@ class ProjectConfigurationTests(unittest.TestCase):
             )
 
         self.assertEqual(0, completed.returncode, completed.stderr)
-        self.assertIn("validated 66 profiles", completed.stdout)
+        self.assertIn("validated 67 profiles", completed.stdout)
 
     def test_validate_project_uses_configured_pack_root(self) -> None:
         config = template_config()

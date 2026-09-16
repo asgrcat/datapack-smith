@@ -1,8 +1,8 @@
 # データパック書式リファレンス
 
-このディレクトリは、Java Edition 1.13から26.2までの正式リリースを対象に、データパックの配置、書式、パラメータ、参照関係を人間が追える形でまとめます。対象バージョンの差分は [`../versions/README.md`](../versions/README.md)、完全なコマンド木とregistry IDは対象バージョンの公式server JARが生成するreportを正本とします。
+このディレクトリは、Java Edition 1.13から26.3までの正式リリースを対象に、データパックの配置、書式、パラメータ、参照関係を人間が追える形でまとめます。対象バージョンの差分は [`../versions/README.md`](../versions/README.md)、完全なコマンド木とregistry IDは対象バージョンの公式server JARが生成するreportを正本とします。
 
-26.3開発バージョンでは、この安定仕様を基底に [`../snapshots/README.md`](../snapshots/README.md) の差分を順に適用し、対象launcher IDのserver JARで全fieldを再検証します。
+正式26.3は[確定仕様と移行表](26.3-migration.md)を入口に、下記の専門ページを使います。26.2以前の例は対象バージョンを保ち、開発履歴は明示したlauncher IDの調査だけに使用します。
 
 ## 読み方
 
@@ -18,6 +18,7 @@
 
 | 文書 | 対象 |
 |---|---|
+| [`26.3-migration.md`](26.3-migration.md) | 正式26.3のfield・配置・recipe・worldgen確定仕様、26.2からの移行 |
 | [`pack-and-paths.md`](pack-and-paths.md) | `pack.mcmeta`、namespace、resource location、ディレクトリ、tag、overlay |
 | [`command-tree.md`](command-tree.md) | `commands.json`、argument parser、構文分岐、result検証 |
 | [`command-arguments-and-selectors.md`](command-arguments-and-selectors.md) | 座標、範囲、resource location、selector、block state、item stack、macro |
@@ -25,7 +26,7 @@
 | [`nbt-snbt-and-data.md`](nbt-snbt-and-data.md) | NBT型、SNBT、NBT path、`/data`、storage、item境界 |
 | [`text-components.md`](text-components.md) | text componentの内容、style、event、JSON／SNBT境界 |
 | [`registry-elements.md`](registry-elements.md) | registry ID、tag、inline entry、list、holder set、参照の安定性 |
-| [`number-providers.md`](number-providers.md) | 26.3-pre-1〜pre-3のcontext依存number provider、四則演算、丸め、三角関数、分岐、失敗条件とpre-3の演算変更 |
+| [`number-providers.md`](number-providers.md) | 正式26.3のcontext依存number provider、四則演算、丸め、三角関数、分岐、失敗条件とpre-3の演算変更 |
 | [`slot-sources.md`](slot-sources.md) | 1.21.11／26.3のslot source、command・lootとの接続、全type |
 | [`block-transformation.md`](block-transformation.md) | block transformer、block state provider、rule、配置、migration |
 | [`damage-system.md`](damage-system.md) | damage type、分類tag、source、predicate、item・enchantmentとの接続 |
@@ -68,12 +69,12 @@
 
 Minecraftのcodecは`type`ごとに分岐し、正式リリース間でfieldが変わります。Markdownだけへ全分岐を複製すると正本と乖離するため、各ページは「構造と意味」を説明し、利用可能なIDと最終的な分岐は公式server JARの生成物で閉じます。
 
-## 26.2の正本を生成する
+## 26.3の正本を生成する
 
 ```bash
-python3 tools/datapack_harness.py reports 26.2 \
+python3 tools/datapack_harness.py reports 26.3 \
   --cache-dir .cache/minecraft \
-  --output build/minecraft/26.2/generated \
+  --output build/minecraft/26.3/generated \
   --java /path/to/java25
 ```
 
@@ -85,6 +86,6 @@ python3 tools/datapack_harness.py reports 26.2 \
 | `reports/commands.json` | 全コマンド分岐、argument parser、実行可能node |
 | `reports/registries.json` | 全registryとentry ID |
 | `reports/minecraft/components/item/` | vanilla itemの既定component |
-| `data/minecraft/` | 26.2のcodecで生成されたvanilla resource |
+| `data/minecraft/` | 26.3のcodecで生成されたvanilla resource |
 
 生成物は文書へcommitしません。対象バージョンごとに再生成します。

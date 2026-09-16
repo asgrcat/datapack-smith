@@ -1,5 +1,7 @@
 # 正式リリースプロファイル一覧
 
+最新正式リリースは [`26.3`](26.3.md) です。26.3は26.2を継承し、開発履歴とは別の枝です。
+
 各ファイルは、その正式リリースでデータパックを生成するための確定プロファイルです。`inherits` を前バージョンへ辿り、当該バージョンの差分で上書きします。同じ data pack format でも差分を省略しないでください。
 
 追加されたblock・entity・itemを「何に使えるか」から探す場合は、バージョンプロファイルと併せて [`../content-hooks.md`](../content-hooks.md) を参照してください。全IDは対象バージョンのserver JARのregistry reportから生成します。
@@ -62,6 +64,7 @@ front matterの機械可読schemaは [`profile.schema.json`](profile.schema.json
 | [26.1.1](26.1.1.md) | 2026-04-01 | 101.1 | 単数形 | hotfix |
 | [26.1.2](26.1.2.md) | 2026-04-09 | 101.1 | 単数形 | hotfix |
 | [26.2](26.2.md) | 2026-06-16 | 107.1 | 単数形 | breaking-format |
+| [26.3](26.3.md) | 2026-09-15 | 121.0 | 単数形 | breaking-format |
 
 ## 形式帯
 
@@ -88,6 +91,7 @@ front matterの機械可読schemaは [`profile.schema.json`](profile.schema.json
 94.1   1.21.11
 101.1  26.1–26.1.2
 107.1  26.2
+121.0  26.3
 ```
 
 1.21.9 以降は minor pack version を持ちます。整数の `94` と `[94,1]` の metadata 上の意味は同じではありません。

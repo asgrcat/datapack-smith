@@ -12,7 +12,7 @@ family間の参照関係は次の順で確認します。
 4. [`loot-recipes.md`](loot-recipes.md) でloot table、item modifier、recipeと各contextを区別する
 5. [`dimensions-worldgen.md`](dimensions-worldgen.md) でdimension typeと地形generatorを区別する
 6. [`enchantments-variants.md`](enchantments-variants.md) で固定されたvanilla要素とdata-driven registryを区別する
-7. registry参照は [`../reference/registry-elements.md`](../reference/registry-elements.md)、26.3-pre-1の数値fieldは [`../reference/number-providers.md`](../reference/number-providers.md) で表現と演算規則を選ぶ
+7. registry参照は [`../reference/registry-elements.md`](../reference/registry-elements.md)、正式26.3の数値fieldは [`../reference/number-providers.md`](../reference/number-providers.md) で表現と演算規則を選ぶ
 8. 下の表と各versionページで対象バージョンの境界を決める
 9. 公式server JARから同じバージョンのcatalogとvanilla例を生成する
 10. 新規テストworldで読み込みと実際の挙動を確認する
@@ -90,6 +90,7 @@ JSONは「Minecraftのあらゆる物を自由に定義できる設定ファイ�
 | [26.1.1](../versions/26.1.1.md) | 26.1形 | 26.1形 | 継承 | 26.1形 |
 | [26.1.2](../versions/26.1.2.md) | 26.1形 | 26.1形 | 継承 | 26.1形 |
 | [26.2](../versions/26.2.md) | component type追加 | worldgen追加・rename | predicate互換性変更 | predicate互換性変更 |
+| [26.3](../versions/26.3.md) | fuel・pot・sign・animationを再編 | feature／carver・noise・spawnを再編 | 数値provider整数／float分割 | 26.2を基底にJAR照合 |
 
 ### event・条件・生成resource
 
@@ -118,6 +119,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [1.21.11](../versions/1.21.11.md) | component存在判定 | trigger追加 | `filtered`・`discard`・slots | 継承 | `filtered`差分 |
 | [26.1](../versions/26.1.md) | condition・clock・food追加 | reward参照差分 | trade/additional cost差分 | result統一 | enchant function差分 |
 | [26.2](../versions/26.2.md) | entity component-map化 | entity condition非互換 | entity condition非互換 | 26.1形 | entity condition非互換 |
+| [26.3](../versions/26.3.md) | type・condition・参照統一 | root背景・trigger条件変更 | provider・modifier型変更 | brewing・cookingtime必須 | type・condition・数値型変更 |
 
 この表の`継承`はpack formatが同じという意味ではありません。familyに直接のparameter変更が記録されていない場合でも、folder、text component、predicate、resource IDなど周辺codecが変わることがあります。
 

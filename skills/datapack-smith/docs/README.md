@@ -1,7 +1,9 @@
 # Datapack Smith仕様リファレンス
 
-このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.2 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
+このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.3 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
 
+
+正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ履歴を参照します。
 ## 最短の使い方
 
 Agent Skillから参照する場合も、次の順序で対象仕様を決定します。
@@ -108,7 +110,8 @@ project設定、公式JARの任意取得、report生成、pack静的検査、ser
 | 1.21.11 | 94.1 | gamerule の namespaced snake_case 化、timeline、slot source |
 | 26.1 | 101.1 | 年ベースのゲームバージョン番号、world clock、trade/variant のデータ駆動化 |
 | 26.2 | 107.1 | entity predicate の component-map 化と厳格化 |
-| 26.3-snapshot-1〜26.3-rc-3 | 108.0〜121.0 | slot source、worldgen再編、brewing、loot/predicate参照統一、block state／map／animation変更、block transformer registry化、computeコマンド、number providerの整数／float分割、structure tag改名（開発中） |
+| 26.3 | 121.0 | context依存integer／float provider、compute、brewing、参照統一、worldgen再編 |
+| 26.3-snapshot-1〜26.3-rc-3（履歴） | 108.0〜121.0 | slot source、worldgen再編、brewing、loot/predicate参照統一、block state／map／animation変更、block transformer registry化、computeコマンド、number providerの整数／float分割、structure tag改名（開発中） |
 
 ## 完全性の意味
 

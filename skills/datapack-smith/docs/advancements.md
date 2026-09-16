@@ -1,5 +1,7 @@
 # 進捗とplayer event
 
+正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。
+
 この文書はadvancementを、表示上の進捗だけでなくplayer単位の永続状態とevent入口として利用する方法を扱います。JSONの基本形は [`json-formats.md`](json-formats.md)、バージョン別parameterは[`json-parameters/advancements.md`](json-parameters/advancements.md)、共有predicateは[`json-parameters/predicates.md`](json-parameters/predicates.md)、状態全体の選択は [`state-management.md`](state-management.md) を参照してください。
 
 ## 配置とモデル

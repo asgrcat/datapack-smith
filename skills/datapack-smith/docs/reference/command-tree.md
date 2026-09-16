@@ -1,5 +1,7 @@
 # コマンド木と引数parser
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 `.mcfunction`の字句と代表構文は [`../commands.md`](../commands.md)、座標・selector・resource等の引数は [`command-arguments-and-selectors.md`](command-arguments-and-selectors.md)、success／resultの保存は [`scoreboards-and-results.md`](scoreboards-and-results.md)、executor、position、forkは [`../execution-model.md`](../execution-model.md) を参照します。この文書は、対象バージョンの`commands.json`を完全な構文リファレンスとして読む方法を説明します。
 
 ## node

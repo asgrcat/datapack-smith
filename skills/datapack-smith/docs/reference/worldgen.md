@@ -1,5 +1,7 @@
 # world generation
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 worldgenは単一schemaではなく、registryと`type` discriminatorで分岐するcodec群です。この文書はresource間の接続、共通field、26.2で利用できるtypeの確定方法を説明します。
 
 ## 依存関係

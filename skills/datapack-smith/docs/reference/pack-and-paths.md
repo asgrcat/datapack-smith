@@ -1,5 +1,7 @@
 # pack metadata、namespace、配置
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 ## pack root
 
 データパックのrootには`pack.mcmeta`を置き、resourceは`data/`以下へ置きます。

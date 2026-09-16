@@ -372,6 +372,13 @@ def validate_profile(
         errors.append(f"{path}: inherits must be a version string or null")
     elif parent is not None and parent not in profiles:
         errors.append(f"{path}: inherits missing profile {parent}")
+    if (
+        channel == "release"
+        and isinstance(parent, str)
+        and parent in profiles
+        and profiles[parent].get("channel", "release") != "release"
+    ):
+        errors.append(f"{path}: release profile must inherit a release profile")
     if not extract_ai_rules(path):
         errors.append(f"{path}: AI 生成規則 must contain at least one rule")
     json_parameters = extract_markdown_section(path, "## JSONパラメータ差分")
@@ -419,15 +426,29 @@ def resolve_chain(
 def ordered_versions(profiles: dict[str, dict[str, Any]]) -> list[str]:
     if not profiles:
         return []
-    leaves = set(profiles)
-    for profile in profiles.values():
+    # Listing order is chronological; inheritance is a separate branching graph.
+    roots = [v for v, p in profiles.items() if p.get("inherits") is None]
+    if len(roots) != 1:
+        raise HarnessError("profiles must have exactly one inheritance root")
+    for version, profile in profiles.items():
         parent = profile.get("inherits")
-        if parent is not None:
-            leaves.discard(parent)
-    if len(leaves) != 1:
-        raise HarnessError(f"profiles must form one linear chain; leaves={sorted(leaves)}")
-    leaf = next(iter(leaves))
-    return [profile["version"] for profile in resolve_chain(leaf, profiles)]
+        if parent is not None and (not isinstance(parent, str) or parent not in profiles):
+            raise HarnessError(f"{version}: missing inheritance parent {parent!r}")
+    for version in profiles:
+        resolve_chain(version, profiles)  # Detect cycles, including disconnected ones.
+    remaining = set(profiles)
+    order: list[str] = []
+    emitted: set[str] = set()
+    while remaining:
+        ready = [
+            v for v in remaining
+            if profiles[v].get("inherits") is None or profiles[v]["inherits"] in emitted
+        ]
+        version = min(ready, key=lambda v: (str(profiles[v].get("release_date", "")), v))
+        remaining.remove(version)
+        emitted.add(version)
+        order.append(version)
+    return order
 
 
 def validate_all_profiles(profiles: dict[str, dict[str, Any]]) -> list[str]:
@@ -1252,15 +1273,12 @@ def validate_project_config(
             and minimum_valid
             and maximum_valid
         ):
-            order = ordered_versions(profiles)
-            min_index = order.index(minimum)
-            target_index = order.index(target)
-            max_index = order.index(maximum)
-            if min_index > max_index:
+            order = [p["version"] for p in resolve_chain(maximum, profiles)]
+            if minimum not in order or target not in order:
                 result.error(
-                    f"{project_path}: supported version minimum is after maximum"
+                    f"{project_path}: supported_versions must follow one inheritance branch"
                 )
-            elif not min_index <= target_index <= max_index:
+            elif order.index(target) < order.index(minimum):
                 result.error(
                     f"{project_path}: target_version is outside supported_versions"
                 )

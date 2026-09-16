@@ -1,5 +1,7 @@
 # JSON、SNBT、データ種別
 
+正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。
+
 この文書はデータパック内ファイルの配置と記法を横断的に定義します。個々の codec は頻繁に変わるため、対象バージョン server JAR の vanilla data と registry report を、そのバージョンのフィールド定義の実例として併用します。item、dimension/worldgen、enchantment、variantのパラメータの意味とバージョン別索引は[`json-parameters/README.md`](json-parameters/README.md)から参照します。
 
 fieldごとの型、既定値、参照関係、26.2の全resource種別は [`reference/README.md`](reference/README.md) と [`reference/coverage.md`](reference/coverage.md) を参照してください。

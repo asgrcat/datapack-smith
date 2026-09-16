@@ -27,13 +27,48 @@ SPEC.loader.exec_module(HARNESS)
 
 
 class ProfileTests(unittest.TestCase):
-    def test_all_profiles_validate_and_form_one_chain(self) -> None:
+    def test_all_profiles_validate_and_are_listed_once(self) -> None:
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(66, len(order))
+        self.assertEqual(67, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual("26.3-rc-3", order[-1])
+        self.assertEqual("26.3", order[-1])
+
+    def test_release_chain_excludes_development_history(self) -> None:
+        profiles = HARNESS.load_profiles()
+        payload = HARNESS.resolved_profile_payload("26.3", profiles)
+        chain = HARNESS.resolve_chain("26.3", profiles)
+        self.assertEqual(51, len(chain))
+        self.assertEqual(["26.2", "26.3"], [p["version"] for p in chain[-2:]])
+        self.assertTrue(all(p.get("channel", "release") == "release" for p in chain))
+        self.assertEqual("release", payload["profile"]["channel"])
+        self.assertEqual("121.0", payload["profile"]["data_pack_format"])
+        self.assertEqual(25, HARNESS.required_java_major("26.3", profiles))
+        self.assertEqual(25, HARNESS.required_java_major("26.3-rc-3", profiles))
+
+    def test_graph_rejects_missing_parents_cycles_and_multiple_roots(self) -> None:
+        for mutation in ("missing", "cycle", "root"):
+            with self.subTest(mutation=mutation):
+                profiles = HARNESS.load_profiles()
+                if mutation == "missing":
+                    profiles["26.3"]["inherits"] = "missing"
+                elif mutation == "cycle":
+                    profiles["26.3"]["inherits"] = "26.3-rc-3"
+                    profiles["26.3-rc-3"]["inherits"] = "26.3"
+                else:
+                    profiles["26.3"]["inherits"] = None
+                with self.assertRaises(HARNESS.HarnessError):
+                    HARNESS.ordered_versions(profiles)
+
+    def test_release_cannot_inherit_snapshot_and_invalid_date_reports_errors(self) -> None:
+        profiles = HARNESS.load_profiles()
+        profiles["26.3"]["inherits"] = "26.3-rc-3"
+        errors = HARNESS.validate_all_profiles(profiles)
+        self.assertTrue(any("release profile must inherit" in e for e in errors))
+        profiles = HARNESS.load_profiles()
+        del profiles["26.3"]["release_date"]
+        self.assertTrue(HARNESS.validate_all_profiles(profiles))
 
     def test_compatibility_is_normalized(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -67,7 +102,7 @@ class ProfileTests(unittest.TestCase):
 
     def test_release_candidate_aliases_and_unbundled_ids_are_rejected(self) -> None:
         profiles = HARNESS.load_profiles()
-        for version in ("26.3", "26.3-rc1", "26.3-rc2", "26.3-rc3", "26.3-rc-0", "26.3-rc-01", "26.3-rc-4"):
+        for version in ("26.4", "26.3-rc1", "26.3-rc2", "26.3-rc3", "26.3-rc-0", "26.3-rc-01", "26.3-rc-4"):
             with self.subTest(version=version):
                 with self.assertRaises(HARNESS.HarnessError):
                     HARNESS.resolve_chain(version, profiles)

@@ -5,7 +5,7 @@
 > **Minecraft向けの非公式ツールです。MojangまたはMicrosoftによる承認・提携製品ではありません。**
 > **NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
-Datapack Smithは、Minecraft Java Edition 1.13から26.2までの正式リリースと、収録済みの26.3開発バージョンを対象に、AIがデータパックを設計・実装・検証するための非公式Agent Skillです。対象ゲームバージョンを完全一致で解決し、そのバージョンで利用できるコマンド、データ形式、ディレクトリ構造だけを選びます。
+Datapack Smithは、Minecraft Java Edition 1.13から26.3までの正式リリースと、収録済みの26.3開発バージョンを対象に、AIがデータパックを設計・実装・検証するための非公式Agent Skillです。対象ゲームバージョンを完全一致で解決し、そのバージョンで利用できるコマンド、データ形式、ディレクトリ構造だけを選びます。
 
 Claude Code、Codex、Cursorで共通の[`SKILL.md`](skills/datapack-smith/SKILL.md)を利用できます。詳細な仕様、バージョン別プロファイル、テンプレート、検証ハーネスはスキルへ同梱されています。
 

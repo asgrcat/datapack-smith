@@ -1,5 +1,7 @@
 # dimension、environment attributes、timeline
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書は、カスタムdimensionと、1.21.11以降のenvironment attributes、26.1以降のworld clockを扱います。26.2の書式を基準にし、古い正式リリースへ適用するときは最後のバージョン境界を使います。
 
 ## resourceの関係

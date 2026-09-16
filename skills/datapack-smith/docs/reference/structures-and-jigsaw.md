@@ -1,5 +1,7 @@
 # Structure NBT、jigsaw、worldgen structure
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書はデータパックのstructure NBTと、template pool、processor list、worldgen structure／structure set、`/place`、GameTestの接続を扱います。同じ「structure」という語でもbinary templateとworldgen配置定義は別resourceです。
 
 ## 5つの層

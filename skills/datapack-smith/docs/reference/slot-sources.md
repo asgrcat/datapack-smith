@@ -1,8 +1,8 @@
 # Slot source
 
-slot sourceは、entity、block entity、item内container等から0個以上のslotを順序付きで選ぶ値です。この文書はJava Edition 1.21.11のinline slot sourceと、26.3 Snapshot 1以降の独立`minecraft:slot_source` registryを扱います。
+slot sourceは、entity、block entity、item内container等から0個以上のslotを順序付きで選ぶ値です。この文書はJava Edition 1.21.11のinline slot sourceと、正式26.3の独立`minecraft:slot_source` registryを扱います。
 
-## バージョン境界
+## 開発バージョンの履歴
 
 | バージョン | 書式と利用場所 |
 |---|---|
@@ -26,7 +26,7 @@ slot sourceの結果はitemのcopyではなくslotの位置列です。
 
 同じslotへ複数回書く場合、command側の置換規則と評価順が結果へ影響します。
 
-## 26.3 Pre-Release 1のtype
+## 正式26.3のtype
 
 公式JARの`minecraft:slot_source_type` registryには6 typeがあります。
 
@@ -67,7 +67,7 @@ slot sourceの結果はitemのcopyではなくslotの位置列です。
 }
 ```
 
-list自体が`group`の省略形として認められる場所があります。26.3-snapshot-9以降、inline `group`はtop-level slot source resourceで使い、nested位置では独立resourceのIDを参照します。
+正式26.3ではslot sourceを受けるfieldでlist／tagをgroupの省略形として使えます。stand-alone resourceのrootにはこの省略形を使わず、明示的なgroup objectを定義します。nested位置で明示typeのgroup objectを作る場合は独立resourceへ分離してID参照します。
 
 ### slot_range
 
@@ -154,7 +154,7 @@ command引数の`hotbar.4`や`container.*`は、対応する`slot_range`の省�
 }
 ```
 
-Snapshot 1の一時的な`minecraft:reference`形はSnapshot 4で削除されています。Pre-Release 1では、slot sourceを受けるfieldへ`"example:hotbar_and_armor"`を直接渡します。
+Snapshot 1の一時的な`minecraft:reference`形はSnapshot 4で削除されています。正式26.3では、slot sourceを受けるfieldへ`"example:hotbar_and_armor"`を直接渡します。
 
 ## Commandでの評価
 
@@ -197,7 +197,7 @@ itemをcopyするのか、外側loot functionで変更するのか、実際のco
 
 - target versionが1.21.11か26.3系かを先に固定する
 - 1.21.11へ独立`slot_source/`を出力しない
-- Pre-Release 1へ削除済み`minecraft:reference`を出力しない
+- 正式26.3へ削除済み`minecraft:reference`を出力しない
 - nested位置へinline `group`を出力しない
 - sourceが必要とするloot context parameterを呼出側が供給するか確認する
 - 0件、重複slot、複数entity、destination／source数の不一致をtestする
@@ -205,7 +205,9 @@ itemをcopyするのか、外側loot functionで変更するのか、実際のco
 
 ## 検証
 
-Pre-Release 1では公式JARの`minecraft:slot_source_type` 6 entryと`reports/datapack.json`のelement／tag対応を正本にします。独立resourceをreloadした後、空inventory、満杯inventory、bundle／container item、同じslotの重複、複数entityを機能テストします。
+正式26.3のreport／vanilla dataはRC3と一致し、本文のresource配置・type registryを照合済みです。reload・機能テストは未実施です。
+
+正式26.3では公式JARの`minecraft:slot_source_type` 6 entryと`reports/datapack.json`のelement／tag対応を正本にします。独立resourceをreloadした後、空inventory、満杯inventory、bundle／container item、同じslotの重複、複数entityを機能テストします。
 
 ## 出典
 
@@ -213,3 +215,5 @@ Pre-Release 1では公式JARの`minecraft:slot_source_type` 6 entryと`reports/d
 - [Mojang: Minecraft 26.3 Snapshot 1](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1)
 - [Mojang: Minecraft 26.3 Snapshot 4](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4)
 - [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
+
+- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)

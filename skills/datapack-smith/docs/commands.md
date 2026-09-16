@@ -1,5 +1,7 @@
 # `.mcfunction` とコマンド仕様
 
+正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。
+
 この文書は Java Edition のデータパックから実行するコマンドを扱います。コマンドの全分岐はバージョンごとに変化するため、最終的な正本は対象バージョン server JAR が生成する `generated/reports/commands.json` です。生成方法は [`validation.md`](validation.md) を参照してください。
 
 executor、位置、分岐、function結果、load/tick/scheduleの実行意味は [`execution-model.md`](execution-model.md)、scoreboardとstorageの設計は [`state-management.md`](state-management.md) で詳しく扱います。
@@ -200,6 +202,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 | 1.21.11 | `/stopwatch`, `execute if|unless stopwatch`。gamerule を registry 化し全名称を namespaced snake_case へ変更 |
 | 26.1 | `/time` が world clock/timeline 対応へ変更 |
 | 26.2 | `/unpublish`、team/waypoint の色名を lowercase snake_case のみに制限 |
+| 26.3 | `/compute`、`/posteffect`、slot source、`/item fill`・`override`、`execute if slots`、`/publish`のgamemode削除 |
 
 ### 26.3開発バージョン
 
@@ -219,7 +222,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 
 開発バージョンのcommandは変更中です。正式リリース表の「現行コマンド」へ合成せず、対象IDの`commands.json`を正本にします。
 
-26.3-pre-1〜pre-3の`/compute`と`data modify ... compute`で使うinteger／float providerの全type、演算規則、resource例は [`reference/number-providers.md`](reference/number-providers.md) を参照してください。
+正式26.3の`/compute`と`data modify ... compute`で使うinteger／float providerの全type、演算規則、resource例は [`reference/number-providers.md`](reference/number-providers.md) を参照してください。
 
 ## 現行コマンドの分類
 

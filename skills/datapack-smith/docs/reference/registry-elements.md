@@ -1,6 +1,6 @@
 # Registry element、参照、holder set
 
-この文書は、データパック内のregistry elementをinline値、namespaced ID、tag、listとして受け渡す書式を扱います。特にJava Edition 26.3 Snapshot 4〜5で導入された直接参照と混在listを、旧バージョンへ逆輸入しないための横断リファレンスです。
+この文書は、データパック内のregistry elementをinline値、namespaced ID、tag、listとして受け渡す書式を扱います。正式Java Edition 26.3の直接参照と混在listを扱い、旧バージョンとの境界を区別します。
 
 ## 最初に区別するもの
 
@@ -62,9 +62,9 @@ registry tagは、対応するregistry pathの下へ置きます。1.21以降の
 
 ## 26.3のelement value
 
-### Snapshot 4
+### 正式26.3の単一参照
 
-data pack format 111.0では、advancement、item modifier、loot table、number provider、predicate、recipe、slot source等で、registry ID、tag、inline値を共通のelement value／element set codecへ移行しました。
+正式26.3では、advancement、item modifier、loot table、context integer／float provider、predicate、recipe、slot source等で、registry ID、tag、inline値を共通のelement value／element set codecへ移行しました。
 
 主な変更:
 
@@ -76,9 +76,9 @@ data pack format 111.0では、advancement、item modifier、loot table、number
 
 すべてのfieldがtagやinline値を受けるわけではありません。「element value」「element list」「holder set」「単一ID」は別codecです。
 
-### Snapshot 5
+### 正式26.3の混在list
 
-data pack format 112.0では、同じelement list内でinline値とID参照を混在できるようになりました。
+正式26.3では、同じelement list内でinline値とID参照を混在できるようになりました。
 
 ```json
 [
@@ -92,9 +92,9 @@ data pack format 112.0では、同じelement list内でinline値とID参照を�
 
 この形は112.0より前へ出力しません。111.0で「inline list」と「ID list」が別分岐だったfieldでは、混在listがloadに失敗します。
 
-### Snapshot 9
+### 明示typeと集合の省略形
 
-data pack format 117.0では、top-levelのitem modifier／slot source resource全体をID文字列にできる不具合が修正されました。一方、`minecraft:sequence`と`minecraft:group`のinline定義はtop-level resourceに限定され、nested位置ではID参照を使います。
+正式26.3ではitem modifier／slot sourceを受けるfieldでlist／tagによるsequence／groupの省略形を使えます。stand-alone fileには省略形を使わず明示objectを置きます。明示typeのsequence／group objectをnested位置で使う代わりに、独立resourceのIDも参照できます。開発中の制約は下のバージョン表とsnapshot履歴を参照します。
 
 「IDを受けられる」と「参照先resourceのrootをID文字列だけにできる」は同じではありません。top-level alias、nested inline、element listの各位置を個別に確認します。
 
@@ -144,3 +144,5 @@ tagは公開拡張点に向きますが、処理順を固定するAPIではあ�
 - [Mojang: Minecraft 26.3 Snapshot 4](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4)
 - [Mojang: Minecraft 26.3 Snapshot 5](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-5)
 - [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
+
+- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)

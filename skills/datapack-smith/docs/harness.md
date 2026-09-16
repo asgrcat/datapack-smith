@@ -216,7 +216,8 @@ release前には、EULAへ同意できる隔離環境でバージョンごとに
 | 1.20.5 | 21 | item component |
 | 1.21.9 | 21 | minor pack format metadata |
 | 26.2 | 25 | 最新正式リリース |
-| 26.3-rc-3 | 25 | 最新収録開発バージョン |
+| 26.3 | 25 | 最新正式リリース |
+| 26.3-rc-3 | 25 | 収録済み開発履歴 |
 
 各バージョンで `--expect-log` を指定し、成功logを保存します。実行していないバージョンについて「server-test互換性確認済み」と記録しません。
 
@@ -251,3 +252,7 @@ python3 -m unittest discover -s tests -v
 - `1`: profile、download、SHA-1、静的検査、data generator、server検査の失敗
 
 CIでは標準出力の文言ではなく終了codeを使用します。
+
+## 継承と対応範囲
+
+一覧の表示順は公開日順（親を子より先に表示）です。仕様継承と`supported_versions`の範囲は別に扱い、maxの祖先にminとtargetがあることを要求します。26.2〜26.3の正式範囲に26.3-rc-3は含まれません。開発targetはその開発枝の範囲と`experimental_features: true`を明示してください。

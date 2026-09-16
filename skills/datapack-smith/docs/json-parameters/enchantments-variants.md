@@ -1,5 +1,7 @@
 # enchantment・variant・painting・jukebox のJSONパラメータ
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書は Java Edition 1.13〜26.2 のエンチャントとvariant系データについて、定義対象、配置可能になるバージョン、主要field、`type` discriminator、自然スポーンとの関係、破壊的変更を整理します。
 
 完全なcodec schemaをMarkdownへ複製する文書ではありません。対象正式リリースのserver JARが生成する `reports/registries.json` と `data/minecraft/` を正本とし、この文書の「必須/任意」はMojang公式field listと、そのバージョンのvanilla生成物で確認できた範囲を示します。

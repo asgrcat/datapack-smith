@@ -4,7 +4,7 @@
 
 > **NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
-Datapack Smith is an unofficial Agent Skill for designing, implementing, and validating data packs for Minecraft: Java Edition across official releases from 1.13 through 26.2 and the bundled 26.3 development versions. It resolves the target game version exactly and selects only the commands, data formats, and directory layout available in that version.
+Datapack Smith is an unofficial Agent Skill for designing, implementing, and validating data packs for Minecraft: Java Edition across official releases from 1.13 through 26.3 and the bundled 26.3 development versions. It resolves the target game version exactly and selects only the commands, data formats, and directory layout available in that version.
 
 Claude Code, Codex, and Cursor use the same [`SKILL.md`](skills/datapack-smith/SKILL.md). The skill bundles the detailed specification, release profiles, templates, and validation harness.
 

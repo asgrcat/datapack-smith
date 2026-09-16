@@ -1,5 +1,7 @@
 # dimension / worldgen JSON パラメータ
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 Minecraft Java Edition 1.16 から 26.2 までの `dimension`、`dimension_type`、world generation registry を扱います。カスタム world generation は同じ名前の field でもバージョンによって codec や意味が変わります。対象バージョンを完全一致で決め、Mojang の release note と対象バージョン server JAR が生成した data/report を正本にしてください。
 
 この文書は設計時の索引です。全 `type` の完全な codec を固定 schema として複製するものではありません。

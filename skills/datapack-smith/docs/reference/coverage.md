@@ -1,6 +1,77 @@
 # データ種別カバレッジ
 
-この表は26.2の公式server JARが生成する`reports/datapack.json`を基準に、データパックから要素を定義できる全resource種別を説明先へ対応付けます。正式リリースごとの追加・削除・renameは [`../versions/README.md`](../versions/README.md) と各バージョンファイルを先に適用します。
+正式26.3の`reports/datapack.json`に基づく全element registryです。各要素のfieldは[確定仕様と移行表](26.3-migration.md)と専門reference、正式vanilla JSONを使います。`stable`はregistryごとの実験性を示し、ゲームの正式／開発channelとは別です。
+
+## 26.3のregistry resource
+
+| resource path | 説明先 | tag |
+|---|---|---|
+| `advancement` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `banner_pattern` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `block_transformer` | [block-transformation.md](block-transformation.md) | 可 |
+| `cat_sound_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `cat_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `chat_type` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `chicken_sound_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `chicken_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `context_float_provider` | [number-providers.md](number-providers.md) | 可 |
+| `context_int_provider` | [number-providers.md](number-providers.md) | 可 |
+| `cow_sound_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `cow_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `damage_type` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `decorated_pot_pattern` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `dialog` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `dimension` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `dimension_type` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `enchantment` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `enchantment_provider` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `frog_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `instrument` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `item_modifier` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `jukebox_song` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `loot_table` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `painting_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `pig_sound_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `pig_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `predicate` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `recipe` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `slot_source` | [slot-sources.md](slot-sources.md) | 可 |
+| `sulfur_cube_archetype` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `test_environment` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `test_instance` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `timeline` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `trade_set` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `trial_spawner` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `trim_material` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `trim_pattern` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `villager_trade` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `wolf_sound_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `wolf_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `world_clock` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/biome` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/block_state_provider` | [block-transformation.md](block-transformation.md) | 可 |
+| `worldgen/carver` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/density_function` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/feature` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/flat_level_generator_preset` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/material_condition` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/material_rule` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/multi_noise_biome_source_parameter_list` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/noise` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/noise_settings` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/placed_feature` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/processor_list` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/structure` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/structure_set` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/template_pool` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `worldgen/world_preset` | [26.3-migration.md](26.3-migration.md) | 可 |
+| `zombie_nautilus_variant` | [26.3-migration.md](26.3-migration.md) | 可 |
+
+registry以外には`function`（mcfunction、tag可）と`structure`（structure、tag不可）があります。`context_key_set`等のelements=falseなregistryへ独自element fileを生成しません。
+
+## 26.2の履歴比較
+
+以下の表は26.2の公式server JARが生成する`reports/datapack.json`を基準に、データパックから要素を定義できる全resource種別を説明先へ対応付けます。正式リリースごとの追加・削除・renameは [`../versions/README.md`](../versions/README.md) と各バージョンファイルを先に適用します。
 
 ## registry resource
 

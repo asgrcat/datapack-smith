@@ -1,5 +1,7 @@
 # loot table・item modifier・recipe パラメータ
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書は Java Edition 1.13〜26.2 の loot table、item modifier、recipe を、JSON の階層、値の意味、実行context、バージョン境界から選ぶためのリファレンスです。全 loot condition/function、number provider、recipe serializer の完全な codec を Markdown に固定して複製するものではありません。対象の正式リリースの Mojang server JAR が生成する vanilla data、registry report、実際の reload 結果を機械的な正本とします。
 
 ## 先に区別するもの

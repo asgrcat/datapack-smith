@@ -1,5 +1,7 @@
 # Command引数、座標、selector
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書は`.mcfunction`で頻出するBrigadier引数の意味を扱います。完全なbranchとparser propertyは対象server JARの`reports/commands.json`を正本とし、ここでは生成判断と実行時の落とし穴をまとめます。
 
 ## Argument graphを先に確認する

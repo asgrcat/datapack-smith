@@ -1,5 +1,7 @@
 # NBT、SNBT、`/data`
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書はJava EditionのNBT値、SNBT表記、NBT path、`/data`、command storage、`execute store`を扱います。JSON resource、item data component、text componentは外側codecが異なるため分離して説明します。
 
 ## NBTとSNBT

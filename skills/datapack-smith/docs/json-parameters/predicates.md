@@ -1,5 +1,7 @@
 # predicate・loot condition パラメータ
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書は Java Edition 1.13〜26.2 の predicate 関連データについて、独立 predicate resource、loot condition、entity/location/item/block predicate、条件の合成、評価 context、主要 parameter、バージョン境界、検証方法を整理します。
 
 全 condition type と全入れ子 codec を Markdown に固定して複製するものではありません。対象バージョンに存在する type ID は公式 server JAR の `registries.json`、実際の field は Mojang のリリースノート、vanilla data、対象 server の reload 結果を正本とします。

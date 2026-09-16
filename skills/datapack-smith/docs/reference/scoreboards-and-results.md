@@ -1,5 +1,7 @@
 # Scoreboardとcommand result
 
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+
 この文書はscoreboard objective／score holder／演算と、commandのsuccess／result、`execute store`を扱います。状態の所有権、migration、uninstallは[`../state-management.md`](../state-management.md)で設計します。
 
 ## 値モデル
