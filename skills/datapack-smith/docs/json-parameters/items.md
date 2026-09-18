@@ -422,7 +422,7 @@ clear @s minecraft:stick[minecraft:custom_data~{example:{kind:"token"}}] 0
 ### 1. reportを生成
 
 ```bash
-python3 tools/datapack_harness.py reports 1.21.5 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 1.21.5 \
   --cache-dir .cache/minecraft \
   --output build/minecraft/1.21.5/generated \
   --java /path/to/java
@@ -501,7 +501,7 @@ reportのpath・形は固定せず、そのversionの生成結果を確認しま
 7. client表示、消費、装備、耐久、multiplayer同期等のgameplay結果を確認する
 
 ```bash
-python3 tools/datapack_harness.py validate-pack \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack \
   1.21.5 path/to/pack \
   --reports build/minecraft/1.21.5/generated
 ```

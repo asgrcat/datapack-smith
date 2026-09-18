@@ -94,7 +94,11 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 
 ## 更新日
 
-最終照合日: 2026-09-16（JST）
+プロファイル全体の前回照合日: 2026-09-16（JST）。実装手順・JSON境界の追加照合日: 2026-09-18（JST）。
+
+2026-09-18の実装手順・JSON境界の再精査では、全67収録IDと公式manifestのchannelを照合し、1.18.2、1.20.4、1.20.5、1.21.2、1.21.5、26.2、26.3の公式JARからreport/vanilla dataを再生成しました。1.18.2のlocation参照先、1.20.5のenchantment tag配置、worldgen block predicateのdiscriminator、26.3のbed ruleを生成物に合わせて訂正しています。新しい静的検査は選択したJSONキー境界を検出するものであり、全fieldのcodec検証や全リリースのゲーム内動作検証ではありません。Wikiは取得制限により今回の再照合を実施できていません。
+
+今後例を追加・変更するときは、対象version範囲、resource種別、consumerのtype、完全resourceかfield断片かを示します。vanillaで未使用のfieldについては観測頻度で必須性を決めず、公式field定義または対象codecで確認します。境界修正では正しい旧・新入力と、反対のversionへ混入した入力を検査し、静的検査・reload・機能testの証拠を区別します。
 
 対象となる最新正式リリース: Java Edition 26.3（2026-09-15、data pack format 121.0）
 

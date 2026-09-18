@@ -12,11 +12,13 @@ commandは空白区切りの文字列だけでなく、literal nodeとargument n
 literal execute
 └── literal as
     └── argument targets: minecraft:entity
-        └── literal run
-            └── argument command: brigadier:command
+        └── redirect → executeのsubcommand群
+            └── literal run → rootのcommand群へredirect
 ```
 
 同じ見た目の`<target>`でもparserとpropertyが異なります。特に次を区別します。
+
+上はredirectを含む経路の概略です。`execute run`の続きを架空の`brigadier:command`引数として実装せず、reportの`redirect`先を辿ります。
 
 - entity 1件／複数件
 - player 1件／複数件
@@ -120,11 +122,11 @@ literal player名、UUID、selectorはscore holderやentity argumentで受理範
 | `predicate` | 呼出側selector contextで独立predicateを評価 |
 | `nbt` | 保存NBTの部分match。頻繁な広域scanは高コスト |
 | `sort` | `nearest`、`furthest`、`random`、`arbitrary`等 |
-| `limit` | 結果上限。parserの単一対象制約を変更しない |
+| `limit` | 結果上限。`limit=1`で単一対象引数の件数制約を満たせる。player限定かどうかは別の制約 |
 | `name`,`team`,`gamemode` | player／entity種別と未設定状態を考慮 |
 | `advancements` | player advancement状態。player以外には使わない |
 
-`limit=1`を付けても、複数entity selectorが単一entity parserで常に受理されるとは限りません。`commands.json`の`amount`／`type` propertyを確認します。
+たとえば`data get entity @e[type=minecraft:pig,limit=1]`は単一entity引数の形です。`limit=1`はplayer以外をplayerへ変換せず、実行時に対象が存在することも保証しません。`commands.json`の`amount`／`type` propertyを両方確認します。
 
 ### 順序と対象0件
 

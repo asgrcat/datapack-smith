@@ -6,6 +6,8 @@
 正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ履歴を参照します。
 ## 最短の使い方
 
+新規packを実際に組み立てる入口は[実装設計](implementation-contract.md)と[完全例](worked-example.md)、JSONキーを対象バージョンで選ぶ入口は[バージョン別JSON](reference/versioned-json.md)です。既存packの不具合は[診断手順](troubleshooting.md)から切り分けます。
+
 Agent Skillから参照する場合も、次の順序で対象仕様を決定します。
 
 1. 利用者repositoryの `datapack-project.json` を `project-check` する
@@ -28,6 +30,9 @@ Agent Skillから参照する場合も、次の順序で対象仕様を決定し
 | [`snapshots/README.md`](snapshots/README.md) | 収録済み26.3開発バージョン、公開日、data pack format の対応表 |
 | [`versions/<version>.md`](versions/README.md) | そのゲームバージョンの確定プロファイル、前バージョンとの差分、互換性 |
 | [`ai-authoring.md`](ai-authoring.md) | AIがバージョンを解決し、ファイルを生成する決定手順 |
+| [`implementation-contract.md`](implementation-contract.md) | 要件、入口、状態、resource依存、運用、受入条件の決定 |
+| [`worked-example.md`](worked-example.md) | 全fileを同梱した1.21.5向けpack、実行手順、機能testの期待値 |
+| [`troubleshooting.md`](troubleshooting.md) | load・実行・移行の症状から確認箇所を特定 |
 | [`commands.md`](commands.md) | `.mcfunction` の書式、引数、実行文脈、コマンドのバージョン境界 |
 | [`json-parameters/README.md`](json-parameters/README.md) | 主要なデータ駆動JSONの値の意味、全正式リリース境界、JARカタログ |
 | [`execution-model.md`](execution-model.md) | executor、位置、分岐、function結果、load/tick/scheduleの細かな挙動 |
@@ -67,11 +72,19 @@ player別状態、event駆動、timer、function結果、reload・再起動後�
 
 ## 実行ハーネス
 
+`DATAPACK_SMITH_ROOT`はこのskillの`SKILL.md`がある絶対pathです。利用者repositoryのrootで一度設定します。配布元をcheckoutした場合も、repository直下ではなく`skills/datapack-smith`を指定します。
+
+```bash
+DATAPACK_SMITH_ROOT='/absolute/path/to/datapack-smith'
+```
+
+以降のCLI例はこの変数を使い、project・pack・cache・reportの相対pathは利用者の作業先に置きます。`project-check`と`validate-project`で設定内のpathを解決する基準は、cwdではなくproject fileのあるdirectoryです。
+
 最初にprofile schemaと継承を検査します。
 
 ```bash
-python3 tools/datapack_harness.py profiles
-python3 tools/datapack_harness.py resolve 1.20.5
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" profiles
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" resolve 1.20.5
 ```
 
 project設定、公式JARの任意取得、report生成、pack静的検査、server reloadまでの手順は [`harness.md`](harness.md) を参照してください。

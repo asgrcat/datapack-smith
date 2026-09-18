@@ -9,14 +9,16 @@ Minecraft Java Edition向けの非公式ツールであり、MojangまたはMicr
 
 対象ゲームバージョンの仕様を先に固定し、そのリリースで存在が確認できる構文とデータだけで実装する。
 
+この`SKILL.md`のあるディレクトリが`<harness-root>`である。利用者repository rootとは別であり、CLIは`python3 <harness-root>/tools/datapack_harness.py ...`で呼ぶ。配布元repositoryの親ディレクトリや特定エディタの設置先を仮定しない。
+
 ## ワークフロー
 
 1. 利用者リポジトリの指示ファイルと既存データパックを確認する。
-2. `datapack-project.json`があれば正本として読み、なければ既存ファイルと依頼から値を推定する。安全に確定できない`target_version`、`namespace`、`pack_root`、`validation_level`だけを確認し、必要なら[プロジェクト設定テンプレート](templates/datapack-project.json)を基に作成する。
+2. `datapack-project.json`があれば正本として読む。なければ既存ファイルと依頼から値を決め、生成・変更時は[設定テンプレート](templates/datapack-project.json)を使う。`pack_format`だけではゲームバージョンを一意に決められない。対象バージョンが不明なら確認する。新規packのnamespaceと配置先は衝突しない値を選び、検証の指定がなければ`static`を提案値として明記する。調査だけの依頼では設定fileやpackを新設しない。
 3. [仕様索引](docs/README.md)と[AI生成契約](docs/ai-authoring.md)を最後まで読む。
-4. 正式`26.3`は[確定プロファイル](docs/versions/26.3.md)と[移行リファレンス](docs/reference/26.3-migration.md)を使う。`target_version`を[正式リリース索引](docs/versions/README.md)または[開発バージョン索引](docs/snapshots/README.md)へ完全一致させ、対応するプロファイルを読む。一覧にない値を近いバージョンへ丸めない。
-5. 要件に応じて下の「資料の選択」から必要な文書を読む。対象バージョンより新しい例をそのまま流用しない。
-6. 完全なファイル群を実装する。既存プロジェクトでは利用者の変更を保ち、依頼範囲外のファイルを変更しない。
+4. `target_version`を[正式リリース索引](docs/versions/README.md)または[開発バージョン索引](docs/snapshots/README.md)へ完全一致させ、対応するプロファイルを読む。正式`26.3`の場合は[移行リファレンス](docs/reference/26.3-migration.md)も読む。一覧にない値を近いバージョンへ丸めない。
+5. 要件に応じて下の「資料の選択」から必要な文書を読む。JSONを実装する場合は[バージョン別キー選択](docs/reference/versioned-json.md)でresource種別・consumer・JSON pathごとに型と境界を確定する。対象バージョンより新しい例をそのまま流用しない。
+6. [実装設計と受入条件](docs/implementation-contract.md)で要件・入口・状態・依存resource・検証方法を結び付け、必要なファイル群を実装する。既存プロジェクトでは利用者の変更を保ち、依頼範囲外のファイルを変更しない。小規模な修正では該当項目だけ適用する。
 7. 要求された検証レベルまで検証し、実行済みの証拠、warning、未実施の上位検証を分けて報告する。
 
 ## バージョンの確定
@@ -31,6 +33,9 @@ Minecraft Java Edition向けの非公式ツールであり、MojangまたはMicr
 
 ## 資料の選択
 
+- 要件から実装を組み立てる: [implementation-contract.md](docs/implementation-contract.md)
+- 新規packの完全な実装例: [worked-example.md](docs/worked-example.md)（1.21.5限定のplayer別cooldown、他バージョンへ無変換でコピーしない）
+- 読み込めない・動かない場合: [troubleshooting.md](docs/troubleshooting.md)
 - コマンドと実行文脈: [commands.md](docs/commands.md)、[execution-model.md](docs/execution-model.md)
 - JSON、SNBT、配置: [json-formats.md](docs/json-formats.md)、[reference/README.md](docs/reference/README.md)
 - データ駆動JSONのfield: [json-parameters/README.md](docs/json-parameters/README.md)

@@ -4,6 +4,8 @@
 
 ## 参照順序
 
+生成する前に[対象バージョンからJSONキーを選ぶ](../reference/versioned-json.md)で、配置・外側codec・値型の境界を確定します。下記は必要なfamilyだけを読み、全familyの新しい例を対象へ合成しません。
+
 family間の参照関係は次の順で確認します。
 
 1. [`items.md`](items.md) でitem ID、item stack、NBT、data componentを区別する
@@ -151,12 +153,12 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 ハーネスから公式JARのdata generatorを実行した後、次のコマンドで対象バージョン固有のJSONカタログを作成します。`reports`が記録するversion/SHA-1 provenanceと指定versionが一致しない出力は拒否されます。
 
 ```bash
-python3 tools/datapack_harness.py reports 1.21.11 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 1.21.11 \
   --cache-dir .cache/minecraft \
   --output build/minecraft/1.21.11/generated \
   --java /path/to/java
 
-python3 tools/datapack_harness.py json-catalog 1.21.11 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" json-catalog 1.21.11 \
   --reports build/minecraft/1.21.11/generated \
   --output build/minecraft/1.21.11/json-catalog.json
 ```

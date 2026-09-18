@@ -48,7 +48,7 @@ scoreboard objectives add example.timer dummy
 scoreboard players add #schema example.meta 0
 execute if score #schema example.meta matches ..1 run function example:migrate/1_to_2
 execute if score #schema example.meta matches 2 run function example:migrate/2_to_3
-execute if score #schema example.meta matches 3 run data modify storage example:config defaults merge value {enabled:true}
+execute if score #schema example.meta matches 3 unless data storage example:config defaults.enabled run data modify storage example:config defaults.enabled set value 1b
 ```
 
 避ける例:
@@ -60,6 +60,8 @@ data modify storage example:state queue set value []
 ```
 
 一時runtimeをreload時に破棄する設計なら、その判断と影響を明記します。
+
+既定値は欠落fieldにだけ設定します。`merge value {enabled:1b}`を毎回実行すると、保存済みの`enabled:0b`も上書きします。各migrationは成功を確認してからschemaを更新し、tick・reward・APIも対応schemaでのみ実行します。
 
 ## player初期化
 
@@ -90,7 +92,17 @@ execute if score @s example.state matches 2 run return run function example:stat
 return fail
 ```
 
-この `return run` dispatcherは1.20.3以降です。それ以前は条件付きfunction呼出しを並べ、複数stateへ同時一致しない不変条件をtestします。
+この `return run` dispatcherは1.20.3以降です。それ以前に条件付き呼出しを並べる場合は、入口でstateをplayer別の一時scoreへコピーし、そのコピーで分岐します。処理途中で本来のstateが0→1へ変わると、単に条件を並べただけでは後続のstate 1も同tickに実行されます。
+
+```mcfunction
+# example.dispatch はloadで作成したdummy objective
+scoreboard players operation @s example.dispatch = @s example.state
+execute if score @s example.dispatch matches 0 run function example:state/idle
+execute if score @s example.dispatch matches 1 run function example:state/active
+execute if score @s example.dispatch matches 2 run function example:state/cooldown
+```
+
+この一時scoreを子functionが上書きしない契約にします。1.20〜1.20.2では`return <value>`による早期終了も選べます。
 
 ## timerとcooldown
 
@@ -204,7 +216,7 @@ execute as @e[type=#example:managed,tag=example.active] at @s if entity @a[dista
 - type/tag/scoreの安い条件をselectorへ入れる
 - 距離、predicate、block/NBT検査を後段にする
 - 同じ集合を複数回走査するならtagを索引として維持する
-- `limit=1` は単一entity parserを保証する指定ではない
+- 単一entity引数には`@s`または`@e[...,limit=1]`を使う。player限定引数には`@a[...,limit=1]`等を使い、対象種別の制約も満たす
 
 ## 定数と一時値
 
@@ -295,7 +307,7 @@ execute unless score #ok example.tmp matches 1 run tellraw @a[tag=example.admin]
 - path/namespace
 - 対象バージョンのdirectory
 - resource参照
-- command graphとの一致
+- reportを渡した場合のcommand root照合（全引数のparseはserverで確認）
 
 ### reload
 
@@ -335,7 +347,7 @@ execute unless score #ok example.tmp matches 1 run tellraw @a[tag=example.admin]
 [ ] event再入と途中失敗を扱った
 [ ] APIの入力・result・副作用を定義した
 [ ] reset/uninstall/migrationをtestした
-[ ] 対応する全正式リリースでreloadした
+[ ] 要求levelまで検証し、未実施のreload・機能testを明記した
 ```
 
 ## 参照

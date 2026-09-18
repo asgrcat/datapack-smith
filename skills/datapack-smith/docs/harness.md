@@ -4,23 +4,29 @@
 
 MinecraftのBrigadierとcodecを再実装しません。静的に確定できない項目は警告します。server検査を行うかはproject設定の要求levelと利用者の判断で決めます。
 
+CLI例は利用者repositoryで実行します。`DATAPACK_SMITH_ROOT`へ、このskillの`SKILL.md`がある絶対pathを設定してください。`<harness-root>`も同じ意味です。配布元repositoryのrootに`tools/`があるとは仮定しません。
+
+```bash
+DATAPACK_SMITH_ROOT='/absolute/path/to/datapack-smith'
+```
+
 ## 0. project設定
 
-利用者repositoryの `datapack-project.json` に対象バージョン、namespace、pack root、要求検証levelを保存します。schemaとtemplateはrepository rootの `schemas/`、`templates/` にあります。
+利用者repositoryの `datapack-project.json` に対象バージョン、namespace、pack root、要求検証levelを保存します。schemaとtemplateはskill rootの [`schemas/datapack-project.schema.json`](../schemas/datapack-project.schema.json)、[`templates/datapack-project.json`](../templates/datapack-project.json) にあります。
 
 必須fieldは `schema_version`、`target_version`、`namespace`、`pack_root`、`validation_level` です。対応範囲は省略すると対象バージョンだけ、editionはJava、experimentalは無効、server typeはvanillaになります。cacheは `.cache/minecraft`、reportは `build/minecraft/<target_version>/generated` を使います。配布元のversion/source/commitをprojectにも残す場合は、任意の `harness` objectを追加できます。導入済みのバージョンの正本は `VERSION` です。
 
 収録済みsnapshot、pre-releaseまたはrelease candidateを `target_version` にする場合は、意図的な実験利用を示すため `experimental_features: true` が必須です。
 
 ```bash
-python3 <harness-root>/tools/datapack_harness.py \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" \
   project-check --project datapack-project.json
 ```
 
 生成済みpackを設定値で静的検査します。
 
 ```bash
-python3 <harness-root>/tools/datapack_harness.py \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" \
   validate-project --project datapack-project.json
 ```
 
@@ -29,12 +35,12 @@ pathはproject fileのdirectoryを基準に解決します。`validate-project` 
 ## 1. プロファイル検査
 
 ```bash
-python3 tools/datapack_harness.py profiles
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" profiles
 ```
 
 検査内容:
 
-- 全50正式リリースと収録済み開発バージョンの必須front matter
+- 全51正式リリースと16開発バージョンの必須front matter
 - `compatibility` の基本クラス
 - `compatibility_tags` の定義済み値
 - filenameとversionの一致
@@ -48,7 +54,7 @@ front matterのschemaは [`versions/profile.schema.json`](versions/profile.schem
 ## 2. 対象バージョンの解決
 
 ```bash
-python3 tools/datapack_harness.py resolve 1.20.5
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" resolve 1.20.5
 ```
 
 JSON出力:
@@ -68,7 +74,7 @@ versionは完全一致です。[`snapshots/README.md`](snapshots/README.md)に�
 ## 3. 公式server JAR
 
 ```bash
-python3 tools/datapack_harness.py fetch 1.20.5 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" fetch 1.20.5 \
   --cache-dir .cache/minecraft
 ```
 
@@ -86,7 +92,7 @@ SHA-1不一致はerrorです。既存cacheも毎回hashを確認し、不一致�
 ## 4. reportとvanilla data
 
 ```bash
-python3 tools/datapack_harness.py reports 1.20.5 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 1.20.5 \
   --cache-dir .cache/minecraft \
   --output build/1.20.5/generated \
   --java /path/to/java
@@ -100,6 +106,8 @@ python3 tools/datapack_harness.py reports 1.20.5 \
 data generatorは自動削除される一時working directoryで実行します。bundlerが展開する `libraries/`、`versions/`、`logs/` はリポジトリへ残りません。`--output` は起動時のdirectoryを基準に絶対pathへ解決します。
 
 生成成功時にはoutput rootへ `.datapack-harness-report.json` を保存し、対象IDと検証済みserver JARのSHA-1を記録します。`json-catalog`はこのprovenanceを必須とし、CLIのversionと一致しないreportを拒否します。
+
+outputは新規または空のdirectoryを指定します。別versionや失敗した生成物が混ざるのを防ぐため、非空の出力先へは実行しません。再生成は新しい出力先で行い、内容を確認してから利用先を切り替えます。
 
 必要Java major:
 
@@ -124,7 +132,7 @@ data generatorは自動削除される一時working directoryで実行します�
 data generatorの出力から、対象バージョン固有のitem component、enchantment effect、variant、worldgen、predicate、advancement trigger、loot、recipeのtype IDと、vanilla JSONで観測できるfield pathを集計します。
 
 ```bash
-python3 tools/datapack_harness.py json-catalog 1.21.11 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" json-catalog 1.21.11 \
   --reports build/1.21.11/generated \
   --output build/1.21.11/json-catalog.json
 ```
@@ -143,7 +151,7 @@ python3 tools/datapack_harness.py json-catalog 1.21.11 \
 ## 6. pack静的検査
 
 ```bash
-python3 tools/datapack_harness.py validate-pack 1.20.5 path/to/pack \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack 1.20.5 path/to/pack \
   --reports build/1.20.5/generated
 ```
 
@@ -159,6 +167,9 @@ python3 tools/datapack_harness.py validate-pack 1.20.5 path/to/pack \
 - macroと行継続の1.20.2境界
 - `commands.json` に存在するroot literal
 - 自namespaceのfunction参照切れ
+- function tag（load/tickを含む）の必須参照。未同梱namespaceの依存先はwarning
+- 対象versionとreport provenanceの一致。不一致はerror、markerなしは対象未確認warning
+- [バージョン別JSON](reference/versioned-json.md)のうち、recipe ingredient/result/cookingtime、独立predicate、item modifierの既知キー境界
 - `registries.json` と照合できないvanilla ID候補
 
 制限:
@@ -167,6 +178,9 @@ python3 tools/datapack_harness.py validate-pack 1.20.5 path/to/pack \
 - registryにないserializer IDと、存在しないID候補を完全には区別できない
 - Minecraft codecの必須field・loot contextは静的に保証しない
 - zip packは静的検査前に展開する
+- JSON境界検査は上記のconsumerだけを対象にし、任意field・全registry・全入れ子を検証するJSON Schemaではない
+- macroから動的に作るID、外部packの実在・読込順は自動解決しない
+- overlayの有効範囲と重ね合わせは自動解決せず、`overlays`付きpackは明示errorで停止する。[互換性](compatibility.md)の手順で対象ごとの実効fileを確認し、同等の静的検査と実packのserver検査を行う。pack間のfilter/tag統合も自動解決しない
 
 これらはwarningとして残します。要求levelが `static` ならwarningと未検査範囲を報告して完了できます。`server` 以上を要求する場合だけ、次のserver検査を追加します。
 
@@ -175,7 +189,7 @@ consumer CIの最小levelは `static` です。`generated` levelの自動化は�
 ## 7. server起動とreload
 
 ```bash
-python3 tools/datapack_harness.py server-test 1.20.5 path/to/pack \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" server-test 1.20.5 path/to/pack \
   --cache-dir .cache/minecraft \
   --java /path/to/java \
   --accept-eula \
@@ -215,7 +229,7 @@ release前には、EULAへ同意できる隔離環境でバージョンごとに
 | 1.18 | 17 | bundler起動 |
 | 1.20.5 | 21 | item component |
 | 1.21.9 | 21 | minor pack format metadata |
-| 26.2 | 25 | 最新正式リリース |
+| 26.2 | 25 | entity predicateのcomponent-map境界 |
 | 26.3 | 25 | 最新正式リリース |
 | 26.3-rc-3 | 25 | 収録済み開発履歴 |
 
@@ -239,8 +253,10 @@ release前には、EULAへ同意できる隔離環境でバージョンごとに
 
 `.github/workflows/docs-harness.yml` は、外部downloadを行わず次を実行します。
 
+このCIと`tests/`は配布元repositoryの開発用です。配布skill単体の利用者CIは[同梱テンプレート](../templates/github/workflows/datapack-harness.yml)を使い、skill一式を指定した`DATAPACK_HARNESS_ROOT`へ配置した上で実行します。
+
 ```bash
-python3 tools/datapack_harness.py profiles
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" profiles
 python3 -m unittest discover -s tests -v
 ```
 

@@ -12,13 +12,13 @@
 実装前に検査します。
 
 ```bash
-python3 <harness-root>/tools/datapack_harness.py \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" \
   project-check --project datapack-project.json
 ```
 
 - `target_version`、`namespace`、`pack_root`、対応範囲、experimental許可、server type、要求検証level、cache/report pathを会話だけに保持しない
 - 省略された任意fieldにはハーネスの既定値を適用する。必須fieldは `schema_version`、`target_version`、`namespace`、`pack_root`、`validation_level`
-- 実装要件はproject設定とは別に管理する
+- 実装要件はproject設定とは別に[設計契約](implementation-contract.md)へ記録する。調査のみならproject設定の新設は不要
 - `edition` は `java` だけを受け付ける
 - versionは [`versions/README.md`](versions/README.md) の正式リリース、または [`snapshots/README.md`](snapshots/README.md) の収録済み開発バージョンIDに完全一致させる
 - 一覧にないsnapshot/pre-release/release candidate/Bedrock Editionを最寄りバージョンへ丸めない。`26.3`を最新の26.3開発バージョンとして解釈しない
@@ -38,13 +38,16 @@ resolve(target_version):
   rule_history = ancestor rules for reference only
   json_parameter_history = chain's "JSONパラメータ差分" sections in order
 
-  exact_version = official_manifest[target_version]
-  reports = generate_reports(exact_version.server_jar)
-  capabilities.commands = reports/commands.json
-  capabilities.registries = reports/registries.json
-  capabilities.datapack_registries = reports/datapack.json if present
-  capabilities.vanilla_data = generated/data/minecraft
-  capabilities.json_catalog = json-catalog(reports)
+  evidence = target profile + relevant versioned references
+  reports = existing reports with matching version/provenance, if available
+  if a required detail is unresolved and JAR/report generation is authorized:
+    reports = generate_reports(official_manifest[target_version].server_jar)
+  if reports exist:
+    capabilities.commands = reports/commands.json
+    capabilities.registries = reports/registries.json
+    capabilities.datapack_registries = reports/datapack.json if present
+    capabilities.vanilla_data = generated/data/minecraft
+    capabilities.json_catalog = json-catalog(reports)
 
   state = common rules from commands.md and json-formats.md
   apply target profile's metadata and active_rules
@@ -54,7 +57,10 @@ resolve(target_version):
     resolve observations and controls from content-hooks.md
 
   emit using target profile's data_pack_format and directory_schema
-  reject commands, IDs and JSON resources absent from capabilities
+  check each JSON field in its consumer context using versioned-json.md
+  resolve references by resource type: local pack / dependency pack / vanilla
+  absence from vanilla examples alone does not prove a feature unsupported
+  leave unresolved required details explicit; never invent their schema
 ```
 
 `inherits` はmetadata、AI規則、JSONパラメータ差分の履歴追跡に使います。対象バージョンへ適用するAI規則は対象バージョン自体の `active_ai_rules` だけです。祖先規則は `rule_history` として出力しますが、後続バージョンで解除された禁止事項を累積適用しません。
@@ -73,7 +79,13 @@ resolve(target_version):
 - block/item/entity/registry IDが対象バージョンに存在するか不明
 - experimental registryを通常worldで利用できるか不明
 
-代わりに対象バージョンのserver JARから [`validation.md`](validation.md) のreport/vanilla dataを生成し、確認後に出力します。
+まず対象バージョンの公式資料と既存のreport/vanilla dataで確認します。必要なら [`validation.md`](validation.md) に従って生成します。JAR取得・Java実行を伴う手順と、資料だけで行う生成を区別します。環境がない場合も確認済みの独立部分は実装し、不明なfieldは推測せず未完了箇所と確認方法を示します。
+
+## JSONキーを確定する単位
+
+同じ`type`、`name`、`item`でも場所によって意味が異なります。各生成resourceで`対象ID / resource種別 / consumerのtype / JSON path / 値型 / 必須性・既定値 / 根拠`を揃えます。[バージョン別JSONの選択表](reference/versioned-json.md)から主要境界を選び、family文書と対象profileの差分で内側のfieldまで確認します。
+
+正式リリースは1.13から対象までのfamily履歴を適用し、開発targetはその`inherits`枝だけを使います。後続リリースのreferenceは自動的には有効になりません。「同じformat」「継承」「vanillaに出現しない」はschema一致・非対応の証拠ではありません。旧keyを新keyと併記して互換を狙わず、対象ごとに1つの形を生成します。
 
 ## 出力順
 
@@ -88,6 +100,8 @@ resolve(target_version):
 9. 複数バージョン対応なら共通部分とoverlayの対応表
 
 「変更する部分だけ」を依頼された場合を除き、互いに参照するfileは省略しません。
+
+workspaceへ作成した場合は、出力順に沿った説明とfileへの案内でよく、全内容の再掲は不要です。表示用例・schema断片・完全に配置できるresourceを区別します。
 
 ## resource命名
 

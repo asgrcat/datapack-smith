@@ -18,6 +18,7 @@
 
 | 文書 | 対象 |
 |---|---|
+| [`versioned-json.md`](versioned-json.md) | 対象versionとconsumerからJSONキー・値型・配置を選ぶ境界表と対比例 |
 | [`26.3-migration.md`](26.3-migration.md) | 正式26.3のfield・配置・recipe・worldgen確定仕様、26.2からの移行 |
 | [`pack-and-paths.md`](pack-and-paths.md) | `pack.mcmeta`、namespace、resource location、ディレクトリ、tag、overlay |
 | [`command-tree.md`](command-tree.md) | `commands.json`、argument parser、構文分岐、result検証 |
@@ -38,7 +39,7 @@
 | [`components-and-predicates.md`](components-and-predicates.md) | item stack、data component、entity component、predicate、advancement条件 |
 | [`recipes-loot-and-tests.md`](recipes-loot-and-tests.md) | recipe、loot table、item modifier、GameTest |
 | [`worldgen.md`](worldgen.md) | biome、feature、placement、noise、structure、dimension generator |
-| [`coverage.md`](coverage.md) | 26.2の全データ種別と、説明先・正本・検証方法の対応表 |
+| [`coverage.md`](coverage.md) | 26.3の全データ種別、26.2履歴、説明先・正本・検証方法の対応表 |
 
 コマンドの字句、引数、実行文脈は [`../commands.md`](../commands.md) と [`../execution-model.md`](../execution-model.md) を使います。状態の保存は [`../state-management.md`](../state-management.md)、バージョンをまたぐpackは [`../compatibility.md`](../compatibility.md) を使います。
 
@@ -72,7 +73,7 @@ Minecraftのcodecは`type`ごとに分岐し、正式リリース間でfieldが�
 ## 26.3の正本を生成する
 
 ```bash
-python3 tools/datapack_harness.py reports 26.3 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 26.3 \
   --cache-dir .cache/minecraft \
   --output build/minecraft/26.3/generated \
   --java /path/to/java25

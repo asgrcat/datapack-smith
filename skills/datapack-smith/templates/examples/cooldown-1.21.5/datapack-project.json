@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "target_version": "1.21.5",
+  "namespace": "smith_demo",
+  "pack_root": "pack",
+  "validation_level": "static"
+}

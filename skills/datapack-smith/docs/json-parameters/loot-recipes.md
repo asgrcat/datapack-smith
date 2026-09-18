@@ -48,7 +48,7 @@ loot tableを、実際の呼出元が作るloot contextで開始
 
 ### root
 
-1.20.5以降にも通用する最小例です。1.21以降は保存folderだけを単数形へ変えます。
+この最小例の対象は1.20.5〜26.2です。1.21以降は保存folderを単数形へ変えます。26.3ではentryの`functions`とfunctionのdiscriminatorも変わるため、[JSON境界表](../reference/versioned-json.md)で変換します。
 
 ```json
 {
@@ -690,7 +690,7 @@ special serializerの処理はゲーム側に実装されています。公開fi
 ### 1. 対象バージョンの生成物を得る
 
 ```bash
-python3 tools/datapack_harness.py reports 1.21.11 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 1.21.11 \
   --cache-dir .cache/minecraft \
   --output build/minecraft/1.21.11/generated \
   --java /path/to/java
@@ -714,7 +714,7 @@ find build/minecraft/1.21.11/generated/data/minecraft/recipe \
 find path/to/pack -type f -name '*.json' -print0 |
   xargs -0 -n1 jq empty
 
-python3 tools/datapack_harness.py validate-pack 1.21.11 path/to/pack
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack 1.21.11 path/to/pack
 ```
 
 この段階で確認する項目:

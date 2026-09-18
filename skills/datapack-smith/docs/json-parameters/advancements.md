@@ -517,7 +517,7 @@ progress:   world内のplayerごとのcriterion完了時刻・状態
 ### 1. vanilla dataとtrigger IDを取得
 
 ```bash
-python3 tools/datapack_harness.py reports 26.2 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 26.2 \
   --cache-dir .cache/minecraft \
   --output build/minecraft/26.2/generated \
   --java /path/to/java
@@ -550,7 +550,7 @@ build/minecraft/1.20.5/generated/data/minecraft/advancements/
 ```bash
 jq empty data/example/advancement/story/cave_sight.json
 
-python3 tools/datapack_harness.py validate-pack \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack \
   26.2 path/to/pack \
   --reports build/minecraft/26.2/generated
 ```

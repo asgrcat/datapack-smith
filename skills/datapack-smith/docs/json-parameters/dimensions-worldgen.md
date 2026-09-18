@@ -443,7 +443,7 @@ density functionはnumber literal、別registry ID、またはinline objectと�
 ### 1. 対象バージョンを固定する
 
 ```bash
-python3 tools/datapack_harness.py resolve 1.21.11
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" resolve 1.21.11
 ```
 
 `1.21`と`1.21.1`、`26.1`と`1.26.1`を混同しません。
@@ -451,7 +451,7 @@ python3 tools/datapack_harness.py resolve 1.21.11
 ### 2. 公式JARからreportとvanilla dataを生成する
 
 ```bash
-python3 tools/datapack_harness.py reports 26.2 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 26.2 \
   --cache-dir .cache/minecraft \
   --output build/minecraft/26.2/generated \
   --java /path/to/java
@@ -479,7 +479,7 @@ generated/reports/minecraft/worldgen/
 repositoryのcatalog helperを使える場合は、root fieldの差分把握に利用できます。
 
 ```bash
-python3 tools/datapack_harness.py json-catalog 26.2 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" json-catalog 26.2 \
   --reports build/minecraft/26.2/generated
 ```
 

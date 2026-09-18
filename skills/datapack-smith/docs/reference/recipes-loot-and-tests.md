@@ -28,7 +28,7 @@ data/<namespace>/recipe/<id>.json
 
 ```json
 {
-  "id": "example:result",
+  "id": "minecraft:stick",
   "count": 2,
   "components": {
     "minecraft:custom_name": {
@@ -39,6 +39,8 @@ data/<namespace>/recipe/<id>.json
 ```
 
 consumerによってitem IDだけの短縮形も使えます。`count`省略時は1、`components`省略時はitemの既定componentです。
+
+`id`は既存のitem registryから選びます。独自recipe IDを作っても、`example:result`のような新しいitem typeが登録されるわけではありません。
 
 ### `minecraft:crafting_shaped`
 

@@ -18,7 +18,7 @@ Minecraft では複数の異なる値が predicate と呼ばれます。
 | location predicate | 座標、dimension、biome、structure、block、fluid、light 等を照合する入れ子の値 | 単独では不可。通常は `location_check.predicate` 等に入る |
 | item predicate | item stack の item ID、count、NBT/component 等を照合する入れ子の値 | 単独では不可。通常は `match_tool.predicate` 等に入る |
 | gameplay block predicate | location 内の block、state、block entity data/component 等を照合する値 | 単独では不可 |
-| worldgen block predicate | configured feature 等で block 配置可否を判定する `predicate_type` dispatcher | 独立 predicate resource とは別系統 |
+| worldgen block predicate | configured feature 等で block 配置可否を判定する `type` dispatcher | 独立predicateや、structure processorのrule testとは別系統 |
 | advancement の条件 | trigger 固有条件。バージョンによって entity check 等に loot condition listを利用 | trigger 全体は独立 predicate ではない |
 | enchantment の `requirements` | enchantment effect を適用する inline loot condition | 独立 resource参照とは限らない |
 
@@ -281,7 +281,7 @@ location predicateは「dimensionを生成するJSON」ではなく、ある座�
 | `position` | x/y/z座標range |
 | `dimension` | dimension ID |
 | `biome` / `biomes` | biome ID、対応バージョンではlist/tag |
-| `feature` / `structure` / `structures` | configured featureまたはstructure。バージョンにより意味と名称が異なる |
+| `feature` / `structure` / `structures` | configured structure featureまたはstructure。鉱石・木等のconfigured featureではない |
 | `smokey` | campfireの煙が届く位置か |
 | `light` | light level range |
 | `block` | gameplay block predicate |
@@ -291,7 +291,7 @@ location predicateは「dimensionを生成するJSON」ではなく、ある座�
 重要な境界は次です。
 
 - 1.15でblock、fluid、light判定を追加
-- 1.18.2の`feature`はconfigured feature reference
+- 1.18.2の`feature`はconfigured structure feature reference（`worldgen/configured_structure_feature`）
 - 1.19で`feature`を`structure`へ変更
 - 1.20.5で `biome→biomes`、`structure→structures` 等を更新し、単一ID、list、`#tag` を扱う形式へ移行
 
@@ -383,7 +383,7 @@ block entityを持たないblockへblock entity data/component条件を要求し
 
 ### worldgen block predicate
 
-worldgen configured feature等のblock predicateは、上記とは別のdispatcherです。objectの `predicate_type` で種類を選びます。
+worldgen configured feature等のblock predicateは、上記とは別のdispatcherです。objectの`type`で種類を選びます。たとえば`{"type":"minecraft:matching_blocks","blocks":"minecraft:stone"}`です。structure processorのrule testで使う`predicate_type`とは別のcodecです。
 
 26.2 JARの `minecraft:block_predicate_type` registryには、次のtypeが含まれます。
 
@@ -433,7 +433,7 @@ would_survive
 | 1.17.1 | 1.17を継承 |
 | 1.18 | 1.17.1のpredicate形を継承 |
 | 1.18.1 | 1.18を継承 |
-| 1.18.2 | location `feature`がconfigured featureを参照 |
+| 1.18.2 | location `feature`がconfigured structure featureを参照 |
 | 1.19 | location `feature→structure`、entity固有条件を`type_specific`へ |
 | 1.19.1 | 1.19を継承 |
 | 1.19.2 | 1.19.1を継承 |
@@ -484,7 +484,7 @@ would_survive
 ### 1. 対象バージョンのregistry IDを列挙
 
 ```bash
-python3 tools/datapack_harness.py reports 26.2 \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" reports 26.2 \
   --cache-dir .cache/minecraft \
   --output build/minecraft/26.2/generated \
   --java /path/to/java

@@ -23,7 +23,7 @@ advancementの進行状況はplayerごとに保存されます。定義された
 ```json
 {
   "criteria": {
-    "find_village": {
+    "location_check": {
       "trigger": "minecraft:location",
       "conditions": {}
     },
@@ -34,14 +34,14 @@ advancementの進行状況はplayerごとに保存されます。定義された
   },
   "requirements": [
     [
-      "find_village",
+      "location_check",
       "trade"
     ]
   ]
 }
 ```
 
-`requirements`は「外側をAND、内側をOR」として読みます。この例は、村へ到達するか取引するか、どちらか一方で完了します。
+`requirements`は「外側をAND、内側をOR」として読みます。この例は、条件を限定しないlocation評価か取引のどちらかで完了します。`conditions: {}`は村への到達判定ではありません。特定の場所を要求する場合は、対象バージョンのlocation predicateでdimension・位置・structure等を明示します。
 
 両方を必須にする例:
 
@@ -49,7 +49,7 @@ advancementの進行状況はplayerごとに保存されます。定義された
 {
   "requirements": [
     [
-      "find_village"
+      "location_check"
     ],
     [
       "trade"
@@ -197,7 +197,8 @@ advancement revoke @s only example:internal/trade
 設計上の注意:
 
 - state更新をrevokeより前に完了する
-- function途中で失敗してrevokeへ到達しない場合、次回発火しなくなる
+- 通常のcommandのruntime failureはfunctionの後続行を止めない。副作用が失敗してもrevokeへ進むため、必要なら`execute store success`で分岐する
+- `return`、command実行上限等でrevokeへ到達しない場合、次回発火しなくなる
 - `return`で早期終了する全経路からcleanupへ到達させる
 - rewardから同じ条件を再発生させるcommandを呼ぶ再入経路を避ける
 

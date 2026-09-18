@@ -11,7 +11,8 @@ text componentは、chat、title、item名、dialog、death message等の構造�
 | 場所 | 代表表現 |
 |---|---|
 | JSON resourceのfield | JSON object／array／許可された省略形 |
-| 1.20.4以前のcommand／NBT | JSON textをSNBT stringへ入れる場所が多い |
+| 1.21.4以前のcommand | `tellraw`等はJSON textを直接渡す。itemの名前等ではJSON textをSNBT stringへ入れる |
+| 1.21.4以前のNBT | item名・sign等のtext格納fieldではJSON text文字列を使う |
 | 1.21.5以降のcommand／NBT | SNBT objectとしてcomponentを直接書く場所が増加 |
 | network／client表示 | serverが解決・検証したcomponent |
 

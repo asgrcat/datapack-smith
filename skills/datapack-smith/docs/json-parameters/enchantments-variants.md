@@ -119,7 +119,7 @@ level `L`での値は`base + per_level_above_first * (L - 1)`です。
 
 ### rootの構造例
 
-次は「どこへ何を書くか」を示す骨格です。効果のID、attribute、item tagは対象バージョンのregistryに存在するものへ置き換えます。
+次は**1.21〜1.21.1**の「どこへ何を書くか」を示す骨格です。1.21.2以降はattribute IDの`generic.`／`player.`／`zombie.` prefixが削除されたため、この例の`minecraft:player.submerged_mining_speed`を`minecraft:submerged_mining_speed`へ変更します。効果のID、attribute、item tagは対象バージョンのregistryに存在するものへ置き換えます。
 
 ```json
 {
@@ -217,7 +217,7 @@ level `L`での値は`base + per_level_above_first * (L - 1)`です。
 }
 ```
 
-26.1以前の`"type": "minecraft:player"`や`"flags": {...}`を26.2へそのまま残さず、対象バージョンのcatalogのentity predicate keyへ変換します。
+26.1以前の`"type": "minecraft:player"`は26.2では`minecraft:entity_type`へ変更します。`flags`のように既定namespace省略形として使えるkeyもありますが、生成時は上の例のようにnamespaced IDを明示します。対象バージョンのcatalogのentity sub-predicate IDと各値型を確認します。
 
 ### level-based value
 

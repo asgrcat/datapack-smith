@@ -120,7 +120,7 @@ Sculk Sensorの全振動をデータパックが汎用callbackとして直接受
 - trial spawner configuration、loot table、structureを組み合わせる
 - playerごとのclear状態はadvancement/scoreboardへ保存
 - Mace/Wind Charge/Breezeをmovement・combat条件へ使う
-- GameTestでwave終了、reward、resetを検証
+- player操作でwave終了、reward、resetを検証。1.21ではModなしのpackからGameTestを定義できないため、1.21.5以降へ移植する場合だけdata-driven GameTestを追加
 
 block entity NBTを直接書き換える実装より、対象バージョンで公開されたdata-driven registry/configurationを優先します。
 

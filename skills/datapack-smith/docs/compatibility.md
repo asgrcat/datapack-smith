@@ -140,6 +140,8 @@ example_pack/
 
 overlay は列挙順に適用され、後から適用される内容が同じ resource location を上書きします。overlay ディレクトリ内の `pack.mcmeta` と `pack.png` は無視されます。
 
+付属`validate-pack`はoverlay合成を実装しておらず、`overlays`付きpackはその理由を示して停止します。静的確認では、対象formatで有効なoverlayを宣言順に基底へ適用した作業用copyを別に作り、対象で読まれない旧folderを除き、metadataをその対象専用へ固定して検査します。copyの検査は配布packのmetadataやoverlay選択の証明にはならないため、元packも対象serverで読み込みます。対応範囲を変更しただけで全versionを検査したことにはなりません。
+
 ## 互換性クラス
 
 各バージョンファイルの `compatibility` は次の4種類だけを使います。追加の意味は任意の `compatibility_tags` 配列へ分離します。機械可読な定義は [`versions/profile.schema.json`](versions/profile.schema.json) を正本とします。
@@ -192,7 +194,7 @@ overlay は列挙順に適用され、後から適用される内容が同じ re
     "block": [
       {
         "namespace": "example",
-        "path": "recipe/legacy_.*"
+        "path": "recipes/legacy_.*"
       }
     ]
   }

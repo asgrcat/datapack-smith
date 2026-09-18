@@ -8,6 +8,8 @@
 
 主要9 familyのJSONパラメータは、各プロファイルの`JSONパラメータ差分`を`inherits`順にたどって追加・変更・削除・互換性を解決します。family別のfield説明と全正式リリースの横断索引は[`../json-parameters/README.md`](../json-parameters/README.md)を参照します。
 
+生成時のキー・値型の対比は[バージョン別JSON](../reference/versioned-json.md)へ進みます。1.18.2のlocation `feature`は`configured_structure_feature`参照、1.20.5の`tags/enchantment`はuniversal registry tagなので単数形、26.3のbed ruleは`explodes`→`destroy_on_use`であり`can_sleep`とは別fieldです。これらも対象profileと正式JARの生成例へ合わせます。
+
 front matterの機械可読schemaは [`profile.schema.json`](profile.schema.json) です。`compatibility` は基本クラス、`compatibility_tags` は追加の移行理由を表します。`tools/datapack_harness.py profiles` で全バージョンのschema、継承、共通見出しを検査できます。
 
 26.3の開発バージョンは正式リリース表へ混ぜず、[`../snapshots/README.md`](../snapshots/README.md) に分離しています。

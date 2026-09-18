@@ -38,7 +38,7 @@ RESOURCE_LOCATION_SCAN = re.compile(r"(?<![#A-Za-z0-9_.-])([a-z0-9_.-]+:[a-z0-9/
 PATH_PART = re.compile(r"^[a-z0-9/._-]+$")
 FUNCTION_REFERENCE = re.compile(
     r"(?:^|\s)(?:function|schedule\s+function)\s+"
-    r"(#?[a-z0-9_.-]+:[a-z0-9/._-]+)"
+    r"(#?[a-z0-9_.-]+:[a-z0-9/._-]+)(?=\s|$)"
 )
 ERROR_LOG_PATTERNS = (
     "couldn't load",
@@ -601,6 +601,8 @@ def run_reports(
     output: Path,
     profiles: dict[str, dict[str, Any]],
 ) -> None:
+    if output.exists() and (not output.is_dir() or any(output.iterdir())):
+        raise HarnessError("report output must be a new or empty directory; use a version-specific output path")
     jar_path, _ = fetch_release(version, cache_dir)
     jar_path = jar_path.resolve()
     output = output.resolve()
@@ -1066,8 +1068,13 @@ def load_command_roots(reports: Path | None) -> set[str] | None:
     commands_path = root / "reports" / "commands.json"
     if not commands_path.is_file():
         raise HarnessError(f"commands report not found: {commands_path}")
-    commands = json.loads(commands_path.read_text(encoding="utf-8"))
-    return set(commands.get("children", {}))
+    try:
+        commands = json.loads(commands_path.read_text(encoding="utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise HarnessError(f"invalid commands report: {commands_path}: {error}") from error
+    if not isinstance(commands, dict) or not isinstance(commands.get("children"), dict):
+        raise HarnessError(f"invalid command root/children object: {commands_path}")
+    return set(commands["children"])
 
 
 def load_registry_ids(reports: Path | None) -> set[str]:
@@ -1077,7 +1084,12 @@ def load_registry_ids(reports: Path | None) -> set[str]:
     registries_path = root / "reports" / "registries.json"
     if not registries_path.is_file():
         raise HarnessError(f"registries report not found: {registries_path}")
-    registries = json.loads(registries_path.read_text(encoding="utf-8"))
+    try:
+        registries = json.loads(registries_path.read_text(encoding="utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise HarnessError(f"invalid registries report: {registries_path}: {error}") from error
+    if not isinstance(registries, dict):
+        raise HarnessError(f"invalid registry report object: {registries_path}")
     values: set[str] = set()
     for registry in registries.values():
         entries = registry.get("entries", {}) if isinstance(registry, dict) else {}
@@ -1361,6 +1373,120 @@ def logical_function_lines(text: str) -> Iterable[tuple[int, str]]:
         yield start, buffer.rstrip()
 
 
+def validate_json_version(
+    value: Any, relative: Path, chain: set[str], result: ValidationResult
+) -> None:
+    """Check known breaking keys in their consumer, never pretend to be a codec."""
+    parts = relative.parts
+    if len(parts) < 4 or parts[0] != "data":
+        return
+    family = parts[2]
+    components = "1.20.5" in chain
+    simple_ingredients = "1.21.2" in chain
+    common_result = "26.1" in chain
+    entity_map = "26.2" in chain
+    unified_loot = bool(chain & {"26.3", "26.3-snapshot-4"})
+
+    def error(path: str, message: str) -> None:
+        result.error(f"{relative}:{path}: {message}")
+
+    def condition(node: Any, path: str) -> None:
+        if isinstance(node, list):
+            if unified_loot:
+                error(path, "26.3 predicate requires explicit all_of, not an implicit array")
+            for index, child in enumerate(node):
+                condition(child, f"{path}[{index}]")
+            return
+        if isinstance(node, str):
+            if not unified_loot:
+                error(path, "predicate ID shorthand requires 26.3 registry references")
+            return
+        if not isinstance(node, dict):
+            return  # Full shape/type validation belongs to Minecraft.
+        discriminator = "type" if unified_loot else "condition"
+        obsolete = "condition" if unified_loot else "type"
+        if obsolete in node:
+            error(path, f"loot condition discriminator must be {discriminator!r}, not {obsolete!r}")
+        kind = str(node.get(discriminator, "")).removeprefix("minecraft:")
+        if kind == "entity_properties" and isinstance(node.get("predicate"), dict):
+            predicate = node["predicate"]
+            # Unqualified registered IDs such as flags remain valid in 26.2.
+            old_fields = {"type", "type_specific"}
+            new_fields = {"minecraft:entity_type", "minecraft:distance", "minecraft:effects", "minecraft:equipment", "minecraft:flags", "minecraft:location", "minecraft:nbt", "minecraft:passenger", "minecraft:slots", "minecraft:team", "minecraft:vehicle", "minecraft:type_specific/player"}
+            invalid = (old_fields if entity_map else new_fields) & predicate.keys()
+            if invalid:
+                error(path + ".predicate", "entity predicate keys cross the 26.2 boundary: " + ", ".join(sorted(invalid)))
+        if kind in {"all_of", "any_of", "alternative"}:
+            for index, term in enumerate(node.get("terms", []) if isinstance(node.get("terms"), list) else []):
+                condition(term, f"{path}.terms[{index}]")
+        if kind == "inverted" and "term" in node:
+            condition(node["term"], path + ".term")
+
+    def modifier(node: Any, path: str) -> None:
+        if isinstance(node, list):
+            for index, child in enumerate(node):
+                modifier(child, f"{path}[{index}]")
+        elif isinstance(node, dict):
+            discriminator = "type" if unified_loot else "function"
+            obsolete = "function" if unified_loot else "type"
+            # Historical set_loot_table/set_contents also have a legitimate type field.
+            if unified_loot and obsolete in node:
+                error(path, "loot function discriminator must be 'type', not 'function'")
+            elif not unified_loot and "function" not in node and "type" in node:
+                error(path, "loot function discriminator must be 'function' before 26.3")
+            if unified_loot and "conditions" in node:
+                error(path, "26.3 loot function uses singular condition, not conditions")
+            if unified_loot and "condition" in node:
+                condition(node["condition"], path + ".condition")
+            elif isinstance(node.get("conditions"), list):
+                for index, child in enumerate(node["conditions"]):
+                    condition(child, f"{path}.conditions[{index}]")
+            if str(node.get(discriminator, "")).removeprefix("minecraft:") == "sequence":
+                modifier(node.get("functions"), path + ".functions")
+
+    if family in {"predicates", "predicate"}:
+        if "1.15" not in chain:
+            error("$", "standalone predicates require 1.15 or later")
+        condition(value, "$")
+    elif family in {"item_modifiers", "item_modifier"}:
+        if "1.17" not in chain:
+            error("$", "item modifiers require 1.17 or later")
+        modifier(value, "$")
+    elif family in {"recipes", "recipe"} and isinstance(value, dict):
+        kind = str(value.get("type", "")).removeprefix("minecraft:")
+        cooking = {"smelting", "blasting", "smoking", "campfire_cooking"}
+        crafting = {"crafting_shaped", "crafting_shapeless", "smithing_transform"}
+        ingredients: list[tuple[str, Any]] = []
+        if kind == "crafting_shaped" and isinstance(value.get("key"), dict):
+            ingredients = [(f"$.key.{key}", item) for key, item in value["key"].items()]
+        elif kind == "crafting_shapeless" and isinstance(value.get("ingredients"), list):
+            ingredients = [(f"$.ingredients[{i}]", item) for i, item in enumerate(value["ingredients"])]
+        elif kind in cooking | {"stonecutting"} and "ingredient" in value:
+            ingredients = [("$.ingredient", value["ingredient"])]
+        for path, ingredient in ingredients:
+            values = ingredient if isinstance(ingredient, list) else [ingredient]
+            if simple_ingredients and any(isinstance(item, dict) for item in values):
+                error(path, "1.21.2+ ingredient uses item/tag strings, not item/tag objects")
+            elif not simple_ingredients and any(isinstance(item, str) for item in values):
+                error(path, "pre-1.21.2 ingredient requires item/tag objects")
+        if kind in crafting | cooking | {"stonecutting"} and "result" in value:
+            output = value["result"]
+            if isinstance(output, dict):
+                if components and "item" in output:
+                    error("$.result.item", "1.20.5+ result uses id, not item")
+                elif not components and kind in crafting and "id" in output:
+                    error("$.result.id", "pre-1.20.5 crafting result uses item, not id")
+                if not components and kind in cooking | {"stonecutting"}:
+                    error("$.result", "pre-1.20.5 cooking/stonecutting result is an item ID string")
+                if components and not common_result and kind in cooking and "count" in output:
+                    error("$.result.count", "cooking result count requires 26.1 common item stack")
+            elif isinstance(output, str) and not common_result and (components or kind in crafting):
+                error("$.result", "this recipe requires a result object in the target version")
+        cooking_time_required = bool(chain & {"26.3", "26.3-pre-1"})
+        if cooking_time_required and kind in cooking and "cookingtime" not in value:
+            error("$.cookingtime", "26.3 cooking recipes require explicit cookingtime")
+
+
 def validate_pack(
     version: str,
     pack_root: Path,
@@ -1369,6 +1495,7 @@ def validate_pack(
 ) -> ValidationResult:
     result = ValidationResult()
     profile = profiles[version]
+    chain = {entry["version"] for entry in resolve_chain(version, profiles)}
     schema = profile["directory_schema"]
     pack_root = pack_root.resolve()
     if not pack_root.is_dir():
@@ -1389,10 +1516,18 @@ def validate_pack(
     if metadata_parsed and not isinstance(metadata, dict):
         result.error("pack.mcmeta: top level must be an object")
     elif metadata_parsed:
+        if "overlays" in metadata:
+            result.error(
+                "overlay resolution is not supported by validate-pack; validate a "
+                "separate effective pack for each target and server-test the original pack"
+            )
+            return result
         pack = metadata.get("pack")
         if not isinstance(pack, dict):
             result.error("pack.mcmeta: pack must be an object")
         else:
+            if "description" not in pack:
+                result.error("pack.mcmeta: pack.description is required")
             target_format = format_tuple(str(profile["data_pack_format"]))
             order = ordered_versions(profiles)
             uses_minor_schema = order.index(version) >= order.index("1.21.9")
@@ -1422,7 +1557,8 @@ def validate_pack(
 
     for json_path in sorted(pack_root.rglob("*.json")):
         try:
-            json.loads(json_path.read_text(encoding="utf-8"))
+            value = json.loads(json_path.read_text(encoding="utf-8"))
+            validate_json_version(value, json_path.relative_to(pack_root), chain, result)
         except (UnicodeDecodeError, json.JSONDecodeError) as error:
             result.error(f"{json_path.relative_to(pack_root)}: invalid JSON: {error}")
 
@@ -1489,6 +1625,19 @@ def validate_pack(
                     f"wrong {schema} tag directory schema"
                 )
 
+    if reports is not None:
+        provenance_path = generated_root(reports) / REPORT_PROVENANCE_FILE
+        if provenance_path.is_file():
+            try:
+                provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+                if not isinstance(provenance, dict) or provenance.get("version") != version:
+                    result.error("report version does not match target; regenerate reports for " + version)
+                    return result
+            except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+                result.error(f"invalid report provenance: {error}")
+                return result
+        else:
+            result.warn("report provenance is missing; target version of supplied reports is unverified")
     command_roots = load_command_roots(reports)
     registry_ids = load_registry_ids(reports)
     functions: set[str] = set()
@@ -1502,6 +1651,45 @@ def validate_pack(
                 f"{path.relative_to(pack_root)}: expected data/<namespace>/"
                 f"{expected_function_dir}/<path>.mcfunction"
             )
+
+    local_namespaces = {
+        path.name for path in (pack_root / "data").glob("*") if path.is_dir()
+    }
+    function_tags: dict[str, tuple[Path, Any]] = {}
+    for path in sorted((pack_root / "data").glob(f"*/tags/{expected_function_dir}/**/*.json")):
+        relative = path.relative_to(pack_root / "data")
+        identifier = relative.parts[0] + ":" + Path(*relative.parts[3:]).with_suffix("").as_posix()
+        try:
+            function_tags[identifier] = (path, json.loads(path.read_text(encoding="utf-8")))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            continue  # Already reported by the JSON pass.
+
+    def check_function_reference(reference: str, location: str, required: bool = True) -> None:
+        identifier = reference.removeprefix("#")
+        if ":" not in identifier:
+            identifier = "minecraft:" + identifier
+        available = function_tags if reference.startswith("#") else functions
+        if identifier in available or not required:
+            return
+        namespace = identifier.split(":", 1)[0]
+        kind = "function tag" if reference.startswith("#") else "function"
+        if namespace in local_namespaces and namespace != "minecraft":
+            result.error(f"{location}: missing local {kind} {reference}")
+        else:
+            result.warn(f"{location}: external {kind} {reference} requires its dependency pack/vanilla data")
+
+    for path, tag in function_tags.values():
+        relative = str(path.relative_to(pack_root))
+        if not isinstance(tag, dict) or not isinstance(tag.get("values"), list):
+            result.error(f"{relative}: function tag requires a values array")
+            continue
+        for index, entry in enumerate(tag["values"]):
+            reference = entry.get("id") if isinstance(entry, dict) else entry
+            required = entry.get("required", True) if isinstance(entry, dict) else True
+            if not isinstance(reference, str) or not isinstance(required, bool):
+                result.error(f"{relative}:values[{index}]: invalid function tag entry")
+                continue
+            check_function_reference(reference, f"{relative}:values[{index}]", required)
 
     order = ordered_versions(profiles)
     supports_macro = order.index(version) >= order.index("1.20.2")
@@ -1542,15 +1730,33 @@ def validate_pack(
                 result.error(
                     f"{relative}:{number}: command root {root!r} absent from commands.json"
                 )
-            for match in FUNCTION_REFERENCE.finditer(parse_line):
-                reference = match.group(1)
-                if reference.startswith("#"):
+            # Macro substitutions and message/SNBT text are not static references.
+            if root not in {"function", "schedule", "execute", "return"}:
+                continue
+            reference_line = re.sub(
+                r'''"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*' ''',
+                '""', parse_line, flags=re.VERBOSE,
+            )
+            while reference_line:
+                nested_root = reference_line.split(maxsplit=1)[0]
+                if nested_root == "execute":
+                    branches = re.split(r"\s+run\s+", reference_line, maxsplit=1)
+                    # Conditions may themselves call a function. Only inspect
+                    # execute's prefix; the nested command may contain free text.
+                    matches = FUNCTION_REFERENCE.finditer(branches[0])
+                    reference_line = branches[1] if len(branches) == 2 else ""
+                elif nested_root == "return":
+                    branches = re.split(r"\s+", reference_line, maxsplit=2)
+                    reference_line = branches[2] if len(branches) == 3 and branches[1] == "run" else ""
                     continue
-                namespace = reference.split(":", 1)[0]
-                if namespace != "minecraft" and reference not in functions:
-                    result.error(
-                        f"{relative}:{number}: missing local function {reference}"
-                    )
+                elif nested_root in {"function", "schedule"}:
+                    match = FUNCTION_REFERENCE.match(reference_line)
+                    matches = [match] if match is not None else []
+                    reference_line = ""
+                else:
+                    break
+                for match in matches:
+                    check_function_reference(match.group(1), f"{relative}:{number}")
 
     local_resources: set[str] = set(functions)
     data_root = pack_root / "data"
@@ -1591,7 +1797,7 @@ def validate_pack(
         )
     result.warn(
         "static validation cannot prove Brigadier argument parsing, Minecraft codecs, "
-        "loot context, or runtime behavior; run server-test"
+        "loot context, or runtime behavior; JSON version checks cover selected breaking keys only"
     )
     return result
 

@@ -16,13 +16,13 @@ resource locationの文字列であることだけでは、ID、tag、任意文�
 
 ## Resourceの定義と参照
 
-例えば次のpredicate resourceは`example:is_ready`として登録されます。
+正式26.3の次のpredicate resourceは`example:is_ready`として登録されます。1.15〜26.2ではdiscriminatorを`condition`にし、1.20.6以前の配置は`predicates/`へ変えます。
 
 `data/example/predicate/is_ready.json`:
 
 ```json
 {
-  "condition": "minecraft:entity_scores",
+  "type": "minecraft:entity_scores",
   "entity": "this",
   "scores": {
     "example.ready": 1

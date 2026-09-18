@@ -62,7 +62,7 @@ vanilla entryが空、code側にだけ存在する型、または旧data generat
 生成後に`json-catalog`を実行すると、item component、enchantment effect、variant、worldgen、predicate、advancement trigger、loot、recipeのtype IDと、vanilla JSONで観測されたfield pathを1つのJSONへ集約できます。
 
 ```bash
-python3 tools/datapack_harness.py json-catalog "$TARGET_VERSION" \
+python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" json-catalog "$TARGET_VERSION" \
   --reports "build/minecraft/$TARGET_VERSION/generated" \
   --output "build/minecraft/$TARGET_VERSION/json-catalog.json"
 ```

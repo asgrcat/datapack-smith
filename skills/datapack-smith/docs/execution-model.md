@@ -119,11 +119,14 @@ load functionは必ず再実行可能にします。
 
 ```mcfunction
 scoreboard objectives add example.state dummy
-execute unless score #schema example.state matches 3 run function example:migrate
-scoreboard players set #schema example.state 3
+scoreboard players add #schema example.state 0
+execute if score #schema example.state matches 0..2 run function example:migrate
+execute unless score #schema example.state matches 3 run function example:error/unsupported_schema
 ```
 
 objectiveが既に存在すると `scoreboard objectives add` は失敗しますが、後続行は続きます。失敗feedbackを避けることより、loadを何度実行しても状態を壊さないことを優先します。
+
+`example:migrate`は変換と確認が完了した場合だけschemaを3へ進めます。未知の新しいschemaをload側で3へ上書きしません。tick・reward・API入口もschemaが3であることを条件にし、不一致を通知しただけで処理を継続しないようにします。
 
 ### tick
 
