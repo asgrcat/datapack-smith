@@ -2,6 +2,16 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.10
+
+- 対象バージョン・resource種別・consumer・JSON pathごとにキーと値型を選ぶガイドを追加し、AI生成手順へ組み込み
+- 実装設計・受入条件・診断手順と、1.21.5専用のplayer別cooldown完全例を追加
+- recipe、predicate、item modifierの既知の形式変更を静的検査し、異なる対象バージョンのreport使用や生成物の混在を防止
+- function/tag参照の検査を強化し、macroやメッセージ本文の誤検出を抑制。overlay未対応を明示
+- 公式JAR生成物に基づき、location参照先、enchantment tag配置、worldgen predicate、26.3 bed rule等の説明を訂正
+- reload時の状態保持、実行文脈、旧新構文の適用範囲と、静的検査・server読込・機能検証の区別を明確化
+- cooldown例のゲーム内動作検証は未実施。受入手順と期待値を同梱
+
 ## 2026.09.9
 
 - Java Edition正式`26.3`（format 121.0）を追加し、26.2からの確定仕様を集約
