@@ -1,9 +1,9 @@
 # Datapack Smith仕様リファレンス
 
-このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.3 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
+このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.3 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3、26.4 Snapshot 1を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
 
 
-正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ履歴を参照します。
+正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ参照します。最新収録開発バージョンは [`26.4-snapshot-1`](snapshots/26.4-snapshot-1.md) です。
 ## 最短の使い方
 
 新規packを実際に組み立てる入口は[実装設計](implementation-contract.md)と[完全例](worked-example.md)、JSONキーを対象バージョンで選ぶ入口は[バージョン別JSON](reference/versioned-json.md)です。既存packの不具合は[診断手順](troubleshooting.md)から切り分けます。
@@ -27,7 +27,7 @@ Agent Skillから参照する場合も、次の順序で対象仕様を決定し
 | 文書 | 用途 |
 |---|---|
 | [`versions/README.md`](versions/README.md) | 全正式リリース、公開日、data pack format の対応表 |
-| [`snapshots/README.md`](snapshots/README.md) | 収録済み26.3開発バージョン、公開日、data pack format の対応表 |
+| [`snapshots/README.md`](snapshots/README.md) | 収録済み26.3／26.4開発バージョン、公開日、data pack format の対応表 |
 | [`versions/<version>.md`](versions/README.md) | そのゲームバージョンの確定プロファイル、前バージョンとの差分、互換性 |
 | [`ai-authoring.md`](ai-authoring.md) | AIがバージョンを解決し、ファイルを生成する決定手順 |
 | [`implementation-contract.md`](implementation-contract.md) | 要件、入口、状態、resource依存、運用、受入条件の決定 |

@@ -465,3 +465,19 @@ worldgenは特に次の正式リリースでJSONを共有しません。
 - [Mojang: Java Edition 1.18](https://www.minecraft.net/en-us/article/caves---cliffs--part-ii-out-today-java)
 - [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
 - [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+
+## 26.4 Snapshot 1の開発差分
+
+対象は`26.4-snapshot-1`（format 122.0）だけです。[バージョン別仕様と出典](../snapshots/26.4-snapshot-1.md)も参照してください。
+
+| 変更箇所 | 26.3からの移行 |
+|---|---|
+| noise settings `default_block` | 削除。air以外はMaterial Ruleで返す。vanilla overworldはsequence末尾へstoneを追加 |
+| `cuboid.xz_size`／`y_size` | 指定値が実寸となる。従来の寸法を維持するなら指定値を1増やす。vanilla warm oceanのuniform範囲も3〜5から4〜6へ変更 |
+| `fixed_placement.positions` | 空配列不可 |
+| biomeに含まれるplaced feature | XZの配置位置を3×3 chunk以内に制限。feature自体の大きさまで安全と保証する検査ではない |
+| multi-noise biome source | 同じoffsetで全noise parameterの範囲が重複する異なるbiome entryを解消 |
+| `straight_trunk_placer.trunk_width` | 省略可能なinteger provider、既定1、原点を中心とする幹幅 |
+| material condition `steep` | Eroded Badlandsのsurface extensionとの順序依存を解消 |
+
+新しいbiome tagは`data/<namespace>/tags/worldgen/biome/`へ配置します。vanillaの`is_cave`はlush caves、deep dark、dripstone caves、sulfur cavesを列挙し、`generated_in_below_zero_retrogen`は`#minecraft:is_cave`を参照します。旧worldの地下再生成に関わるため、新規worldの生成だけで移行を検証したことにはしません。

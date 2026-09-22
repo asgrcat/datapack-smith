@@ -254,3 +254,7 @@ parse不能、runtime failure、success、result、voidは別の状態です。�
 - [Minecraft Wiki: `/function`](https://minecraft.wiki/w/Commands/function)
 - [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
 - [Mojang: Java Edition 1.20.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3)
+
+## 26.4 Snapshot 1の開発差分
+
+`26.4-snapshot-1`では`/fillbiome`がblock単位の精度でbiomeを変更します。構文が同じでも以前の粗い範囲への丸めを前提にせず、境界blockを含めて確認します。NBTの整数変換と`/test`の回転引数にも修正があります。[バージョン別差分](snapshots/26.4-snapshot-1.md)を参照してください。

@@ -193,3 +193,7 @@ give @s minecraft:stone[minecraft:custom_data={example:{level:1}}]
 
 - 各 [`../versions/<version>.md`](../versions/README.md) のNBT／command差分
 - 対象server JARの`commands.json`と実際の`data get`出力
+
+## 26.4 Snapshot 1の数値変換
+
+`26.4-snapshot-1`では、浮動小数点NBTから整数NBTへの変換を切り下げ後の表現可能範囲への変換へ統一します。たとえば範囲内の`-1.5`をlongへ変換すると`-2`となる規則で、従来の0方向への切り捨てに依存しません。範囲外の値も変換先で表現できる最も近い値になります。正式26.3へこの修正を遡及しません。[開発バージョン仕様・検証範囲](../snapshots/26.4-snapshot-1.md)を参照してください。

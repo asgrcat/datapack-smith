@@ -105,3 +105,12 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 対象となる保存済み開発履歴: Java Edition 26.3 Release Candidate 3（launcher ID `26.3-rc-3`、2026-09-14、data pack format 121.0）
 
 - [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3): 正式121.0、26.2からの確定差分
+
+
+## 26.4 Snapshot 1の追加照合（2026-09-23 JST）
+
+最新収録開発バージョンは`26.4-snapshot-1`（2026-09-22、format 122.0）。正式26.3と26.3開発履歴を保持したまま追加しています。
+
+- [Mojang: 26.4 Snapshot 1](https://feedback.minecraft.net/hc/en-us/articles/49076034811533-Minecraft-Java-Edition-26-4-Snapshot-1): 公式記事・manifest・公式JARを照合。記事のJARリンクとmanifestのhashが異なるためmanifestを採用
+- reportとvanilla dataを生成し26.3との差分を確認。詳細は[検証記録](snapshots/26.4-snapshot-1.md#検証)
+- Minecraft Wikiは取得できず照合未実施。server reloadとゲーム内動作検証も未実施

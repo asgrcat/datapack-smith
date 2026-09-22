@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.11
+
+- Java Edition `26.4-snapshot-1`を正式26.3から継承する開発プロファイルとして追加（data pack format 122.0）
+- worldgenのfield削除・配置検証・サイズ変更、biome tag、fillbiome精度、NBT数値変換を収録
+- 開発バージョン索引とworldgen／NBT referenceを更新し、正式26.3の入口と既存開発履歴を維持
+- manifest指定の公式JARをSHA-1検証し、report／vanilla dataを26.3と比較
+
 ## 2026.09.10
 
 - 対象バージョン・resource種別・consumer・JSON pathごとにキーと値型を選ぶガイドを追加し、AI生成手順へ組み込み
