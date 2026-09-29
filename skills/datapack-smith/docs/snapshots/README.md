@@ -1,6 +1,6 @@
 # 開発バージョン索引
 
-正式26.3向けの生成は [`../versions/26.3.md`](../versions/26.3.md) を使います。26.4の開発バージョンを明示指定する場合は [`26.4-snapshot-1`](26.4-snapshot-1.md) を使います。26.3開発バージョンは再現・移行用の履歴として保存しています。
+正式26.3向けの生成は [`../versions/26.3.md`](../versions/26.3.md) を使います。26.4の開発バージョンを明示指定する場合は [`26.4-snapshot-2`](26.4-snapshot-2.md) を使います。26.3開発バージョンは再現・移行用の履歴として保存しています。
 
 このディレクトリは Java Edition 26.3／26.4 のsnapshot、pre-release、release candidateを、Mojang 公式 version manifest の ID へ完全一致させて扱います。開発バージョンは仕様変更・削除や world 破損の可能性があるため、正式リリースの [`../versions/README.md`](../versions/README.md) とは分離しています。version manifestではいずれも`type: snapshot`です。
 
@@ -11,6 +11,7 @@
 | launcher ID | 公開日 | data pack format | 継承元 |
 |---|---:|---:|---|
 | [`26.4-snapshot-1`](26.4-snapshot-1.md) | 2026-09-22 | 122.0 | 26.3 |
+| [`26.4-snapshot-2`](26.4-snapshot-2.md) | 2026-09-29 | 122.1 | 26.4-snapshot-1 |
 
 ## 26.3 開発バージョン履歴
 

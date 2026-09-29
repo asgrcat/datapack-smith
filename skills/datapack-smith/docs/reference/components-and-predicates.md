@@ -444,3 +444,7 @@ advancementのcriterion:
 [ ] advancement trigger固有conditionsを同バージョンのvanilla例で確認した
 [ ] command、loot、recipe、trade等の各consumerで実際に発火させた
 ```
+
+## 26.4 Snapshot 2のworldgen predicate
+
+`minecraft:below_heightmap`はworldgenのblock predicateで、discriminatorは`type`、必須fieldは`heightmap`です。loot conditionの`condition`として出力しません。[worldgen reference](worldgen.md#264-snapshot-2の開発差分)にvanilla由来の配置例と比較条件があります。

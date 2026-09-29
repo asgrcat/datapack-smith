@@ -1,6 +1,6 @@
 # dimension / worldgen JSON パラメータ
 
-26.4-snapshot-1を明示指定する場合は[開発バージョンの差分](../snapshots/26.4-snapshot-1.md)を追加適用します。正式26.3の仕様とは区別します。
+26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)の差分を追加適用します。正式26.3の仕様とは区別します。
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
 

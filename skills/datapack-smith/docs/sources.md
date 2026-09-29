@@ -114,3 +114,12 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 - [Mojang: 26.4 Snapshot 1](https://feedback.minecraft.net/hc/en-us/articles/49076034811533-Minecraft-Java-Edition-26-4-Snapshot-1): 公式記事・manifest・公式JARを照合。記事のJARリンクとmanifestのhashが異なるためmanifestを採用
 - reportとvanilla dataを生成し26.3との差分を確認。詳細は[検証記録](snapshots/26.4-snapshot-1.md#検証)
 - Minecraft Wikiは取得できず照合未実施。server reloadとゲーム内動作検証も未実施
+
+
+## 26.4 Snapshot 2の追加照合（2026-09-30 JST）
+
+最新収録開発バージョンは`26.4-snapshot-2`（2026-09-29、format 122.1）。Snapshot 1を継承し、正式26.3の入口を維持します。
+
+- [Mojang: 26.4 Snapshot 2](https://www.minecraft.net/nb-no/article/minecraft-26-4-snapshot-2)の英語本文、manifest、SHA-1検証済み公式JARを照合
+- report／vanilla dataの差分、`BelowHeightmapPredicate`のcodecと比較処理を確認。詳細は[検証記録](snapshots/26.4-snapshot-2.md#検証)
+- Minecraft Wikiは取得できず照合未実施。server reload／ゲーム内動作検証も未実施

@@ -481,3 +481,25 @@ worldgenは特に次の正式リリースでJSONを共有しません。
 | material condition `steep` | Eroded Badlandsのsurface extensionとの順序依存を解消 |
 
 新しいbiome tagは`data/<namespace>/tags/worldgen/biome/`へ配置します。vanillaの`is_cave`はlush caves、deep dark、dripstone caves、sulfur cavesを列挙し、`generated_in_below_zero_retrogen`は`#minecraft:is_cave`を参照します。旧worldの地下再生成に関わるため、新規worldの生成だけで移行を検証したことにはしません。
+
+## 26.4 Snapshot 2の開発差分
+
+`26.4-snapshot-2`（format 122.1）ではworldgen block predicate `minecraft:below_heightmap`を追加します。必須の`heightmap`はheightmap種別です。評価位置のYがそのXZのheightmap値より小さい場合だけ成立し、同じ高さは含みません。
+
+vanillaのキノコplaced featureから取り出したfilterの最小形です。
+
+```json
+{
+  "type": "minecraft:block_predicate_filter",
+  "predicate": {
+    "type": "minecraft:below_heightmap",
+    "heightmap": "MOTION_BLOCKING"
+  }
+}
+```
+
+`placement[]`内で使う形であり、独立したloot predicateではありません。vanillaはこれをair tag判定と`all_of`で組み合わせています。`heightmap`の大文字表記を維持し、Snapshot 1へ生成しません。JARのcodecと比較処理を照合済みですが、ゲーム内の配置テストは未実施です。
+
+また、dimension typeの`attributes`へbooleanの`minecraft:visual/has_sky_occluder`を指定できます。vanilla Overworld／Overworld Cavesはtrueを明示します。公式の既定値はOverworldでtrue、Nether／Endでfalse、補間はありません。fog色による天空の遮蔽を制御する視覚属性で、blockや光量の判定ではありません。
+
+registry reportの`minecraft:rule_test`は`minecraft:rule_test_type`へ変更されています。`reports/datapack.json`では`elements: false`のため独自element用フォルダを生成しません。[バージョン別仕様と出典](../snapshots/26.4-snapshot-2.md)を参照してください。

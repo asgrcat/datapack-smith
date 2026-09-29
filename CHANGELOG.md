@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.09.12
+
+- Java Edition `26.4-snapshot-2`プロファイルを追加（data pack format 122.1）
+- environment attribute `visual/has_sky_occluder`とworldgen block predicate `below_heightmap`を収録し、referenceに値型・配置例・比較条件を追加
+- rule test registry名、キノコ配置、advancement icon、sound event、debug表示のJAR差分を記録
+- 開発バージョン索引・AI生成規則を更新し、正式26.3と既存snapshotを保持
+
 ## 2026.09.11
 
 - Java Edition `26.4-snapshot-1`を正式26.3から継承する開発プロファイルとして追加（data pack format 122.0）
