@@ -1,9 +1,9 @@
 # Datapack Smith仕様リファレンス
 
-このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.3 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3、26.4 Snapshot 1〜2を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
+このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.3 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3、26.4 Snapshot 1〜3を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
 
 
-正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ参照します。最新収録開発バージョンは [`26.4-snapshot-2`](snapshots/26.4-snapshot-2.md) です。
+正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ参照します。最新収録開発バージョンは [`26.4-snapshot-3`](snapshots/26.4-snapshot-3.md) です。
 ## 最短の使い方
 
 新規packを実際に組み立てる入口は[実装設計](implementation-contract.md)と[完全例](worked-example.md)、JSONキーを対象バージョンで選ぶ入口は[バージョン別JSON](reference/versioned-json.md)です。既存packの不具合は[診断手順](troubleshooting.md)から切り分けます。

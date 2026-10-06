@@ -164,3 +164,33 @@ biome、worldgen、item component、enchantment effect、entity effectなどもs
 - [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
 - `build/minecraft/26.3/generated/reports/commands.json`（26.3公式server JARから生成、commit対象外）
 - `build/minecraft/26.3/generated/reports/registries.json`（同上）
+
+## 26.4 Snapshot 3のblock sound setとparticle
+
+`26.4-snapshot-3`（format 123.0）は`minecraft:block_sound_set`をデータ駆動registryとして追加します。配置は`data/<namespace>/block_sound_set/<id>.json`、tagは`data/<namespace>/tags/block_sound_set/<id>.json`です。公式JARの`reports/datapack.json`では`elements: true`、`tags: true`、`stable: false`です。vanillaには133要素があります。
+
+| field | 型・値域 | 省略時 |
+|---|---|---|
+| `volume` | float、0.00001〜10.0 | 1.0 |
+| `pitch` | float、0.00001〜2.0 | 1.0 |
+| `break_sound` | Sound Event、破壊時 | 未指定 |
+| `step_sound` | Sound Event、歩行時 | 未指定 |
+| `place_sound` | Sound Event、設置時 | 未指定 |
+| `hit_sound` | Sound Event、破壊中 | 未指定 |
+| `fall_sound` | Sound Event、着地時 | 未指定 |
+
+全fieldが省略可能です。vanilla `block_sound_set/ice.json`は次の形で、volume／pitchを省略しています。
+
+```json
+{
+  "break_sound": "minecraft:block.ice.break",
+  "fall_sound": "minecraft:block.ice.fall",
+  "hit_sound": "minecraft:block.ice.hit",
+  "place_sound": "minecraft:block.ice.place",
+  "step_sound": "minecraft:block.ice.step"
+}
+```
+
+新しいsetを定義しただけで任意のblockに自動適用されるとは判断しません。consumerが参照するIDを確認します。Sound Event定義と音源資産は別途必要です。tag `#minecraft:sounds_wooden`は馬の歩行時のgalloping sound判定に使われ、vanillaはwood、nether_wood、stem、cherry_wood、bamboo_woodを列挙します。
+
+particle `minecraft:item_snowball`は削除され、追加fieldなしの`minecraft:freezing`が加わります。旧IDを使うfunctionを検索して移行します。item粒子へ置き換える場合は、item stackを受ける対象JARの構文を使います。[バージョン別出典・検証](../snapshots/26.4-snapshot-3.md)を参照してください。

@@ -31,9 +31,9 @@ class ProfileTests(unittest.TestCase):
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(69, len(order))
+        self.assertEqual(70, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual("26.4-snapshot-2", order[-1])
+        self.assertEqual("26.4-snapshot-3", order[-1])
 
     def test_release_chain_excludes_development_history(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -93,6 +93,18 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual("snapshot", profile["channel"])
         self.assertEqual("26.4", profile["snapshot_for"])
         self.assertEqual(25, HARNESS.required_java_major("26.4-snapshot-2", profiles))
+
+    def test_snapshot_three_resolves_major_format_and_series(self) -> None:
+        profiles = HARNESS.load_profiles()
+        chain = HARNESS.resolve_chain("26.4-snapshot-3", profiles)
+        self.assertEqual(54, len(chain))
+        self.assertEqual(["26.3", "26.4-snapshot-1", "26.4-snapshot-2", "26.4-snapshot-3"],
+                         [p["version"] for p in chain[-4:]])
+        payload = HARNESS.resolved_profile_payload("26.4-snapshot-3", profiles)
+        self.assertEqual("123.0", payload["profile"]["data_pack_format"])
+        self.assertEqual("snapshot", payload["profile"]["channel"])
+        self.assertEqual("26.4", payload["profile"]["snapshot_for"])
+        self.assertEqual(25, HARNESS.required_java_major("26.4-snapshot-3", profiles))
 
     def test_compatibility_is_normalized(self) -> None:
         profiles = HARNESS.load_profiles()

@@ -503,3 +503,31 @@ vanillaのキノコplaced featureから取り出したfilterの最小形です�
 また、dimension typeの`attributes`へbooleanの`minecraft:visual/has_sky_occluder`を指定できます。vanilla Overworld／Overworld Cavesはtrueを明示します。公式の既定値はOverworldでtrue、Nether／Endでfalse、補間はありません。fog色による天空の遮蔽を制御する視覚属性で、blockや光量の判定ではありません。
 
 registry reportの`minecraft:rule_test`は`minecraft:rule_test_type`へ変更されています。`reports/datapack.json`では`elements: false`のため独自element用フォルダを生成しません。[バージョン別仕様と出典](../snapshots/26.4-snapshot-2.md)を参照してください。
+
+## 26.4 Snapshot 3の開発差分
+
+`26.4-snapshot-3`（format 123.0）ではice cavesの生成を追加します。`minecraft:ice_caves`はbiome ID、`minecraft:ice_cave_gradient`はnoise IDです。21種類の`ice_cave_ore_*` placed featureは通常の鉱石配置にstone／deepslate patchを加えます。新規IDの一覧は対象JARのvanilla dataで確定します。
+
+| feature | 変更・移行 |
+|---|---|
+| `minecraft:speleothem_cluster` | `placement_options`を追加。省略されたvanilla dripstone例と、指定されたicicle例を区別 |
+| large featureの`type` | JARでは`minecraft:large_dripstone`を削除し、`minecraft:large_speleothem`を追加 |
+| large featureの`base_block` | Block State Providerを追加。dripstoneは`minecraft:dripstone_block`、icicleは`minecraft:packed_ice` |
+
+公式記事のlarge feature改名方向はJARと逆です。生成時はregistry reportとvanillaを採用します。resource file `worldgen/feature/large_dripstone.json`は存続し、そのrootの`type`が`large_speleothem`になります。resource IDの改名とは解釈しません。
+
+`icicle_cluster.json`のplacement設定は次です。objectを指定する場合、3つのfieldはcodecで必須です。
+
+```json
+{
+  "placement_options": {
+    "allow_water_placement": false,
+    "base_block_transformer": "set_attached",
+    "placement_mode": "ceiling_only"
+  }
+}
+```
+
+`placement_mode`は`floor_and_ceiling`／`floor_only`／`ceiling_only`、`base_block_transformer`は`none`／`set_attached`、`allow_water_placement`はbooleanです。このtransformerは固有enumで、汎用block transformerのregistry参照ではありません。
+
+block tag `ice_cave_ore_replaceables`は氷洞窟の鉱石置換、`melts_icicle_above`は直上のicicle融解、`large_icicle_replaceable`はlarge icicleの置換対象です。block tag `pathfinding/avoid_in_air`、`damage_cautious`、`damaging`、`drop_down`、`leaves`、`open`、`powder_snow`、`rails`、`sticky`も追加されています。各IDには`pathfinding/`接頭辞を付けます。tagは歩行・飛行経路の分類であり、任意mobのAIを新規実装する定義ではありません。[出典・検証](../snapshots/26.4-snapshot-3.md)を参照してください。

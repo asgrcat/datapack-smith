@@ -146,3 +146,7 @@ tagは公開拡張点に向きますが、処理順を固定するAPIではあ�
 - [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
 
 - [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
+
+## 26.4 Snapshot 3の追加registry
+
+`minecraft:block_sound_set`はelementとtagを持つデータ駆動registryです。配置、field、既定値と値域は[音と粒子reference](sounds-and-particles.md#264-snapshot-3のblock-sound-setとparticle)を参照します。対象は`26.4-snapshot-3`以降の収録済み開発バージョンで、正式26.3やSnapshot 1〜2には出力しません。

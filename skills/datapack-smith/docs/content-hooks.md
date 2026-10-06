@@ -306,3 +306,11 @@ ID追加だけでは、AI、drop、interaction、block state、tag membershipの
 - [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
 - [Minecraft Wiki: Data pack](https://minecraft.wiki/w/Data_pack)
 - [Minecraft Wiki: Java Edition version history](https://minecraft.wiki/w/Java_Edition_version_history)
+
+## 26.4 Snapshot 3の企画用hook
+
+対象は`26.4-snapshot-3`（format 123.0）。Frostbiteは`minecraft:frostbite`、投射物は`minecraft:ice_ball`、Freezing効果は`minecraft:freezing`です。凍結と革装備の保護、近接／遠距離攻撃、粉雪上の移動、水中でのzombieへの変化を組み合わせる企画では、実動作を対象JARで検証します。
+
+item tag `frostbite_preferred_weapons`はvanillaでice ballを列挙し、`knocks_back_players_even_with_zero_damage`はsnowballを列挙します。`sheep_wool_dyes`は`#minecraft:dyes`を参照し、色は使用stackの`minecraft:dye`から得ます。対象tagへ追加する場合はitemのcomponentも揃えます。
+
+vanilla brewing recipe `potion_awkward_ice_ball`はawkward potionとice ballからFreezing potionを作ります。入力predicateの`potion_contents.potions`と、出力componentの`minecraft:potion_contents.potion`は異なるfieldです。[バージョン別仕様と検証](snapshots/26.4-snapshot-3.md)を参照してください。

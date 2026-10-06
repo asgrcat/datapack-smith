@@ -2,6 +2,14 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.10.1
+
+- Java Edition `26.4-snapshot-3`プロファイルを追加（data pack format 123.0）
+- ice caves、Frostbite、Freezing、Ice Ball、icicle／ice crystalと関連recipe・tag・particleを収録
+- block sound set registryの配置、値型、既定値・値域をreferenceへ追加
+- worldgenのplacement optionsとlarge feature改名を反映。記事とJARの相違を明記
+- 開発索引・AI生成規則・継承と実験利用のテストを更新
+
 ## 2026.09.12
 
 - Java Edition `26.4-snapshot-2`プロファイルを追加（data pack format 122.1）

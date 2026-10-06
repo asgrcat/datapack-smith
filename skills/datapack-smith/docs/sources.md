@@ -123,3 +123,13 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 - [Mojang: 26.4 Snapshot 2](https://www.minecraft.net/nb-no/article/minecraft-26-4-snapshot-2)の英語本文、manifest、SHA-1検証済み公式JARを照合
 - report／vanilla dataの差分、`BelowHeightmapPredicate`のcodecと比較処理を確認。詳細は[検証記録](snapshots/26.4-snapshot-2.md#検証)
 - Minecraft Wikiは取得できず照合未実施。server reload／ゲーム内動作検証も未実施
+
+
+## 26.4 Snapshot 3の追加照合（2026-10-07 JST）
+
+最新収録開発バージョンは`26.4-snapshot-3`（2026-10-06、format 123.0）。Snapshot 2を継承します。
+
+- [Mojang: 26.4 Snapshot 3](https://feedback.minecraft.net/hc/en-us/articles/49412490179853-Minecraft-Java-Edition-26-4-Snapshot-3)、manifest、SHA-1検証済みJARを照合
+- large featureの改名方向は記事とJARが逆。生成物の`large_dripstone` → `large_speleothem`を採用
+- report／vanilla data、block sound setとplacement optionsのcodecを確認。詳細は[検証記録](snapshots/26.4-snapshot-3.md#検証)
+- server reload／ゲーム内動作検証、取得できなかったMinecraft Wikiとの照合は未実施
