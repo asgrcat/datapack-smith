@@ -1,6 +1,6 @@
 # データ駆動JSONパラメータ索引
 
-26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)の差分を追加適用します。正式26.3の仕様とは区別します。
+26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)、[Snapshot 4](../snapshots/26.4-snapshot-4.md)、[Snapshot 5](../snapshots/26.4-snapshot-5.md)の差分を追加適用します。正式26.3の仕様とは区別します。
 
 この索引は、主要なデータ駆動JSONを「何のための値か」から選び、対象の正式リリースで有効な形へ絞るための入口です。フィールド名だけでなく、表示・保存・ゲーム判定のどれを変えるか、データパックで新しい挙動を追加できる範囲、バージョン境界を扱います。
 
@@ -149,6 +149,18 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.3-rc-1`](../snapshots/26.3-rc-1.md) | 121.0 | `weapon`／`blocks_attacks`と`match_block`の挙動修正 |
 | [`26.3-rc-2`](../snapshots/26.3-rc-2.md) | 121.0 | RC1を継承。フォルダーを開くUIの停止を修正、データパック固有の変更なし |
 | [`26.3-rc-3`](../snapshots/26.3-rc-3.md) | 121.0 | RC2を継承。対人sprint攻撃後の減速、VSync、server設定保存を修正 |
+
+## 26.4開発バージョン境界
+
+正式26.3から分岐し、指定したlauncher IDまでの差分を適用します。
+
+| launcher ID | data pack format | 主要境界 |
+|---|---:|---|
+| [`26.4-snapshot-1`](../snapshots/26.4-snapshot-1.md) | 122.0 | noise settings `default_block`削除、worldgen配置・サイズ検証 |
+| [`26.4-snapshot-2`](../snapshots/26.4-snapshot-2.md) | 122.1 | `below_heightmap`、`visual/has_sky_occluder` |
+| [`26.4-snapshot-3`](../snapshots/26.4-snapshot-3.md) | 123.0 | block sound set、ice caves、large feature改名、placement options |
+| [`26.4-snapshot-4`](../snapshots/26.4-snapshot-4.md) | 124.0 | fluid stateとpredicate、音field任意化、crevasse、Brittle Ice |
+| [`26.4-snapshot-5`](../snapshots/26.4-snapshot-5.md) | 125.0 | upscaleと軸別補間、item音fieldの既定廃止、耐性tag再編、Packed Ice Bricks |
 
 ## 対象バージョンの機械カタログ
 

@@ -2,6 +2,17 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.10.2
+
+- Java Edition `26.4-snapshot-5`プロファイルを追加（data pack format 125.0）
+- density functionの`upscale`改名・軸別補間、oreのrule選択、効果耐性・地下spawn tagの再編を反映
+- item componentの消費・装備・剪毛音の旧既定廃止、Packed Ice Bricks系とIce Ball討伐advancementを収録
+- Java Edition `26.4-snapshot-4`プロファイルを追加（data pack format 124.0）
+- Brittle Ice、ジュークボックスplaylist、crevasseと関連tagを収録
+- fluid ID・state再編、`matching_fluids.state`と水源判定の移行を反映
+- 無音用sound event削除、音fieldとexplode effectの任意化、block sound set改名をreferenceへ追加
+- 開発索引・AI生成規則・継承と実験利用のテストを更新
+
 ## 2026.10.1
 
 - Java Edition `26.4-snapshot-3`プロファイルを追加（data pack format 123.0）

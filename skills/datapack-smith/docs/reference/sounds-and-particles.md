@@ -194,3 +194,28 @@ biome、worldgen、item component、enchantment effect、entity effectなどもs
 新しいsetを定義しただけで任意のblockに自動適用されるとは判断しません。consumerが参照するIDを確認します。Sound Event定義と音源資産は別途必要です。tag `#minecraft:sounds_wooden`は馬の歩行時のgalloping sound判定に使われ、vanillaはwood、nether_wood、stem、cherry_wood、bamboo_woodを列挙します。
 
 particle `minecraft:item_snowball`は削除され、追加fieldなしの`minecraft:freezing`が加わります。旧IDを使うfunctionを検索して移行します。item粒子へ置き換える場合は、item stackを受ける対象JARの構文を使います。[バージョン別出典・検証](../snapshots/26.4-snapshot-3.md)を参照してください。
+
+## 26.4 Snapshot 4のsound移行
+
+`26.4-snapshot-4`（format 124.0）でsound event `minecraft:intentionally_empty`を削除します。次の音fieldはJARのcodecで省略可能になっています。無音を表す旧IDは該当fieldの省略へ移行し、他の必須fieldや音object自体まで省略できると判断しません。
+
+| resource／consumer | 省略可能になったfield |
+|---|---|
+| Sulfur Cube archetype `sound_settings` | `hit_sound`、`push_sound` |
+| chicken `adult_sounds`／`baby_sounds` | `ambient_sound`、`hurt_sound`、`death_sound`、`step_sound` |
+| cow | `ambient_sound`、`hurt_sound`、`death_sound`、`step_sound` |
+| cat `adult_sounds`／`baby_sounds` | `ambient_sound`、`stray_ambient_sound`、`hiss_sound`、`hurt_sound`、`death_sound`、`eat_sound`、`beg_for_food_sound`、`purr_sound`、`purreow_sound` |
+| pig `adult_sounds`／`baby_sounds` | `ambient_sound`、`hurt_sound`、`death_sound`、`step_sound`、`eat_sound` |
+| wolf `adult_sounds`／`baby_sounds` | `ambient_sound`、`hurt_sound`、`death_sound`、`step_sound`、`growl_sound`、`pant_sound`、`whine_sound` |
+| enchantment entity effect `minecraft:explode` | `sound`（`small_particle`、`large_particle`も省略可能） |
+
+block sound setのresource ID `minecraft:amethyst`を`minecraft:amethyst_block`へ改名し、`blue_ice`、`brittle_ice`、`frosted_ice`、`packed_ice`を追加します。field構造はSnapshot 3を継承し、vanilla setは137要素です。sound eventの`block.amethyst_block.*`とは別のregistry IDとして扱います。
+
+registry reportではsound eventを23件追加しています。blue ice、frosted ice、packed iceは各5種類、brittle iceは5種類と`block.brittle_ice.crack`、さらに`entity.drowned.converted_to_zombie`、`entity.chicken_picky.step`です。すべて`minecraft:`接頭辞を持ちます。音源の実再生はclientで別途検証します。[出典・検証](../snapshots/26.4-snapshot-4.md)を参照してください。
+
+
+## 26.4 Snapshot 5のsound移行
+
+`26.4-snapshot-5`（format 125.0）で`consumable.sound`と`equippable.equip_sound`／`shearing_sound`の旧既定音を廃止し、省略時は音を指定しません。vanilla itemのdefault componentは必要な音を明示しています。[item componentの移行表](../json-parameters/items.md#264-snapshot-5の音field)を参照してください。
+
+sound event `minecraft:block.ice.ambient`はこのSnapshotで追加されます。Snapshot 4のregistryには存在しません。氷の周囲と上下の条件を満たす場合の環境音で、再生挙動は未検証です。[出典・検証](../snapshots/26.4-snapshot-5.md)を参照してください。

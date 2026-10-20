@@ -40,7 +40,7 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" profiles
 
 検査内容:
 
-- 全51正式リリースと16開発バージョンの必須front matter
+- 全51正式リリースと21開発バージョンの必須front matter
 - `compatibility` の基本クラス
 - `compatibility_tags` の定義済み値
 - filenameとversionの一致

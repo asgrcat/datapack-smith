@@ -314,3 +314,21 @@ ID追加だけでは、AI、drop、interaction、block state、tag membershipの
 item tag `frostbite_preferred_weapons`はvanillaでice ballを列挙し、`knocks_back_players_even_with_zero_damage`はsnowballを列挙します。`sheep_wool_dyes`は`#minecraft:dyes`を参照し、色は使用stackの`minecraft:dye`から得ます。対象tagへ追加する場合はitemのcomponentも揃えます。
 
 vanilla brewing recipe `potion_awkward_ice_ball`はawkward potionとice ballからFreezing potionを作ります。入力predicateの`potion_contents.potions`と、出力componentの`minecraft:potion_contents.potion`は異なるfieldです。[バージョン別仕様と検証](snapshots/26.4-snapshot-3.md)を参照してください。
+
+## 26.4 Snapshot 4の氷とplaylist
+
+対象は`26.4-snapshot-4`（format 124.0）です。`minecraft:brittle_ice`のblock state `age`は0〜3で、踏むとひびが進み破壊されます。entity type tag `#minecraft:does_not_break_brittle_ice`はvanillaでFrostbiteを含みます。踏破競争や崩れる床の企画では、entityの種類とtag、tickによるstate進行を対象JARで検証します。
+
+ジュークボックスは直上の単体chest系からdiscをslot順で循環再生します。block／item tag `#minecraft:jukebox_containers`のvanilla一覧はchest、trapped chest、全copper chest系です。block tagへIDを追加しただけで任意blockにinventoryが備わるとは判断しません。discの取り出しは次曲への移動になるため、playlist機能を使う演出では終了・cleanup時の挙動も検証します。
+
+`freeze_immune_entity_types`へzombie／drowned／huskを追加しています。Snapshot 3向けのFreezing企画を移行する場合、damageと粉雪内の変化条件を確認します。[バージョン別仕様と検証](snapshots/26.4-snapshot-4.md)を参照してください。
+
+## 26.4 Snapshot 5の氷建材と効果耐性
+
+対象は`26.4-snapshot-5`（format 125.0）です。block／item IDは`minecraft:packed_ice_bricks`、`packed_ice_brick_slab`、`packed_ice_brick_stairs`、`packed_ice_brick_wall`、`chiseled_packed_ice`です。後4件にも`minecraft:`接頭辞を付けます。craft／stonecuttingとlootを追加し、item tag `sulfur_cube_archetype/fast_sliding`へbrick本体とchiseledを追加しています。
+
+vanilla advancement `minecraft:adventure/what_goes_around_comes_around`は既存の`minecraft:player_killed_entity` triggerを使い、Frostbiteと、projectile damageの`direct_entity`がIce Ballである条件を組み合わせます。独自のIce Ball討伐企画も対象vanillaのpredicate形を基準にします。
+
+entity type tagは`ignores_poison_and_regen`を`immune_to_poison`／`immune_to_regeneration`へ分割し、`freeze_immune_entity_types`を`immune_to_freezing`へ改名します。`immune_to_wither`／`immune_to_weakness`も追加しています。vanillaのPoisonはundead・nautilus系・spider系、Regenerationはundead、Witherはwither／wither skeleton、Weaknessはparchedを列挙します。複数耐性の判定修正があるため、旧tagの単純改名だけでなく対象mobごとの効果を確認します。
+
+Adventure worldでのmob projectileによるpot／chorus flower／speleothem破壊は`mob_griefing`で制御します。playlistのchest変更反映・負の位置の修正と、氷の環境音追加もあります。[バージョン別仕様・未検証範囲](snapshots/26.4-snapshot-5.md)を参照してください。

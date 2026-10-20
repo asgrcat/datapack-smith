@@ -109,7 +109,7 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 
 ## 26.4 Snapshot 1の追加照合（2026-09-23 JST）
 
-最新収録開発バージョンは`26.4-snapshot-1`（2026-09-22、format 122.0）。正式26.3と26.3開発履歴を保持したまま追加しています。
+この照合時点の最新収録開発バージョンは`26.4-snapshot-1`（2026-09-22、format 122.0）。正式26.3と26.3開発履歴を保持したまま追加しています。
 
 - [Mojang: 26.4 Snapshot 1](https://feedback.minecraft.net/hc/en-us/articles/49076034811533-Minecraft-Java-Edition-26-4-Snapshot-1): 公式記事・manifest・公式JARを照合。記事のJARリンクとmanifestのhashが異なるためmanifestを採用
 - reportとvanilla dataを生成し26.3との差分を確認。詳細は[検証記録](snapshots/26.4-snapshot-1.md#検証)
@@ -118,7 +118,7 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 
 ## 26.4 Snapshot 2の追加照合（2026-09-30 JST）
 
-最新収録開発バージョンは`26.4-snapshot-2`（2026-09-29、format 122.1）。Snapshot 1を継承し、正式26.3の入口を維持します。
+この照合時点の最新収録開発バージョンは`26.4-snapshot-2`（2026-09-29、format 122.1）。Snapshot 1を継承し、正式26.3の入口を維持します。
 
 - [Mojang: 26.4 Snapshot 2](https://www.minecraft.net/nb-no/article/minecraft-26-4-snapshot-2)の英語本文、manifest、SHA-1検証済み公式JARを照合
 - report／vanilla dataの差分、`BelowHeightmapPredicate`のcodecと比較処理を確認。詳細は[検証記録](snapshots/26.4-snapshot-2.md#検証)
@@ -127,9 +127,28 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 
 ## 26.4 Snapshot 3の追加照合（2026-10-07 JST）
 
-最新収録開発バージョンは`26.4-snapshot-3`（2026-10-06、format 123.0）。Snapshot 2を継承します。
+この照合時点の最新収録開発バージョンは`26.4-snapshot-3`（2026-10-06、format 123.0）。Snapshot 2を継承します。
 
 - [Mojang: 26.4 Snapshot 3](https://feedback.minecraft.net/hc/en-us/articles/49412490179853-Minecraft-Java-Edition-26-4-Snapshot-3)、manifest、SHA-1検証済みJARを照合
 - large featureの改名方向は記事とJARが逆。生成物の`large_dripstone` → `large_speleothem`を採用
 - report／vanilla data、block sound setとplacement optionsのcodecを確認。詳細は[検証記録](snapshots/26.4-snapshot-3.md#検証)
 - server reload／ゲーム内動作検証、取得できなかったMinecraft Wikiとの照合は未実施
+
+## 26.4 Snapshot 4の追加照合（2026-10-14 JST）
+
+この照合時点の最新収録開発バージョンは`26.4-snapshot-4`（2026-10-13、format 124.0）。Snapshot 3を継承し、正式26.3の入口を維持します。
+
+- [Mojang: 26.4 Snapshot 4](https://feedback.minecraft.net/hc/en-us/articles/49579562483853-Minecraft-Java-Edition-26-4-Snapshot-4)、manifest、SHA-1検証済みJARを照合
+- report／vanilla data、fluid state、`matching_fluids`、crevasse、音fieldとexplode effectのcodecを確認。詳細は[検証記録](snapshots/26.4-snapshot-4.md#検証)
+- [Minecraft Wiki: Java Edition 26.4 Snapshot 4](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_4)はHTTP 403で取得できず、cross-check未実施
+- server reload／ゲーム内動作検証は未実施
+
+
+## 26.4 Snapshot 5の追加照合（2026-10-21 JST）
+
+最新収録開発バージョンは`26.4-snapshot-5`（2026-10-20、format 125.0）。Snapshot 4を継承し、正式26.3の入口を維持します。
+
+- [Mojang: 26.4 Snapshot 5](https://feedback.minecraft.net/hc/en-us/articles/49759185020173-Minecraft-Java-Edition-26-4-Snapshot-5)、manifest、SHA-1検証済みJARを照合
+- report／vanilla dataとSnapshot 4の差分、`upscale`とitem音fieldのcodecを確認。記事とJARのbiome tag差異、氷の環境音の追加時点を記録。詳細は[検証記録](snapshots/26.4-snapshot-5.md#検証)
+- [Minecraft Wiki: Java Edition 26.4 Snapshot 5](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_5)はHTTP 403で取得できず、cross-check未実施
+- server reload／ゲーム内動作検証は未実施

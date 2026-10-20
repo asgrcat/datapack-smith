@@ -531,3 +531,58 @@ registry reportの`minecraft:rule_test`は`minecraft:rule_test_type`へ変更さ
 `placement_mode`は`floor_and_ceiling`／`floor_only`／`ceiling_only`、`base_block_transformer`は`none`／`set_attached`、`allow_water_placement`はbooleanです。このtransformerは固有enumで、汎用block transformerのregistry参照ではありません。
 
 block tag `ice_cave_ore_replaceables`は氷洞窟の鉱石置換、`melts_icicle_above`は直上のicicle融解、`large_icicle_replaceable`はlarge icicleの置換対象です。block tag `pathfinding/avoid_in_air`、`damage_cautious`、`damaging`、`drop_down`、`leaves`、`open`、`powder_snow`、`rails`、`sticky`も追加されています。各IDには`pathfinding/`接頭辞を付けます。tagは歩行・飛行経路の分類であり、任意mobのAIを新規実装する定義ではありません。[出典・検証](../snapshots/26.4-snapshot-3.md)を参照してください。
+
+## 26.4 Snapshot 4の開発差分
+
+`26.4-snapshot-4`（format 124.0）のfeature type `minecraft:crevasse`は、露出した地形面をたどる裂け目を生成します。配置は`data/<namespace>/worldgen/feature/<id>.json`で、`type`と次の14 fieldはすべて必須です。JARのcodecで型・値域・必須性を確認しています。
+
+| field | 型・値域 | 意味 |
+|---|---|---|
+| `max_width` | integer、2〜8 | 横断面の最大幅 |
+| `max_length` | integer、4〜16 | 裂け目全体の最大長 |
+| `min_footprint` | integer、1〜32 | 掘削前に要求する水平連結面積 |
+| `cursor_surface_search_range` | 正のinteger | cursorが次の地形面を下方向に探す距離 |
+| `column_surface_search_range` | 正のinteger | 各columnで掘削可能な面を下方向に探す距離 |
+| `twistiness` | float、0.0〜16.0 | 水平方向の曲がり具合 |
+| `tapering` | float、0.0〜1.0 | 成長stepごとの先細り |
+| `turn_factor` | float、0.0〜1.0 | 成長stepごとの回転の強さ |
+| `carve_depth` | 正の値のinteger provider | 原点の地形面から掘る深さ |
+| `fill_depth` | 正の値のinteger provider | 原点の地形面から埋める深さ |
+| `surface_block` | Block State Provider | 開口部の上へ置くblock |
+| `fill_block` | Block State Provider | 埋める深さ以下へ置くblock |
+| `carvable_blocks` | worldgen Block Predicate | 掘削対象 |
+| `acceptable_barrier` | worldgen Block Predicate | 既存の障壁として許容するblock |
+
+vanilla `worldgen/feature/ice_crevasse.json`は幅4、長さ16、面積10、探索距離8、`twistiness: 4.0`、`tapering: 0.6`、`turn_factor: 0.05`、掘削深さ6〜10、充填深さ4〜6です。`surface_block`は`brittle_ice`の`age: "0"`、`fill_block`はwater **block state**の`level: "0"`です。配置resource `worldgen/placed_feature/ice_crevasse.json`のmodifier順とice cavesのgeneration stepを対象vanillaから引き継ぎます。
+
+fluid IDとstateの変更は[fluidとmatching_fluids](../json-parameters/predicates.md#264-snapshot-4のfluidとmatching_fluids)を参照します。spring featureの`state`はfluid stateで、water block stateとは異なります。vanilla `spring_water`では旧`falling: "true"`から`level: "8"`、`source: "true"`へ移行しています。block tag `ice_crevasse_replaceables`とbiome tag `is_cave`へのice caves追加も確認してください。[出典・検証](../snapshots/26.4-snapshot-4.md)を参照します。
+
+## 26.4 Snapshot 5の開発差分
+
+`26.4-snapshot-5`（format 125.0）ではdensity function type `minecraft:interpolated`を削除し、`minecraft:upscale`へ置き換えます。`input`はdensity function、`x`／`y`／`z`はそれぞれ`mode`と`cell_size`を持つobjectです。これらはすべてcodecで必須で、`cell_size`は1〜64のintegerです。低解像度で評価したinputをZ→X→Yの順に拡大します。
+
+| `mode` | 軸ごとのsample数 | 値と勾配 |
+|---|---:|---|
+| `nearest_neighbor` | 1 | 値は境界で不連続、勾配は0 |
+| `interpolate_linear` | 2 | 値は連続、勾配はcell内で一定だが境界で不連続 |
+| `interpolate_cosine` | 2 | 値と勾配が連続、境界の勾配は0 |
+| `interpolate_cubic` | 4 | 値と勾配が連続、cell頂点ではsample値に一致 |
+| `b_spline_cubic` | 4 | 値と勾配が連続、cell頂点でsample値に一致するとは限らない |
+
+前4modeはcell頂点でsample値に一致します。sample数の多いmodeは一般に処理負荷が増えます。旧`cell_size_xz: 4`／`cell_size_y: 8`の線形補間を維持するfield断片は次です。density functionを受けるfieldへ配置し、`input`は維持します。
+
+```json
+{
+  "type": "minecraft:upscale",
+  "input": "minecraft:overworld/base_3d_noise",
+  "x": {"mode": "interpolate_linear", "cell_size": 4},
+  "y": {"mode": "interpolate_linear", "cell_size": 8},
+  "z": {"mode": "interpolate_linear", "cell_size": 4}
+}
+```
+
+vanillaの`overworld/chunk_surface_level`はXZが16、Yが1で、3軸とも`interpolate_linear`です。旧fieldを残したままtypeだけを改名しません。Snapshot 4以前へ新しいtypeを生成せず、他のdensity function typeまで改名しません。
+
+`ore`／`scattered_ore`では、空気露出で棄却したblockが次のreplacement ruleへ進まなくなります。vanillaの通常鉱石と氷洞窟の鉱石featureも更新されています。生成される鉱石量とtarget ruleの順序依存を機能testで確認します。
+
+biome tagは`spawns_strays_without_powder_snow`から`spawns_cold_variants_underground`へ改名し、vanillaでは`ice_caves`を含みます。公式記事の`spawns_ice_variants_underground`追加は、このJARの生成dataと`BiomeTags`定数に存在しません。生成には確認できた`spawns_cold_variants_underground`を採用し、前者を利用可能と断定しません。ice cavesをruined portal／strongholdのbiome tagへ追加し、`ice_crevasse`の配置も変更しています。[出典・JAR照合](../snapshots/26.4-snapshot-5.md#検証)を参照してください。

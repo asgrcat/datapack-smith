@@ -31,9 +31,9 @@ class ProfileTests(unittest.TestCase):
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(70, len(order))
+        self.assertEqual(72, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual("26.4-snapshot-3", order[-1])
+        self.assertEqual("26.4-snapshot-5", order[-1])
 
     def test_release_chain_excludes_development_history(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -105,6 +105,43 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual("snapshot", payload["profile"]["channel"])
         self.assertEqual("26.4", payload["profile"]["snapshot_for"])
         self.assertEqual(25, HARNESS.required_java_major("26.4-snapshot-3", profiles))
+
+    def test_snapshot_four_resolves_format_rules_and_family_history(self) -> None:
+        profiles = HARNESS.load_profiles()
+        chain = HARNESS.resolve_chain("26.4-snapshot-4", profiles)
+        self.assertEqual(55, len(chain))
+        self.assertEqual(
+            ["26.3", "26.4-snapshot-1", "26.4-snapshot-2", "26.4-snapshot-3", "26.4-snapshot-4"],
+            [p["version"] for p in chain[-5:]],
+        )
+        payload = HARNESS.resolved_profile_payload("26.4-snapshot-4", profiles)
+        self.assertEqual("124.0", payload["profile"]["data_pack_format"])
+        self.assertEqual("snapshot", payload["profile"]["channel"])
+        self.assertEqual("26.4", payload["profile"]["snapshot_for"])
+        self.assertEqual(25, HARNESS.required_java_major("26.4-snapshot-4", profiles))
+        self.assertIn("124.0", "\n".join(payload["active_ai_rules"]))
+        history = payload["json_parameter_history"][-1]
+        self.assertEqual("26.4-snapshot-4", history["version"])
+        self.assertIn("matching_fluids", history["changes"]["predicate"])
+
+    def test_snapshot_five_resolves_format_and_preserves_history(self) -> None:
+        profiles = HARNESS.load_profiles()
+        chain = HARNESS.resolve_chain("26.4-snapshot-5", profiles)
+        self.assertEqual(56, len(chain))
+        self.assertEqual(
+            ["26.4-snapshot-4", "26.4-snapshot-5"],
+            [p["version"] for p in chain[-2:]],
+        )
+        payload = HARNESS.resolved_profile_payload("26.4-snapshot-5", profiles)
+        self.assertEqual("125.0", payload["profile"]["data_pack_format"])
+        self.assertEqual("snapshot", payload["profile"]["channel"])
+        self.assertEqual("26.4", payload["profile"]["snapshot_for"])
+        self.assertEqual(25, HARNESS.required_java_major("26.4-snapshot-5", profiles))
+        self.assertEqual(
+            ["26.4-snapshot-4", "26.4-snapshot-5"],
+            [h["version"] for h in payload["json_parameter_history"][-2:]],
+        )
+        self.assertIn("upscale", payload["json_parameter_history"][-1]["changes"]["dimension/worldgen"])
 
     def test_compatibility_is_normalized(self) -> None:
         profiles = HARNESS.load_profiles()

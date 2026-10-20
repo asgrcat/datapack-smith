@@ -577,3 +577,23 @@ random conditionは1回の成功だけで判定せず、固定条件へ一時置
 - [Minecraft Wiki: Entity predicate](https://minecraft.wiki/w/Entity_predicate) — entity fieldのcross-check
 - [Minecraft Wiki: Item predicate](https://minecraft.wiki/w/Item_predicate) — item fieldのcross-check
 - [Minecraft Wiki: Location predicate](https://minecraft.wiki/w/Location_predicate) — location/block/fluid fieldのcross-check
+
+## 26.4 Snapshot 4のfluidとmatching_fluids
+
+対象は`26.4-snapshot-4`（format 124.0）以降の収録済み開発バージョンです。fluid IDの`minecraft:flowing_water`／`minecraft:flowing_lava`を削除し、water／lavaのfluid stateを`level`（integer、1〜8）、`source`（boolean）で区別します。旧`falling` propertyを使わず、fluid tag `water`／`lava`から削除IDを取り除きます。block stateのwater／lava `level`は別のpropertyで、fluid stateの値域をそのまま適用しません。
+
+worldgen block predicate `minecraft:matching_fluids`は省略可能な`state`を追加します。省略時はstate条件なしで、指定時はfluid集合との一致に加えてproperty条件がすべて成立する必要があります。`state`はproperty名から一致値へのmapです。値はinteger／boolean／string、または任意の`min`／`max`を持つ範囲objectで、propertyの型と値域に合わせます。
+
+vanillaのFrost Walkerと`disk_clay`が使用する水源判定です。
+
+```json
+{
+  "type": "minecraft:matching_fluids",
+  "fluids": "minecraft:water",
+  "state": {
+    "source": "true"
+  }
+}
+```
+
+Snapshot 3以前ではfluid ID `water`自体が水源を選んでいました。Snapshot 4で旧判定をそのまま残すと流水も一致するため、水源を要求するconsumerには`source`条件を加えます。この例はworldgen用で、独立loot predicateの`type`には使えません。既存location/block/fluid predicateのfieldをこの変更だけで一括置換せず、対象consumerを確認します。JARの`MatchingFluidsPredicate` codecと評価処理を照合済みです。[出典・検証](../snapshots/26.4-snapshot-4.md)を参照してください。

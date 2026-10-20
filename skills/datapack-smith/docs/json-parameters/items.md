@@ -520,3 +520,17 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack \
 - 対象バージョンの公式server JARが生成する`registries.json`、default component report、`generated/data/minecraft/`
 - [Minecraft Wiki: Data component format](https://minecraft.wiki/w/Data_component_format) — cross-check
 - [Minecraft Wiki: Item format](https://minecraft.wiki/w/Item_format) — cross-check
+
+## 26.4 Snapshot 5の音field
+
+`26.4-snapshot-5`（format 125.0）では次のsound event fieldが、旧既定音を補わない省略可能fieldになります。空objectや音fieldなしの新規componentを生成したときの意味が変わるため、音を維持する移行では明示指定します。
+
+| componentとfield | Snapshot 4までの省略時の音 | Snapshot 5の省略時 |
+|---|---|---|
+| `minecraft:consumable.sound` | `minecraft:entity.generic.eat` | 消費音を指定しない |
+| `minecraft:equippable.equip_sound` | `minecraft:item.armor.equip_generic` | 装備音を指定しない |
+| `minecraft:equippable.shearing_sound` | `minecraft:item.shears.snip` | 剪毛音を指定しない |
+
+消費音を維持するcomponent値の断片は`{"sound":"minecraft:entity.generic.eat"}`です。`equippable`では引き続き`slot`が必須です。既定音の廃止はcomponent patchでvanillaの音fieldを削除する指示ではありません。Snapshot 5のappleのdefault component reportは`consumable.sound`を明示し、iron chestplateも装備音と剪毛音を明示します。vanilla itemがすべて無音になったとは解釈しません。
+
+JARの`Consumable`／`Equippable` codecでは、3 fieldとも既定値のない`optionalFieldOf`を確認しました。実際の消費・装備・剪毛と音の再生は未検証です。[出典・検証](../snapshots/26.4-snapshot-5.md)を参照してください。
