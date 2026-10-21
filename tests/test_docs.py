@@ -142,7 +142,7 @@ class DocumentationTests(unittest.TestCase):
             root_license.read_text(encoding="utf-8"),
         )
 
-    def test_readme_uses_ai_first_skill_setup(self) -> None:
+    def test_readme_describes_portable_skill_setup(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertTrue(readme.startswith("# Datapack Smith\n"))
         self.assertIn("Claude Code", readme)
@@ -151,7 +151,7 @@ class DocumentationTests(unittest.TestCase):
         self.assertIn("skills/datapack-smith", readme)
         self.assertIn("NOT AN OFFICIAL MINECRAFT PRODUCT", readme)
         self.assertNotIn("minecraft-datapack-skill", readme)
-        for command in ("npx ", "npm ", "git submodule add", "git subtree add"):
+        for command in ("git submodule add", "git subtree add"):
             self.assertNotIn(command, readme)
 
     def test_local_markdown_links_exist(self) -> None:

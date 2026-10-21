@@ -2,19 +2,37 @@
 
 [日本語](README.md) | [English](README.en.md)
 
+[![skills.sh](https://skills.sh/b/asgrcat/datapack-smith)](https://skills.sh/asgrcat/datapack-smith)
+
 > **NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
 Datapack Smith is an unofficial Agent Skill for designing, implementing, and validating data packs for Minecraft: Java Edition across official releases from 1.13 through 26.3 and the bundled 26.3/26.4 development versions. It resolves the target game version exactly and selects only the commands, data formats, and directory layout available in that version.
 
 Claude Code, Codex, and Cursor use the same [`SKILL.md`](skills/datapack-smith/SKILL.md). The skill bundles the detailed specification, release profiles, templates, and validation harness.
 
-## Add the skill
+## Install
 
-Give your AI the repository URL and ask it to add the skill:
+### skills CLI
+
+With Node.js and npm available, run this from your project:
+
+```bash
+npx skills add asgrcat/datapack-smith --skill datapack-smith
+```
+
+Choose your coding agent when prompted. Installation is scoped to the current project by default; add `-g` to make the skill available across projects.
+
+### Ask your AI to install
+
+You can also give your AI the repository URL and ask it to add the skill:
 
 > Add `skills/datapack-smith` from this repository as an Agent Skill: https://github.com/asgrcat/datapack-smith
 
-The AI can identify the active environment and place the complete skill in its supported skill location. After it is added, invoke it explicitly with:
+The AI can identify the active environment and place the complete skill in its supported skill location.
+
+## Usage
+
+After installation, invoke the skill explicitly with:
 
 | Environment | Invocation |
 |---|---|
@@ -23,6 +41,12 @@ The AI can identify the active environment and place the complete skill in its s
 | Cursor | `/datapack-smith` |
 
 The AI may also select the skill automatically when a request matches its description.
+
+## Distribution on skills.sh
+
+GitHub is the source of this skill. The distributable directory is `skills/datapack-smith`; its `SKILL.md` uses the shared Agent Skills `name` and `description` fields for discovery, and the referenced documentation, templates, schemas, and tools are bundled in that directory.
+
+According to the [skills.sh FAQ](https://skills.sh/docs/faq), leaderboard listing is driven by anonymous installation telemetry from the skills CLI. Publishing the repository alone does not confirm a listing; installations with telemetry enabled contribute to discovery and rankings.
 
 ## Versioning
 

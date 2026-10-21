@@ -2,6 +2,8 @@
 
 [日本語](README.md) | [English](README.en.md)
 
+[![skills.sh](https://skills.sh/b/asgrcat/datapack-smith)](https://skills.sh/asgrcat/datapack-smith)
+
 > **Minecraft向けの非公式ツールです。MojangまたはMicrosoftによる承認・提携製品ではありません。**
 > **NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
@@ -9,13 +11,29 @@ Datapack Smithは、Minecraft Java Edition 1.13から26.3までの正式リリ�
 
 Claude Code、Codex、Cursorで共通の[`SKILL.md`](skills/datapack-smith/SKILL.md)を利用できます。詳細な仕様、バージョン別プロファイル、テンプレート、検証ハーネスはスキルへ同梱されています。
 
-## 追加
+## インストール
 
-利用中のAIへ、次のようにリポジトリURLと追加したい旨を伝えてください。
+### skills CLIで追加
+
+Node.jsとnpmを利用できる環境で、利用先のプロジェクトから実行します。
+
+```bash
+npx skills add asgrcat/datapack-smith --skill datapack-smith
+```
+
+案内に従って利用するAIエージェントを選びます。既定では現在のプロジェクトへ追加されます。全プロジェクトで使う場合は`-g`を付けてください。
+
+### AIへ追加を依頼
+
+利用中のAIへ、次のようにリポジトリURLと追加したい旨を伝える方法も使えます。
 
 > このリポジトリの `skills/datapack-smith` をAgent Skillとして追加してください: https://github.com/asgrcat/datapack-smith
 
-AIは利用中の環境を判別し、スキル一式を対応する領域へ配置します。追加後は次の名前で明示的に呼び出せます。
+AIは利用中の環境を判別し、スキル一式を対応する領域へ配置します。
+
+## 使い方
+
+追加後は次の名前で明示的に呼び出せます。
 
 | 環境 | 呼び出し |
 |---|---|
@@ -24,6 +42,12 @@ AIは利用中の環境を判別し、スキル一式を対応する領域へ配
 | Cursor | `/datapack-smith` |
 
 スキルの説明に一致する依頼では、AIが自動的に選択することもできます。
+
+## skills.shでの配布
+
+配布元はGitHubです。配布単位は`skills/datapack-smith`で、`SKILL.md`には検索・選択用の共通Agent Skillsフィールド`name`と`description`を使用し、参照する文書・テンプレート・schema・ツールも同じディレクトリへ同梱しています。
+
+[skills.sh公式FAQ](https://skills.sh/docs/faq)によると、一覧への掲載はskills CLI経由の匿名インストール統計に基づきます。GitHubへ公開しただけで掲載済みになるわけではなく、telemetryが有効なインストールが発見・ランキングへ反映されます。
 
 ## バージョニング
 
