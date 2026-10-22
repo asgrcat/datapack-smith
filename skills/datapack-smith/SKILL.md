@@ -9,80 +9,80 @@ An unofficial Agent Skill for Minecraft Java Edition. Not approved by or associa
 
 Resolve the exact target game version first, then implement using only syntax and data confirmed for that release.
 
-The workflow and bundled specification references below are written in Japanese. Start with the [specification index](docs/README.md); for an English overview and installation instructions, see the [repository README](https://github.com/asgrcat/datapack-smith/blob/main/README.en.md).
+The bundled specification references are written in Japanese. Start with the [specification index](docs/README.md); for an English overview and installation instructions, see the [repository README](https://github.com/asgrcat/datapack-smith/blob/main/README.en.md).
 
-この`SKILL.md`のあるディレクトリが`<harness-root>`である。利用者repository rootとは別であり、CLIは`python3 <harness-root>/tools/datapack_harness.py ...`で呼ぶ。配布元repositoryの親ディレクトリや特定エディタの設置先を仮定しない。
+The directory containing this `SKILL.md` is `<harness-root>`. It is separate from the user's repository root. Invoke the CLI as `python3 <harness-root>/tools/datapack_harness.py ...`. Do not assume the distribution repository's parent directory or an editor-specific installation path.
 
-## ワークフロー
+## Workflow
 
-1. 利用者リポジトリの指示ファイルと既存データパックを確認する。
-2. `datapack-project.json`があれば正本として読む。なければ既存ファイルと依頼から値を決め、生成・変更時は[設定テンプレート](templates/datapack-project.json)を使う。`pack_format`だけではゲームバージョンを一意に決められない。対象バージョンが不明なら確認する。新規packのnamespaceと配置先は衝突しない値を選び、検証の指定がなければ`static`を提案値として明記する。調査だけの依頼では設定fileやpackを新設しない。
-3. [仕様索引](docs/README.md)と[AI生成契約](docs/ai-authoring.md)を最後まで読む。
-4. `target_version`を[正式リリース索引](docs/versions/README.md)または[開発バージョン索引](docs/snapshots/README.md)へ完全一致させ、対応するプロファイルを読む。正式`26.3`の場合は[移行リファレンス](docs/reference/26.3-migration.md)も読む。一覧にない値を近いバージョンへ丸めない。
-5. 要件に応じて下の「資料の選択」から必要な文書を読む。JSONを実装する場合は[バージョン別キー選択](docs/reference/versioned-json.md)でresource種別・consumer・JSON pathごとに型と境界を確定する。対象バージョンより新しい例をそのまま流用しない。
-6. [実装設計と受入条件](docs/implementation-contract.md)で要件・入口・状態・依存resource・検証方法を結び付け、必要なファイル群を実装する。既存プロジェクトでは利用者の変更を保ち、依頼範囲外のファイルを変更しない。小規模な修正では該当項目だけ適用する。
-7. 要求された検証レベルまで検証し、実行済みの証拠、warning、未実施の上位検証を分けて報告する。
+1. Inspect the user's repository instructions and existing data packs.
+2. If `datapack-project.json` exists, treat it as authoritative. Otherwise, derive values from existing files and the request, and use the [configuration template](templates/datapack-project.json) when generating or modifying a pack. `pack_format` alone cannot uniquely identify the game version. Ask if the target version is unknown. For a new pack, choose a namespace and output path that do not conflict with existing resources. If no validation level is specified, explicitly propose `static`. For investigation-only requests, do not create configuration files or packs.
+3. Read the [specification index](docs/README.md) and [AI authoring contract](docs/ai-authoring.md) in full.
+4. Match `target_version` exactly in the [official release index](docs/versions/README.md) or [development version index](docs/snapshots/README.md), then read the matching profile. For the official `26.3` release, also read the [migration reference](docs/reference/26.3-migration.md). Do not round an unlisted value to a nearby version.
+5. Select the required documents under “Choosing references” below. When implementing JSON, use [version-specific key selection](docs/reference/versioned-json.md) to establish types and version boundaries for each resource type, consumer, and JSON path. Do not reuse examples from newer versions without conversion.
+6. Use [implementation design and acceptance criteria](docs/implementation-contract.md) to connect requirements, entry points, state, resource dependencies, and validation methods, then implement the necessary files. Preserve the user's changes in existing projects and do not modify files outside the request's scope. Apply only the relevant parts for small fixes.
+7. Validate up to the requested level. Report evidence from completed checks, warnings, and unexecuted higher validation levels separately.
 
-## バージョンの確定
+## Resolving the version
 
-- `1.20`と`1.20.1`、`26.1`と`26.1.1`を別の正式リリースとして扱う。
-- `26.4-snapshot-1`は正式26.3、`26.4-snapshot-2`はSnapshot 1、`26.4-snapshot-3`はSnapshot 2、`26.4-snapshot-4`はSnapshot 3、`26.4-snapshot-5`はSnapshot 4を継承する開発枝として扱い、未収録の正式`26.4`へ丸めない。
-- `26.3`、`26.3-snapshot-1`、`26.3-snapshot-10`、`26.3-pre-1`、`26.3-pre-2`、`26.3-pre-3`、`26.3-rc-1`、`26.3-rc-2`、`26.3-rc-3`を別のIDとして扱い、開発バージョンの短縮名を作らない。
-- `pack_format`が同じでも、コマンド、NBT、registry、JSON field、ディレクトリ名が同じとは仮定しない。
-- 対象プロファイルの`data_pack_format`、`directory_schema`、`AI 生成規則`を適用する。
-- 継承元の規則は変更履歴として読み、対象バージョンへ禁止事項を累積適用しない。
-- コマンド、registry ID、vanilla JSONの最終的な正本は、対象バージョンの公式server JARが生成するreportとdataとする。
-- snapshot、pre-release、release candidateは隔離した実験worldだけで検証し、既存worldや本番serverへ適用しない。
+- Treat `1.20` and `1.20.1`, and `26.1` and `26.1.1`, as distinct official releases.
+- Treat `26.4-snapshot-1` as a development branch inheriting from official 26.3, `26.4-snapshot-2` from Snapshot 1, `26.4-snapshot-3` from Snapshot 2, `26.4-snapshot-4` from Snapshot 3, and `26.4-snapshot-5` from Snapshot 4. Do not round them to the unbundled official `26.4` release.
+- Treat `26.3`, `26.3-snapshot-1`, `26.3-snapshot-10`, `26.3-pre-1`, `26.3-pre-2`, `26.3-pre-3`, `26.3-rc-1`, `26.3-rc-2`, and `26.3-rc-3` as distinct IDs. Do not invent shortened development version names.
+- Equal `pack_format` values do not imply equal commands, NBT, registries, JSON fields, or directory names.
+- Apply the target profile's `data_pack_format`, `directory_schema`, and `AI 生成規則` (“AI generation rules”) section.
+- Read inherited rules as change history; do not cumulatively apply inherited prohibitions to the target version.
+- The reports and data generated by the exact target version's official server JAR are the final authority for commands, registry IDs, and vanilla JSON.
+- Validate snapshots, pre-releases, and release candidates only in isolated experimental worlds. Do not apply them to existing worlds or production servers.
 
-## 資料の選択
+## Choosing references
 
-- 要件から実装を組み立てる: [implementation-contract.md](docs/implementation-contract.md)
-- 新規packの完全な実装例: [worked-example.md](docs/worked-example.md)（1.21.5限定のplayer別cooldown、他バージョンへ無変換でコピーしない）
-- 読み込めない・動かない場合: [troubleshooting.md](docs/troubleshooting.md)
-- コマンドと実行文脈: [commands.md](docs/commands.md)、[execution-model.md](docs/execution-model.md)
-- JSON、SNBT、配置: [json-formats.md](docs/json-formats.md)、[reference/README.md](docs/reference/README.md)
-- データ駆動JSONのfield: [json-parameters/README.md](docs/json-parameters/README.md)
-- コマンド引数、scoreboard、NBT、text component: [command-arguments-and-selectors.md](docs/reference/command-arguments-and-selectors.md)、[scoreboards-and-results.md](docs/reference/scoreboards-and-results.md)、[nbt-snbt-and-data.md](docs/reference/nbt-snbt-and-data.md)、[text-components.md](docs/reference/text-components.md)
-- registryと26.3データ: [registry-elements.md](docs/reference/registry-elements.md)、[number-providers.md](docs/reference/number-providers.md)、[slot-sources.md](docs/reference/slot-sources.md)、[block-transformation.md](docs/reference/block-transformation.md)
-- gameplay／UI resource: [damage-system.md](docs/reference/damage-system.md)、[structures-and-jigsaw.md](docs/reference/structures-and-jigsaw.md)、[dialogs-and-actions.md](docs/reference/dialogs-and-actions.md)、[sounds-and-particles.md](docs/reference/sounds-and-particles.md)
-- advancementとplayer event: [advancements.md](docs/advancements.md)
-- 永続状態とmigration: [state-management.md](docs/state-management.md)
-- gameplay要素の観測と制御: [content-hooks.md](docs/content-hooks.md)、[gameplay-requirements.md](docs/gameplay-requirements.md)
-- 実装パターンと性能: [implementation-patterns.md](docs/implementation-patterns.md)
-- 複数バージョン対応: [compatibility.md](docs/compatibility.md)
-- 公式生成物と検証方法: [validation.md](docs/validation.md)、[harness.md](docs/harness.md)
-- 出典の優先順位: [sources.md](docs/sources.md)
+- Turn requirements into an implementation: [implementation-contract.md](docs/implementation-contract.md)
+- Complete example for a new pack: [worked-example.md](docs/worked-example.md) (per-player cooldown for 1.21.5 only; convert before copying to another version)
+- Packs that fail to load or run: [troubleshooting.md](docs/troubleshooting.md)
+- Commands and execution context: [commands.md](docs/commands.md), [execution-model.md](docs/execution-model.md)
+- JSON, SNBT, and file layout: [json-formats.md](docs/json-formats.md), [reference/README.md](docs/reference/README.md)
+- Data-driven JSON fields: [json-parameters/README.md](docs/json-parameters/README.md)
+- Command arguments, scoreboards, NBT, and text components: [command-arguments-and-selectors.md](docs/reference/command-arguments-and-selectors.md), [scoreboards-and-results.md](docs/reference/scoreboards-and-results.md), [nbt-snbt-and-data.md](docs/reference/nbt-snbt-and-data.md), [text-components.md](docs/reference/text-components.md)
+- Registries and 26.3 data: [registry-elements.md](docs/reference/registry-elements.md), [number-providers.md](docs/reference/number-providers.md), [slot-sources.md](docs/reference/slot-sources.md), [block-transformation.md](docs/reference/block-transformation.md)
+- Gameplay and UI resources: [damage-system.md](docs/reference/damage-system.md), [structures-and-jigsaw.md](docs/reference/structures-and-jigsaw.md), [dialogs-and-actions.md](docs/reference/dialogs-and-actions.md), [sounds-and-particles.md](docs/reference/sounds-and-particles.md)
+- Advancements and player events: [advancements.md](docs/advancements.md)
+- Persistent state and migration: [state-management.md](docs/state-management.md)
+- Observing and controlling gameplay elements: [content-hooks.md](docs/content-hooks.md), [gameplay-requirements.md](docs/gameplay-requirements.md)
+- Implementation patterns and performance: [implementation-patterns.md](docs/implementation-patterns.md)
+- Multi-version support: [compatibility.md](docs/compatibility.md)
+- Official generated artifacts and validation methods: [validation.md](docs/validation.md), [harness.md](docs/harness.md)
+- Source precedence: [sources.md](docs/sources.md)
 
-長い資料は、対象要件に関係する見出しを検索してから該当範囲を読む。ただし、対象バージョンのプロファイル、仕様索引、AI生成契約は部分読みで済ませない。
+For long references, search for headings relevant to the requirements before reading those sections. However, always read the target version profile, specification index, and AI authoring contract in full.
 
-## 実装規則
+## Implementation rules
 
-- namespace、function参照、tag、storage、scoreboard objective、entity tagを全ファイルで一貫させる。
-- `minecraft` namespaceはload/tick tagへのentry追加または明示されたvanilla overrideに限定する。
-- entry pointごとにexecutor、位置、dimension、状態ownerを定義する。
-- 永続状態には初期化、migration、cleanup、再実行時の挙動を定義する。
-- 対象0件、複数対象、multiplayer、chunk unload、reload、既存world更新の該当ケースを考慮する。
-- 実在を確認できないコマンドbranch、ID、必須field、値型を推測しない。公式生成物を確認できない場合は不確実性を明記する。
+- Keep namespaces, function references, tags, storage, scoreboard objectives, and entity tags consistent across all files.
+- Limit use of the `minecraft` namespace to adding entries to load/tick tags or explicitly requested vanilla overrides.
+- Define the executor, position, dimension, and state owner for each entry point.
+- Define initialization, migration, cleanup, and repeat-execution behavior for persistent state.
+- Consider applicable cases involving zero targets, multiple targets, multiplayer, chunk unloads, reloads, and existing-world upgrades.
+- Do not guess command branches, IDs, required fields, or value types whose existence has not been confirmed. State uncertainty when official generated artifacts cannot be checked.
 
-## 検証
+## Validation
 
-付属ハーネスを実行できる場合は、[harness.md](docs/harness.md)に従い`tools/datapack_harness.py`を使用する。追加packageは要求しない。
+When the bundled harness can run, use `tools/datapack_harness.py` according to [harness.md](docs/harness.md). No additional packages are required.
 
-| level | 必要な証拠 | 報告できること |
+| Level | Required evidence | Permitted claim |
 |---|---|---|
-| `generated` | 対象プロファイルを解決し、必要ファイルを生成 | 対象バージョン向けに生成した |
-| `static` | `validate-project`または同等の静的検査に成功 | 静的検査に成功した |
-| `server` | 対象バージョンで有効化とreloadに成功 | 対象serverで読み込めた |
-| `functional` | 記録した機能testに成功 | 機能testに成功した |
+| `generated` | Target profile resolved and required files generated | Generated for the target version |
+| `static` | `validate-project` or equivalent static checks passed | Static validation passed |
+| `server` | Pack enabled and reloaded successfully on the target version | Loaded on the target server |
+| `functional` | Recorded functional tests passed | Functional tests passed |
 
-- 利用できない実行環境を構築するよう利用者へ要求せず、可能な検証まで進める。
-- `server`検証は、利用者が必要性、Minecraft EULA、実行環境を判断した場合だけ行う。
-- 既存worldや本番serverを検証対象にしない。
-- 実行していないlevelを成功として報告しない。
+- Proceed with the validation that is possible without requiring the user to set up an unavailable runtime environment.
+- Perform `server` validation only after the user has evaluated the need, Minecraft EULA, and execution environment.
+- Do not use existing worlds or production servers for validation.
+- Do not report an unexecuted level as successful.
 
-## 完了報告
+## Completion report
 
-最低限、次を含める。
+Include at least:
 
 ```text
 target_version:
@@ -93,4 +93,4 @@ warnings:
 not_run:
 ```
 
-変更したファイル、主要な設計判断、バージョン固有の互換性上の注意も簡潔に示す。
+Also briefly describe changed files, key design decisions, and version-specific compatibility considerations.
