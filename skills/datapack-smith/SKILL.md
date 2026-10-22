@@ -1,13 +1,15 @@
 ---
 name: datapack-smith
-description: Minecraft Java Editionのデータパックを、対象の正式リリースまたは収録済み開発バージョンに合わせて設計、生成、修正、移行、調査、検証する。`.mcfunction`、`pack.mcmeta`、advancement、predicate、loot table、recipe、item component、worldgen、複数バージョン対応を扱う依頼や、既存データパックの互換性確認に使用する。Bedrock EditionとMod固有実装には使用しない。
+description: Design, generate, fix, migrate, investigate, and validate Minecraft Java Edition data packs for an exact official release or bundled development version. Use for .mcfunction, pack.mcmeta, advancements, predicates, loot tables, recipes, item components, world generation, multi-version support, and compatibility checks. Not for Bedrock Edition or mod-specific implementations.
 ---
 
 # Datapack Smith
 
-Minecraft Java Edition向けの非公式ツールであり、MojangまたはMicrosoftによる承認・提携製品ではない。
+An unofficial Agent Skill for Minecraft Java Edition. Not approved by or associated with Mojang or Microsoft.
 
-対象ゲームバージョンの仕様を先に固定し、そのリリースで存在が確認できる構文とデータだけで実装する。
+Resolve the exact target game version first, then implement using only syntax and data confirmed for that release.
+
+The workflow and bundled specification references below are written in Japanese. Start with the [specification index](docs/README.md); for an English overview and installation instructions, see the [repository README](https://github.com/asgrcat/datapack-smith/blob/main/README.en.md).
 
 この`SKILL.md`のあるディレクトリが`<harness-root>`である。利用者repository rootとは別であり、CLIは`python3 <harness-root>/tools/datapack_harness.py ...`で呼ぶ。配布元repositoryの親ディレクトリや特定エディタの設置先を仮定しない。
 
