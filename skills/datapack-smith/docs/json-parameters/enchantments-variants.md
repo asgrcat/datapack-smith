@@ -676,3 +676,7 @@ cross-check:
 `26.4-snapshot-4`（format 124.0）のenchantment entity effect `minecraft:explode`では`small_particle`、`large_particle`、`sound`が省略可能です。省略時は該当する演出を指定しません。`radius`、`block_interaction`など他のfieldの必須性は継承し、effect全体を空objectにできるとは判断しません。vanilla Frost Walkerのworldgen `matching_fluids`には水源を要求する`state.source`を追加します。[fluidの移行](predicates.md#264-snapshot-4のfluidとmatching_fluids)も参照してください。
 
 chicken／cow／cat／pig／wolf sound variantとSulfur Cube archetypeにも音fieldの省略対応があります。削除されたsound event `minecraft:intentionally_empty`を参照するresourceは、[音fieldの一覧](../reference/sounds-and-particles.md#264-snapshot-4のsound移行)に従って移行します。variant本体や音objectの必須性まで変更したと解釈せず、他のvariantへ遡及しません。[出典・検証](../snapshots/26.4-snapshot-4.md)を参照してください。
+
+## 26.4 Snapshot 6のarchetype effect
+
+`26.4-snapshot-6`（format 125.1）では`sulfur_cube_archetype.location_based_effects`へenchantmentと同形式の条件付きlocation effectを指定できます。省略時は空listで、level依存値はlevel 1固定です。vanilla `minecraft:cold`、Blue Iceのtag移動、contextとfieldの型は[archetype拡張](../reference/registry-formats.md#264-snapshot-6のarchetype拡張)を参照してください。

@@ -571,3 +571,9 @@ cross-check:
 - [Minecraft Wiki: Tutorial: Adding a new dimension](https://minecraft.wiki/w/Tutorial:Adding_a_new_dimension)
 - [Minecraft Wiki: Custom world generation](https://minecraft.wiki/w/Custom_world_generation)
 - [Minecraft Wiki: Running the data generator](https://minecraft.wiki/w/Tutorial:Running_the_data_generator)
+
+## 26.4 Snapshot 6の追加
+
+`26.4-snapshot-6`（format 125.1）ではdensity functionのY軸`gradient`座標へVertical Anchorを追加し、座標をoffsetでずらす`domain_warp`を追加します。[型・既定値・制約と例](../reference/worldgen.md#264-snapshot-6の開発差分)を参照してください。
+
+pool elementの`corner_constraint`は、bounding boxの角でdensity functionを評価する任意listです。[必須field・範囲・上下面制限と例](../reference/structures-and-jigsaw.md#264-snapshot-6のcorner-constraint)を使います。biomeの鉱石feature順序とice cavesの重複も修正されているため、既存のfeature配列を対象JARと比較します。

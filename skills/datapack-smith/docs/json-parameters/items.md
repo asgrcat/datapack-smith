@@ -534,3 +534,7 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack \
 消費音を維持するcomponent値の断片は`{"sound":"minecraft:entity.generic.eat"}`です。`equippable`では引き続き`slot`が必須です。既定音の廃止はcomponent patchでvanillaの音fieldを削除する指示ではありません。Snapshot 5のappleのdefault component reportは`consumable.sound`を明示し、iron chestplateも装備音と剪毛音を明示します。vanilla itemがすべて無音になったとは解釈しません。
 
 JARの`Consumable`／`Equippable` codecでは、3 fieldとも既定値のない`optionalFieldOf`を確認しました。実際の消費・装備・剪毛と音の再生は未検証です。[出典・検証](../snapshots/26.4-snapshot-5.md)を参照してください。
+
+## 26.4 Snapshot 6の追加と音移行
+
+`26.4-snapshot-6`（format 125.1）でSnow Bricks系4種を追加し、Blue IceのSulfur Cube archetypeをColdへ移動します。Snow Bricks系にstonecutting recipeはありません。旧world更新時に消費・装備音を失う不具合（MC-312783）も修正されますが、Snapshot 5で任意化した音fieldの旧既定音がcodecへ戻ったとは解釈しません。[対象profile](../snapshots/26.4-snapshot-6.md)を参照してください。

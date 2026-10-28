@@ -26,7 +26,7 @@ The directory containing this `SKILL.md` is `<harness-root>`. It is separate fro
 ## Resolving the version
 
 - Treat `1.20` and `1.20.1`, and `26.1` and `26.1.1`, as distinct official releases.
-- Treat `26.4-snapshot-1` as a development branch inheriting from official 26.3, `26.4-snapshot-2` from Snapshot 1, `26.4-snapshot-3` from Snapshot 2, `26.4-snapshot-4` from Snapshot 3, and `26.4-snapshot-5` from Snapshot 4. Do not round them to the unbundled official `26.4` release.
+- Treat `26.4-snapshot-1` as a development branch inheriting from official 26.3, `26.4-snapshot-2` from Snapshot 1, `26.4-snapshot-3` from Snapshot 2, `26.4-snapshot-4` from Snapshot 3, `26.4-snapshot-5` from Snapshot 4, and `26.4-snapshot-6` from Snapshot 5. Do not round them to the unbundled official `26.4` release.
 - Treat `26.3`, `26.3-snapshot-1`, `26.3-snapshot-10`, `26.3-pre-1`, `26.3-pre-2`, `26.3-pre-3`, `26.3-rc-1`, `26.3-rc-2`, and `26.3-rc-3` as distinct IDs. Do not invent shortened development version names.
 - Equal `pack_format` values do not imply equal commands, NBT, registries, JSON fields, or directory names.
 - Apply the target profile's `data_pack_format`, `directory_schema`, and `AI 生成規則` (“AI generation rules”) section.

@@ -216,3 +216,46 @@ structure setは候補structureと配置typeを結びます。
 
 - 対象server JARのvanilla structure、template pool、processor、structure、structure set
 - 各 [`../versions/<version>.md`](../versions/README.md) のworldgen差分
+
+## 26.4 Snapshot 6のcorner constraint
+
+`26.4-snapshot-6`（format 125.1）でpool elementに任意`corner_constraint`を追加します。配置候補のbounding boxの角でdensity functionを評価し、条件を満たさないelementの配置を制限します。structure rootやprocessor listへ置きません。
+
+`corner_constraint`は1〜10件のobject listで、すべての条件を満たす必要があります。制限しない場合はfieldを省略し、空listを指定しません。
+
+| entryのfield | 必須性・型 | 既定値・制約 |
+|---|---|---|
+| `density_function` | 必須、density function参照 | 対象registryのdensity functionを指定 |
+| `acceptable_density` | 必須、doubleの両端を含む範囲 | 範囲内の角をinsideとして数える |
+| `padding` | 任意、integer | 0〜8、既定0。検査するbounding boxへのpadding |
+| `corners` | 任意、enum | `all`（既定）、`top`、`bottom` |
+| `required_corners` | 必須、integerの両端を含む範囲 | 1〜8。`top`／`bottom`では上限4 |
+
+範囲は単一数値（その数値だけ）または`min_inclusive`／`max_inclusive`を両方持つobjectです。最小値は最大値以下にします。次はtemplate pool全体の例です。`example:room`のstructure NBTは別途必要です。
+
+```json
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "example:room",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "corner_constraint": [
+          {
+            "density_function": "minecraft:y",
+            "acceptable_density": {"min_inclusive": 64.0, "max_inclusive": 128.0},
+            "corners": "bottom",
+            "required_corners": 4
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+JARの`StructurePoolElement`、`CornerConstraint`と`DensityPredicate` codecで、配置位置、件数、必須field、値域、上下面の4角制限を確認しました。worldgenでの配置結果は未検証です。[出典・検証](../snapshots/26.4-snapshot-6.md#検証)を参照してください。

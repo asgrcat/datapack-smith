@@ -586,3 +586,51 @@ vanillaの`overworld/chunk_surface_level`はXZが16、Yが1で、3軸とも`inte
 `ore`／`scattered_ore`では、空気露出で棄却したblockが次のreplacement ruleへ進まなくなります。vanillaの通常鉱石と氷洞窟の鉱石featureも更新されています。生成される鉱石量とtarget ruleの順序依存を機能testで確認します。
 
 biome tagは`spawns_strays_without_powder_snow`から`spawns_cold_variants_underground`へ改名し、vanillaでは`ice_caves`を含みます。公式記事の`spawns_ice_variants_underground`追加は、このJARの生成dataと`BiomeTags`定数に存在しません。生成には確認できた`spawns_cold_variants_underground`を採用し、前者を利用可能と断定しません。ice cavesをruined portal／strongholdのbiome tagへ追加し、`ice_crevasse`の配置も変更しています。[出典・JAR照合](../snapshots/26.4-snapshot-5.md#検証)を参照してください。
+
+## 26.4 Snapshot 6の開発差分
+
+`26.4-snapshot-6`（format 125.1）だけに適用する追加です。正式26.3やSnapshot 5以前へ書き戻しません。
+
+### gradientのVertical Anchor
+
+`minecraft:gradient`の`from_coordinate`／`to_coordinate`はinteger座標に加え、`axis: "y"`の場合だけVertical Anchor（`absolute`、`above_bottom`、`below_top`のいずれか1つを持つobject）を受け付けます。X／Z軸へanchorを指定せず、両端に同じ座標定義を指定しません。次はdensity function resourceの全体です。
+
+```json
+{
+  "type": "minecraft:gradient",
+  "axis": "y",
+  "from_coordinate": {"above_bottom": 0},
+  "to_coordinate": {"below_top": 0},
+  "from_value": 1.0,
+  "to_value": -1.0
+}
+```
+
+既存の`tiling`は任意で、既定は`clamp_to_edge`です。anchorは対象dimensionの高さで解決されるため、dimension間で同じ絶対Yを意味するとは限りません。
+
+### domain_warp
+
+`minecraft:domain_warp`は評価位置でoffsetを求め、ずらした整数座標で`input`を評価します。配置は`data/<namespace>/worldgen/density_function/<id>.json`です。
+
+| field | 必須性・型 | 既定値・制約 |
+|---|---|---|
+| `input` | 必須、density function | 対象バージョンのdensity function codecを使う |
+| `offset_x` | 任意、density function | 0.0 |
+| `offset_y` | 任意、density function | 0.0 |
+| `offset_z` | 任意、density function | 0.0 |
+
+最低1つのoffsetを指定します。JARのvalidationは全軸が定数0の場合も拒否するため、`offset_x: 0.0`だけを置いて要件を満たしたことにはしません。offsetの評価結果は小数部を0方向へ切り捨てて座標へ加えます（例: -1.8 → -1）。床関数とは異なります。
+
+次はY座標を8だけずらして評価するdensity function resourceの全体です。
+
+```json
+{
+  "type": "minecraft:domain_warp",
+  "input": "minecraft:y",
+  "offset_y": 8.0
+}
+```
+
+大きなoffsetが短距離で急変すると性能が大きく低下し得るため、必要な場所へ限定します。実際の地形・性能は未検証です。structure poolでのdensity function判定は[corner constraint](structures-and-jigsaw.md#264-snapshot-6のcorner-constraint)を参照してください。
+
+公式記事とJARの`DomainWarpFunction`／`GradientFunction` codec・整数変換を照合しました。[出典・検証](../snapshots/26.4-snapshot-6.md#検証)を参照してください。

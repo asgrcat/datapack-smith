@@ -612,3 +612,21 @@ item側は`minecraft:sulfur_cube_content` componentとarchetype consumerの両�
 [ ] /reload後に実際のconsumerからentryを使用した
 [ ] world registry変更を新規worldと再起動でも検証した
 ```
+
+## 26.4 Snapshot 6のarchetype拡張
+
+`26.4-snapshot-6`（format 125.1）で`sulfur_cube_archetype`に任意`location_based_effects`を追加します。配置は従来どおり`data/<namespace>/sulfur_cube_archetype/<id>.json`です。省略時は空listで、各entryはenchantmentと同じ条件付きlocation-based effect形式です。
+
+| field | 型・意味 |
+|---|---|
+| `location_based_effects` | 条件付きeffectのlist。既定`[]` |
+| `location_based_effects[].effect` | `type`とeffect固有fieldを持つlocation-based effect |
+| `location_based_effects[].requirements` | 任意のloot condition。enchantmentのlocation contextで検証する |
+
+level依存値は常にlevel 1として評価します。`requirements`は26.3以降の`type`によるcondition形式を使い、参照できるcontext parameterを任意のloot tableから流用しません。
+
+vanilla `minecraft:cold` archetypeは`items: "#minecraft:sulfur_cube_archetype/cold"`、`buoyant: true`を持ちます。item tagの値は`minecraft:blue_ice`です。従来のFast Sliding用tagからBlue Iceを除き、Snow Bricksを追加します。
+
+Coldの`location_based_effects`は`minecraft:replace_disk`を使い、半径3、高さ1、offset `[0, -1, 0]`で`minecraft:frosted_ice`を配置します。水block・water fluid・上の空気・非妨害をworldgen block predicateで確認し、effectの`requirements`では接地と乗り物に乗っていないことを確認します。条件とlevel固定はarchetype consumerの規則で、Frost Walker enchantmentのlevelをそのまま付与する実装ではありません。
+
+公式記事、生成した`cold.json`、`SulfurCubeArchetype`の空list既定値とlocation effect codecを照合しました。実際の移動・凍結は未検証です。[出典・検証](../snapshots/26.4-snapshot-6.md#検証)を参照してください。

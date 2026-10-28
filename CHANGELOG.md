@@ -2,6 +2,14 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.10.4
+
+- Java Edition `26.4-snapshot-6`プロファイルを追加（data pack format 125.1）
+- Snow Bricks系、Cold Sulfur Cube、archetypeの`location_based_effects`と関連tagを収録
+- `gradient`のY軸Vertical Anchor、`domain_warp`、pool elementの`corner_constraint`の型・既定値・制約と例を追加
+- Freezingのadvancement条件、氷・playlist・NBTと音の移行修正、worldgenのfeature順序・重複修正を記録
+- 開発索引・AI生成規則・継承と実験利用の検査を更新
+
 ## 2026.10.3
 
 - `SKILL.md`全体を英語化し、既存の実装・検証規則と日本語仕様資料への参照を維持

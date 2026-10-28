@@ -152,3 +152,12 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 - report／vanilla dataとSnapshot 4の差分、`upscale`とitem音fieldのcodecを確認。記事とJARのbiome tag差異、氷の環境音の追加時点を記録。詳細は[検証記録](snapshots/26.4-snapshot-5.md#検証)
 - [Minecraft Wiki: Java Edition 26.4 Snapshot 5](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_5)はHTTP 403で取得できず、cross-check未実施
 - server reload／ゲーム内動作検証は未実施
+
+## 26.4 Snapshot 6の追加照合（2026-10-28 JST）
+
+最新収録開発バージョンは`26.4-snapshot-6`（2026-10-27、format 125.1）。Snapshot 5を継承し、正式26.3の入口を維持します。
+
+- [Mojang: 26.4 Snapshot 6](https://feedback.minecraft.net/hc/en-us/articles/49936802465805-Minecraft-Java-Edition-26-4-Snapshot-6)の詳細記事、manifest、SHA-1検証済みJARを照合
+- report／vanilla dataとSnapshot 5の差分、`domain_warp`／`gradient`／`corner_constraint`／archetype effectのcodecを確認。詳細は[検証記録](snapshots/26.4-snapshot-6.md#検証)
+- [Minecraft Wiki: Java Edition 26.4 Snapshot 6](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_6)はHTTP 403で取得できず、cross-check未実施
+- server reload／ゲーム内動作検証は未実施
