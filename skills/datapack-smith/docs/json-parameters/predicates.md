@@ -597,3 +597,21 @@ vanillaのFrost Walkerと`disk_clay`が使用する水源判定です。
 ```
 
 Snapshot 3以前ではfluid ID `water`自体が水源を選んでいました。Snapshot 4で旧判定をそのまま残すと流水も一致するため、水源を要求するconsumerには`source`条件を加えます。この例はworldgen用で、独立loot predicateの`type`には使えません。既存location/block/fluid predicateのfieldをこの変更だけで一括置換せず、対象consumerを確認します。JARの`MatchingFluidsPredicate` codecと評価処理を照合済みです。[出典・検証](../snapshots/26.4-snapshot-4.md)を参照してください。
+
+## 26.4 Snapshot 7のequipment saddle
+
+`26.4-snapshot-7`（format 126.0）でentity predicateの`minecraft:equipment`内に任意`saddle`を追加します。値はitem predicateで、`head`／`chest`／`legs`／`feet`／`body`／`mainhand`／`offhand`と同じcodecです。次はentity predicateの断片です。
+
+```json
+{
+  "minecraft:equipment": {
+    "saddle": {
+      "items": "minecraft:saddle"
+    }
+  }
+}
+```
+
+26.2以降のcomponent-map形式を使い、`saddle`をentity predicateのrootやitem stack componentへ置きません。field省略時はsaddle条件を付けず、存在しない装備slotを新設する効果もありません。Snapshot 6以前へこのfieldを流用しません。
+
+`EntityEquipmentPredicate`の`optionalFieldOf("saddle")`と装備slot照合を対象JARで確認しました。実際の騎乗mobに対するpredicate判定は未検証です。[出典・検証](../snapshots/26.4-snapshot-7.md#検証)を参照してください。

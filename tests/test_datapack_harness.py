@@ -31,9 +31,9 @@ class ProfileTests(unittest.TestCase):
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(73, len(order))
+        self.assertEqual(74, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual("26.4-snapshot-6", order[-1])
+        self.assertEqual("26.4-snapshot-7", order[-1])
 
     def test_release_chain_excludes_development_history(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -159,6 +159,22 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual("26.4-snapshot-6", payload["json_parameter_history"][-1]["version"])
         self.assertNotIn("26.3-rc-3", [p["version"] for p in chain])
 
+    def test_snapshot_seven_resolves_major_format_on_its_own_branch(self) -> None:
+        profiles = HARNESS.load_profiles()
+        payload = HARNESS.resolved_profile_payload("26.4-snapshot-7", profiles)
+        chain = HARNESS.resolve_chain("26.4-snapshot-7", profiles)
+        self.assertEqual(58, len(chain))
+        self.assertEqual(
+            ["26.4-snapshot-6", "26.4-snapshot-7"],
+            [p["version"] for p in chain[-2:]],
+        )
+        self.assertEqual("126.0", payload["profile"]["data_pack_format"])
+        self.assertEqual("snapshot", payload["profile"]["channel"])
+        self.assertEqual("26.4", payload["profile"]["snapshot_for"])
+        self.assertEqual(25, HARNESS.required_java_major("26.4-snapshot-7", profiles))
+        self.assertEqual("26.4-snapshot-7", payload["json_parameter_history"][-1]["version"])
+        self.assertNotIn("26.3-rc-3", [p["version"] for p in chain])
+
     def test_compatibility_is_normalized(self) -> None:
         profiles = HARNESS.load_profiles()
         for profile in profiles.values():
@@ -281,16 +297,22 @@ class PackValidationTests(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def test_snapshot_six_metadata_distinguishes_minor_formats(self) -> None:
-        for minor, accepted in ((0, False), (1, True)):
-            with self.subTest(minor=minor), tempfile.TemporaryDirectory() as temporary:
+    def test_snapshot_metadata_distinguishes_major_and_minor_formats(self) -> None:
+        cases = (
+            ("26.4-snapshot-6", [125, 0], False),
+            ("26.4-snapshot-6", [125, 1], True),
+            ("26.4-snapshot-7", [125, 1], False),
+            ("26.4-snapshot-7", [126, 0], True),
+        )
+        for version, pack_format, accepted in cases:
+            with self.subTest(version=version, pack_format=pack_format), tempfile.TemporaryDirectory() as temporary:
                 pack = Path(temporary)
                 self.make_pack(pack, {"pack": {
                     "description": "snapshot test",
-                    "min_format": [125, minor],
-                    "max_format": [125, minor],
+                    "min_format": pack_format,
+                    "max_format": pack_format,
                 }})
-                result = HARNESS.validate_pack("26.4-snapshot-6", pack, None, self.profiles)
+                result = HARNESS.validate_pack(version, pack, None, self.profiles)
                 self.assertEqual(accepted, not result.errors, result.errors)
 
     def test_plural_pack_passes_static_checks(self) -> None:

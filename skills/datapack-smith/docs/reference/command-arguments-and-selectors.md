@@ -210,3 +210,36 @@ selector、resource ID、command断片、NBT pathへ外部文字列を挿入す�
 
 - 対象server JARの`reports/commands.json`
 - 各 [`../versions/<version>.md`](../versions/README.md) のcommand差分
+
+## 26.4 Snapshot 7の効果tagと時間引数
+
+`26.4-snapshot-7`（format 126.0）で`effect give`／`effect clear`の効果引数が`minecraft:resource_or_tag`へ変わります。参照先は`minecraft:mob_effect` registryで、単一IDまたは`#namespace:id`を指定します。tagが展開した効果へ処理を行い、entityのscoreboard tagやentity type tagを指定するものではありません。
+
+`data/example/tags/mob_effect/travel.json`:
+
+```json
+{
+  "values": ["minecraft:speed", "minecraft:jump_boost"]
+}
+```
+
+```mcfunction
+# 26.4-snapshot-7、上のtagを同梱したpack内
+# executorがliving entityである入口から実行する
+effect give @s #example:travel 30 0 true
+effect clear @s #example:travel
+```
+
+`reports/datapack.json`ではmob effect registryは`elements: false`、`tags: true`です。tagを定義できても独自mob effect本体のJSONを追加できるとは判断しません。vanilla生成物にmob effect tagの定義がないことも、独自tagが使えない証拠ではありません。
+
+同バージョンの`TimeArgument`はdouble入力を`d`（24000）、`s`（20）、`t`／単位なし（1）でtickへ換算し、`Math.round`したlong値を下限・上限と比較してからintegerへ変換します。既定上限は2,147,483,647 tickです。commandによって下限や指定上限が異なるため、対象branchも確認します。
+
+| 入力 | 実parserで確認した結果 |
+|---|---|
+| `2147483647t` | 2,147,483,647 tickとして受理 |
+| `2147483648t` | 上限超過で拒否 |
+| `107374182.35s` | 2,147,483,647 tickとして受理 |
+| `107374182.4s` | 上限超過で拒否 |
+| `1d` | 24,000 tickとして受理 |
+
+この上限をJSONのduration、loot number provider、`effect give`の秒数へ一律適用しません。`effect give`の秒数は専用のinteger引数で、time suffixを受け付ける引数ではありません。効果tagの実際の付与・除去とcommandのresult値は未検証です。[出典・検証](../snapshots/26.4-snapshot-7.md#検証)を参照してください。

@@ -810,3 +810,11 @@ cross-check:
 - [Minecraft Wiki: Item modifier](https://minecraft.wiki/w/Item_modifier)
 - [Minecraft Wiki: Recipe](https://minecraft.wiki/w/Recipe)
 - [Minecraft Wiki: Data pack](https://minecraft.wiki/w/Data_pack)
+
+## 26.4 Snapshot 7の建材とchest loot
+
+`26.4-snapshot-7`（format 126.0）ではCalcite系のcraft／stonecutting recipeを34件追加します。Calcite Pillarは縦2個のCalciteから2個、Polished Calciteは2×2 Calcite、Polished Calcite Bricksは2×2 Polished Calciteでcraftします。各variantとstonecuttingの入力・個数は対象vanilla recipeで確定します。
+
+Iglooの`minecraft:chests/igloo_chest`には`minecraft:random_chance` 0.3の独立poolを追加し、成立時に`minecraft:music_disc_flurry`を1枚生成します。Ancient Cityには既存poolのentryとして`minecraft:chiseled_soulshale`をweight 3で追加します。後者を「3%」と読み替えません。Chiseled Soulshaleのrecipeは生成dataに存在せず、vanilla craft可能と推測しません。
+
+13種類の新blockのlootも追加します。recipe／lootの外形schemaの変更とは区別し、26.3以降の`type`／`condition`形式を使います。[対象profileと照合記録](../snapshots/26.4-snapshot-7.md)を参照してください。

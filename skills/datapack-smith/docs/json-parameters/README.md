@@ -162,6 +162,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.4-snapshot-4`](../snapshots/26.4-snapshot-4.md) | 124.0 | fluid stateとpredicate、音field任意化、crevasse、Brittle Ice |
 | [`26.4-snapshot-5`](../snapshots/26.4-snapshot-5.md) | 125.0 | upscaleと軸別補間、item音fieldの既定廃止、耐性tag再編、Packed Ice Bricks |
 | [`26.4-snapshot-6`](../snapshots/26.4-snapshot-6.md) | 125.1 | gradientのY anchor、domain_warp、corner_constraint、archetypeのlocation effect、Snow Bricks |
+| [`26.4-snapshot-7`](../snapshots/26.4-snapshot-7.md) | 126.0 | effectの効果tag、時間上限、equipmentのsaddle、Calcite建材、Flurry、entity type tag削除 |
 
 ## 対象バージョンの機械カタログ
 

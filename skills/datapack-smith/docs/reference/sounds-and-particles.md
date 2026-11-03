@@ -219,3 +219,20 @@ registry reportではsound eventを23件追加しています。blue ice、frost
 `26.4-snapshot-5`（format 125.0）で`consumable.sound`と`equippable.equip_sound`／`shearing_sound`の旧既定音を廃止し、省略時は音を指定しません。vanilla itemのdefault componentは必要な音を明示しています。[item componentの移行表](../json-parameters/items.md#264-snapshot-5の音field)を参照してください。
 
 sound event `minecraft:block.ice.ambient`はこのSnapshotで追加されます。Snapshot 4のregistryには存在しません。氷の周囲と上下の条件を満たす場合の環境音で、再生挙動は未検証です。[出典・検証](../snapshots/26.4-snapshot-5.md)を参照してください。
+
+## 26.4 Snapshot 7のsongとsound set
+
+`26.4-snapshot-7`（format 126.0）でitem `minecraft:music_disc_flurry`、jukebox song `minecraft:flurry`、sound event `minecraft:music_disc.flurry`を追加します。itemの`minecraft:jukebox_playable`はsong IDを参照し、sound event IDを直接入れません。生成されたsong resourceは次の形です。
+
+```json
+{
+  "comparator_output": 7,
+  "description": {"translate": "jukebox_song.minecraft.flurry"},
+  "length_in_seconds": 154.0,
+  "sound_event": "minecraft:music_disc.flurry"
+}
+```
+
+配置は`data/minecraft/jukebox_song/flurry.json`です。独自songなら自namespaceを使います。Iglooのchest抽選は[lootの差分](../json-parameters/loot-recipes.md#264-snapshot-7の建材とchest-loot)を参照してください。
+
+block sound set `minecraft:twisting_vines`を削除し、`minecraft:chiseled_soulshale`を追加します。新sound eventは`minecraft:entity.parrot.imitate.frostbite`、`minecraft:music_disc.flurry`と`minecraft:block.chiseled_soulshale.break`／`fall`／`hit`／`place`／`step`です。block sound set ID、sound event、clientの音assetは別の参照です。JSONとregistryは照合済みですが、音再生・playlist・comparatorのゲーム内動作は未検証です。[出典・検証](../snapshots/26.4-snapshot-7.md#検証)を参照してください。

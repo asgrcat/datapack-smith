@@ -332,3 +332,11 @@ vanilla advancement `minecraft:adventure/what_goes_around_comes_around`は既存
 entity type tagは`ignores_poison_and_regen`を`immune_to_poison`／`immune_to_regeneration`へ分割し、`freeze_immune_entity_types`を`immune_to_freezing`へ改名します。`immune_to_wither`／`immune_to_weakness`も追加しています。vanillaのPoisonはundead・nautilus系・spider系、Regenerationはundead、Witherはwither／wither skeleton、Weaknessはparchedを列挙します。複数耐性の判定修正があるため、旧tagの単純改名だけでなく対象mobごとの効果を確認します。
 
 Adventure worldでのmob projectileによるpot／chorus flower／speleothem破壊は`mob_griefing`で制御します。playlistのchest変更反映・負の位置の修正と、氷の環境音追加もあります。[バージョン別仕様・未検証範囲](snapshots/26.4-snapshot-5.md)を参照してください。
+
+## 26.4 Snapshot 7の建材とFreezing
+
+対象は`26.4-snapshot-7`（format 126.0）です。Calcite系12種とChiseled Soulshaleをblock／itemへ追加し、Flurry discとsongを追加します。[対象profile](snapshots/26.4-snapshot-7.md)からregistry ID、recipe、loot、Slow Bouncy用item tagを選びます。
+
+火がFreezingを革防具と同様に打ち消し、Zombie／Skeletonは革防具を1部位でも装備しているとFrostbite／Strayへ変換しなくなります。変換や凍結を使う企画では、effect付与、装備、燃焼、mob種類を組み合わせて確認します。6つの寒冷biomeにはStray spawnも追加します。
+
+Snapshot 6で追加したentity type tag `minecraft:swimming`／`minecraft:flying`は削除します。移動状態の判定にこれらのtagを生成せず、要件に合うpredicateを対象codecから選びます。fluid tag `minecraft:swimmable`は残り、entity type tagとは別物です。ゲーム内の変換・spawn・効果挙動は未検証です。

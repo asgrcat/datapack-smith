@@ -634,3 +634,11 @@ biome tagは`spawns_strays_without_powder_snow`から`spawns_cold_variants_under
 大きなoffsetが短距離で急変すると性能が大きく低下し得るため、必要な場所へ限定します。実際の地形・性能は未検証です。structure poolでのdensity function判定は[corner constraint](structures-and-jigsaw.md#264-snapshot-6のcorner-constraint)を参照してください。
 
 公式記事とJARの`DomainWarpFunction`／`GradientFunction` codec・整数変換を照合しました。[出典・検証](../snapshots/26.4-snapshot-6.md#検証)を参照してください。
+
+## 26.4 Snapshot 7のspawnと鉱石rule
+
+`26.4-snapshot-7`（format 126.0）では`deep_frozen_ocean`、`frozen_ocean`、`frozen_peaks`、`frozen_river`、`jagged_peaks`、`snowy_slopes`の6 biomeへStray spawnを追加します。
+
+生成したfeature 30件では、tuff中の鉱石が高さ0〜3でdeepslate鉱石にならない不具合の修正に伴い、`height_match` ruleの下限を0から4へ変更しています。同じformatでもtarget ruleの内容・順序は生成結果へ影響するため、独自oreとice cave oreは対象vanilla JSONと比較します。Abandoned Campの欠落structure／tree修正もありますが、任意のpoolへ同じ修正fieldを推測で追加しません。
+
+Snapshot 6の`domain_warp`・Y軸`gradient` anchor・pool elementの`corner_constraint`を継承します。[出典・生成data照合と未検証範囲](../snapshots/26.4-snapshot-7.md#検証)を参照してください。

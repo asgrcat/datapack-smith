@@ -220,6 +220,14 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 | 26.3-snapshot-10 | `/compute`と`data modify ... compute`を追加。`/swing`へ`none` animationを再追加 |
 | 26.3-pre-1 | `/compute <target> integer|float ...`と`data modify ... compute <target> integer|float ...`へ変更。provider評価失敗時はコマンドも失敗 |
 
+### 26.4開発バージョン
+
+| launcher ID | 追加・変更 |
+|---|---|
+| [26.4-snapshot-7](snapshots/26.4-snapshot-7.md) | `effect give`／`effect clear`で効果tagを許可。時間引数はtick換算・丸め後に2,147,483,647を超える値を拒否 |
+
+効果tag定義と時間parserの適用範囲は[引数リファレンス](reference/command-arguments-and-selectors.md#264-snapshot-7の効果tagと時間引数)を参照してください。
+
 開発バージョンのcommandは変更中です。正式リリース表の「現行コマンド」へ合成せず、対象IDの`commands.json`を正本にします。
 
 正式26.3の`/compute`と`data modify ... compute`で使うinteger／float providerの全type、演算規則、resource例は [`reference/number-providers.md`](reference/number-providers.md) を参照してください。

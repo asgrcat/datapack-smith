@@ -2,6 +2,14 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.11.1
+
+- Java Edition `26.4-snapshot-7`プロファイルを追加（data pack format 126.0）
+- `effect give`／`effect clear`の効果tag、時間引数のtick上限、equipment predicateの`saddle`を収録
+- Calcite系建材、Chiseled Soulshale、Flurry discとsong、recipe／loot／archetype tagを追加
+- `swimming`／`flying` entity type tagと`twisting_vines` block sound setの削除、Freezing・変換・spawn・worldgen・debug worldの変更を記録
+- 開発索引・AI生成規則・継承と実験利用・metadata境界の検査を更新
+
 ## 2026.10.4
 
 - Java Edition `26.4-snapshot-6`プロファイルを追加（data pack format 125.1）

@@ -161,3 +161,12 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 - report／vanilla dataとSnapshot 5の差分、`domain_warp`／`gradient`／`corner_constraint`／archetype effectのcodecを確認。詳細は[検証記録](snapshots/26.4-snapshot-6.md#検証)
 - [Minecraft Wiki: Java Edition 26.4 Snapshot 6](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_6)はHTTP 403で取得できず、cross-check未実施
 - server reload／ゲーム内動作検証は未実施
+
+## 26.4 Snapshot 7の追加照合（2026-11-04 JST）
+
+最新収録開発バージョンは`26.4-snapshot-7`（2026-11-03、format 126.0）。Snapshot 6を継承し、正式26.3の入口を維持します。
+
+- [Mojang: 26.4 Snapshot 7](https://feedback.minecraft.net/hc/en-us/articles/50105303425933-Minecraft-Java-Edition-26-4-Snapshot-7)の詳細記事、manifest、SHA-1検証済みJARを照合
+- report／vanilla dataとSnapshot 6の差分、effect引数のtag展開、equipmentの`saddle`、時間引数の上限と実parserの境界値を確認。名称が伏せられた装飾blockはJARで確認。詳細は[検証記録](snapshots/26.4-snapshot-7.md#検証)
+- [Minecraft Wiki: Java Edition 26.4 Snapshot 7](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_7)はHTTP 403で取得できず、cross-check未実施
+- server reload／ゲーム内動作検証は未実施
