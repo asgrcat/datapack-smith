@@ -170,3 +170,12 @@ Wiki の `Pack format` 本文や一覧には更新遅れの注意書きが出る
 - report／vanilla dataとSnapshot 6の差分、effect引数のtag展開、equipmentの`saddle`、時間引数の上限と実parserの境界値を確認。名称が伏せられた装飾blockはJARで確認。詳細は[検証記録](snapshots/26.4-snapshot-7.md#検証)
 - [Minecraft Wiki: Java Edition 26.4 Snapshot 7](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_7)はHTTP 403で取得できず、cross-check未実施
 - server reload／ゲーム内動作検証は未実施
+
+## 26.4 Snapshot 8の追加照合（2026-11-11 JST）
+
+`26.4-snapshot-8`（2026-11-10、format 127.0）はSnapshot 7を継承します。
+
+- [Mojang: 26.4 Snapshot 8](https://feedback.minecraft.net/hc/en-us/articles/50283800967053-Minecraft-Java-Edition-26-4-Snapshot-8)の詳細記事、manifest、SHA-1検証済みJARを照合
+- command reportの引数とcontext、新規`loot_context_requirements.json`、registry、生成tag、Cold archetypeをSnapshot 7と比較。詳細は[検証記録](snapshots/26.4-snapshot-8.md#検証)
+- [Minecraft Wiki: Java Edition 26.4 Snapshot 8](https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_8)はHTTP 403で取得できず、cross-check未実施
+- server reload／ゲーム内動作検証は未実施

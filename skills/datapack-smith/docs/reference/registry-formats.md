@@ -630,3 +630,7 @@ vanilla `minecraft:cold` archetypeは`items: "#minecraft:sulfur_cube_archetype/c
 Coldの`location_based_effects`は`minecraft:replace_disk`を使い、半径3、高さ1、offset `[0, -1, 0]`で`minecraft:frosted_ice`を配置します。水block・water fluid・上の空気・非妨害をworldgen block predicateで確認し、effectの`requirements`では接地と乗り物に乗っていないことを確認します。条件とlevel固定はarchetype consumerの規則で、Frost Walker enchantmentのlevelをそのまま付与する実装ではありません。
 
 公式記事、生成した`cold.json`、`SulfurCubeArchetype`の空list既定値とlocation effect codecを照合しました。実際の移動・凍結は未検証です。[出典・検証](../snapshots/26.4-snapshot-6.md#検証)を参照してください。
+
+## 26.4 Snapshot 8のCold archetype
+
+`minecraft:cold`のvanilla定義では`buoyant: true`が消え、codecの既定falseが適用されます。`location_based_effects`内の`minecraft:replace_disk`は水源だけを対象にします。水判定には`minecraft:matching_fluids`の`fluids: "minecraft:water"`と`state: {"source": "true"}`を併用します。これはfluid stateの条件で、同名のblock stateを指定するものではありません。

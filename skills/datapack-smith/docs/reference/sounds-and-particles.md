@@ -236,3 +236,7 @@ sound event `minecraft:block.ice.ambient`はこのSnapshotで追加されます�
 配置は`data/minecraft/jukebox_song/flurry.json`です。独自songなら自namespaceを使います。Iglooのchest抽選は[lootの差分](../json-parameters/loot-recipes.md#264-snapshot-7の建材とchest-loot)を参照してください。
 
 block sound set `minecraft:twisting_vines`を削除し、`minecraft:chiseled_soulshale`を追加します。新sound eventは`minecraft:entity.parrot.imitate.frostbite`、`minecraft:music_disc.flurry`と`minecraft:block.chiseled_soulshale.break`／`fall`／`hit`／`place`／`step`です。block sound set ID、sound event、clientの音assetは別の参照です。JSONとregistryは照合済みですが、音再生・playlist・comparatorのゲーム内動作は未検証です。[出典・検証](../snapshots/26.4-snapshot-7.md#検証)を参照してください。
+
+## 26.4 Snapshot 8の氷の環境音
+
+`26.4-snapshot-8`ではblock tag `minecraft:triggers_ambient_ice_block_sounds`（vanillaはIce）と`minecraft:triggers_ambient_ice_crystal_sounds`（vanillaはPacked Ice）を追加します。配置は`data/<namespace>/tags/block/`です。対象blockを列挙するtagで、sound event IDを値に入れません。`minecraft:block.ice.ambient`のカテゴリを環境音へ修正し、Frostbite専用の`minecraft:entity.frostbite.throw`を追加します。実際の音再生は未検証です。

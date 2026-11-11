@@ -225,6 +225,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 | launcher ID | 追加・変更 |
 |---|---|
 | [26.4-snapshot-7](snapshots/26.4-snapshot-7.md) | `effect give`／`effect clear`で効果tagを許可。時間引数はtick換算・丸め後に2,147,483,647を超える値を拒否 |
+| [26.4-snapshot-8](snapshots/26.4-snapshot-8.md) | loot系引数のcontext検証とcompile error、`commands.json`の`argument`形式 |
 
 効果tag定義と時間parserの適用範囲は[引数リファレンス](reference/command-arguments-and-selectors.md#264-snapshot-7の効果tagと時間引数)を参照してください。
 

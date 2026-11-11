@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.11.2
+
+- Java Edition `26.4-snapshot-8`プロファイルを追加（data pack format 127.0）
+- loot系resourceの再帰・context検証、コマンドのcompile error、`loot_context_requirements.json`と新しいcommand reportの読み方を収録
+- 氷の環境音tag、Freezing耐性、Ice Ball、Cold Sulfur Cubeの浮力と水源判定の変更を反映
+- 開発索引・AI生成規則・継承と実験利用・metadata境界の検査を更新
+
 ## 2026.11.1
 
 - Java Edition `26.4-snapshot-7`プロファイルを追加（data pack format 126.0）

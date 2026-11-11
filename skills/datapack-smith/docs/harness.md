@@ -127,6 +127,8 @@ outputは新規または空のdirectoryを指定します。別versionや失敗�
 区別します。itemの既定componentは`reports/minecraft/components/item/`、
 実際のJSON例は`data/minecraft/`を使います。
 
+Snapshot 8では`reports/loot_context_requirements.json`も生成されます。`commands.json`の`argument.context`と照合して[context検証](validation.md#264-snapshot-8のcontext検証)に使います。ハーネスのcommand root検査は従来どおり`children`を読むため、新しい引数node形式でも利用できます。
+
 ## 5. JSONパラメータカタログ
 
 data generatorの出力から、対象バージョン固有のitem component、enchantment effect、variant、worldgen、predicate、advancement trigger、loot、recipeのtype IDと、vanilla JSONで観測できるfield pathを集計します。

@@ -50,6 +50,7 @@ Java の必要バージョンもゲームバージョンに合わせます。代
 |---|---|
 | `generated/reports/datapack.json` | resourceを追加できるregistry、tag対応、安定性、function／structure形式の照合 |
 | `generated/reports/commands.json` | literal、argument parser、分岐、実行可能な全 command tree |
+| `generated/reports/loot_context_requirements.json` | Snapshot 8で追加。contextごとの許可値と必須値 |
 | `generated/reports/registries.json` | data generatorがこのreportに公開するregistryとentry ID |
 | block/item 等の report | block state、item、protocol/data の照合 |
 | `generated/reports/minecraft/components/item/` | item IDごとの既定data component |
@@ -77,12 +78,32 @@ catalog作成時は`reports` commandが生成した`.datapack-harness-report.jso
 `commands.json` は Brigadier の tree です。
 
 - `type: "literal"`: 固定文字
-- `type: "argument"`: `parser` が引数型。`properties` が追加制約
+- `type: "argument"`: Snapshot 7以前は `parser` が引数型、`properties` が追加制約。Snapshot 8では [`argument.type` と `argument` 内の制約](reference/command-tree.md#264-snapshot-8のcommand-report)を参照
 - `executable: true`: その node で command を終えられる
 - `children`: 次の分岐
 - `redirect`: 別 node へ接続する alias/redirect
 
 AI は Wiki の短縮構文より command graph を優先し、`parser` の単数/複数 entity、resource/tag、整数/浮動小数、range を維持します。
+
+### 26.4 Snapshot 8のcontext検証
+
+`26.4-snapshot-8`（format 127.0）では、loot系resourceを参照するコマンドがcompile時に検証されます。functionとconsoleの両方が対象です。多くの問題を報告してもresourceを読めるようになりましたが、JSON構文やcodecの不正、検証される経路の再帰参照や必須context不足まで許容されるわけではありません。
+
+1. `commands.json`で使用する**引数node**の`argument.context`を読む。同じ引数型でも、たとえば`loot ... fish`と`loot ... loot`のtable引数は別contextになる。
+2. 同じJARの`loot_context_requirements.json`でcontext IDを引く。`allowed`は参照可能な値の集合、`required`はcontextを作る際に必須の値の集合。許可された任意値が実行時にも必ず存在するとは限らない。
+3. inline値、resource ID、tag経由の参照をたどり、循環と不足するcontext値を調べる。resourceの配置やparse成功だけで呼び出し先の適合を判定しない。
+
+| 呼び出し | context | 判定例 |
+|---|---|---|
+| `execute if predicate` | `minecraft:command_predicate` | `origin`、`this_entity`が許可される |
+| `item ... modify` | `minecraft:command_modifier` | `tool`が許可されないため、それを必要とする`minecraft:apply_bonus`は使えない |
+| `compute entity` | `minecraft:command_compute_entity` | `enchantment_level`が許可されないため、それを必要とする`minecraft:enchantment_level` providerは使えない |
+
+旧`minecraft:command`は`command_predicate`と`command_modifier`に分割されました。2つの許可値が同じでも、参照するcontext IDは対象のcommand reportから選びます。
+
+条件付きの箇所は、`number_dispatcher`のcaseの`condition`、`villager_trade`の`merchant_predicate`、loot pool／entry／functionの`condition`です。条件がないか、そのcontextで成立し得る場合は処理本体も検証されます。条件式自体も検証されるので、条件を付けるだけではerrorを回避できません。context間で安全に共有できることを確かめられない場合は、用途ごとにresourceを分けます。
+
+ハーネスの静的検査はコマンドのrootなどを確認します。参照先を展開したcontext検証やゲームのcompile結果は、対象バージョンの実際の検証と分けて報告します。
 
 ## 3. vanilla data を schema example として使う
 

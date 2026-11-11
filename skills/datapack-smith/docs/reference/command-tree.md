@@ -6,6 +6,8 @@
 
 ## node
 
+以下の例はSnapshot 7までの形式です。Snapshot 8の配置は[新しいcommand report](#264-snapshot-8のcommand-report)を参照してください。
+
 ```json
 {
   "type": "argument",
@@ -127,3 +129,30 @@ root commandの追加だけでなく、同じroot以下のnodeを再帰的に比
 [ ] inline JSON／SNBTを対象codecで検証した
 [ ] success、result、permission、chunk条件を機能テストした
 ```
+
+## 26.4 Snapshot 8のcommand report
+
+`26.4-snapshot-8`では引数の情報がnode直下の`parser`／`properties`から`argument`へ移ります。引数型は`argument.type`に、`min`／`max`／`registry`／`context`などは`argument`直下に置かれます。nodeの`type: "argument"`と引数の`argument.type`を区別します。
+
+```json
+{
+  "type": "argument",
+  "argument": {
+    "type": "minecraft:integer",
+    "max": 1000,
+    "min": 1
+  },
+  "executable": true,
+  "permissions": {
+    "type": "minecraft:always_pass"
+  }
+}
+```
+
+- 数値・bool・文字列のparser IDは`brigadier:`から`minecraft:`へ変わります。たとえば`brigadier:integer`は`minecraft:integer`です。`resource_key`／`resource_or_tag_key`は対応する`resource`／`resource_or_tag`へ変わります。
+- `permissions`はそのnodeに記録された権限条件です。1つのnodeが`always_pass`でも、経路上の他nodeや実行環境の制約を確認します。
+- `custom_suggestion`は補完情報です。たとえば`advancement grant ... only ... <criterion>`のcriterionは`{"type": "minecraft:ask_server"}`です。候補の表示と構文の受理を混同しません。
+- `argument.context`はcontext依存のfloat／int provider、loot modifier／predicate／table、slot sourceで使います。判定は[context検証](../validation.md#264-snapshot-8のcontext検証)を参照してください。
+- 正規表現用の`minecraft:pattern`はserver-side mod／plugin向けに追加されたparserです。vanillaの生成command treeでは使われていません。
+
+Snapshot 7からnode path・node type・実行可能位置・redirectに差分はありません。report形式の差分をコマンドの追加・削除と判断しません。
