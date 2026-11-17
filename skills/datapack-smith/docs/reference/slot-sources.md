@@ -3,7 +3,7 @@ type: "Reference"
 title: "Slot source"
 description: "1.21.11／26.3のslot source、command・lootとの接続、全type"
 tags: ["minecraft-java", "reference", "slot-sources"]
-sources: [{"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-498e73bd7d", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1", "title": "Mojang: Minecraft 26.3 Snapshot 1"}, {"id": "source-8e7ff08d00", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4", "title": "Mojang: Minecraft 26.3 Snapshot 4"}, {"id": "source-ee795decb8", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9", "title": "Mojang: Minecraft 26.3 Snapshot 9"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}]
+sources: [{"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-498e73bd7d", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1", "title": "Mojang: Minecraft 26.3 Snapshot 1"}, {"id": "source-8e7ff08d00", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4", "title": "Mojang: Minecraft 26.3 Snapshot 4"}, {"id": "source-ee795decb8", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9", "title": "Mojang: Minecraft 26.3 Snapshot 9"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
 ---
 
 # Slot source
@@ -224,3 +224,11 @@ itemをcopyするのか、外側loot functionで変更するのか、実際のco
 [^source-8e7ff08d00]: [Mojang: Minecraft 26.3 Snapshot 4](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4)
 [^source-ee795decb8]: [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
 [^source-f351b8ed57]: [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
+
+## 26.4 Snapshot 9のitem修正
+
+`item`におけるfiltered／limit_slotsの評価順（MC-312753）、group内の入れ子limit（MC-312903）、modifyの暗黙の空slot除外（MC-312967）、sourceが0 slotのoverride（MC-313021）を修正します。同じslot source JSONでも、選択するslotの数・順序・空slotの扱いをSnapshot 8と同一と判断しません。
+
+既存packの移行では空／満杯inventory、filter前後のlimit、groupの入れ子、sourceが0件の場合を機能testに含めます。本資料でこれらのゲーム内結果は新たに検証していません。[^snapshot-9]
+
+[^snapshot-9]: [Java Edition 26.4 Snapshot 9の公式資料・JAR照合](../snapshots/26.4-snapshot-9.md)

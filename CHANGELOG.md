@@ -2,6 +2,13 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.11.4
+
+- Java Edition `26.4-snapshot-9`プロファイルを追加（data pack format 128.0）
+- Dispenserのデータ駆動registry／component、24 behavior typeと27 vanilla entry、必須fieldと停止条件を収録
+- Boat／Minecartのentity_data、2D local座標、particle field、honeycomb transformerとcommand／slot source修正を反映
+- OKFの出典・knowledge履歴・索引、バージョン継承と実験利用・metadata境界の検査を更新
+
 ## 2026.11.3
 
 - 日本語仕様資料をOKF v0.2 knowledge bundleへ移行し、全conceptへtype・title・description・tags・sourcesを追加

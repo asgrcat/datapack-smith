@@ -28,6 +28,7 @@
 - [Java Edition 26.4 Snapshot 6](26.4-snapshot-6.md) - Java Edition 26.4-snapshot-6のdata pack format 125.1、仕様差分、JSONパラメータと生成規則。
 - [Java Edition 26.4 Snapshot 7](26.4-snapshot-7.md) - Java Edition 26.4-snapshot-7のdata pack format 126.0、仕様差分、JSONパラメータと生成規則。
 - [Java Edition 26.4 Snapshot 8](26.4-snapshot-8.md) - Java Edition 26.4-snapshot-8のdata pack format 127.0、仕様差分、JSONパラメータと生成規則。
+- [Java Edition 26.4 Snapshot 9](26.4-snapshot-9.md) - Java Edition 26.4-snapshot-9のformat 128.0、Dispenserのデータ駆動化、2D local座標と修正差分。
 
 ## Playbook
 

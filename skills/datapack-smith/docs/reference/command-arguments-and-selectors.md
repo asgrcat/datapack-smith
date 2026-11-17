@@ -3,7 +3,7 @@ type: "Reference"
 title: "Command引数、座標、selector"
 description: "座標、範囲、resource location、selector、block state、item stack、macro"
 tags: ["minecraft-java", "reference", "command-arguments-and-selectors"]
-sources: [{"id": "source-8375a55662", "resource": "対象server JARのreports/commands.json", "title": "対象server JARのreports/commands.json"}, {"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}]
+sources: [{"id": "source-8375a55662", "resource": "対象server JARのreports/commands.json", "title": "対象server JARのreports/commands.json"}, {"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
 ---
 
 # Command引数、座標、selector
@@ -254,3 +254,13 @@ effect clear @s #example:travel
 | `1d` | 24,000 tickとして受理 |
 
 この上限をJSONのduration、loot number provider、`effect give`の秒数へ一律適用しません。`effect give`の秒数は専用のinteger引数で、time suffixを受け付ける引数ではありません。効果tagの実際の付与・除去とcommandのresult値は未検証です。[出典・検証](../snapshots/26.4-snapshot-7.md#検証)を参照してください。
+
+## 26.4 Snapshot 9の2D local座標
+
+`26.4-snapshot-9`（format 128.0）では`forceload`の座標、`spreadplayers`のcenter、`worldborder center`で`^<left> ^<forwards>`を指定できます。2値だけを使い、回転はY軸周りだけを考慮します。3Dの`^left ^0 ^forwards`をXZ平面へ投影する形とは異なります。
+
+たとえばentityをexecutorにする`execute as @s at @s run worldborder center ^ ^10`はその位置・yawに対する指定です。world borderを変更する例なので、隔離した検証worldで評価します。`forceload`の座標は対象chunkを選ぶblock単位のXZであり、chunk indexを直接入力するものではありません。
+
+JARのVec2／ColumnPos parserをserver起動なしで実行し、`^1 ^2`／`^ ^`は受理、`^1 ~2`は拒否されました。実worldでの位置・方角・chunk選択結果は未検証です。[^snapshot-9]
+
+[^snapshot-9]: [Java Edition 26.4 Snapshot 9の公式資料・JAR照合](../snapshots/26.4-snapshot-9.md)

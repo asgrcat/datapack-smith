@@ -188,6 +188,11 @@ class ProjectConfigurationTests(unittest.TestCase):
 
     def test_release_and_development_ranges_follow_the_selected_branch(self) -> None:
         cases = [
+            ("26.4-snapshot-9", "26.3", "26.4-snapshot-9", True, True),
+            ("26.4-snapshot-9", "26.3", "26.4-snapshot-9", False, False),
+            ("26.4-snapshot-9", "26.3", "26.4-snapshot-8", True, False),
+            ("26.4-snapshot-8", "26.3", "26.4-snapshot-9", True, True),
+            ("26.3-rc-3", "26.2", "26.4-snapshot-9", True, False),
             ("26.4-snapshot-8", "26.3", "26.4-snapshot-8", True, True),
             ("26.4-snapshot-8", "26.3", "26.4-snapshot-8", False, False),
             ("26.4-snapshot-8", "26.3", "26.4-snapshot-7", True, False),
@@ -301,7 +306,7 @@ class ProjectConfigurationTests(unittest.TestCase):
             )
 
         self.assertEqual(0, completed.returncode, completed.stderr)
-        self.assertIn("validated 75 profiles", completed.stdout)
+        self.assertIn("validated 76 profiles", completed.stdout)
 
     def test_validate_project_uses_configured_pack_root(self) -> None:
         config = template_config()

@@ -3,7 +3,7 @@ type: "Reference"
 title: "サウンドとパーティクル"
 description: "`playsound`、`stopsound`、`particle`、resource pack境界、負荷"
 tags: ["minecraft-java", "reference", "sounds-and-particles"]
-sources: [{"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-adc5c18991", "resource": "build/minecraft/26.3/generated/reports/commands.json（26.3公式server JARから生成、commit対象外）", "title": "build/minecraft/26.3/generated/reports/commands.json（26.3公式server JARから生成、commit対象外）"}, {"id": "source-36faa109ab", "resource": "build/minecraft/26.3/generated/reports/registries.json（同上）", "title": "build/minecraft/26.3/generated/reports/registries.json（同上）"}]
+sources: [{"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-adc5c18991", "resource": "build/minecraft/26.3/generated/reports/commands.json（26.3公式server JARから生成、commit対象外）", "title": "build/minecraft/26.3/generated/reports/commands.json（26.3公式server JARから生成、commit対象外）"}, {"id": "source-36faa109ab", "resource": "build/minecraft/26.3/generated/reports/registries.json（同上）", "title": "build/minecraft/26.3/generated/reports/registries.json（同上）"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
 ---
 
 # サウンドとパーティクル
@@ -250,3 +250,11 @@ block sound set `minecraft:twisting_vines`を削除し、`minecraft:chiseled_sou
 ## 26.4 Snapshot 8の氷の環境音
 
 `26.4-snapshot-8`ではblock tag `minecraft:triggers_ambient_ice_block_sounds`（vanillaはIce）と`minecraft:triggers_ambient_ice_crystal_sounds`（vanillaはPacked Ice）を追加します。配置は`data/<namespace>/tags/block/`です。対象blockを列挙するtagで、sound event IDを値に入れません。`minecraft:block.ice.ambient`のカテゴリを環境音へ修正し、Frostbite専用の`minecraft:entity.frostbite.throw`を追加します。実際の音再生は未検証です。
+
+## 26.4 Snapshot 9のparticle fieldとFire音
+
+`minecraft:current_down`は必須`radius`（0以上のfloat）を持つ型へ変わります。`minecraft:bubble_column_up`は任意`pop_chance`（0.0〜1.0、既定0.0）を追加します。popはlifecycleの最後にparticleと音を発生させる確率です。例は`particle minecraft:current_down{radius:0.5} ~ ~ ~`と`particle minecraft:bubble_column_up{pop_chance:1.0} ~ ~ ~`です。これらのcommandのゲーム内実行は未検証です。
+
+Fire／Soul Fireはblock破壊時にも消火音を使います。生成dataではblock sound set `minecraft:fire`を追加しています。DispenserのFire Charge／Fireworkの音カテゴリもBlocksへ修正されます。射出音のfieldは[dispense behavior](dispense-behaviors.md#shoot_projectile)を参照してください。[^snapshot-9]
+
+[^snapshot-9]: [Java Edition 26.4 Snapshot 9の公式資料・JAR照合](../snapshots/26.4-snapshot-9.md)

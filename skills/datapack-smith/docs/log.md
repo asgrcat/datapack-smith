@@ -1,5 +1,11 @@
 # Knowledge更新履歴
 
+## 2026-11-18
+
+- **追加**: [26.4 Snapshot 9](snapshots/26.4-snapshot-9.md)（format 128.0）と[Dispenser behavior](reference/dispense-behaviors.md)を収録。公式JARの生成物・codecを照合。
+- **更新**: 2D local座標、文字列引数report、particle field、entity_data、honeycomb transformerとslot sourceの修正を各referenceへ反映。
+- **検証範囲**: 2D parserとbehaviorのlist codecをserver起動なしで確認。server reload／ゲーム内動作と、取得できなかったMinecraft Wikiの照合は未実施。
+
 ## 2026-11-17
 
 - **移行**: 既存の日本語仕様資料125 conceptをOKF v0.2へ移行し、metadataと各階層の[index.md](index.md)を整備。

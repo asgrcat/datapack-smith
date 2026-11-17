@@ -31,9 +31,9 @@ class ProfileTests(unittest.TestCase):
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(75, len(order))
+        self.assertEqual(76, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual("26.4-snapshot-8", order[-1])
+        self.assertEqual("26.4-snapshot-9", order[-1])
 
     def test_release_chain_excludes_development_history(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -189,6 +189,21 @@ class ProfileTests(unittest.TestCase):
         self.assertTrue(any("loot_context_requirements.json" in rule for rule in payload["active_ai_rules"]))
         self.assertFalse(any("loot_context_requirements.json" in rule for rule in previous["active_ai_rules"]))
 
+    def test_snapshot_nine_resolves_the_next_format_and_rule_history(self) -> None:
+        profiles = HARNESS.load_profiles()
+        previous = HARNESS.resolved_profile_payload("26.4-snapshot-8", profiles)
+        payload = HARNESS.resolved_profile_payload("26.4-snapshot-9", profiles)
+        self.assertEqual(
+            previous["inheritance_chain"] + ["26.4-snapshot-9"],
+            payload["inheritance_chain"],
+        )
+        self.assertEqual("128.0", payload["profile"]["data_pack_format"])
+        self.assertEqual("snapshot", payload["profile"]["channel"])
+        self.assertEqual("26.4", payload["profile"]["snapshot_for"])
+        self.assertEqual(25, payload["required_java_major"])
+        self.assertIn("dispense_behavior", payload["json_parameter_history"][-1]["changes"]["item"])
+        self.assertFalse(any("dispense" in rule for rule in previous["active_ai_rules"]))
+
     def test_compatibility_is_normalized(self) -> None:
         profiles = HARNESS.load_profiles()
         for profile in profiles.values():
@@ -319,6 +334,8 @@ class PackValidationTests(unittest.TestCase):
             ("26.4-snapshot-7", [126, 0], True),
             ("26.4-snapshot-8", [126, 0], False),
             ("26.4-snapshot-8", [127, 0], True),
+            ("26.4-snapshot-9", [127, 0], False),
+            ("26.4-snapshot-9", [128, 0], True),
         )
         for version, pack_format, accepted in cases:
             with self.subTest(version=version, pack_format=pack_format), tempfile.TemporaryDirectory() as temporary:

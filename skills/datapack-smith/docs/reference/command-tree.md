@@ -3,7 +3,7 @@ type: "Reference"
 title: "コマンド木と引数parser"
 description: "`commands.json`、argument parser、構文分岐、result検証"
 tags: ["minecraft-java", "reference", "command-tree"]
-sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
 ---
 
 # コマンド木と引数parser
@@ -164,3 +164,11 @@ root commandの追加だけでなく、同じroot以下のnodeを再帰的に比
 - 正規表現用の`minecraft:pattern`はserver-side mod／plugin向けに追加されたparserです。vanillaの生成command treeでは使われていません。
 
 Snapshot 7からnode path・node type・実行可能位置・redirectに差分はありません。report形式の差分をコマンドの追加・削除と判断しません。
+
+## 26.4 Snapshot 9の文字列report修正
+
+`argument.type`の`minecraft:string`は`minecraft:word`／`minecraft:quoted_string`／`minecraft:greedy_string`へ分離されます。Snapshot 8では文字列のmodeと引数typeを同じfieldへ記録していた不具合（MC-313181）があり、reportの`type`だけで受理する文字列を決めません。
+
+Snapshot 9のtag名はword、datapack名はquoted string、helpのcommandはgreedy stringです。以前のreportと単純なfield比較をして、すべてを新しいコマンド構文と判断しません。`schedule`や`title ... times`のtime引数には`min: 0`も記録されます。runtimeのerrorや後続引数の修正は対象profileを参照してください。[^snapshot-9]
+
+[^snapshot-9]: [Java Edition 26.4 Snapshot 9の公式資料・JAR照合](../snapshots/26.4-snapshot-9.md)

@@ -3,7 +3,7 @@ type: "Reference"
 title: "Block transformerとblock state provider"
 description: "block transformer、block state provider、rule、配置、migration"
 tags: ["minecraft-java", "reference", "block-transformation"]
-sources: [{"id": "source-d848b11912", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2", "title": "Mojang: Minecraft 26.3 Snapshot 2"}, {"id": "source-2e6de5499b", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10", "title": "Mojang: Minecraft 26.3 Snapshot 10"}, {"id": "source-f7dee05da4", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1", "title": "Mojang: Minecraft 26.3 Pre-Release 1"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}]
+sources: [{"id": "source-d848b11912", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2", "title": "Mojang: Minecraft 26.3 Snapshot 2"}, {"id": "source-2e6de5499b", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10", "title": "Mojang: Minecraft 26.3 Snapshot 10"}, {"id": "source-f7dee05da4", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1", "title": "Mojang: Minecraft 26.3 Pre-Release 1"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
 ---
 
 # Block transformerとblock state provider
@@ -273,3 +273,11 @@ Pre-Release 1の公式JARでは、transformer resource `axe`、`hoe`、`shovel`�
 [^source-2e6de5499b]: [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
 [^source-f7dee05da4]: [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
 [^source-f351b8ed57]: [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
+
+## 26.4 Snapshot 9のhoneycomb
+
+新しいvanilla block transformer `minecraft:honeycomb`はblockをwax処理し、現在はDispenserの`transform_block` behaviorから使います。独自behaviorでは`{"type":"minecraft:transform_block","transformer":"minecraft:honeycomb"}`の形で参照します。[behaviorの配置](dispense-behaviors.md)を確認してください。
+
+`minecraft:axe`のscrape／wax除去ruleは`consume_on_use: false`を明示するよう変わります。このfieldはSnapshot 8のcodecにも存在し、省略時trueというschema自体の追加ではありません。対象vanillaのitem消費・耐久値設定を比較し、既存ruleへ推測で一律適用しません。[^snapshot-9]
+
+[^snapshot-9]: [Java Edition 26.4 Snapshot 9の公式資料・JAR照合](../snapshots/26.4-snapshot-9.md)

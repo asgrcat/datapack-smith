@@ -8,11 +8,13 @@ sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "s
 
 # データパック書式リファレンス
 
-26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)、[Snapshot 4](../snapshots/26.4-snapshot-4.md)、[Snapshot 5](../snapshots/26.4-snapshot-5.md)、[Snapshot 6](../snapshots/26.4-snapshot-6.md)、[Snapshot 7](../snapshots/26.4-snapshot-7.md)、[Snapshot 8](../snapshots/26.4-snapshot-8.md)の差分を追加適用します。正式26.3の仕様とは区別します。
+26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)、[Snapshot 4](../snapshots/26.4-snapshot-4.md)、[Snapshot 5](../snapshots/26.4-snapshot-5.md)、[Snapshot 6](../snapshots/26.4-snapshot-6.md)、[Snapshot 7](../snapshots/26.4-snapshot-7.md)、[Snapshot 8](../snapshots/26.4-snapshot-8.md)、[Snapshot 9](../snapshots/26.4-snapshot-9.md)の差分を追加適用します。正式26.3の仕様とは区別します。
 
 このディレクトリは、Java Edition 1.13から26.3までの正式リリースを対象に、データパックの配置、書式、パラメータ、参照関係を人間が追える形でまとめます。対象バージョンの差分は [`../versions/catalog.md`](../versions/catalog.md)、完全なコマンド木とregistry IDは対象バージョンの公式server JARが生成するreportを正本とします。
 
 正式26.3は[確定仕様と移行表](26.3-migration.md)を入口に、下記の専門ページを使います。26.2以前の例は対象バージョンを保ち、開発履歴は明示したlauncher IDの調査だけに使用します。
+
+Snapshot 9のDispenserは[データ駆動behavior](dispense-behaviors.md)を参照します。registry、item componentと動作順序をここで確認します。
 
 ## 読み方
 
