@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "複合gameplay要件の可否判定"
+description: "複合gameplay要件の実現可否、状態遷移、競合とcleanupの設計。"
+tags: ["minecraft-java", "gameplay-requirements"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # 複合gameplay要件の可否判定
 
 この文書は、複数のvanilla機構を組み合わせる要件について、データパック単独で可能な範囲、回避不能な挙動、代替実装、cleanup、機能testを決定します。

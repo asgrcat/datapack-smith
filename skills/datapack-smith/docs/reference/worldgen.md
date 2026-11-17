@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "world generation"
+description: "biome、feature、placement、noise、structure、dimension generator"
+tags: ["minecraft-java", "reference", "worldgen"]
+sources: [{"id": "source-37f5e68f2b", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2", "title": "Mojang: Java Edition 1.16.2"}, {"id": "source-657b15e94e", "resource": "https://www.minecraft.net/en-us/article/caves---cliffs--part-ii-out-today-java", "title": "Mojang: Java Edition 1.18"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}]
+---
+
 # world generation
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-37f5e68f2b][^source-657b15e94e][^source-c9f084f2e6][^source-3e7c128593]
 
 worldgenは単一schemaではなく、registryと`type` discriminatorで分岐するcodec群です。この文書はresource間の接続、共通field、26.2で利用できるtypeの確定方法を説明します。
 
@@ -461,10 +469,10 @@ worldgenは特に次の正式リリースでJSONを共有しません。
 
 ## 一次資料
 
-- [Mojang: Java Edition 1.16.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2)
-- [Mojang: Java Edition 1.18](https://www.minecraft.net/en-us/article/caves---cliffs--part-ii-out-today-java)
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-37f5e68f2b]: [Mojang: Java Edition 1.16.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2)
+[^source-657b15e94e]: [Mojang: Java Edition 1.18](https://www.minecraft.net/en-us/article/caves---cliffs--part-ii-out-today-java)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
 
 ## 26.4 Snapshot 1の開発差分
 

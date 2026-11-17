@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "コマンド実行モデル"
+description: "executor、位置、分岐、functionの結果、load・tick・scheduleの挙動。"
+tags: ["minecraft-java", "execution-model"]
+sources: [{"id": "source-70c1849678", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2", "title": "Mojang: Java Edition 1.20.2"}, {"id": "source-3cbcc48b2d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3", "title": "Mojang: Java Edition 1.20.3"}, {"id": "source-b888994aa4", "resource": "https://minecraft.wiki/w/Command_context", "title": "Minecraft Wiki: Command context"}, {"id": "source-b7ba8ae95d", "resource": "https://minecraft.wiki/w/Commands/execute", "title": "Minecraft Wiki: `/execute`"}, {"id": "source-af9556ddd0", "resource": "https://minecraft.wiki/w/Commands/function", "title": "Minecraft Wiki: `/function`"}, {"id": "source-c8cfbab9c7", "resource": "https://minecraft.wiki/w/Commands/schedule", "title": "Minecraft Wiki: `/schedule`"}]
+---
+
 # コマンド実行モデル
 
-この文書は、構文が正しいコマンドが「誰として、どこで、何回、どの順で」実行されるかを扱います。個々のコマンド構文は [`commands.md`](commands.md)、バージョン境界は [`versions/README.md`](versions/README.md) を先に確認してください。
+この文書は、構文が正しいコマンドが「誰として、どこで、何回、どの順で」実行されるかを扱います。個々のコマンド構文は [`commands.md`](commands.md)、バージョン境界は [`versions/catalog.md`](versions/catalog.md) を先に確認してください。[^source-70c1849678][^source-3cbcc48b2d][^source-b888994aa4][^source-b7ba8ae95d][^source-af9556ddd0][^source-c8cfbab9c7]
 
 例は特記がなければ Java Edition 1.21.5〜26.2 の単数形ディレクトリを想定します。古いバージョンへ移植するときは対象バージョンプロファイルを適用します。
 
@@ -202,9 +210,9 @@ successとresultは交換可能ではありません。`data get`、`clear`、`a
 
 ## 参照
 
-- [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
-- [Mojang: Java Edition 1.20.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3)
-- [Minecraft Wiki: Command context](https://minecraft.wiki/w/Command_context)
-- [Minecraft Wiki: `/execute`](https://minecraft.wiki/w/Commands/execute)
-- [Minecraft Wiki: `/function`](https://minecraft.wiki/w/Commands/function)
-- [Minecraft Wiki: `/schedule`](https://minecraft.wiki/w/Commands/schedule)
+[^source-70c1849678]: [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
+[^source-3cbcc48b2d]: [Mojang: Java Edition 1.20.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3)
+[^source-b888994aa4]: [Minecraft Wiki: Command context](https://minecraft.wiki/w/Command_context)
+[^source-b7ba8ae95d]: [Minecraft Wiki: `/execute`](https://minecraft.wiki/w/Commands/execute)
+[^source-af9556ddd0]: [Minecraft Wiki: `/function`](https://minecraft.wiki/w/Commands/function)
+[^source-c8cfbab9c7]: [Minecraft Wiki: `/schedule`](https://minecraft.wiki/w/Commands/schedule)

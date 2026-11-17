@@ -2,6 +2,15 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.11.3
+
+- 日本語仕様資料をOKF v0.2 knowledge bundleへ移行し、全conceptへtype・title・description・tags・sourcesを追加
+- metadataから生成する各階層のindex.mdを追加し、スキルの参照経路をOKF索引へ変更
+- bundle内のREADME.mdを役割に応じたguide.md／catalog.mdへ改名し、参照リンクと検査を更新
+- Minecraftプロファイルの既存field・本文・継承を維持し、OKF拡張metadataと予約ファイルに対応
+- OKFの必須適合検査と保守規約の検査を分離し、予約ファイル・出典ID・脚注・任意metadataの検査をCIと単体testへ組み込み
+- 出典の取り込み漏れを修正してID脚注へ統一し、bundle内のlog.mdへ変更履歴を追加
+
 ## 2026.11.2
 
 - Java Edition `26.4-snapshot-8`プロファイルを追加（data pack format 127.0）

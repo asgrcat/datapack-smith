@@ -230,7 +230,7 @@ class DocumentationTests(unittest.TestCase):
 
     def test_main_json_parameter_table_covers_every_release_profile(self) -> None:
         index = (
-            DOCS / "json-parameters" / "README.md"
+            DOCS / "json-parameters" / "guide.md"
         ).read_text(encoding="utf-8")
         versions = self.parse_version_table(
             index,
@@ -242,14 +242,14 @@ class DocumentationTests(unittest.TestCase):
         release_profiles = {
             profile.stem
             for profile in (DOCS / "versions").glob("*.md")
-            if profile.name != "README.md"
+            if profile.name not in {"catalog.md", "index.md", "log.md"}
         }
         self.assertEqual(51, len(release_profiles))
         self.assertEqual(release_profiles, set(versions))
 
     def test_event_json_parameter_table_has_valid_unique_rows(self) -> None:
         index = (
-            DOCS / "json-parameters" / "README.md"
+            DOCS / "json-parameters" / "guide.md"
         ).read_text(encoding="utf-8")
         versions = self.parse_version_table(
             index,
@@ -260,11 +260,11 @@ class DocumentationTests(unittest.TestCase):
 
     def test_reference_index_links_every_reference_page(self) -> None:
         reference = DOCS / "reference"
-        index = (reference / "README.md").read_text(encoding="utf-8")
+        index = (reference / "guide.md").read_text(encoding="utf-8")
         missing = [
             path.name
             for path in sorted(reference.glob("*.md"))
-            if path.name != "README.md" and f"({path.name})" not in index
+            if path.name not in {"guide.md", "index.md", "log.md"} and f"({path.name})" not in index
         ]
         self.assertEqual([], missing)
 

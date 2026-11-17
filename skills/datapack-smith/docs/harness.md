@@ -1,3 +1,11 @@
+---
+type: "Playbook"
+title: "実行ハーネス"
+description: "プロファイル解決、JAR取得、report生成、静的検査とserver検証の実行手順。"
+tags: ["minecraft-java", "harness"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # 実行ハーネス
 
 `tools/datapack_harness.py` は、正式リリースと収録済み開発バージョンのプロファイル解決、公式server JARの取得とSHA-1検証、data generator、pack静的検査、server起動・reload検査を実行します。このCLIを使用する場合だけPython 3.10以降が必要で、追加のPython packageは使用しません。
@@ -67,7 +75,7 @@ JSON出力:
 - command/registry/vanilla dataの正本path
 - server検査に必要なJava major
 
-versionは完全一致です。[`snapshots/README.md`](snapshots/README.md)にないsnapshot／pre-release／release candidate、Bedrock Edition、近似semverを受け付けません。収録済みpre-release／release candidateはMojang version manifestの`type: snapshot`として取得します。
+versionは完全一致です。[`snapshots/catalog.md`](snapshots/catalog.md)にないsnapshot／pre-release／release candidate、Bedrock Edition、近似semverを受け付けません。収録済みpre-release／release candidateはMojang version manifestの`type: snapshot`として取得します。
 
 `rule_history` は変更理由を追跡するための参考情報です。過去バージョンの禁止規則を対象バージョンへ累積適用しません。`json_parameter_history`はバージョン別プロファイルの差分を時系列で提示しますが、対象バージョンで使用可能なcommand、registry、vanilla resourceは自然言語だけで合成せず、対象バージョンのreport/dataで決定します。
 
@@ -148,7 +156,7 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" json-catalog 1.21.11 \
 - 境界バージョン間でregistry IDと観測fieldを機械比較
 - 手書き例を作る前に同型のvanilla fileを特定
 
-`registry_ids`が空でも、`registry_sources`が`unknown`なら非対応とは確定できません。`source.datapack`が`null`のバージョンでは、空の`data_driven_registries`も「追加可能なregistryなし」ではなくreport未公開です。`observed_shapes`はcodec schemaではありません。vanillaが使用しない任意field、条件付き必須field、値域、排他的な組合せは出力から確定できないため、[`json-parameters/README.md`](json-parameters/README.md)のfamily別説明とserver検査を併用します。
+`registry_ids`が空でも、`registry_sources`が`unknown`なら非対応とは確定できません。`source.datapack`が`null`のバージョンでは、空の`data_driven_registries`も「追加可能なregistryなし」ではなくreport未公開です。`observed_shapes`はcodec schemaではありません。vanillaが使用しない任意field、条件付き必須field、値域、排他的な組合せは出力から確定できないため、[`json-parameters/guide.md`](json-parameters/guide.md)のfamily別説明とserver検査を併用します。
 
 ## 6. pack静的検査
 

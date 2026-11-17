@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "Block transformerとblock state provider"
+description: "block transformer、block state provider、rule、配置、migration"
+tags: ["minecraft-java", "reference", "block-transformation"]
+sources: [{"id": "source-d848b11912", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2", "title": "Mojang: Minecraft 26.3 Snapshot 2"}, {"id": "source-2e6de5499b", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10", "title": "Mojang: Minecraft 26.3 Snapshot 10"}, {"id": "source-f7dee05da4", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1", "title": "Mojang: Minecraft 26.3 Pre-Release 1"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}]
+---
+
 # Block transformerとblock state provider
 
-この文書はJava Edition 26.3の`minecraft:block_transformer` item component／registryと、変換後のblock stateを決める`minecraft:worldgen/block_state_provider`を扱います。本文は正式26.3の確定形です。開発履歴はバージョン境界で区別します。
+この文書はJava Edition 26.3の`minecraft:block_transformer` item component／registryと、変換後のblock stateを決める`minecraft:worldgen/block_state_provider`を扱います。本文は正式26.3の確定形です。開発履歴はバージョン境界で区別します。[^source-d848b11912][^source-2e6de5499b][^source-f7dee05da4][^source-f351b8ed57]
 
 ## 開発バージョンの履歴
 
@@ -261,8 +269,7 @@ Pre-Release 1の公式JARでは、transformer resource `axe`、`hoe`、`shovel`�
 
 ## 出典
 
-- [Mojang: Minecraft 26.3 Snapshot 2](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2)
-- [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
-- [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
-
-- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
+[^source-d848b11912]: [Mojang: Minecraft 26.3 Snapshot 2](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2)
+[^source-2e6de5499b]: [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
+[^source-f7dee05da4]: [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
+[^source-f351b8ed57]: [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)

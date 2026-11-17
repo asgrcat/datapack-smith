@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "データ種別カバレッジ"
+description: "26.3の全データ種別、26.2履歴、説明先・正本・検証方法の対応表"
+tags: ["minecraft-java", "reference", "coverage"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # データ種別カバレッジ
 
 正式26.3の`reports/datapack.json`に基づく全element registryです。各要素のfieldは[確定仕様と移行表](26.3-migration.md)と専門reference、正式vanilla JSONを使います。`stable`はregistryごとの実験性を示し、ゲームの正式／開発channelとは別です。
@@ -71,7 +79,7 @@ registry以外には`function`（mcfunction、tag可）と`structure`（structur
 
 ## 26.2の履歴比較
 
-以下の表は26.2の公式server JARが生成する`reports/datapack.json`を基準に、データパックから要素を定義できる全resource種別を説明先へ対応付けます。正式リリースごとの追加・削除・renameは [`../versions/README.md`](../versions/README.md) と各バージョンファイルを先に適用します。
+以下の表は26.2の公式server JARが生成する`reports/datapack.json`を基準に、データパックから要素を定義できる全resource種別を説明先へ対応付けます。正式リリースごとの追加・削除・renameは [`../versions/catalog.md`](../versions/catalog.md) と各バージョンファイルを先に適用します。
 
 ## registry resource
 

@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "dimension / worldgen JSON パラメータ"
+description: "dimension / worldgen JSON パラメータの仕様、パラメータとバージョン境界。"
+tags: ["minecraft-java", "json-parameters", "dimensions-worldgen"]
+sources: [{"id": "source-d4212e2364", "resource": "https://www.minecraft.net/en-us/article/nether-update-java", "title": "Mojang: Java Edition 1.16"}, {"id": "source-37f5e68f2b", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2", "title": "Mojang: Java Edition 1.16.2"}, {"id": "source-4e3ea23b63", "resource": "https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18", "title": "Mojang: Java Edition 1.18"}, {"id": "source-8a724b921e", "resource": "https://feedback.minecraft.net/hc/en-us/articles/4531177623437-Minecraft-Java-Edition-1-18-2", "title": "Mojang: Java Edition 1.18.2"}, {"id": "source-6b69673907", "resource": "https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19", "title": "Mojang: Java Edition 1.19"}, {"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-b32797f56f", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21", "title": "Mojang: Java Edition 1.21"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-498c0df63d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9", "title": "Mojang: Java Edition 1.21.9"}, {"id": "source-03625c8aa8", "resource": "https://feedback.minecraft.net/hc/en-us/articles/41809981427213-Minecraft-Java-Edition-1-21-11-Mounts-of-Mayhem", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-98545a1287", "resource": "https://feedback.minecraft.net/hc/en-us/articles/44551668333837-Minecraft-Java-Edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-c0ae9797e5", "resource": "https://feedback.minecraft.net/hc/en-us/articles/46690753273997-Minecraft-Java-Edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-90eb34b085", "resource": "https://minecraft.wiki/w/Tutorial:Adding_a_new_dimension", "title": "Minecraft Wiki: Tutorial: Adding a new dimension"}, {"id": "source-06f4b7e35e", "resource": "https://minecraft.wiki/w/Custom_world_generation", "title": "Minecraft Wiki: Custom world generation"}, {"id": "source-cf465700b6", "resource": "https://minecraft.wiki/w/Tutorial:Running_the_data_generator", "title": "Minecraft Wiki: Running the data generator"}, {"id": "source-b93c06c67e", "resource": "対象バージョンのserver JARの generated/reports/registries.json と、バージョン別のgenerated data/worldgen report", "title": "対象バージョンのserver JARの generated/reports/registries.json と、バージョン別のgenerated data/worldgen report"}]
+---
+
 # dimension / worldgen JSON パラメータ
 
-26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)、[Snapshot 4](../snapshots/26.4-snapshot-4.md)、[Snapshot 5](../snapshots/26.4-snapshot-5.md)の差分を追加適用します。正式26.3の仕様とは区別します。
+26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)、[Snapshot 4](../snapshots/26.4-snapshot-4.md)、[Snapshot 5](../snapshots/26.4-snapshot-5.md)の差分を追加適用します。正式26.3の仕様とは区別します。[^source-d4212e2364][^source-37f5e68f2b][^source-4e3ea23b63][^source-8a724b921e][^source-6b69673907][^source-9d2ba3de8c][^source-b32797f56f][^source-89abc18aa3][^source-adf703e2f3][^source-498c0df63d][^source-03625c8aa8][^source-98545a1287][^source-c0ae9797e5][^source-90eb34b085][^source-06f4b7e35e][^source-cf465700b6]
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
 
@@ -549,28 +557,29 @@ worldgenはdispatch codecが多重に入れ子になります。次の情報だ�
 
 ## 出典
 
+[^source-d4212e2364]: [Mojang: Java Edition 1.16](https://www.minecraft.net/en-us/article/nether-update-java)
+[^source-37f5e68f2b]: [Mojang: Java Edition 1.16.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2)
+[^source-4e3ea23b63]: [Mojang: Java Edition 1.18](https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18)
+[^source-8a724b921e]: [Mojang: Java Edition 1.18.2](https://feedback.minecraft.net/hc/en-us/articles/4531177623437-Minecraft-Java-Edition-1-18-2)
+[^source-6b69673907]: [Mojang: Java Edition 1.19](https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19)
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-b32797f56f]: [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-adf703e2f3]: [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
+[^source-498c0df63d]: [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
+[^source-03625c8aa8]: [Mojang: Java Edition 1.21.11](https://feedback.minecraft.net/hc/en-us/articles/41809981427213-Minecraft-Java-Edition-1-21-11-Mounts-of-Mayhem)
+[^source-98545a1287]: [Mojang: Java Edition 26.1](https://feedback.minecraft.net/hc/en-us/articles/44551668333837-Minecraft-Java-Edition-26-1)
+[^source-c0ae9797e5]: [Mojang: Java Edition 26.2](https://feedback.minecraft.net/hc/en-us/articles/46690753273997-Minecraft-Java-Edition-26-2)
+[^source-90eb34b085]: [Minecraft Wiki: Tutorial: Adding a new dimension](https://minecraft.wiki/w/Tutorial:Adding_a_new_dimension)
+[^source-06f4b7e35e]: [Minecraft Wiki: Custom world generation](https://minecraft.wiki/w/Custom_world_generation)
+[^source-cf465700b6]: [Minecraft Wiki: Running the data generator](https://minecraft.wiki/w/Tutorial:Running_the_data_generator)
+[^source-b93c06c67e]: 対象バージョンのserver JARの generated/reports/registries.json と、バージョン別のgenerated data/worldgen report
+
 一次資料:
 
-- [Mojang: Java Edition 1.16](https://www.minecraft.net/en-us/article/nether-update-java)
-- [Mojang: Java Edition 1.16.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2)
-- [Mojang: Java Edition 1.18](https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18)
-- [Mojang: Java Edition 1.18.2](https://feedback.minecraft.net/hc/en-us/articles/4531177623437-Minecraft-Java-Edition-1-18-2)
-- [Mojang: Java Edition 1.19](https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19)
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
-- [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21)
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
-- [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
-- [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
-- [Mojang: Java Edition 1.21.11](https://feedback.minecraft.net/hc/en-us/articles/41809981427213-Minecraft-Java-Edition-1-21-11-Mounts-of-Mayhem)
-- [Mojang: Java Edition 26.1](https://feedback.minecraft.net/hc/en-us/articles/44551668333837-Minecraft-Java-Edition-26-1)
-- [Mojang: Java Edition 26.2](https://feedback.minecraft.net/hc/en-us/articles/46690753273997-Minecraft-Java-Edition-26-2)
-- 対象バージョンのserver JARの `generated/reports/registries.json` と、バージョン別のgenerated data/worldgen report
+- 対象バージョンのserver JARの `generated/reports/registries.json` と、バージョン別のgenerated data/worldgen report[^source-b93c06c67e]
 
 cross-check:
-
-- [Minecraft Wiki: Tutorial: Adding a new dimension](https://minecraft.wiki/w/Tutorial:Adding_a_new_dimension)
-- [Minecraft Wiki: Custom world generation](https://minecraft.wiki/w/Custom_world_generation)
-- [Minecraft Wiki: Running the data generator](https://minecraft.wiki/w/Tutorial:Running_the_data_generator)
 
 ## 26.4 Snapshot 6の追加
 

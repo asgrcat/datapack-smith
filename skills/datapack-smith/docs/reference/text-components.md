@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "Text component"
+description: "text componentの内容、style、event、JSON／SNBT境界"
+tags: ["minecraft-java", "reference", "text-components"]
+sources: [{"id": "source-db405dad1b", "resource": "https://www.minecraft.net/en-us/articles", "title": "Mojang Java Edition release notes"}, {"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}]
+---
+
 # Text component
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-db405dad1b]
 
 text componentは、chat、title、item名、dialog、death message等の構造化textです。この文書はJava Edition 1.13以降の内容type、style、event、JSON／SNBT境界を扱います。resource packのfont画像や翻訳ファイル自体は対象外です。
 
@@ -199,5 +207,7 @@ JSON resourceはJSON parser、commandは対象JARの`commands.json`、item／ent
 
 ## 出典
 
-- 各 [`../versions/<version>.md`](../versions/README.md) のtext／NBT差分
-- [Mojang Java Edition release notes](https://www.minecraft.net/en-us/articles)
+[^source-db405dad1b]: [Mojang Java Edition release notes](https://www.minecraft.net/en-us/articles)
+[^source-1297269d29]: [`../versions/<version>.md`](../versions/catalog.md)
+
+- 各 `../versions/<version>.md`[^source-1297269d29] のtext／NBT差分

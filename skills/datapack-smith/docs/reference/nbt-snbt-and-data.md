@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "NBT、SNBT、`/data`"
+description: "NBT型、SNBT、NBT path、`/data`、storage、item境界"
+tags: ["minecraft-java", "reference", "nbt-snbt-and-data"]
+sources: [{"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}, {"id": "source-ac25d553cf", "resource": "対象server JARのcommands.jsonと実際のdata get出力", "title": "対象server JARのcommands.jsonと実際のdata get出力"}]
+---
+
 # NBT、SNBT、`/data`
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
@@ -191,8 +199,11 @@ give @s minecraft:stone[minecraft:custom_data={example:{level:1}}]
 
 ## 出典
 
-- 各 [`../versions/<version>.md`](../versions/README.md) のNBT／command差分
-- 対象server JARの`commands.json`と実際の`data get`出力
+[^source-1297269d29]: [`../versions/<version>.md`](../versions/catalog.md)
+[^source-ac25d553cf]: 対象server JARのcommands.jsonと実際のdata get出力
+
+- 各 `../versions/<version>.md`[^source-1297269d29] のNBT／command差分
+- 対象server JARの`commands.json`と実際の`data get`出力[^source-ac25d553cf]
 
 ## 26.4 Snapshot 1の数値変換
 

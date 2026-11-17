@@ -1,6 +1,14 @@
+---
+type: "Playbook"
+title: "対象バージョンでの生成と検証"
+description: "対象バージョンの公式JARからcommand tree、registry、vanilla JSONを検証する方法。"
+tags: ["minecraft-java", "validation"]
+sources: [{"id": "source-9c296fb69d", "resource": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json", "title": "公式 version manifest v2"}, {"id": "source-cf465700b6", "resource": "https://minecraft.wiki/w/Tutorial:Running_the_data_generator", "title": "Minecraft Wiki: Running the data generator"}, {"id": "source-6d3cacc3d3", "resource": "https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Data_Generators", "title": "Minecraft Wiki: Data generators"}, {"id": "source-85f416c811", "resource": "https://minecraft.wiki/w/Game_test", "title": "Minecraft Wiki: Game test"}]
+---
+
 # 対象バージョンでの生成と検証
 
-Markdown の要約だけでコマンドや worldgen codec の全分岐を推測しないでください。Mojang が配布する対象バージョン server JAR には、そのバージョンの command graph、registry、vanilla data を生成する入口があります。
+Markdown の要約だけでコマンドや worldgen codec の全分岐を推測しないでください。Mojang が配布する対象バージョン server JAR には、そのバージョンの command graph、registry、vanilla data を生成する入口があります。[^source-9c296fb69d][^source-cf465700b6][^source-6d3cacc3d3][^source-85f416c811]
 
 以下の取得、SHA-1、data generator、静的検査、server reloadは `tools/datapack_harness.py` から実行できます。CLIと保証範囲は [`harness.md`](harness.md) を参照してください。
 
@@ -68,7 +76,7 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" json-catalog "$TARGET_V
   --output "build/minecraft/$TARGET_VERSION/json-catalog.json"
 ```
 
-registry ID一覧とvanilla観測fieldの保証範囲は[`json-parameters/README.md`](json-parameters/README.md)を参照してください。カタログの`registry_sources`が`unknown`、または`source.datapack`が`null`の場合は、空配列を機能非対応の証拠にしません。
+registry ID一覧とvanilla観測fieldの保証範囲は[`json-parameters/guide.md`](json-parameters/guide.md)を参照してください。カタログの`registry_sources`が`unknown`、または`source.datapack`が`null`の場合は、空配列を機能非対応の証拠にしません。
 catalog作成時は`reports` commandが生成した`.datapack-harness-report.json`を照合し、指定versionとreportの対象IDが異なる場合は失敗します。
 
 `registries.json`にIDが存在しても、data packからそのregistryへ新しいelement JSONを追加できるとは限りません。`datapack.json`の`elements`、`tags`、`stable`も確認します。`elements: false`で`tags: true`のregistryは、既存entryのtagを作れても新しいentryを定義できません。
@@ -188,7 +196,7 @@ vanilla に例がない data-driven registry は、対象バージョンの公�
 
 ## 参照
 
-- [公式 version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
-- [Minecraft Wiki: Running the data generator](https://minecraft.wiki/w/Tutorial:Running_the_data_generator)
-- [Minecraft Wiki: Data generators](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Data_Generators)
-- [Minecraft Wiki: Game test](https://minecraft.wiki/w/Game_test)
+[^source-9c296fb69d]: [公式 version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
+[^source-cf465700b6]: [Minecraft Wiki: Running the data generator](https://minecraft.wiki/w/Tutorial:Running_the_data_generator)
+[^source-6d3cacc3d3]: [Minecraft Wiki: Data generators](https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Data_Generators)
+[^source-85f416c811]: [Minecraft Wiki: Game test](https://minecraft.wiki/w/Game_test)

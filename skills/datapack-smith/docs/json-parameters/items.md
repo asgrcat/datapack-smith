@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "item stack・data component パラメータ"
+description: "item stack・data component パラメータの仕様、パラメータとバージョン境界。"
+tags: ["minecraft-java", "json-parameters", "items"]
+sources: [{"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-b32797f56f", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21", "title": "Mojang: Java Edition 1.21"}, {"id": "source-608ba82b15", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2", "title": "Mojang: Java Edition 1.21.2"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-498c0df63d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9", "title": "Mojang: Java Edition 1.21.9"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-e038696345", "resource": "https://minecraft.wiki/w/Data_component_format", "title": "Minecraft Wiki: Data component format"}, {"id": "source-bb1f3a003d", "resource": "https://minecraft.wiki/w/Item_format", "title": "Minecraft Wiki: Item format"}, {"id": "source-e25c4322fd", "resource": "対象バージョンの公式server JARが生成するregistries.json、default component report、generated/data/minecraft/", "title": "対象バージョンの公式server JARが生成するregistries.json、default component report、generated/data/minecraft/"}]
+---
+
 # item stack・data component パラメータ
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
@@ -510,16 +518,27 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack \
 
 ## 出典
 
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5) — item component全面移行、保存形、command predicate、loot/recipe変更
-- [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21) — component削除patch、attribute・directory境界
-- [Mojang: Java Edition 1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2) — `food`分離、使用・装備component、ingredient変更
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5) — tooltip、text/SNBT、weapon/blocking、component簡略形
-- [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9) — `profile` semantics等
-- [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1) — recipe result統一、default component report変更
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2) — 26.2 component/registry追加
-- 対象バージョンの公式server JARが生成する`registries.json`、default component report、`generated/data/minecraft/`
-- [Minecraft Wiki: Data component format](https://minecraft.wiki/w/Data_component_format) — cross-check
-- [Minecraft Wiki: Item format](https://minecraft.wiki/w/Item_format) — cross-check
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-b32797f56f]: [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21)
+[^source-608ba82b15]: [Mojang: Java Edition 1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-498c0df63d]: [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
+[^source-436443cb43]: [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-e038696345]: [Minecraft Wiki: Data component format](https://minecraft.wiki/w/Data_component_format)
+[^source-bb1f3a003d]: [Minecraft Wiki: Item format](https://minecraft.wiki/w/Item_format)
+[^source-e25c4322fd]: 対象バージョンの公式server JARが生成するregistries.json、default component report、generated/data/minecraft/
+
+- Mojang: Java Edition 1.20.5[^source-9d2ba3de8c] — item component全面移行、保存形、command predicate、loot/recipe変更
+- Mojang: Java Edition 1.21[^source-b32797f56f] — component削除patch、attribute・directory境界
+- Mojang: Java Edition 1.21.2[^source-608ba82b15] — `food`分離、使用・装備component、ingredient変更
+- Mojang: Java Edition 1.21.5[^source-89abc18aa3] — tooltip、text/SNBT、weapon/blocking、component簡略形
+- Mojang: Java Edition 1.21.9[^source-498c0df63d] — `profile` semantics等
+- Mojang: Java Edition 26.1[^source-436443cb43] — recipe result統一、default component report変更
+- Mojang: Java Edition 26.2[^source-3e7c128593] — 26.2 component/registry追加
+- 対象バージョンの公式server JARが生成する`registries.json`、default component report、`generated/data/minecraft/`[^source-e25c4322fd]
+- Minecraft Wiki: Data component format[^source-e038696345] — cross-check
+- Minecraft Wiki: Item format[^source-bb1f3a003d] — cross-check
 
 ## 26.4 Snapshot 5の音field
 

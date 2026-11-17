@@ -1,3 +1,11 @@
+---
+type: "Playbook"
+title: "実装設計と受入条件"
+description: "要件、入口、状態、resource依存、運用と受入条件を決定する手順。"
+tags: ["minecraft-java", "implementation-contract"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # 実装設計と受入条件
 
 対象バージョンを解決した後、要件を「どの入口で、誰の状態を、何に変えるか」へ落とします。新規packでは下の表を短い設計メモとして残します。小さな変更では影響する行だけ更新し、調査依頼では実装fileを生成する必要はありません。

@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "対象バージョンからJSONキーを選ぶ"
+description: "対象versionとconsumerからJSONキー・値型・配置を選ぶ境界表と対比例"
+tags: ["minecraft-java", "reference", "versioned-json"]
+sources: [{"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "1.20.5"}, {"id": "source-608ba82b15", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2", "title": "1.21.2"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "26.1"}, {"id": "source-94918bc2db", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3", "title": "26.3"}]
+---
+
 # 対象バージョンからJSONキーを選ぶ
 
 このページは、生成時に混ざりやすい**同じ用途の異なる表現**を並べます。完全なcodec schemaではありません。対象のexact profileとfamily履歴を先に解決し、ここで外形を選び、family文書で内側の値型・必須性・既定値・contextを確認します。正式リリースの範囲をsnapshotへそのまま適用しません。
@@ -48,7 +56,7 @@ component対応後は対応するresultに`components`を設定できます。1.
 
 26.3ではcookingの`cookingtime`が必須です。26.2以前に省略していた場合は200、smoking/blastingで以前明示していた値は2倍にし、燃料の速度倍率と組み合わせます。`cookingtime`とworldgenの時間providerを同じcodecとして扱いません。
 
-根拠: [1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)、[1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2)、[26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)、[26.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3)のrecipe変更。serializer固有の追加条件は[loot/recipe](../json-parameters/loot-recipes.md)へ。
+根拠: 1.20.5[^source-9d2ba3de8c]、1.21.2[^source-608ba82b15]、26.1[^source-436443cb43]、26.3[^source-94918bc2db]のrecipe変更。serializer固有の追加条件は[loot/recipe](../json-parameters/loot-recipes.md)へ。
 
 ## 3. Item stack、component、text
 
@@ -143,3 +151,8 @@ rootの完全例はplayer executorから`execute if predicate <id>`で評価し�
 26.3の開発枝では、Snapshot 1でfeature配置、Snapshot 4でcondition/参照、Pre-Release 1でinteger/float providerとcookingtimeが変わります。正式26.3の形をSnapshot 1へ使わず、完全一致profileの継承枝を使います。ハーネスの既知境界検査もこの枝で判定します。
 
 このページにないfieldを「どのversionでも同じ」と扱いません。調査メモに`version / family / type / JSON path / 値型 / 必須性・既定 / 出典 / 実施検証`を残し、対象JARの同型vanilla例を基底にします。vanillaに例がない任意fieldは、公式field定義や対象codecで確認し、未確認のまま「対応済み」としません。未収録のゲームバージョンはこのskillの対応保証外です。
+
+[^source-9d2ba3de8c]: [1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-608ba82b15]: [1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2)
+[^source-436443cb43]: [26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-94918bc2db]: [26.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-3)

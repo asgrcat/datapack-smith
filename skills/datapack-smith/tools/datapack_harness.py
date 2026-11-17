@@ -115,7 +115,6 @@ def load_profile_schema() -> dict[str, Any]:
 
 PROFILE_SCHEMA = load_profile_schema()
 PROFILE_REQUIRED = set(PROFILE_SCHEMA["required"])
-PROFILE_ALLOWED = set(PROFILE_SCHEMA["properties"])
 COMPATIBILITY_CLASSES = set(
     PROFILE_SCHEMA["properties"]["compatibility"]["enum"]
 )
@@ -174,7 +173,7 @@ def parse_scalar(raw: str) -> Any:
     value = raw.strip()
     if value == "null":
         return None
-    if value.startswith('"') or value.startswith("["):
+    if value.startswith(('"', "[", "{")):
         try:
             return json.loads(value)
         except json.JSONDecodeError as error:
@@ -260,7 +259,7 @@ def profile_files() -> list[Path]:
         paths.extend(
             path
             for path in directory.glob("*.md")
-            if path.name != "README.md"
+            if path.name not in {"catalog.md", "index.md", "log.md"}
         )
     return sorted(paths)
 
@@ -289,11 +288,12 @@ def validate_profile(
     errors: list[str] = []
     public = set(profile) - {"_path"}
     missing = PROFILE_REQUIRED - public
-    unknown = public - PROFILE_ALLOWED
     if missing:
         errors.append(f"{path}: missing fields: {', '.join(sorted(missing))}")
-    if unknown:
-        errors.append(f"{path}: unknown fields: {', '.join(sorted(unknown))}")
+    # OKF allows additional producer-defined metadata. Validate the Minecraft
+    # contract below without discarding or rejecting unknown OKF extensions.
+    if not isinstance(profile.get("type"), str) or not profile["type"].strip():
+        errors.append(f"{path}: type must be a non-empty OKF concept type")
 
     version = profile.get("version")
     version_pattern = PROFILE_SCHEMA["properties"]["version"]["pattern"]

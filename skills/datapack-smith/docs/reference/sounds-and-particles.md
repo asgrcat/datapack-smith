@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "サウンドとパーティクル"
+description: "`playsound`、`stopsound`、`particle`、resource pack境界、負荷"
+tags: ["minecraft-java", "reference", "sounds-and-particles"]
+sources: [{"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-adc5c18991", "resource": "build/minecraft/26.3/generated/reports/commands.json（26.3公式server JARから生成、commit対象外）", "title": "build/minecraft/26.3/generated/reports/commands.json（26.3公式server JARから生成、commit対象外）"}, {"id": "source-36faa109ab", "resource": "build/minecraft/26.3/generated/reports/registries.json（同上）", "title": "build/minecraft/26.3/generated/reports/registries.json（同上）"}]
+---
+
 # サウンドとパーティクル
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-adf703e2f3][^source-c9f084f2e6]
 
 データパックから音と粒子を再生する際のID、コマンド引数、到達範囲、対象player、バージョン境界をまとめます。音源ファイルやtexture自体はresource pack側の資産です。データパックは再生タイミング、位置、対象、登録済みIDを制御します。
 
@@ -160,10 +168,13 @@ biome、worldgen、item component、enchantment effect、entity effectなどもs
 
 ## 出典
 
-- [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
-- `build/minecraft/26.3/generated/reports/commands.json`（26.3公式server JARから生成、commit対象外）
-- `build/minecraft/26.3/generated/reports/registries.json`（同上）
+[^source-adf703e2f3]: [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-adc5c18991]: build/minecraft/26.3/generated/reports/commands.json（26.3公式server JARから生成、commit対象外）
+[^source-36faa109ab]: build/minecraft/26.3/generated/reports/registries.json（同上）
+
+- `build/minecraft/26.3/generated/reports/commands.json`（26.3公式server JARから生成、commit対象外）[^source-adc5c18991]
+- `build/minecraft/26.3/generated/reports/registries.json`（同上）[^source-36faa109ab]
 
 ## 26.4 Snapshot 3のblock sound setとparticle
 
@@ -212,7 +223,6 @@ particle `minecraft:item_snowball`は削除され、追加fieldなしの`minecra
 block sound setのresource ID `minecraft:amethyst`を`minecraft:amethyst_block`へ改名し、`blue_ice`、`brittle_ice`、`frosted_ice`、`packed_ice`を追加します。field構造はSnapshot 3を継承し、vanilla setは137要素です。sound eventの`block.amethyst_block.*`とは別のregistry IDとして扱います。
 
 registry reportではsound eventを23件追加しています。blue ice、frosted ice、packed iceは各5種類、brittle iceは5種類と`block.brittle_ice.crack`、さらに`entity.drowned.converted_to_zombie`、`entity.chicken_picky.step`です。すべて`minecraft:`接頭辞を持ちます。音源の実再生はclientで別途検証します。[出典・検証](../snapshots/26.4-snapshot-4.md)を参照してください。
-
 
 ## 26.4 Snapshot 5のsound移行
 

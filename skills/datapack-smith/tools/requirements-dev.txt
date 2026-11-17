@@ -1,0 +1,2 @@
+# Maintenance checks only; datapack_harness.py uses the standard library.
+PyYAML>=6,<7

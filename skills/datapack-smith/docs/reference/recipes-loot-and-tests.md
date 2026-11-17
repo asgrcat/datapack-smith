@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "recipe、loot、item modifier、GameTest"
+description: "recipe、loot table、item modifier、GameTest"
+tags: ["minecraft-java", "reference", "recipes-loot-and-tests"]
+sources: [{"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}]
+---
+
 # recipe、loot、item modifier、GameTest
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-9d2ba3de8c][^source-89abc18aa3][^source-436443cb43]
 
 ## recipe
 
@@ -465,6 +473,6 @@ GameTest用worldは破棄可能な専用directoryを使います。既存world�
 
 ## 一次資料
 
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
-- [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-436443cb43]: [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)

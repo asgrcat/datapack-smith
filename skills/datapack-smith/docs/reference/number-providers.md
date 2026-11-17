@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "Context依存number provider"
+description: "正式26.3のcontext依存number provider、四則演算、丸め、三角関数、分岐、失敗条件とpre-3の演算変更"
+tags: ["minecraft-java", "reference", "number-providers"]
+sources: [{"id": "source-f7dee05da4", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1", "title": "Mojang: Minecraft 26.3 Pre-Release 1"}, {"id": "source-9c296fb69d", "resource": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json", "title": "Mojang 公式 version manifest v2"}, {"id": "source-efcbe8afb2", "resource": "https://minecraft.wiki/w/Java_Edition_26.3-pre1", "title": "Minecraft Wiki: Java Edition 26.3 Pre-Release 1"}, {"id": "source-5470af21a2", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48740521840909-Minecraft-Java-Edition-26-3-Pre-release-3", "title": "Mojang: Minecraft 26.3 Pre-Release 3"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}]
+---
+
 # Context依存number provider
 
-この文書は正式Java Edition `26.3`（data pack format 121.0）の`minecraft:context_int_provider`と`minecraft:context_float_provider`を扱います。四則演算、剰余、累乗、集約、丸め、型変換、三角関数、乱数、値の取得、条件分岐を、入力fieldと失敗条件まで含めて引くためのリファレンスです。
+この文書は正式Java Edition `26.3`（data pack format 121.0）の`minecraft:context_int_provider`と`minecraft:context_float_provider`を扱います。四則演算、剰余、累乗、集約、丸め、型変換、三角関数、乱数、値の取得、条件分岐を、入力fieldと失敗条件まで含めて引くためのリファレンスです。[^source-f7dee05da4][^source-9c296fb69d][^source-efcbe8afb2][^source-5470af21a2][^source-f351b8ed57]
 
 resource ID、tag、inline定義、listを受け付ける箇所の共通規則は [`registry-elements.md`](registry-elements.md) を参照してください。このページはnumber provider固有の型、演算、評価失敗に集中します。
 
@@ -366,7 +374,6 @@ Pre-Release 3の演算差分はMojang公式記事とversion manifestで照合し
 
 正式26.3はpre-3で確定したmod／pow規則を採用します。以下の本文は正式JARのregistry／vanilla dataで照合済みです。
 
-
 ## Snapshot 10からの移行
 
 ### registryとtype名
@@ -398,10 +405,8 @@ Pre-Release 3の演算差分はMojang公式記事とversion manifestで照合し
 
 ## 出典
 
-- [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
-- [Mojang 公式 version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
-- [Minecraft Wiki: Java Edition 26.3 Pre-Release 1](https://minecraft.wiki/w/Java_Edition_26.3-pre1)
-
-- [Mojang: Minecraft 26.3 Pre-Release 3](https://feedback.minecraft.net/hc/en-us/articles/48740521840909-Minecraft-Java-Edition-26-3-Pre-release-3)
-
-- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
+[^source-f7dee05da4]: [Mojang: Minecraft 26.3 Pre-Release 1](https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1)
+[^source-9c296fb69d]: [Mojang 公式 version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
+[^source-efcbe8afb2]: [Minecraft Wiki: Java Edition 26.3 Pre-Release 1](https://minecraft.wiki/w/Java_Edition_26.3-pre1)
+[^source-5470af21a2]: [Mojang: Minecraft 26.3 Pre-Release 3](https://feedback.minecraft.net/hc/en-us/articles/48740521840909-Minecraft-Java-Edition-26-3-Pre-release-3)
+[^source-f351b8ed57]: [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)

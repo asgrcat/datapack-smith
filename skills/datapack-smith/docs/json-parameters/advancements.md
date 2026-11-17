@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "advancement JSON パラメータ"
+description: "advancement JSON パラメータの仕様、パラメータとバージョン境界。"
+tags: ["minecraft-java", "json-parameters", "advancements"]
+sources: [{"id": "source-d4212e2364", "resource": "https://www.minecraft.net/en-us/article/nether-update-java", "title": "Mojang: Java Edition 1.16"}, {"id": "source-4e3ea23b63", "resource": "https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18", "title": "Mojang: Java Edition 1.18"}, {"id": "source-6b69673907", "resource": "https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19", "title": "Mojang: Java Edition 1.19"}, {"id": "source-79ab576aff", "resource": "https://feedback.minecraft.net/hc/en-us/articles/16499677456781-Minecraft-Java-Edition-1-20-Trails-Tales", "title": "Mojang: Java Edition 1.20"}, {"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-b32797f56f", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21", "title": "Mojang: Java Edition 1.21"}, {"id": "source-f3eacd5ebf", "resource": "https://feedback.minecraft.net/hc/en-us/articles/35298208390797-Minecraft-Java-Edition-1-21-5-Spring-to-Life", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-bacc83b747", "resource": "https://minecraft.wiki/w/Advancement_definition", "title": "Minecraft Wiki: Advancement definition"}, {"id": "source-a15734d522", "resource": "https://minecraft.wiki/w/Advancement", "title": "Minecraft Wiki: Advancement"}, {"id": "source-fe8471b680", "resource": "https://minecraft.wiki/w/Advancement_trigger", "title": "Minecraft Wiki: Advancement trigger"}, {"id": "source-66f3977a92", "resource": "対象正式リリースのserver JARのgenerated/reports/registries.jsonとgenerated/data/minecraft/advancement/", "title": "対象正式リリースのserver JARのgenerated/reports/registries.jsonとgenerated/data/minecraft/advancement/"}]
+---
+
 # advancement JSON パラメータ
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-bacc83b747][^source-a15734d522][^source-fe8471b680]
 
 この文書は Minecraft Java Edition 1.13〜26.2 の advancement definitionについて、root field、表示、criterion、trigger condition、requirements、reward、telemetry、predicateとの文脈差、バージョン境界を整理します。playerごとの状態管理、反復event、`/advancement`の運用例は [`../advancements.md`](../advancements.md) を参照してください。
 
@@ -585,21 +593,31 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" validate-pack \
 
 ## 出典
 
+[^source-d4212e2364]: [Mojang: Java Edition 1.16](https://www.minecraft.net/en-us/article/nether-update-java)
+[^source-4e3ea23b63]: [Mojang: Java Edition 1.18](https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18)
+[^source-6b69673907]: [Mojang: Java Edition 1.19](https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19)
+[^source-79ab576aff]: [Mojang: Java Edition 1.20](https://feedback.minecraft.net/hc/en-us/articles/16499677456781-Minecraft-Java-Edition-1-20-Trails-Tales)
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-b32797f56f]: [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21)
+[^source-f3eacd5ebf]: [Mojang: Java Edition 1.21.5](https://feedback.minecraft.net/hc/en-us/articles/35298208390797-Minecraft-Java-Edition-1-21-5-Spring-to-Life)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-bacc83b747]: [Minecraft Wiki: Advancement definition](https://minecraft.wiki/w/Advancement_definition)
+[^source-a15734d522]: [Minecraft Wiki: Advancement](https://minecraft.wiki/w/Advancement)
+[^source-fe8471b680]: [Minecraft Wiki: Advancement trigger](https://minecraft.wiki/w/Advancement_trigger)
+[^source-66f3977a92]: 対象正式リリースのserver JARのgenerated/reports/registries.jsonとgenerated/data/minecraft/advancement/
+
 一次資料:
 
-- [Mojang: Java Edition 1.16](https://www.minecraft.net/en-us/article/nether-update-java) — player check、extended entity check、trigger追加
-- [Mojang: Java Edition 1.18](https://feedback.minecraft.net/hc/en-us/articles/4415128577293-Minecraft-Java-Edition-1-18) — travel/fall系trigger
-- [Mojang: Java Edition 1.19](https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19) — sculk/allay系trigger、location/type-specific変更
-- [Mojang: Java Edition 1.20](https://feedback.minecraft.net/hc/en-us/articles/16499677456781-Minecraft-Java-Edition-1-20-Trails-Tales) — block event condition統合、telemetry
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5) — item stack/component/predicate移行
-- [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21) — data folder単数形
-- [Mojang: Java Edition 1.21.5](https://feedback.minecraft.net/hc/en-us/articles/35298208390797-Minecraft-Java-Edition-1-21-5-Spring-to-Life) — background sprite、predicate変更
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11) — trigger追加
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2) — entity predicate component-map
-- 対象正式リリースのserver JARの`generated/reports/registries.json`と`generated/data/minecraft/advancement*/`
+- Mojang: Java Edition 1.16[^source-d4212e2364] — player check、extended entity check、trigger追加
+- Mojang: Java Edition 1.18[^source-4e3ea23b63] — travel/fall系trigger
+- Mojang: Java Edition 1.19[^source-6b69673907] — sculk/allay系trigger、location/type-specific変更
+- Mojang: Java Edition 1.20[^source-79ab576aff] — block event condition統合、telemetry
+- Mojang: Java Edition 1.20.5[^source-9d2ba3de8c] — item stack/component/predicate移行
+- Mojang: Java Edition 1.21[^source-b32797f56f] — data folder単数形
+- Mojang: Java Edition 1.21.5[^source-f3eacd5ebf] — background sprite、predicate変更
+- Mojang: Java Edition 1.21.11[^source-c9f084f2e6] — trigger追加
+- Mojang: Java Edition 26.2[^source-3e7c128593] — entity predicate component-map
+- 対象正式リリースのserver JARの`generated/reports/registries.json`と`generated/data/minecraft/advancement*/`[^source-66f3977a92]
 
 cross-check:
-
-- [Minecraft Wiki: Advancement definition](https://minecraft.wiki/w/Advancement_definition)
-- [Minecraft Wiki: Advancement](https://minecraft.wiki/w/Advancement)
-- [Minecraft Wiki: Advancement trigger](https://minecraft.wiki/w/Advancement_trigger)

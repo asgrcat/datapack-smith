@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "Command引数、座標、selector"
+description: "座標、範囲、resource location、selector、block state、item stack、macro"
+tags: ["minecraft-java", "reference", "command-arguments-and-selectors"]
+sources: [{"id": "source-8375a55662", "resource": "対象server JARのreports/commands.json", "title": "対象server JARのreports/commands.json"}, {"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}]
+---
+
 # Command引数、座標、selector
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
@@ -208,8 +216,11 @@ selector、resource ID、command断片、NBT pathへ外部文字列を挿入す�
 
 ## 出典
 
-- 対象server JARの`reports/commands.json`
-- 各 [`../versions/<version>.md`](../versions/README.md) のcommand差分
+[^source-1297269d29]: [`../versions/<version>.md`](../versions/catalog.md)
+[^source-8375a55662]: 対象server JARのreports/commands.json
+
+- 対象server JARの`reports/commands.json`[^source-8375a55662]
+- 各 `../versions/<version>.md`[^source-1297269d29] のcommand差分
 
 ## 26.4 Snapshot 7の効果tagと時間引数
 

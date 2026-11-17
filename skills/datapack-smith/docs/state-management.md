@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "状態管理"
+description: "scoreboard、storage、entity tagによる永続状態とmigration。"
+tags: ["minecraft-java", "state-management"]
+sources: [{"id": "source-7fa8c3f976", "resource": "https://minecraft.wiki/w/Scoreboard", "title": "Minecraft Wiki: Scoreboard"}, {"id": "source-07d98ae27d", "resource": "https://minecraft.wiki/w/Commands/scoreboard", "title": "Minecraft Wiki: `/scoreboard`"}, {"id": "source-a76c5d9cc1", "resource": "https://minecraft.wiki/w/Commands/data", "title": "Minecraft Wiki: `/data`"}, {"id": "source-02ad4d518d", "resource": "https://minecraft.wiki/w/NBT_path_format", "title": "Minecraft Wiki: NBT path"}, {"id": "source-ab46ae0dc7", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-15", "title": "Mojang: Java Edition 1.15"}, {"id": "source-70c1849678", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2", "title": "Mojang: Java Edition 1.20.2"}]
+---
+
 # 状態管理
 
-この文書は、scoreboard、command storage、entity tag、advancementを状態として使い分け、reload・再起動・更新に耐える設計を扱います。構文のバージョン境界は [`commands.md`](commands.md)、進捗固有の挙動は [`advancements.md`](advancements.md) を参照してください。
+この文書は、scoreboard、command storage、entity tag、advancementを状態として使い分け、reload・再起動・更新に耐える設計を扱います。構文のバージョン境界は [`commands.md`](commands.md)、進捗固有の挙動は [`advancements.md`](advancements.md) を参照してください。[^source-7fa8c3f976][^source-07d98ae27d][^source-a76c5d9cc1][^source-02ad4d518d][^source-ab46ae0dc7][^source-70c1849678]
 
 ## 状態の選択
 
@@ -149,9 +157,9 @@ scoreboard objectives remove example.state
 
 ## 参照
 
-- [Minecraft Wiki: Scoreboard](https://minecraft.wiki/w/Scoreboard)
-- [Minecraft Wiki: `/scoreboard`](https://minecraft.wiki/w/Commands/scoreboard)
-- [Minecraft Wiki: `/data`](https://minecraft.wiki/w/Commands/data)
-- [Minecraft Wiki: NBT path](https://minecraft.wiki/w/NBT_path_format)
-- [Mojang: Java Edition 1.15](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-15)
-- [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
+[^source-7fa8c3f976]: [Minecraft Wiki: Scoreboard](https://minecraft.wiki/w/Scoreboard)
+[^source-07d98ae27d]: [Minecraft Wiki: `/scoreboard`](https://minecraft.wiki/w/Commands/scoreboard)
+[^source-a76c5d9cc1]: [Minecraft Wiki: `/data`](https://minecraft.wiki/w/Commands/data)
+[^source-02ad4d518d]: [Minecraft Wiki: NBT path](https://minecraft.wiki/w/NBT_path_format)
+[^source-ab46ae0dc7]: [Mojang: Java Edition 1.15](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-15)
+[^source-70c1849678]: [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)

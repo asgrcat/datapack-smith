@@ -1,3 +1,11 @@
+---
+type: "Playbook"
+title: "読み込み・実行失敗の診断"
+description: "load、実行、移行の症状から原因と確認方法を特定する手順。"
+tags: ["minecraft-java", "troubleshooting"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # 読み込み・実行失敗の診断
 
 まず対象のexact version、project設定、実行したcommand、最初のerrorを確認します。後続の`unknown function`が、先行するfunction parse errorの結果である場合があります。形式番号だけを書き換えて警告を消す修正はしません。

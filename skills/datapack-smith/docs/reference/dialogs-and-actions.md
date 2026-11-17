@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "ダイアログ、入力、アクション"
+description: "1.21.6以降のdialog、body、input、button、dynamic action、安全性"
+tags: ["minecraft-java", "reference", "dialogs-and-actions"]
+sources: [{"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-7508d6a311", "resource": "build/minecraft/26.3/generated/reports/registries.json（26.3公式server JARから生成、commit対象外）", "title": "build/minecraft/26.3/generated/reports/registries.json（26.3公式server JARから生成、commit対象外）"}, {"id": "source-f2c31329e2", "resource": "build/minecraft/26.3/generated/data/minecraft/dialog/（同上）", "title": "build/minecraft/26.3/generated/data/minecraft/dialog/（同上）"}]
+---
+
 # ダイアログ、入力、アクション
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-adf703e2f3]
 
 Java Edition 1.21.6以降のデータ駆動ダイアログと、ボタンから実行するアクションを扱います。ダイアログはサーバー側の処理を置き換えるものではなく、入力値をコマンドまたはcustom payloadへ渡すUIです。信頼境界は常にサーバー側へ置きます。
 
@@ -191,6 +199,9 @@ field名とactionのnamespace省略可否は対象バージョンで再検証し
 
 ## 出典
 
-- [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
-- `build/minecraft/26.3/generated/reports/registries.json`（26.3公式server JARから生成、commit対象外）
-- `build/minecraft/26.3/generated/data/minecraft/dialog/`（同上）
+[^source-adf703e2f3]: [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
+[^source-7508d6a311]: build/minecraft/26.3/generated/reports/registries.json（26.3公式server JARから生成、commit対象外）
+[^source-f2c31329e2]: build/minecraft/26.3/generated/data/minecraft/dialog/（同上）
+
+- `build/minecraft/26.3/generated/reports/registries.json`（26.3公式server JARから生成、commit対象外）[^source-7508d6a311]
+- `build/minecraft/26.3/generated/data/minecraft/dialog/`（同上）[^source-f2c31329e2]

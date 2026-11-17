@@ -82,12 +82,15 @@ If the game version, namespace, output path, or requested validation level is mi
 
 ## Skill contents
 
+The specification documentation is an [OKF v0.2 knowledge bundle](skills/datapack-smith/docs/index.md). Each concept has `type`, `title`, `description`, `tags`, and `sources`; the skill retrieves the relevant knowledge through generated indexes. See [the bundle conventions](skills/datapack-smith/docs/okf.md) for maintenance.
+
 | Path | Purpose |
 |---|---|
+| [`skills/datapack-smith/docs/index.md`](skills/datapack-smith/docs/index.md) | OKF knowledge entry point and concept discovery |
 | [`skills/datapack-smith/SKILL.md`](skills/datapack-smith/SKILL.md) | Implementation and validation workflow followed by the AI |
-| [`skills/datapack-smith/docs/README.md`](skills/datapack-smith/docs/README.md) | Specification index and version-selection workflow |
-| [`skills/datapack-smith/docs/versions/README.md`](skills/datapack-smith/docs/versions/README.md) | Official release and data pack format index |
-| [`skills/datapack-smith/docs/snapshots/README.md`](skills/datapack-smith/docs/snapshots/README.md) | Bundled 26.3/26.4 development version and data pack format index |
+| [`skills/datapack-smith/docs/guide.md`](skills/datapack-smith/docs/guide.md) | Specification index and version-selection workflow |
+| [`skills/datapack-smith/docs/versions/catalog.md`](skills/datapack-smith/docs/versions/catalog.md) | Official release and data pack format index |
+| [`skills/datapack-smith/docs/snapshots/catalog.md`](skills/datapack-smith/docs/snapshots/catalog.md) | Bundled 26.3/26.4 development version and data pack format index |
 | [`skills/datapack-smith/docs/ai-authoring.md`](skills/datapack-smith/docs/ai-authoring.md) | Generation decisions and reporting contract |
 | [`skills/datapack-smith/templates/datapack-project.json`](skills/datapack-smith/templates/datapack-project.json) | Project configuration template |
 | [`skills/datapack-smith/tools/datapack_harness.py`](skills/datapack-smith/tools/datapack_harness.py) | Profile resolution and staged validation |

@@ -1,3 +1,11 @@
+---
+type: "Example"
+title: "完全例: player別の入力とcooldown"
+description: "1.21.5向けのplayer別cooldown packの全ファイルと機能test。"
+tags: ["minecraft-java", "worked-example"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # 完全例: player別の入力とcooldown
 
 Java Edition **1.21.5専用**の小さなpackです。非OPのplayerが`/trigger sd.request set 1`で自分だけにparticleとメッセージを出し、100オンラインtickのcooldownを持ちます。生成物の正本は[同梱プロジェクト](../templates/examples/cooldown-1.21.5/datapack-project.json)です。文書内の断片を組み立てなくても全fileが揃っています。

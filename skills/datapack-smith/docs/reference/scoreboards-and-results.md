@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "Scoreboardとcommand result"
+description: "objective、score holder、整数演算、success、result、`execute store`"
+tags: ["minecraft-java", "reference", "scoreboards-and-results"]
+sources: [{"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}, {"id": "source-a446b49e0d", "resource": "対象server JARのcommands.json", "title": "対象server JARのcommands.json"}]
+---
+
 # Scoreboardとcommand result
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
@@ -191,5 +199,8 @@ load functionで毎回設定してよい定数と、既存worldから保持す�
 
 ## 出典
 
-- 各 [`../versions/<version>.md`](../versions/README.md) のscoreboard／command差分
-- 対象server JARの`commands.json`
+[^source-1297269d29]: [`../versions/<version>.md`](../versions/catalog.md)
+[^source-a446b49e0d]: 対象server JARのcommands.json
+
+- 各 `../versions/<version>.md`[^source-1297269d29] のscoreboard／command差分
+- 対象server JARの`commands.json`[^source-a446b49e0d]

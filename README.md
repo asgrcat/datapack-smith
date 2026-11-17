@@ -83,12 +83,15 @@ AIは利用中の環境を判別し、スキル一式を対応する領域へ配
 
 ## スキルの構成
 
+仕様ドキュメントは[OKF v0.2のknowledge bundle](skills/datapack-smith/docs/index.md)として構成しています。各文書に`type`・`title`・`description`・`tags`・`sources`を持たせ、スキルは自動生成する索引から必要な知識を参照します。保守方法は[OKFの構造と参照方法](skills/datapack-smith/docs/okf.md)を参照してください。
+
 | パス | 役割 |
 |---|---|
+| [`skills/datapack-smith/docs/index.md`](skills/datapack-smith/docs/index.md) | OKF knowledgeの入口と文書の発見 |
 | [`skills/datapack-smith/SKILL.md`](skills/datapack-smith/SKILL.md) | AIが適用する実装・検証ワークフロー |
-| [`skills/datapack-smith/docs/README.md`](skills/datapack-smith/docs/README.md) | 仕様索引と対象バージョンの選択手順 |
-| [`skills/datapack-smith/docs/versions/README.md`](skills/datapack-smith/docs/versions/README.md) | 全正式リリースとdata pack formatの対応 |
-| [`skills/datapack-smith/docs/snapshots/README.md`](skills/datapack-smith/docs/snapshots/README.md) | 収録済み26.3／26.4開発バージョンとdata pack formatの対応 |
+| [`skills/datapack-smith/docs/guide.md`](skills/datapack-smith/docs/guide.md) | 仕様索引と対象バージョンの選択手順 |
+| [`skills/datapack-smith/docs/versions/catalog.md`](skills/datapack-smith/docs/versions/catalog.md) | 全正式リリースとdata pack formatの対応 |
+| [`skills/datapack-smith/docs/snapshots/catalog.md`](skills/datapack-smith/docs/snapshots/catalog.md) | 収録済み26.3／26.4開発バージョンとdata pack formatの対応 |
 | [`skills/datapack-smith/docs/ai-authoring.md`](skills/datapack-smith/docs/ai-authoring.md) | 生成時の決定規則と報告契約 |
 | [`skills/datapack-smith/templates/datapack-project.json`](skills/datapack-smith/templates/datapack-project.json) | プロジェクト設定のひな形 |
 | [`skills/datapack-smith/tools/datapack_harness.py`](skills/datapack-smith/tools/datapack_harness.py) | プロファイル解決と段階的な検証 |

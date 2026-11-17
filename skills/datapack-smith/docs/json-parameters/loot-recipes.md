@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "loot table・item modifier・recipe パラメータ"
+description: "loot table・item modifier・recipe パラメータの仕様、パラメータとバージョン境界。"
+tags: ["minecraft-java", "json-parameters", "loot-recipes"]
+sources: [{"id": "source-9df6d6b123", "resource": "https://www.minecraft.net/en-us/article/village---pillage-out-java-", "title": "Mojang: Village & Pillage out today on Java"}, {"id": "source-087a2f2045", "resource": "https://www.minecraft.net/en-us/article/buzzy-bees-out-now-in-java", "title": "Mojang: Buzzy Bees out now in Java"}, {"id": "source-76d96d2388", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20", "title": "Mojang: Java Edition 1.20"}, {"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-608ba82b15", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2", "title": "Mojang: Java Edition 1.21.2"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-03625c8aa8", "resource": "https://feedback.minecraft.net/hc/en-us/articles/41809981427213-Minecraft-Java-Edition-1-21-11-Mounts-of-Mayhem", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-a46da84279", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-1-snapshot-5", "title": "Mojang: Java Edition 26.1 Snapshot 5"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-9c296fb69d", "resource": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json", "title": "公式version manifest v2"}, {"id": "source-6d2516bc41", "resource": "https://minecraft.wiki/w/Loot_table", "title": "Minecraft Wiki: Loot table"}, {"id": "source-9fe5b4311e", "resource": "https://minecraft.wiki/w/Loot_context", "title": "Minecraft Wiki: Loot context"}, {"id": "source-960584726f", "resource": "https://minecraft.wiki/w/Item_modifier", "title": "Minecraft Wiki: Item modifier"}, {"id": "source-5747e48bd8", "resource": "https://minecraft.wiki/w/Recipe", "title": "Minecraft Wiki: Recipe"}, {"id": "source-f715719a65", "resource": "https://minecraft.wiki/w/Data_pack", "title": "Minecraft Wiki: Data pack"}]
+---
+
 # loot table・item modifier・recipe パラメータ
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-9df6d6b123][^source-087a2f2045][^source-76d96d2388][^source-9d2ba3de8c][^source-608ba82b15][^source-89abc18aa3][^source-03625c8aa8][^source-436443cb43][^source-a46da84279][^source-3e7c128593][^source-9c296fb69d][^source-6d2516bc41][^source-9fe5b4311e][^source-960584726f][^source-5747e48bd8][^source-f715719a65]
 
 この文書は Java Edition 1.13〜26.2 の loot table、item modifier、recipe を、JSON の階層、値の意味、実行context、バージョン境界から選ぶためのリファレンスです。全 loot condition/function、number provider、recipe serializer の完全な codec を Markdown に固定して複製するものではありません。対象の正式リリースの Mojang server JAR が生成する vanilla data、registry report、実際の reload 結果を機械的な正本とします。
 
@@ -779,6 +787,23 @@ load成功とgameplay結果は別のassertionにします。
 
 ## 根拠と保証範囲
 
+[^source-9df6d6b123]: [Mojang: Village & Pillage out today on Java](https://www.minecraft.net/en-us/article/village---pillage-out-java-)
+[^source-087a2f2045]: [Mojang: Buzzy Bees out now in Java](https://www.minecraft.net/en-us/article/buzzy-bees-out-now-in-java)
+[^source-76d96d2388]: [Mojang: Java Edition 1.20](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20)
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-608ba82b15]: [Mojang: Java Edition 1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-03625c8aa8]: [Mojang: Java Edition 1.21.11](https://feedback.minecraft.net/hc/en-us/articles/41809981427213-Minecraft-Java-Edition-1-21-11-Mounts-of-Mayhem)
+[^source-436443cb43]: [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-a46da84279]: [Mojang: Java Edition 26.1 Snapshot 5](https://www.minecraft.net/en-us/article/minecraft-26-1-snapshot-5)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-9c296fb69d]: [公式version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
+[^source-6d2516bc41]: [Minecraft Wiki: Loot table](https://minecraft.wiki/w/Loot_table)
+[^source-9fe5b4311e]: [Minecraft Wiki: Loot context](https://minecraft.wiki/w/Loot_context)
+[^source-960584726f]: [Minecraft Wiki: Item modifier](https://minecraft.wiki/w/Item_modifier)
+[^source-5747e48bd8]: [Minecraft Wiki: Recipe](https://minecraft.wiki/w/Recipe)
+[^source-f715719a65]: [Minecraft Wiki: Data pack](https://minecraft.wiki/w/Data_pack)
+
 この文書のfieldと境界は次の順で確認します。
 
 1. Mojangの正式リリースノートと正式リリースへ残ったsnapshot technical changes
@@ -791,25 +816,7 @@ JARのvanilla JSONにfieldがないことは、そのcodecで使用不能とい�
 
 主な一次資料:
 
-- [Mojang: Village & Pillage out today on Java](https://www.minecraft.net/en-us/article/village---pillage-out-java-)
-- [Mojang: Buzzy Bees out now in Java](https://www.minecraft.net/en-us/article/buzzy-bees-out-now-in-java)
-- [Mojang: Java Edition 1.20](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20)
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
-- [Mojang: Java Edition 1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2)
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
-- [Mojang: Java Edition 1.21.11](https://feedback.minecraft.net/hc/en-us/articles/41809981427213-Minecraft-Java-Edition-1-21-11-Mounts-of-Mayhem)
-- [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
-- [Mojang: Java Edition 26.1 Snapshot 5](https://www.minecraft.net/en-us/article/minecraft-26-1-snapshot-5)
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
-- [公式version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
-
 cross-check:
-
-- [Minecraft Wiki: Loot table](https://minecraft.wiki/w/Loot_table)
-- [Minecraft Wiki: Loot context](https://minecraft.wiki/w/Loot_context)
-- [Minecraft Wiki: Item modifier](https://minecraft.wiki/w/Item_modifier)
-- [Minecraft Wiki: Recipe](https://minecraft.wiki/w/Recipe)
-- [Minecraft Wiki: Data pack](https://minecraft.wiki/w/Data_pack)
 
 ## 26.4 Snapshot 7の建材とchest loot
 

@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "predicate・loot condition パラメータ"
+description: "predicate・loot condition パラメータの仕様、パラメータとバージョン境界。"
+tags: ["minecraft-java", "json-parameters", "predicates"]
+sources: [{"id": "source-9df6d6b123", "resource": "https://www.minecraft.net/en-us/article/village---pillage-out-java-", "title": "Mojang: Java Edition 1.14"}, {"id": "source-087a2f2045", "resource": "https://www.minecraft.net/en-us/article/buzzy-bees-out-now-in-java", "title": "Mojang: Java Edition 1.15"}, {"id": "source-d4212e2364", "resource": "https://www.minecraft.net/en-us/article/nether-update-java", "title": "Mojang: Java Edition 1.16"}, {"id": "source-48d7f18c7e", "resource": "https://feedback.minecraft.net/hc/en-us/articles/4402626897165-Minecraft-Caves-Cliffs-Part-1-1-17-Java", "title": "Mojang: Java Edition 1.17"}, {"id": "source-6b69673907", "resource": "https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19", "title": "Mojang: Java Edition 1.19"}, {"id": "source-5d6a6441ea", "resource": "https://feedback.minecraft.net/hc/en-us/articles/11280166737293-Minecraft-Java-Edition-1-19-3", "title": "Mojang: Java Edition 1.19.3"}, {"id": "source-d80709200f", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-19-4", "title": "Mojang: Java Edition 1.19.4"}, {"id": "source-76d96d2388", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20", "title": "Mojang: Java Edition 1.20"}, {"id": "source-70c1849678", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2", "title": "Mojang: Java Edition 1.20.2"}, {"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-b32797f56f", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21", "title": "Mojang: Java Edition 1.21"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-20984d0b6f", "resource": "https://minecraft.wiki/w/Predicate", "title": "Minecraft Wiki: Predicate"}, {"id": "source-b991ceceb4", "resource": "https://minecraft.wiki/w/Entity_predicate", "title": "Minecraft Wiki: Entity predicate"}, {"id": "source-ce28490f3c", "resource": "https://minecraft.wiki/w/Item_predicate", "title": "Minecraft Wiki: Item predicate"}, {"id": "source-60d1c4e7c5", "resource": "https://minecraft.wiki/w/Location_predicate", "title": "Minecraft Wiki: Location predicate"}]
+---
+
 # predicate・loot condition パラメータ
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
@@ -557,26 +565,47 @@ random conditionは1回の成功だけで判定せず、固定条件へ一時置
 
 ## 出典
 
-- [Mojang: Java Edition 1.14](https://www.minecraft.net/en-us/article/village---pillage-out-java-) — loot context、condition、entity predicate
-- [Mojang: Java Edition 1.15](https://www.minecraft.net/en-us/article/buzzy-bees-out-now-in-java) — 独立predicate、`reference`、entity/location/item拡張
-- [Mojang: Java Edition 1.16](https://www.minecraft.net/en-us/article/nether-update-java) — top-level array、advancement entity check
-- [Mojang: Java Edition 1.17](https://feedback.minecraft.net/hc/en-us/articles/4402626897165-Minecraft-Caves-Cliffs-Part-1-1-17-Java) — item/block predicateの複数形化
-- [Mojang: Java Edition 1.19](https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19) — location/entity predicate変更
-- [Mojang: Java Edition 1.19.3](https://feedback.minecraft.net/hc/en-us/articles/11280166737293-Minecraft-Java-Edition-1-19-3) — entity sub-predicate追加
-- [Mojang: Java Edition 1.19.4](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-19-4) — damage source predicate
-- [Mojang: Java Edition 1.20](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20) — condition合成とadvancement変更
-- [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2) — inline condition、state property
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5) — item component predicate、entity/location/block predicate
-- [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21) — 単数形folder、enchantment condition
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5) — entity/block component predicate
-- [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6) — strict JSON
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11) — component存在predicate
-- [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1) — trade等のinline predicate
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2) — entity predicate component-map、unknown key拒否
-- [Minecraft Wiki: Predicate](https://minecraft.wiki/w/Predicate) — condition resourceと利用箇所のcross-check
-- [Minecraft Wiki: Entity predicate](https://minecraft.wiki/w/Entity_predicate) — entity fieldのcross-check
-- [Minecraft Wiki: Item predicate](https://minecraft.wiki/w/Item_predicate) — item fieldのcross-check
-- [Minecraft Wiki: Location predicate](https://minecraft.wiki/w/Location_predicate) — location/block/fluid fieldのcross-check
+[^source-9df6d6b123]: [Mojang: Java Edition 1.14](https://www.minecraft.net/en-us/article/village---pillage-out-java-)
+[^source-087a2f2045]: [Mojang: Java Edition 1.15](https://www.minecraft.net/en-us/article/buzzy-bees-out-now-in-java)
+[^source-d4212e2364]: [Mojang: Java Edition 1.16](https://www.minecraft.net/en-us/article/nether-update-java)
+[^source-48d7f18c7e]: [Mojang: Java Edition 1.17](https://feedback.minecraft.net/hc/en-us/articles/4402626897165-Minecraft-Caves-Cliffs-Part-1-1-17-Java)
+[^source-6b69673907]: [Mojang: Java Edition 1.19](https://feedback.minecraft.net/hc/en-us/articles/6731464524941-Minecraft-Java-Edition-1-19)
+[^source-5d6a6441ea]: [Mojang: Java Edition 1.19.3](https://feedback.minecraft.net/hc/en-us/articles/11280166737293-Minecraft-Java-Edition-1-19-3)
+[^source-d80709200f]: [Mojang: Java Edition 1.19.4](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-19-4)
+[^source-76d96d2388]: [Mojang: Java Edition 1.20](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20)
+[^source-70c1849678]: [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-b32797f56f]: [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-adf703e2f3]: [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-436443cb43]: [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-20984d0b6f]: [Minecraft Wiki: Predicate](https://minecraft.wiki/w/Predicate)
+[^source-b991ceceb4]: [Minecraft Wiki: Entity predicate](https://minecraft.wiki/w/Entity_predicate)
+[^source-ce28490f3c]: [Minecraft Wiki: Item predicate](https://minecraft.wiki/w/Item_predicate)
+[^source-60d1c4e7c5]: [Minecraft Wiki: Location predicate](https://minecraft.wiki/w/Location_predicate)
+
+- Mojang: Java Edition 1.14[^source-9df6d6b123] — loot context、condition、entity predicate
+- Mojang: Java Edition 1.15[^source-087a2f2045] — 独立predicate、`reference`、entity/location/item拡張
+- Mojang: Java Edition 1.16[^source-d4212e2364] — top-level array、advancement entity check
+- Mojang: Java Edition 1.17[^source-48d7f18c7e] — item/block predicateの複数形化
+- Mojang: Java Edition 1.19[^source-6b69673907] — location/entity predicate変更
+- Mojang: Java Edition 1.19.3[^source-5d6a6441ea] — entity sub-predicate追加
+- Mojang: Java Edition 1.19.4[^source-d80709200f] — damage source predicate
+- Mojang: Java Edition 1.20[^source-76d96d2388] — condition合成とadvancement変更
+- Mojang: Java Edition 1.20.2[^source-70c1849678] — inline condition、state property
+- Mojang: Java Edition 1.20.5[^source-9d2ba3de8c] — item component predicate、entity/location/block predicate
+- Mojang: Java Edition 1.21[^source-b32797f56f] — 単数形folder、enchantment condition
+- Mojang: Java Edition 1.21.5[^source-89abc18aa3] — entity/block component predicate
+- Mojang: Java Edition 1.21.6[^source-adf703e2f3] — strict JSON
+- Mojang: Java Edition 1.21.11[^source-c9f084f2e6] — component存在predicate
+- Mojang: Java Edition 26.1[^source-436443cb43] — trade等のinline predicate
+- Mojang: Java Edition 26.2[^source-3e7c128593] — entity predicate component-map、unknown key拒否
+- Minecraft Wiki: Predicate[^source-20984d0b6f] — condition resourceと利用箇所のcross-check
+- Minecraft Wiki: Entity predicate[^source-b991ceceb4] — entity fieldのcross-check
+- Minecraft Wiki: Item predicate[^source-ce28490f3c] — item fieldのcross-check
+- Minecraft Wiki: Location predicate[^source-60d1c4e7c5] — location/block/fluid fieldのcross-check
 
 ## 26.4 Snapshot 4のfluidとmatching_fluids
 

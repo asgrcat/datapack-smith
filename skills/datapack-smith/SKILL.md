@@ -9,7 +9,7 @@ An unofficial Agent Skill for Minecraft Java Edition. Not approved by or associa
 
 Resolve the exact target game version first, then implement using only syntax and data confirmed for that release.
 
-The bundled specification references are written in Japanese. Start with the [specification index](docs/README.md); for an English overview and installation instructions, see the [repository README](https://github.com/asgrcat/datapack-smith/blob/main/README.en.md).
+The bundled specification references are written in Japanese. Start with the [OKF knowledge index](docs/index.md); for an English overview and installation instructions, see the [repository README](https://github.com/asgrcat/datapack-smith/blob/main/README.en.md).
 
 The directory containing this `SKILL.md` is `<harness-root>`. It is separate from the user's repository root. Invoke the CLI as `python3 <harness-root>/tools/datapack_harness.py ...`. Do not assume the distribution repository's parent directory or an editor-specific installation path.
 
@@ -17,9 +17,9 @@ The directory containing this `SKILL.md` is `<harness-root>`. It is separate fro
 
 1. Inspect the user's repository instructions and existing data packs.
 2. If `datapack-project.json` exists, treat it as authoritative. Otherwise, derive values from existing files and the request, and use the [configuration template](templates/datapack-project.json) when generating or modifying a pack. `pack_format` alone cannot uniquely identify the game version. Ask if the target version is unknown. For a new pack, choose a namespace and output path that do not conflict with existing resources. If no validation level is specified, explicitly propose `static`. For investigation-only requests, do not create configuration files or packs.
-3. Read the [specification index](docs/README.md) and [AI authoring contract](docs/ai-authoring.md) in full.
-4. Match `target_version` exactly in the [official release index](docs/versions/README.md) or [development version index](docs/snapshots/README.md), then read the matching profile. For the official `26.3` release, also read the [migration reference](docs/reference/26.3-migration.md). Do not round an unlisted value to a nearby version.
-5. Select the required documents under “Choosing references” below. When implementing JSON, use [version-specific key selection](docs/reference/versioned-json.md) to establish types and version boundaries for each resource type, consumer, and JSON path. Do not reuse examples from newer versions without conversion.
+3. Open the [OKF knowledge index](docs/index.md), then read the [reference workflow](docs/guide.md) and [AI authoring contract](docs/ai-authoring.md) in full.
+4. Match `target_version` exactly in the [official release knowledge index](docs/versions/index.md) or [development version knowledge index](docs/snapshots/index.md), then read the matching profile. For the official `26.3` release, also read the [migration reference](docs/reference/26.3-migration.md). Do not round an unlisted value to a nearby version.
+5. Retrieve the required concepts from the OKF indexes using their `title`, `description`, and `tags`, following “Reading OKF knowledge” below. When implementing JSON, use [version-specific key selection](docs/reference/versioned-json.md) to establish types and version boundaries for each resource type, consumer, and JSON path. Do not reuse examples from newer versions without conversion.
 6. Use [implementation design and acceptance criteria](docs/implementation-contract.md) to connect requirements, entry points, state, resource dependencies, and validation methods, then implement the necessary files. Preserve the user's changes in existing projects and do not modify files outside the request's scope. Apply only the relevant parts for small fixes.
 7. Validate up to the requested level. Report evidence from completed checks, warnings, and unexecuted higher validation levels separately.
 
@@ -35,26 +35,20 @@ The directory containing this `SKILL.md` is `<harness-root>`. It is separate fro
 - For 26.4 Snapshot 8, read the [context validation rules](docs/validation.md#264-snapshot-8のcontext検証) before reusing loot resources or context-dependent command arguments. Read the argument type and context under `argument` in the command report.
 - Validate snapshots, pre-releases, and release candidates only in isolated experimental worlds. Do not apply them to existing worlds or production servers.
 
-## Choosing references
+## Reading OKF knowledge
 
-- Turn requirements into an implementation: [implementation-contract.md](docs/implementation-contract.md)
-- Complete example for a new pack: [worked-example.md](docs/worked-example.md) (per-player cooldown for 1.21.5 only; convert before copying to another version)
-- Packs that fail to load or run: [troubleshooting.md](docs/troubleshooting.md)
-- Commands and execution context: [commands.md](docs/commands.md), [execution-model.md](docs/execution-model.md)
-- JSON, SNBT, and file layout: [json-formats.md](docs/json-formats.md), [reference/README.md](docs/reference/README.md)
-- Data-driven JSON fields: [json-parameters/README.md](docs/json-parameters/README.md)
-- Command arguments, scoreboards, NBT, and text components: [command-arguments-and-selectors.md](docs/reference/command-arguments-and-selectors.md), [scoreboards-and-results.md](docs/reference/scoreboards-and-results.md), [nbt-snbt-and-data.md](docs/reference/nbt-snbt-and-data.md), [text-components.md](docs/reference/text-components.md)
-- Registries and 26.3 data: [registry-elements.md](docs/reference/registry-elements.md), [number-providers.md](docs/reference/number-providers.md), [slot-sources.md](docs/reference/slot-sources.md), [block-transformation.md](docs/reference/block-transformation.md)
-- Gameplay and UI resources: [damage-system.md](docs/reference/damage-system.md), [structures-and-jigsaw.md](docs/reference/structures-and-jigsaw.md), [dialogs-and-actions.md](docs/reference/dialogs-and-actions.md), [sounds-and-particles.md](docs/reference/sounds-and-particles.md)
-- Advancements and player events: [advancements.md](docs/advancements.md)
-- Persistent state and migration: [state-management.md](docs/state-management.md)
-- Observing and controlling gameplay elements: [content-hooks.md](docs/content-hooks.md), [gameplay-requirements.md](docs/gameplay-requirements.md)
-- Implementation patterns and performance: [implementation-patterns.md](docs/implementation-patterns.md)
-- Multi-version support: [compatibility.md](docs/compatibility.md)
-- Official generated artifacts and validation methods: [validation.md](docs/validation.md), [harness.md](docs/harness.md)
-- Source precedence: [sources.md](docs/sources.md)
+The bundled `docs/` directory is an OKF v0.2 knowledge bundle. Its [root index](docs/index.md) lists concepts by type and links to subdirectory indexes. Follow those indexes to retrieve the relevant concepts; the Markdown files are the knowledge source. Read them directly without installing extra packages or requiring an OKF service.
 
-For long references, search for headings relevant to the requirements before reading those sections. However, always read the target version profile, specification index, and AI authoring contract in full.
+- Discover workflows, commands, state management, troubleshooting, compatibility, and validation through the root index's titles and descriptions.
+- Find detailed resource formats through the [reference index](docs/reference/index.md), and JSON families through the [JSON parameter index](docs/json-parameters/index.md).
+- Use frontmatter `type`, `title`, `description`, and `tags` to select documents. `Minecraft Version` concepts carry the exact game profile; the `release` and `development` tags distinguish channels. Tags help discovery; apply syntax only after checking the target profile and the body's version boundaries.
+- Follow `sources` for provenance. Relative links resolve from the current document; paths beginning with `/` resolve from the `docs/` bundle root. Minecraft's official release notes and exact server JAR retain their authority.
+- Join attribution footnotes to `sources[].id`. A source resource may describe a scope such as the target JAR's generated reports instead of naming a fetchable path.
+- Unknown concept types or additional metadata do not invalidate knowledge. Missing optional trust or lifecycle fields do not prevent reading it; absence of `verified` is not evidence of verification.
+- Treat a bare `verified` mapping as a one-event list. No verifier means unverified; non-`human:` verifiers mean machine-confirmed; a `human:` verifier means human-reviewed. Missing `status` means `stable`. Surface `draft`, `deprecated`, and staleness (`now >= stale_after`) when present, and recheck applicable details against target-version sources before implementation.
+- Tolerate broken cross-links and unfamiliar declared OKF versions while reading available knowledge; report required missing evidence as unresolved. These conditions do not authorize guessing Minecraft syntax.
+
+For long references, search for relevant headings before reading those sections. Always read the target version profile, reference workflow, and AI authoring contract in full. For bundle maintenance and metadata conventions, see [okf.md](docs/okf.md).
 
 ## Implementation rules
 

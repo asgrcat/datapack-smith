@@ -1,8 +1,16 @@
+---
+type: "Reference"
+title: "追加コンテンツとデータパック活用"
+description: "block、entity、itemをデータパックから観測・制御する手段と制約。"
+tags: ["minecraft-java", "content-hooks"]
+sources: [{"id": "source-4221dd7e43", "resource": "https://www.minecraft.net/en-us/articles?category=news", "title": "Mojang: Java Edition release notes"}, {"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-498c0df63d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9", "title": "Mojang: Java Edition 1.21.9"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-498e73bd7d", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1", "title": "Mojang: Minecraft 26.3 Snapshot 1"}, {"id": "source-b079940fa6", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-3", "title": "Mojang: Minecraft 26.3 Snapshot 3"}, {"id": "source-f507cf4532", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-6", "title": "Mojang: Minecraft 26.3 Snapshot 6"}, {"id": "source-570b38e56a", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-7", "title": "Mojang: Minecraft 26.3 Snapshot 7"}, {"id": "source-a66310a5a0", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-8", "title": "Mojang: Minecraft 26.3 Snapshot 8"}, {"id": "source-ee795decb8", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9", "title": "Mojang: Minecraft 26.3 Snapshot 9"}, {"id": "source-2e6de5499b", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10", "title": "Mojang: Minecraft 26.3 Snapshot 10"}, {"id": "source-f715719a65", "resource": "https://minecraft.wiki/w/Data_pack", "title": "Minecraft Wiki: Data pack"}, {"id": "source-d60450dd35", "resource": "https://minecraft.wiki/w/Java_Edition_version_history", "title": "Minecraft Wiki: Java Edition version history"}]
+---
+
 # 追加コンテンツとデータパック活用
 
-この文書は、正式リリースで追加された主要なblock・entity・item・gameplay systemを、データパックから観測・制御する入口へ結び付けます。全registry IDの複製ではなく、「その要素を使って何を作れるか」を探すための索引です。
+この文書は、正式リリースで追加された主要なblock・entity・item・gameplay systemを、データパックから観測・制御する入口へ結び付けます。全registry IDの複製ではなく、「その要素を使って何を作れるか」を探すための索引です。[^source-4221dd7e43][^source-adf703e2f3][^source-498c0df63d][^source-c9f084f2e6][^source-436443cb43][^source-3e7c128593][^source-498e73bd7d][^source-b079940fa6][^source-f507cf4532][^source-570b38e56a][^source-a66310a5a0][^source-ee795decb8][^source-2e6de5499b][^source-f715719a65][^source-d60450dd35]
 
-対象バージョンを決めてから [`versions/README.md`](versions/README.md) のバージョンプロファイルを適用してください。完全なID、block state、entity data/component、tagは対象バージョンのserver JARのreportを正本とします。
+対象バージョンを決めてから [`versions/catalog.md`](versions/catalog.md) のバージョンプロファイルを適用してください。完全なID、block state、entity data/component、tagは対象バージョンのserver JARのreportを正本とします。
 
 ## 読み方
 
@@ -291,21 +299,6 @@ ID追加だけでは、AI、drop、interaction、block state、tag membershipの
 ## 参照
 
 - [`validation.md`](validation.md)
-- [Mojang: Java Edition release notes](https://www.minecraft.net/en-us/articles?category=news)
-- [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
-- [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
-- [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
-- [Mojang: Minecraft 26.3 Snapshot 1](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1)
-- [Mojang: Minecraft 26.3 Snapshot 3](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-3)
-- [Mojang: Minecraft 26.3 Snapshot 6](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-6)
-- [Mojang: Minecraft 26.3 Snapshot 7](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-7)
-- [Mojang: Minecraft 26.3 Snapshot 8](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-8)
-- [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
-- [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
-- [Minecraft Wiki: Data pack](https://minecraft.wiki/w/Data_pack)
-- [Minecraft Wiki: Java Edition version history](https://minecraft.wiki/w/Java_Edition_version_history)
 
 ## 26.4 Snapshot 3の企画用hook
 
@@ -340,3 +333,19 @@ Adventure worldでのmob projectileによるpot／chorus flower／speleothem破�
 火がFreezingを革防具と同様に打ち消し、Zombie／Skeletonは革防具を1部位でも装備しているとFrostbite／Strayへ変換しなくなります。変換や凍結を使う企画では、effect付与、装備、燃焼、mob種類を組み合わせて確認します。6つの寒冷biomeにはStray spawnも追加します。
 
 Snapshot 6で追加したentity type tag `minecraft:swimming`／`minecraft:flying`は削除します。移動状態の判定にこれらのtagを生成せず、要件に合うpredicateを対象codecから選びます。fluid tag `minecraft:swimmable`は残り、entity type tagとは別物です。ゲーム内の変換・spawn・効果挙動は未検証です。
+
+[^source-4221dd7e43]: [Mojang: Java Edition release notes](https://www.minecraft.net/en-us/articles?category=news)
+[^source-adf703e2f3]: [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
+[^source-498c0df63d]: [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-436443cb43]: [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-498e73bd7d]: [Mojang: Minecraft 26.3 Snapshot 1](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1)
+[^source-b079940fa6]: [Mojang: Minecraft 26.3 Snapshot 3](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-3)
+[^source-f507cf4532]: [Mojang: Minecraft 26.3 Snapshot 6](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-6)
+[^source-570b38e56a]: [Mojang: Minecraft 26.3 Snapshot 7](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-7)
+[^source-a66310a5a0]: [Mojang: Minecraft 26.3 Snapshot 8](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-8)
+[^source-ee795decb8]: [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
+[^source-2e6de5499b]: [Mojang: Minecraft 26.3 Snapshot 10](https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10)
+[^source-f715719a65]: [Minecraft Wiki: Data pack](https://minecraft.wiki/w/Data_pack)
+[^source-d60450dd35]: [Minecraft Wiki: Java Edition version history](https://minecraft.wiki/w/Java_Edition_version_history)

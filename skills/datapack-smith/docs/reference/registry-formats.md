@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "データ駆動registryの書式"
+description: "26.2でデータパックから定義できるregistry entryの配置とパラメータ"
+tags: ["minecraft-java", "reference", "registry-formats"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # データ駆動registryの書式
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。

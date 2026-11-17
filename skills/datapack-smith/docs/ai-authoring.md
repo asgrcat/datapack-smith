@@ -1,6 +1,20 @@
+---
+type: "Playbook"
+title: "AI データパック生成契約"
+description: "project設定から対象仕様を解決し、データパックを生成・検証する決定手順。"
+tags: ["minecraft-java", "ai-authoring"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # AI データパック生成契約
 
 この文書は、利用者repositoryのproject設定と要件から、AIがどの資料をどの順で適用するかを定義します。
+
+## OKF knowledgeの取得
+
+[OKF索引](index.md)から必要なconceptを発見し、`title`・`description`・`tags`で用途を確認して本文を読みます。正式profileは[versions/index.md](versions/index.md)、開発profileは[snapshots/index.md](snapshots/index.md)から完全一致で選びます。`type: Minecraft Version`の既存Minecraft fieldを解決アルゴリズムへ渡し、追加metadataは保持します。検索tagだけで構文の対応バージョンを決めません。
+
+詳細なJSONは[reference/index.md](reference/index.md)と[json-parameters/index.md](json-parameters/index.md)から該当familyを選びます。`sources`のbundle内`/`始まりpathは`docs`基準で解決します。出典・信頼metadataの扱いは[OKFの規約](okf.md)に従います。
 
 ## 入力
 
@@ -20,7 +34,7 @@ python3 "$DATAPACK_SMITH_ROOT/tools/datapack_harness.py" \
 - 省略された任意fieldにはハーネスの既定値を適用する。必須fieldは `schema_version`、`target_version`、`namespace`、`pack_root`、`validation_level`
 - 実装要件はproject設定とは別に[設計契約](implementation-contract.md)へ記録する。調査のみならproject設定の新設は不要
 - `edition` は `java` だけを受け付ける
-- versionは [`versions/README.md`](versions/README.md) の正式リリース、または [`snapshots/README.md`](snapshots/README.md) の収録済み開発バージョンIDに完全一致させる
+- versionは [`versions/catalog.md`](versions/catalog.md) の正式リリース、または [`snapshots/catalog.md`](snapshots/catalog.md) の収録済み開発バージョンIDに完全一致させる
 - 一覧にないsnapshot/pre-release/release candidate/Bedrock Editionを最寄りバージョンへ丸めない。`26.3`を最新の26.3開発バージョンとして解釈しない
 - `26.1` を `1.26.1` に変換しない。文字列の辞書順や単純なsemver比較を使わず、version indexの順序を使う
 
@@ -51,8 +65,8 @@ resolve(target_version):
 
   state = common rules from commands.md and json-formats.md
   apply target profile's metadata and active_rules
-  if requirements mention a family covered by json-parameters/README.md:
-    read json_parameter_history and the family guide from json-parameters/README.md
+  if requirements mention a family covered by json-parameters/guide.md:
+    read json_parameter_history and the family guide from json-parameters/guide.md
   if requirements mention gameplay content:
     resolve observations and controls from content-hooks.md
 

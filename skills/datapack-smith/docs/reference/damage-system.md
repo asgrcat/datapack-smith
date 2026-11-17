@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "Damage system"
+description: "damage type、分類tag、source、predicate、item・enchantmentとの接続"
+tags: ["minecraft-java", "reference", "damage-system"]
+sources: [{"id": "source-39cf480e70", "resource": "/versions/1.19.4.md", "title": "Java Edition 1.19.4 profile"}, {"id": "source-1afdf3970e", "resource": "対象server JARのdamage type registry、vanilla tags/damage_type/", "title": "対象server JARのdamage type registry、vanilla tags/damage_type/"}]
+---
+
 # Damage system
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-39cf480e70]
 
 この文書はJava Edition 1.19.4以降のdamage type registry、damage type tag、`/damage`、damage source predicate、item／enchantmentとの接続を扱います。damage量、damage分類、攻撃者、death messageは別の要素です。
 
@@ -186,5 +194,7 @@ survival／creative、armor有無、shield、effect、projectile／melee、direc
 
 ## 出典
 
-- [Java Edition 1.19.4 profile](../versions/1.19.4.md)
-- 対象server JARのdamage type registry、vanilla `tags/damage_type/`
+[^source-39cf480e70]: [Java Edition 1.19.4 profile](../versions/1.19.4.md)
+[^source-1afdf3970e]: 対象server JARのdamage type registry、vanilla tags/damage_type/
+
+- 対象server JARのdamage type registry、vanilla `tags/damage_type/`[^source-1afdf3970e]

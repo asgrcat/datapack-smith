@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "pack metadata、namespace、配置"
+description: "`pack.mcmeta`、namespace、resource location、ディレクトリ、tag、overlay"
+tags: ["minecraft-java", "reference", "pack-and-paths"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # pack metadata、namespace、配置
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。

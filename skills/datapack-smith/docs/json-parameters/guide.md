@@ -1,3 +1,11 @@
+---
+type: "Playbook"
+title: "データ駆動JSONパラメータ索引"
+description: "データ駆動JSONのfamily別パラメータ、正式リリース境界とJARカタログの入口。"
+tags: ["minecraft-java", "json-parameters"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # データ駆動JSONパラメータ索引
 
 26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)、[Snapshot 4](../snapshots/26.4-snapshot-4.md)、[Snapshot 5](../snapshots/26.4-snapshot-5.md)の差分を追加適用します。正式26.3の仕様とは区別します。
@@ -129,7 +137,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 
 ## 26.3開発バージョン境界
 
-次は開発中の差分です。正式リリース表へ合成せず、各 [`snapshots/<launcher-id>.md`](../snapshots/README.md) の9 family差分を`inherits`順に適用します。
+次は開発中の差分です。正式リリース表へ合成せず、各 [`snapshots/<launcher-id>.md`](../snapshots/catalog.md) の9 family差分を`inherits`順に適用します。
 
 | launcher ID | data pack format | 主要境界 |
 |---|---:|---|

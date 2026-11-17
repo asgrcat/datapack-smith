@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "実装パターン"
+description: "状態機械、timer、event queue、API、性能とtestの実装パターン。"
+tags: ["minecraft-java", "implementation-patterns"]
+sources: [{"id": "source-70c1849678", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2", "title": "Mojang: Java Edition 1.20.2"}, {"id": "source-3cbcc48b2d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3", "title": "Mojang: Java Edition 1.20.3"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-9b59aa02fe", "resource": "https://minecraft.wiki/w/Function_(Java_Edition)", "title": "Minecraft Wiki: Function"}, {"id": "source-85f416c811", "resource": "https://minecraft.wiki/w/Game_test", "title": "Minecraft Wiki: Game test"}]
+---
+
 # 実装パターン
 
-この文書は、個別構文を組み合わせて保守可能なデータパックを設計する定型を示します。先に [`execution-model.md`](execution-model.md)、[`state-management.md`](state-management.md)、[`advancements.md`](advancements.md) を参照してください。
+この文書は、個別構文を組み合わせて保守可能なデータパックを設計する定型を示します。先に [`execution-model.md`](execution-model.md)、[`state-management.md`](state-management.md)、[`advancements.md`](advancements.md) を参照してください。[^source-70c1849678][^source-3cbcc48b2d][^source-89abc18aa3][^source-9b59aa02fe][^source-85f416c811]
 
 例は概念を示す最小形です。対象バージョンのdirectory、command、item/text/predicate形式へ解決してから使用します。
 
@@ -353,8 +361,9 @@ execute unless score #ok example.tmp matches 1 run tellraw @a[tag=example.admin]
 ## 参照
 
 - [`validation.md`](validation.md)
-- [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
-- [Mojang: Java Edition 1.20.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3)
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
-- [Minecraft Wiki: Function](https://minecraft.wiki/w/Function_(Java_Edition))
-- [Minecraft Wiki: Game test](https://minecraft.wiki/w/Game_test)
+
+[^source-70c1849678]: [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
+[^source-3cbcc48b2d]: [Mojang: Java Edition 1.20.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-9b59aa02fe]: [Minecraft Wiki: Function](https://minecraft.wiki/w/Function_(Java_Edition))
+[^source-85f416c811]: [Minecraft Wiki: Game test](https://minecraft.wiki/w/Game_test)

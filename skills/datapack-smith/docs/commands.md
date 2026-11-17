@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "`.mcfunction` とコマンド仕様"
+description: "mcfunctionの字句規則、コマンド引数、実行文脈とバージョン境界。"
+tags: ["minecraft-java", "commands"]
+sources: [{"id": "source-4e347f0ae8", "resource": "https://minecraft.wiki/w/Commands", "title": "Minecraft Wiki: Commands"}, {"id": "source-9b59aa02fe", "resource": "https://minecraft.wiki/w/Function_(Java_Edition)", "title": "Minecraft Wiki: Function"}, {"id": "source-4310751373", "resource": "https://minecraft.wiki/w/Target_selectors", "title": "Minecraft Wiki: Target selectors"}, {"id": "source-b7ba8ae95d", "resource": "https://minecraft.wiki/w/Commands/execute", "title": "Minecraft Wiki: `/execute`"}, {"id": "source-a76c5d9cc1", "resource": "https://minecraft.wiki/w/Commands/data", "title": "Minecraft Wiki: `/data`"}, {"id": "source-af9556ddd0", "resource": "https://minecraft.wiki/w/Commands/function", "title": "Minecraft Wiki: `/function`"}, {"id": "source-70c1849678", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2", "title": "Mojang: Java Edition 1.20.2"}, {"id": "source-3cbcc48b2d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3", "title": "Mojang: Java Edition 1.20.3"}]
+---
+
 # `.mcfunction` とコマンド仕様
 
-正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。
+正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。[^source-4e347f0ae8][^source-9b59aa02fe][^source-4310751373][^source-b7ba8ae95d][^source-a76c5d9cc1][^source-af9556ddd0][^source-70c1849678][^source-3cbcc48b2d]
 
 この文書は Java Edition のデータパックから実行するコマンドを扱います。コマンドの全分岐はバージョンごとに変化するため、最終的な正本は対象バージョン server JAR が生成する `generated/reports/commands.json` です。生成方法は [`validation.md`](validation.md) を参照してください。
 
@@ -255,15 +263,15 @@ parse不能、runtime failure、success、result、voidは別の状態です。�
 
 ## 参照
 
-- [Minecraft Wiki: Commands](https://minecraft.wiki/w/Commands)
-- [Minecraft Wiki: Function](https://minecraft.wiki/w/Function_(Java_Edition))
-- [Minecraft Wiki: Target selectors](https://minecraft.wiki/w/Target_selectors)
-- [Minecraft Wiki: `/execute`](https://minecraft.wiki/w/Commands/execute)
-- [Minecraft Wiki: `/data`](https://minecraft.wiki/w/Commands/data)
-- [Minecraft Wiki: `/function`](https://minecraft.wiki/w/Commands/function)
-- [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
-- [Mojang: Java Edition 1.20.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3)
-
 ## 26.4 Snapshot 1の開発差分
 
 `26.4-snapshot-1`では`/fillbiome`がblock単位の精度でbiomeを変更します。構文が同じでも以前の粗い範囲への丸めを前提にせず、境界blockを含めて確認します。NBTの整数変換と`/test`の回転引数にも修正があります。[バージョン別差分](snapshots/26.4-snapshot-1.md)を参照してください。
+
+[^source-4e347f0ae8]: [Minecraft Wiki: Commands](https://minecraft.wiki/w/Commands)
+[^source-9b59aa02fe]: [Minecraft Wiki: Function](https://minecraft.wiki/w/Function_(Java_Edition))
+[^source-4310751373]: [Minecraft Wiki: Target selectors](https://minecraft.wiki/w/Target_selectors)
+[^source-b7ba8ae95d]: [Minecraft Wiki: `/execute`](https://minecraft.wiki/w/Commands/execute)
+[^source-a76c5d9cc1]: [Minecraft Wiki: `/data`](https://minecraft.wiki/w/Commands/data)
+[^source-af9556ddd0]: [Minecraft Wiki: `/function`](https://minecraft.wiki/w/Commands/function)
+[^source-70c1849678]: [Mojang: Java Edition 1.20.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-2)
+[^source-3cbcc48b2d]: [Mojang: Java Edition 1.20.3](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-3)

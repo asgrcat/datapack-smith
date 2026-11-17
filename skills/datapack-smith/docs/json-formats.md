@@ -1,10 +1,18 @@
+---
+type: "Reference"
+title: "JSON、SNBT、データ種別"
+description: "pack.mcmeta、データ種別の配置、JSONとSNBTの基本構造。"
+tags: ["minecraft-java", "json-formats"]
+sources: [{"id": "source-ae3fbb3bad", "resource": "https://minecraft.wiki/w/Data_pack#Folder_structure", "title": "Minecraft Wiki: Data pack folder structure"}, {"id": "source-b89bc169ea", "resource": "https://minecraft.wiki/w/Pack.mcmeta", "title": "Minecraft Wiki: `pack.mcmeta`"}, {"id": "source-0461fe3c07", "resource": "https://minecraft.wiki/w/Tag", "title": "Minecraft Wiki: Tag"}, {"id": "source-bacc83b747", "resource": "https://minecraft.wiki/w/Advancement_definition", "title": "Minecraft Wiki: Advancement definition"}, {"id": "source-20984d0b6f", "resource": "https://minecraft.wiki/w/Predicate", "title": "Minecraft Wiki: Predicate"}, {"id": "source-960584726f", "resource": "https://minecraft.wiki/w/Item_modifier", "title": "Minecraft Wiki: Item modifier"}, {"id": "source-6d2516bc41", "resource": "https://minecraft.wiki/w/Loot_table", "title": "Minecraft Wiki: Loot table"}, {"id": "source-5747e48bd8", "resource": "https://minecraft.wiki/w/Recipe", "title": "Minecraft Wiki: Recipe"}, {"id": "source-06f4b7e35e", "resource": "https://minecraft.wiki/w/Custom_world_generation", "title": "Minecraft Wiki: Custom world generation"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}]
+---
+
 # JSON、SNBT、データ種別
 
-正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。
+正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。[^source-ae3fbb3bad][^source-b89bc169ea][^source-0461fe3c07][^source-bacc83b747][^source-20984d0b6f][^source-960584726f][^source-6d2516bc41][^source-5747e48bd8][^source-06f4b7e35e][^source-3e7c128593]
 
-この文書はデータパック内ファイルの配置と記法を横断的に定義します。個々の codec は頻繁に変わるため、対象バージョン server JAR の vanilla data と registry report を、そのバージョンのフィールド定義の実例として併用します。item、dimension/worldgen、enchantment、variantのパラメータの意味とバージョン別索引は[`json-parameters/README.md`](json-parameters/README.md)から参照します。
+この文書はデータパック内ファイルの配置と記法を横断的に定義します。個々の codec は頻繁に変わるため、対象バージョン server JAR の vanilla data と registry report を、そのバージョンのフィールド定義の実例として併用します。item、dimension/worldgen、enchantment、variantのパラメータの意味とバージョン別索引は[`json-parameters/guide.md`](json-parameters/guide.md)から参照します。
 
-fieldごとの型、既定値、参照関係、26.2の全resource種別は [`reference/README.md`](reference/README.md) と [`reference/coverage.md`](reference/coverage.md) を参照してください。
+fieldごとの型、既定値、参照関係、26.2の全resource種別は [`reference/guide.md`](reference/guide.md) と [`reference/coverage.md`](reference/coverage.md) を参照してください。
 
 ## JSON と SNBT を混同しない
 
@@ -587,13 +595,13 @@ parameterの型・値域は
 
 ## 参照
 
-- [Minecraft Wiki: Data pack folder structure](https://minecraft.wiki/w/Data_pack#Folder_structure)
-- [Minecraft Wiki: `pack.mcmeta`](https://minecraft.wiki/w/Pack.mcmeta)
-- [Minecraft Wiki: Tag](https://minecraft.wiki/w/Tag)
-- [Minecraft Wiki: Advancement definition](https://minecraft.wiki/w/Advancement_definition)
-- [Minecraft Wiki: Predicate](https://minecraft.wiki/w/Predicate)
-- [Minecraft Wiki: Item modifier](https://minecraft.wiki/w/Item_modifier)
-- [Minecraft Wiki: Loot table](https://minecraft.wiki/w/Loot_table)
-- [Minecraft Wiki: Recipe](https://minecraft.wiki/w/Recipe)
-- [Minecraft Wiki: Custom world generation](https://minecraft.wiki/w/Custom_world_generation)
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-ae3fbb3bad]: [Minecraft Wiki: Data pack folder structure](https://minecraft.wiki/w/Data_pack#Folder_structure)
+[^source-b89bc169ea]: [Minecraft Wiki: `pack.mcmeta`](https://minecraft.wiki/w/Pack.mcmeta)
+[^source-0461fe3c07]: [Minecraft Wiki: Tag](https://minecraft.wiki/w/Tag)
+[^source-bacc83b747]: [Minecraft Wiki: Advancement definition](https://minecraft.wiki/w/Advancement_definition)
+[^source-20984d0b6f]: [Minecraft Wiki: Predicate](https://minecraft.wiki/w/Predicate)
+[^source-960584726f]: [Minecraft Wiki: Item modifier](https://minecraft.wiki/w/Item_modifier)
+[^source-6d2516bc41]: [Minecraft Wiki: Loot table](https://minecraft.wiki/w/Loot_table)
+[^source-5747e48bd8]: [Minecraft Wiki: Recipe](https://minecraft.wiki/w/Recipe)
+[^source-06f4b7e35e]: [Minecraft Wiki: Custom world generation](https://minecraft.wiki/w/Custom_world_generation)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)

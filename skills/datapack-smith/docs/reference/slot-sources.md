@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "Slot source"
+description: "1.21.11／26.3のslot source、command・lootとの接続、全type"
+tags: ["minecraft-java", "reference", "slot-sources"]
+sources: [{"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-498e73bd7d", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1", "title": "Mojang: Minecraft 26.3 Snapshot 1"}, {"id": "source-8e7ff08d00", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4", "title": "Mojang: Minecraft 26.3 Snapshot 4"}, {"id": "source-ee795decb8", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9", "title": "Mojang: Minecraft 26.3 Snapshot 9"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}]
+---
+
 # Slot source
 
-slot sourceは、entity、block entity、item内container等から0個以上のslotを順序付きで選ぶ値です。この文書はJava Edition 1.21.11のinline slot sourceと、正式26.3の独立`minecraft:slot_source` registryを扱います。
+slot sourceは、entity、block entity、item内container等から0個以上のslotを順序付きで選ぶ値です。この文書はJava Edition 1.21.11のinline slot sourceと、正式26.3の独立`minecraft:slot_source` registryを扱います。[^source-c9f084f2e6][^source-498e73bd7d][^source-8e7ff08d00][^source-ee795decb8][^source-f351b8ed57]
 
 ## 開発バージョンの履歴
 
@@ -211,9 +219,8 @@ itemをcopyするのか、外側loot functionで変更するのか、実際のco
 
 ## 出典
 
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
-- [Mojang: Minecraft 26.3 Snapshot 1](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1)
-- [Mojang: Minecraft 26.3 Snapshot 4](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4)
-- [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
-
-- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-498e73bd7d]: [Mojang: Minecraft 26.3 Snapshot 1](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1)
+[^source-8e7ff08d00]: [Mojang: Minecraft 26.3 Snapshot 4](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4)
+[^source-ee795decb8]: [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
+[^source-f351b8ed57]: [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)

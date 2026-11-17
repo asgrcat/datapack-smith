@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "Registry element、参照、holder set"
+description: "registry ID、tag、inline entry、list、holder set、参照の安定性"
+tags: ["minecraft-java", "reference", "registry-elements"]
+sources: [{"id": "source-8e7ff08d00", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4", "title": "Mojang: Minecraft 26.3 Snapshot 4"}, {"id": "source-372f561214", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-5", "title": "Mojang: Minecraft 26.3 Snapshot 5"}, {"id": "source-ee795decb8", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9", "title": "Mojang: Minecraft 26.3 Snapshot 9"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}]
+---
+
 # Registry element、参照、holder set
 
-この文書は、データパック内のregistry elementをinline値、namespaced ID、tag、listとして受け渡す書式を扱います。正式Java Edition 26.3の直接参照と混在listを扱い、旧バージョンとの境界を区別します。
+この文書は、データパック内のregistry elementをinline値、namespaced ID、tag、listとして受け渡す書式を扱います。正式Java Edition 26.3の直接参照と混在listを扱い、旧バージョンとの境界を区別します。[^source-8e7ff08d00][^source-372f561214][^source-ee795decb8][^source-f351b8ed57]
 
 ## 最初に区別するもの
 
@@ -141,11 +149,10 @@ tagは公開拡張点に向きますが、処理順を固定するAPIではあ�
 
 ## 出典
 
-- [Mojang: Minecraft 26.3 Snapshot 4](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4)
-- [Mojang: Minecraft 26.3 Snapshot 5](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-5)
-- [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
-
-- [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
+[^source-8e7ff08d00]: [Mojang: Minecraft 26.3 Snapshot 4](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4)
+[^source-372f561214]: [Mojang: Minecraft 26.3 Snapshot 5](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-5)
+[^source-ee795decb8]: [Mojang: Minecraft 26.3 Snapshot 9](https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9)
+[^source-f351b8ed57]: [Mojang: Java Edition 26.3](https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3)
 
 ## 26.4 Snapshot 3の追加registry
 

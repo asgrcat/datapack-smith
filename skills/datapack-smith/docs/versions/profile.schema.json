@@ -3,8 +3,9 @@
   "$id": "profile.schema.json",
   "title": "Minecraft Java Edition data pack version profile front matter",
   "type": "object",
-  "additionalProperties": false,
+  "additionalProperties": true,
   "required": [
+    "type",
     "edition",
     "version",
     "release_date",
@@ -14,6 +15,38 @@
     "compatibility"
   ],
   "properties": {
+    "type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    },
     "edition": {
       "const": "java"
     },

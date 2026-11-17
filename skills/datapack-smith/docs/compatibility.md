@@ -1,6 +1,14 @@
+---
+type: "Playbook"
+title: "互換性と複数バージョン対応"
+description: "後方互換、前方互換、overlayと複数バージョンへの移行方針。"
+tags: ["minecraft-java", "compatibility"]
+sources: [{"id": "source-498c0df63d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9", "title": "Mojang: Java Edition 1.21.9 — Pack Formats"}, {"id": "source-b89bc169ea", "resource": "https://minecraft.wiki/w/Pack.mcmeta", "title": "Minecraft Wiki: `pack.mcmeta`"}, {"id": "source-7c89fa8dbd", "resource": "https://minecraft.wiki/w/Pack_format", "title": "Minecraft Wiki: Pack format"}]
+---
+
 # 互換性と複数バージョン対応
 
-正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。
+正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。[^source-498c0df63d][^source-b89bc169ea][^source-7c89fa8dbd]
 
 ## 用語
 
@@ -205,6 +213,6 @@ overlay は列挙順に適用され、後から適用される内容が同じ re
 
 ## 参照
 
-- [Mojang: Java Edition 1.21.9 — Pack Formats](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
-- [Minecraft Wiki: `pack.mcmeta`](https://minecraft.wiki/w/Pack.mcmeta)
-- [Minecraft Wiki: Pack format](https://minecraft.wiki/w/Pack_format)
+[^source-498c0df63d]: [Mojang: Java Edition 1.21.9 — Pack Formats](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
+[^source-b89bc169ea]: [Minecraft Wiki: `pack.mcmeta`](https://minecraft.wiki/w/Pack.mcmeta)
+[^source-7c89fa8dbd]: [Minecraft Wiki: Pack format](https://minecraft.wiki/w/Pack_format)

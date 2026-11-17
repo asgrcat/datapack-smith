@@ -1,14 +1,22 @@
+---
+type: "Playbook"
+title: "データパック書式リファレンス"
+description: "データ種別ごとの配置、field、値型、既定値と参照関係を調べる入口。"
+tags: ["minecraft-java", "reference"]
+sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "source-d11281c5d9"}]
+---
+
 # データパック書式リファレンス
 
 26.4開発バージョンを明示指定する場合は対象に応じて[Snapshot 1](../snapshots/26.4-snapshot-1.md)、[Snapshot 2](../snapshots/26.4-snapshot-2.md)、[Snapshot 3](../snapshots/26.4-snapshot-3.md)、[Snapshot 4](../snapshots/26.4-snapshot-4.md)、[Snapshot 5](../snapshots/26.4-snapshot-5.md)、[Snapshot 6](../snapshots/26.4-snapshot-6.md)、[Snapshot 7](../snapshots/26.4-snapshot-7.md)、[Snapshot 8](../snapshots/26.4-snapshot-8.md)の差分を追加適用します。正式26.3の仕様とは区別します。
 
-このディレクトリは、Java Edition 1.13から26.3までの正式リリースを対象に、データパックの配置、書式、パラメータ、参照関係を人間が追える形でまとめます。対象バージョンの差分は [`../versions/README.md`](../versions/README.md)、完全なコマンド木とregistry IDは対象バージョンの公式server JARが生成するreportを正本とします。
+このディレクトリは、Java Edition 1.13から26.3までの正式リリースを対象に、データパックの配置、書式、パラメータ、参照関係を人間が追える形でまとめます。対象バージョンの差分は [`../versions/catalog.md`](../versions/catalog.md)、完全なコマンド木とregistry IDは対象バージョンの公式server JARが生成するreportを正本とします。
 
 正式26.3は[確定仕様と移行表](26.3-migration.md)を入口に、下記の専門ページを使います。26.2以前の例は対象バージョンを保ち、開発履歴は明示したlauncher IDの調査だけに使用します。
 
 ## 読み方
 
-1. [`../versions/README.md`](../versions/README.md) で対象バージョンを完全一致させる
+1. [`../versions/catalog.md`](../versions/catalog.md) で対象バージョンを完全一致させる
 2. 対象バージョンファイルでdata pack formatと単数形・複数形のディレクトリ境界を確定する
 3. このリファレンスで配置、共通構造、パラメータの意味を確認する
 4. `type`で分岐するcodecは、対象バージョンの同じ`type`を持つvanilla JSONと照合する

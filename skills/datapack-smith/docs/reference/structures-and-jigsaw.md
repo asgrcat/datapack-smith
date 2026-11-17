@@ -1,3 +1,11 @@
+---
+type: "Reference"
+title: "Structure NBT、jigsaw、worldgen structure"
+description: "structure NBT、template pool、processor、structure set、jigsaw、GameTest"
+tags: ["minecraft-java", "reference", "structures-and-jigsaw"]
+sources: [{"id": "source-d3a888b74b", "resource": "対象server JARのvanilla structure、template pool、processor、structure、structure set", "title": "対象server JARのvanilla structure、template pool、processor、structure、structure set"}, {"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}]
+---
+
 # Structure NBT、jigsaw、worldgen structure
 
 正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
@@ -214,8 +222,11 @@ structure setは候補structureと配置typeを結びます。
 
 ## 出典
 
-- 対象server JARのvanilla structure、template pool、processor、structure、structure set
-- 各 [`../versions/<version>.md`](../versions/README.md) のworldgen差分
+[^source-1297269d29]: [`../versions/<version>.md`](../versions/catalog.md)
+[^source-d3a888b74b]: 対象server JARのvanilla structure、template pool、processor、structure、structure set
+
+- 対象server JARのvanilla structure、template pool、processor、structure、structure set[^source-d3a888b74b]
+- 各 `../versions/<version>.md`[^source-1297269d29] のworldgen差分
 
 ## 26.4 Snapshot 6のcorner constraint
 

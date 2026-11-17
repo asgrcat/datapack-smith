@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "enchantment・variant・painting・jukebox のJSONパラメータ"
+description: "enchantment・variant・painting・jukebox のJSONパラメータの仕様、パラメータとバージョン境界。"
+tags: ["minecraft-java", "json-parameters", "enchantments-variants"]
+sources: [{"id": "source-cbe444642d", "resource": "https://www.minecraft.net/en-us/article/update-aquatic-out-java", "title": "Mojang: Update Aquatic is out on Java"}, {"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-b32797f56f", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21", "title": "Mojang: Java Edition 1.21"}, {"id": "source-608ba82b15", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2", "title": "Mojang: Java Edition 1.21.2"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-adf703e2f3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6", "title": "Mojang: Java Edition 1.21.6"}, {"id": "source-498c0df63d", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9", "title": "Mojang: Java Edition 1.21.9"}, {"id": "source-905d187e36", "resource": "https://www.minecraft.net/en-us/article/minecraft-snapshot-25w16a", "title": "Mojang: Snapshot 25w16a (`painting/variant` inline禁止)"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-db77109999", "resource": "https://minecraft.wiki/w/Enchantment_definition", "title": "Minecraft Wiki: Enchantment definition"}, {"id": "source-0c2ef99ef9", "resource": "https://minecraft.wiki/w/Enchantment_provider", "title": "Minecraft Wiki: Enchantment provider"}, {"id": "source-4f12c7cd15", "resource": "https://minecraft.wiki/w/Enchantment_tag_(Java_Edition)", "title": "Minecraft Wiki: Enchantment tag"}, {"id": "source-5c1bccfa35", "resource": "https://minecraft.wiki/w/Mob_variant_definitions", "title": "Minecraft Wiki: Mob variant definitions"}, {"id": "source-1cbb7a583c", "resource": "https://minecraft.wiki/w/Painting_variant_definition", "title": "Minecraft Wiki: Painting variant definition"}, {"id": "source-440ddad6d7", "resource": "https://minecraft.wiki/w/Jukebox_song_definition", "title": "Minecraft Wiki: Jukebox song definition"}, {"id": "source-537de195d5", "resource": "対象正式リリースのserver JARのgenerated/reports/registries.jsonとgenerated/data/minecraft/", "title": "対象正式リリースのserver JARのgenerated/reports/registries.jsonとgenerated/data/minecraft/"}]
+---
+
 # enchantment・variant・painting・jukebox のJSONパラメータ
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](../reference/26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-cbe444642d][^source-9d2ba3de8c][^source-b32797f56f][^source-608ba82b15][^source-89abc18aa3][^source-adf703e2f3][^source-498c0df63d][^source-905d187e36][^source-c9f084f2e6][^source-436443cb43][^source-3e7c128593][^source-db77109999][^source-0c2ef99ef9][^source-4f12c7cd15][^source-5c1bccfa35][^source-1cbb7a583c][^source-440ddad6d7]
 
 この文書は Java Edition 1.13〜26.2 のエンチャントとvariant系データについて、定義対象、配置可能になるバージョン、主要field、`type` discriminator、自然スポーンとの関係、破壊的変更を整理します。
 
@@ -647,29 +655,30 @@ vanillaに利用例がないregistry IDは、IDの存在だけからfieldを作�
 
 ## 出典
 
+[^source-cbe444642d]: [Mojang: Update Aquatic is out on Java](https://www.minecraft.net/en-us/article/update-aquatic-out-java)
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-b32797f56f]: [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21)
+[^source-608ba82b15]: [Mojang: Java Edition 1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-adf703e2f3]: [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
+[^source-498c0df63d]: [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
+[^source-905d187e36]: [Mojang: Snapshot 25w16a (`painting/variant` inline禁止)](https://www.minecraft.net/en-us/article/minecraft-snapshot-25w16a)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-436443cb43]: [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-db77109999]: [Minecraft Wiki: Enchantment definition](https://minecraft.wiki/w/Enchantment_definition)
+[^source-0c2ef99ef9]: [Minecraft Wiki: Enchantment provider](https://minecraft.wiki/w/Enchantment_provider)
+[^source-4f12c7cd15]: [Minecraft Wiki: Enchantment tag](https://minecraft.wiki/w/Enchantment_tag_(Java_Edition))
+[^source-5c1bccfa35]: [Minecraft Wiki: Mob variant definitions](https://minecraft.wiki/w/Mob_variant_definitions)
+[^source-1cbb7a583c]: [Minecraft Wiki: Painting variant definition](https://minecraft.wiki/w/Painting_variant_definition)
+[^source-440ddad6d7]: [Minecraft Wiki: Jukebox song definition](https://minecraft.wiki/w/Jukebox_song_definition)
+[^source-537de195d5]: 対象正式リリースのserver JARのgenerated/reports/registries.jsonとgenerated/data/minecraft/
+
 一次資料:
 
-- [Mojang: Update Aquatic is out on Java](https://www.minecraft.net/en-us/article/update-aquatic-out-java)
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
-- [Mojang: Java Edition 1.21](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21)
-- [Mojang: Java Edition 1.21.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-2)
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
-- [Mojang: Java Edition 1.21.6](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-6)
-- [Mojang: Java Edition 1.21.9](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-9)
-- [Mojang: Snapshot 25w16a (`painting/variant` inline禁止)](https://www.minecraft.net/en-us/article/minecraft-snapshot-25w16a)
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
-- [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
-- 対象正式リリースのserver JARの`generated/reports/registries.json`と`generated/data/minecraft/`
+- 対象正式リリースのserver JARの`generated/reports/registries.json`と`generated/data/minecraft/`[^source-537de195d5]
 
 cross-check:
-
-- [Minecraft Wiki: Enchantment definition](https://minecraft.wiki/w/Enchantment_definition)
-- [Minecraft Wiki: Enchantment provider](https://minecraft.wiki/w/Enchantment_provider)
-- [Minecraft Wiki: Enchantment tag](https://minecraft.wiki/w/Enchantment_tag_(Java_Edition))
-- [Minecraft Wiki: Mob variant definitions](https://minecraft.wiki/w/Mob_variant_definitions)
-- [Minecraft Wiki: Painting variant definition](https://minecraft.wiki/w/Painting_variant_definition)
-- [Minecraft Wiki: Jukebox song definition](https://minecraft.wiki/w/Jukebox_song_definition)
 
 ## 26.4 Snapshot 4のenchantmentとsound variant
 

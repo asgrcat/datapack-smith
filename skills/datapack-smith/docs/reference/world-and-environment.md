@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "dimension、environment attributes、timeline"
+description: "`dimension`、`dimension_type`、biome、environment attributes、timeline、world clock"
+tags: ["minecraft-java", "reference", "world-and-environment"]
+sources: [{"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}]
+---
+
 # dimension、environment attributes、timeline
 
-正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。
+正式26.3向けでは、以下の旧バージョンの例に先立ち[26.3確定仕様と移行表](26.3-migration.md)を適用します。旧field・配置をそのまま26.3へ生成せず、各例の対象バージョンを維持してください。[^source-c9f084f2e6][^source-436443cb43][^source-3e7c128593]
 
 この文書は、カスタムdimensionと、1.21.11以降のenvironment attributes、26.1以降のworld clockを扱います。26.2の書式を基準にし、古い正式リリースへ適用するときは最後のバージョン境界を使います。
 
@@ -391,6 +399,6 @@ clockは毎tick進む独立した時刻を保持し、`/time of <clock> ...`でs
 
 ## 一次資料
 
-- [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
-- [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-c9f084f2e6]: [Mojang: Java Edition 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11)
+[^source-436443cb43]: [Mojang: Java Edition 26.1](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)

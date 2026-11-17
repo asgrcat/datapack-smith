@@ -1,6 +1,14 @@
+---
+type: "Reference"
+title: "進捗とplayer event"
+description: "advancementのcriteria、requirements、rewardとplayer eventの設計。"
+tags: ["minecraft-java", "advancements"]
+sources: [{"id": "source-a15734d522", "resource": "https://minecraft.wiki/w/Advancement", "title": "Minecraft Wiki: Advancement"}, {"id": "source-bacc83b747", "resource": "https://minecraft.wiki/w/Advancement_definition", "title": "Minecraft Wiki: Advancement definition"}, {"id": "source-50fd47ec2c", "resource": "https://minecraft.wiki/w/Commands/advancement", "title": "Minecraft Wiki: `/advancement`"}, {"id": "source-76d96d2388", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20", "title": "Mojang: Java Edition 1.20"}, {"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}]
+---
+
 # 進捗とplayer event
 
-正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。
+正式26.3では[確定プロファイル](versions/26.3.md)と[26.2からの移行表](reference/26.3-migration.md)を先に適用します。以下の旧バージョンの例はその対象範囲を維持します。[^source-a15734d522][^source-bacc83b747][^source-50fd47ec2c][^source-76d96d2388][^source-9d2ba3de8c][^source-89abc18aa3][^source-3e7c128593]
 
 この文書はadvancementを、表示上の進捗だけでなくplayer単位の永続状態とevent入口として利用する方法を扱います。JSONの基本形は [`json-formats.md`](json-formats.md)、バージョン別parameterは[`json-parameters/advancements.md`](json-parameters/advancements.md)、共有predicateは[`json-parameters/predicates.md`](json-parameters/predicates.md)、状態全体の選択は [`state-management.md`](state-management.md) を参照してください。
 
@@ -280,10 +288,10 @@ execute as @a[advancements={example:quest/root={stage_1=true}}] run function exa
 
 ## 参照
 
-- [Minecraft Wiki: Advancement](https://minecraft.wiki/w/Advancement)
-- [Minecraft Wiki: Advancement definition](https://minecraft.wiki/w/Advancement_definition)
-- [Minecraft Wiki: `/advancement`](https://minecraft.wiki/w/Commands/advancement)
-- [Mojang: Java Edition 1.20](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20)
-- [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
-- [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
-- [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)
+[^source-a15734d522]: [Minecraft Wiki: Advancement](https://minecraft.wiki/w/Advancement)
+[^source-bacc83b747]: [Minecraft Wiki: Advancement definition](https://minecraft.wiki/w/Advancement_definition)
+[^source-50fd47ec2c]: [Minecraft Wiki: `/advancement`](https://minecraft.wiki/w/Commands/advancement)
+[^source-76d96d2388]: [Mojang: Java Edition 1.20](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20)
+[^source-9d2ba3de8c]: [Mojang: Java Edition 1.20.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5)
+[^source-89abc18aa3]: [Mojang: Java Edition 1.21.5](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5)
+[^source-3e7c128593]: [Mojang: Java Edition 26.2](https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2)

@@ -1,8 +1,16 @@
+---
+type: "Playbook"
+title: "開発バージョン索引"
+description: "収録済み開発バージョンの公開日、data pack formatと完全一致プロファイルの対応表。"
+tags: ["minecraft-java", "snapshots"]
+sources: [{"id": "source-9c296fb69d", "resource": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json", "title": "Mojang 公式 version manifest v2"}, {"id": "source-e83de81a07", "resource": "https://minecraft.wiki/w/Java_Edition_26.3", "title": "Minecraft Wiki: Java Edition 26.3"}]
+---
+
 # 開発バージョン索引
 
-正式26.3向けの生成は [`../versions/26.3.md`](../versions/26.3.md) を使います。26.4の開発バージョンを明示指定する場合は [`26.4-snapshot-8`](26.4-snapshot-8.md) を使います。26.3開発バージョンは再現・移行用の履歴として保存しています。
+正式26.3向けの生成は [`../versions/26.3.md`](../versions/26.3.md) を使います。26.4の開発バージョンを明示指定する場合は [`26.4-snapshot-8`](26.4-snapshot-8.md) を使います。26.3開発バージョンは再現・移行用の履歴として保存しています。[^source-9c296fb69d][^source-e83de81a07]
 
-このディレクトリは Java Edition 26.3／26.4 のsnapshot、pre-release、release candidateを、Mojang 公式 version manifest の ID へ完全一致させて扱います。開発バージョンは仕様変更・削除や world 破損の可能性があるため、正式リリースの [`../versions/README.md`](../versions/README.md) とは分離しています。version manifestではいずれも`type: snapshot`です。
+このディレクトリは Java Edition 26.3／26.4 のsnapshot、pre-release、release candidateを、Mojang 公式 version manifest の ID へ完全一致させて扱います。開発バージョンは仕様変更・削除や world 破損の可能性があるため、正式リリースの [`../versions/catalog.md`](../versions/catalog.md) とは分離しています。version manifestではいずれも`type: snapshot`です。
 
 各開発系列の最初のファイルは直前の正式リリースを、後続は直前の開発プロファイルを `inherits` し、その開発バージョンでの累積仕様を解決できます。`release_date` はこのディレクトリでは対象開発バージョンの公開日を表します。
 
@@ -50,5 +58,5 @@
 
 ## 出典
 
-- [Mojang 公式 version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
-- [Minecraft Wiki: Java Edition 26.3](https://minecraft.wiki/w/Java_Edition_26.3)
+[^source-9c296fb69d]: [Mojang 公式 version manifest v2](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json)
+[^source-e83de81a07]: [Minecraft Wiki: Java Edition 26.3](https://minecraft.wiki/w/Java_Edition_26.3)
