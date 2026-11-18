@@ -173,6 +173,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.4-snapshot-7`](../snapshots/26.4-snapshot-7.md) | 126.0 | effectの効果tag、時間上限、equipmentのsaddle、Calcite建材、Flurry、entity type tag削除 |
 | [`26.4-snapshot-8`](../snapshots/26.4-snapshot-8.md) | 127.0 | loot系resourceのcontext・再帰検証、command report形式、Freezing耐性、Coldの水源判定 |
 | [`26.4-snapshot-9`](../snapshots/26.4-snapshot-9.md) | 128.0 | dispense_behavior registry／component、Boat・Minecart entity_data、particle field、slot source修正 |
+| [`26.4-snapshot-10`](../snapshots/26.4-snapshot-10.md) | 128.0 | Snapshot 9のJSONを継承。バニラ構造NBTのDataVersionを5130へ更新 |
 
 ## 対象バージョンの機械カタログ
 
