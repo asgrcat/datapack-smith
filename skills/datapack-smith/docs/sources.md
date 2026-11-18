@@ -1,7 +1,7 @@
 ---
 type: "Reference"
 title: "資料と検証方針"
-description: "Mojangの一次資料、公式JAR、Minecraft Wikiの優先順位と検証方針。"
+description: "Mojangの一次資料と公式JARで仕様を確認する手順、および保守時の出典記録。"
 tags: ["minecraft-java", "sources"]
 sources: [{"id": "source-4221dd7e43", "resource": "https://www.minecraft.net/en-us/articles?category=news", "title": "Minecraft Java Edition release notes"}, {"id": "source-9c296fb69d", "resource": "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json", "title": "公式 version manifest v2"}, {"id": "source-f715719a65", "resource": "https://minecraft.wiki/w/Data_pack", "title": "Minecraft Wiki: Data pack"}, {"id": "source-7c89fa8dbd", "resource": "https://minecraft.wiki/w/Pack_format", "title": "Minecraft Wiki: Pack format"}, {"id": "source-b89bc169ea", "resource": "https://minecraft.wiki/w/Pack.mcmeta", "title": "Minecraft Wiki: `pack.mcmeta`"}, {"id": "source-9b59aa02fe", "resource": "https://minecraft.wiki/w/Function_(Java_Edition)", "title": "Minecraft Wiki: Function"}, {"id": "source-4e347f0ae8", "resource": "https://minecraft.wiki/w/Commands", "title": "Minecraft Wiki: Commands"}, {"id": "source-a15734d522", "resource": "https://minecraft.wiki/w/Advancement", "title": "Minecraft Wiki: Advancement"}, {"id": "source-7fa8c3f976", "resource": "https://minecraft.wiki/w/Scoreboard", "title": "Minecraft Wiki: Scoreboard"}, {"id": "source-02ad4d518d", "resource": "https://minecraft.wiki/w/NBT_path_format", "title": "Minecraft Wiki: NBT path"}, {"id": "source-a38a84be25", "resource": "https://minecraft.wiki/w/Tutorial:Creating_a_data_pack", "title": "Minecraft Wiki: Creating a data pack"}, {"id": "source-cf465700b6", "resource": "https://minecraft.wiki/w/Tutorial:Running_the_data_generator", "title": "Minecraft Wiki: Running the data generator"}, {"id": "source-8a724b921e", "resource": "https://feedback.minecraft.net/hc/en-us/articles/4531177623437-Minecraft-Java-Edition-1-18-2", "title": "Mojang: Java Edition 1.18.2"}, {"id": "source-9d2ba3de8c", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-20-5", "title": "Mojang: Java Edition 1.20.5"}, {"id": "source-b32797f56f", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21", "title": "Mojang: Java Edition 1.21"}, {"id": "source-89abc18aa3", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-5", "title": "Mojang: Java Edition 1.21.5"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-436443cb43", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1", "title": "Mojang: Java Edition 26.1"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "source-498e73bd7d", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-1", "title": "Mojang: 26.3 Snapshot 1"}, {"id": "source-d848b11912", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2", "title": "Mojang: 26.3 Snapshot 2"}, {"id": "source-b079940fa6", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-3", "title": "Mojang: 26.3 Snapshot 3"}, {"id": "source-8e7ff08d00", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-4", "title": "Mojang: 26.3 Snapshot 4"}, {"id": "source-372f561214", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-5", "title": "Mojang: 26.3 Snapshot 5"}, {"id": "source-f507cf4532", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-6", "title": "Mojang: 26.3 Snapshot 6"}, {"id": "source-570b38e56a", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-7", "title": "Mojang: 26.3 Snapshot 7"}, {"id": "source-a66310a5a0", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-8", "title": "Mojang: 26.3 Snapshot 8"}, {"id": "source-ee795decb8", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-9", "title": "Mojang: 26.3 Snapshot 9"}, {"id": "source-2e6de5499b", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10", "title": "Mojang: 26.3 Snapshot 10"}, {"id": "source-f7dee05da4", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1", "title": "Mojang: 26.3 Pre-Release 1"}, {"id": "source-84c265bccd", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48670034106253-Minecraft-Java-Edition-26-3-Pre-release-2", "title": "Mojang: 26.3 Pre-Release 2"}, {"id": "source-5470af21a2", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48740521840909-Minecraft-Java-Edition-26-3-Pre-release-3", "title": "Mojang: 26.3 Pre-Release 3"}, {"id": "source-54e907653c", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-release-candidate-1", "title": "Mojang: 26.3 Release Candidate 1"}, {"id": "source-aa3d12f910", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-release-candidate-2", "title": "Mojang: 26.3 Release Candidate 2"}, {"id": "source-d00ea7ede7", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-release-candidate-3", "title": "Mojang: 26.3 Release Candidate 3"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}, {"id": "source-b7ded3327d", "resource": "https://feedback.minecraft.net/hc/en-us/articles/49076034811533-Minecraft-Java-Edition-26-4-Snapshot-1", "title": "Mojang: 26.4 Snapshot 1"}, {"id": "source-75ea3e82be", "resource": "https://www.minecraft.net/nb-no/article/minecraft-26-4-snapshot-2", "title": "Mojang: 26.4 Snapshot 2"}, {"id": "source-e90095a63d", "resource": "https://feedback.minecraft.net/hc/en-us/articles/49412490179853-Minecraft-Java-Edition-26-4-Snapshot-3", "title": "Mojang: 26.4 Snapshot 3"}, {"id": "source-7077f8e036", "resource": "https://feedback.minecraft.net/hc/en-us/articles/49579562483853-Minecraft-Java-Edition-26-4-Snapshot-4", "title": "Mojang: 26.4 Snapshot 4"}, {"id": "source-d7fb341dfd", "resource": "https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_4", "title": "Minecraft Wiki: Java Edition 26.4 Snapshot 4"}, {"id": "source-03eecdc75d", "resource": "https://feedback.minecraft.net/hc/en-us/articles/49759185020173-Minecraft-Java-Edition-26-4-Snapshot-5", "title": "Mojang: 26.4 Snapshot 5"}, {"id": "source-999ba956fa", "resource": "https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_5", "title": "Minecraft Wiki: Java Edition 26.4 Snapshot 5"}, {"id": "source-bd8a117fb0", "resource": "https://feedback.minecraft.net/hc/en-us/articles/49936802465805-Minecraft-Java-Edition-26-4-Snapshot-6", "title": "Mojang: 26.4 Snapshot 6"}, {"id": "source-4f813e935d", "resource": "https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_6", "title": "Minecraft Wiki: Java Edition 26.4 Snapshot 6"}, {"id": "source-c9bbbf828c", "resource": "https://feedback.minecraft.net/hc/en-us/articles/50105303425933-Minecraft-Java-Edition-26-4-Snapshot-7", "title": "Mojang: 26.4 Snapshot 7"}, {"id": "source-fbd79216d5", "resource": "https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_7", "title": "Minecraft Wiki: Java Edition 26.4 Snapshot 7"}, {"id": "source-5f444d6360", "resource": "https://feedback.minecraft.net/hc/en-us/articles/50283800967053-Minecraft-Java-Edition-26-4-Snapshot-8", "title": "Mojang: 26.4 Snapshot 8"}, {"id": "source-dca040f6d4", "resource": "https://minecraft.wiki/w/Java_Edition_26.4_Snapshot_8", "title": "Minecraft Wiki: Java Edition 26.4 Snapshot 8"}, {"id": "source-174928cb84", "resource": "/snapshots/26.3-rc-1.md#検証", "title": "検証記録"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
 ---
@@ -14,9 +14,10 @@ sources: [{"id": "source-4221dd7e43", "resource": "https://www.minecraft.net/en-
 
 1. **Mojang 公式リリースノート／開発バージョン記事**: 対象バージョンの technical changes、data pack version、移行事項の一次資料
 2. **Mojang 公式 version manifest / server JAR**: 正式リリース／開発バージョン ID、公開時刻、実際の command graph、registry、vanilla data の機械可読な正本
-3. **Minecraft Wiki**: 複数スナップショットに分散した変更履歴、構文表、pack format 対応表の照合
 
-資料間に食い違いがあるときは、対象IDの server JAR の挙動を優先します。Wiki だけにある記述には、可能な限りバージョンページまたはコマンド/JSON 個別ページを併記します。
+資料間に食い違いがあるときは、対象IDの server JAR の挙動を優先します。
+
+Minecraft Wikiへの出典リンクは、配布元リポジトリの保守時に行う照合と、その記録のために保持します。スキルの実装・調査・検証では、コミュニティ編集ページを取得せず、同梱資料と上記の一次資料を使います。確定できない詳細は未確認として報告します。
 
 ## 共通資料
 
@@ -106,8 +107,7 @@ block、entity、itemの追加情報は、対象正式リリースのMojang rele
 1. 対象バージョンのserver JARのregistry/block/item reportでIDとstateを確認
 2. vanilla advancement、loot table、tag、worldgenから公式の利用例を確認
 3. release noteのvanilla挙動とdata pack technical changesを結び付ける
-4. Minecraft Wikiの個別block/entity/commandページで挙動を横断照合
-5. selector、predicate、command、GameTestを対象バージョンで実行
+4. selector、predicate、command、GameTestを対象バージョンで実行
 
 vanilla gameplayに存在することと、データパック用callbackが公開されていることは別です。専用advancement triggerやpredicateがないinteractionを、推測したevent名で記述しません。
 
@@ -118,19 +118,18 @@ item component、dimension/worldgen、enchantment、variant、predicate、advanc
 1. `registries.json`と`datapack.json`でregistry/type IDとdata packから追加できるelementを確定
 2. `generated/data/minecraft/`とitem default component reportでvanillaが実際に使うfield pathと型を確認
 3. Mojang正式リリースノートでfieldの意味、default、値域、rename、削除を確認
-4. Minecraft Wikiのdata format個別ページでsnapshot間の変更とgameplay上の説明をcross-check
-5. exact release serverのreloadと機能testでcodecと動作を分けて検査
+4. exact release serverのreloadと機能testでcodecと動作を分けて検査
 
 `json-catalog`のregistry ID一覧はreportに公開されたentry集合、`observed_shapes`はvanilla使用例の集計です。`registry_sources: unknown`や`source.datapack: null`はreportから判定できない状態であり、機能非対応を意味しません。観測fieldを完全なJSON Schemaまたはcodecの全分岐として扱いません。保証ラベルとfamily別の出典は[`json-parameters/guide.md`](json-parameters/guide.md)および各子文書に記載します。
 
 ## バージョンページの URL
 
-各バージョンファイルは次を参照します。
+各バージョンファイルの出典URLは次の形式で記録します。
 
 - 公式: `https://www.minecraft.net/en-us/article/minecraft-java-edition-<version>`。古い記事でこの slug が存在しない場合は、そのバージョンファイルに実在する公式記事 URL を記す
 - Wiki: `https://minecraft.wiki/w/Java_Edition_<version>`
 
-Minecraft Wiki はコミュニティ運営であり Mojang 公式ではありません。変更の発見と横断表には有用ですが、`data_pack_format` と構文は公式 JAR でも再検証してください。
+保守時の照合では、Wikiの記述を調査の手掛かりとし、採録する `data_pack_format` と構文を対象バージョンの公式 JAR で確認します。
 
 ## `release_date` の定義
 

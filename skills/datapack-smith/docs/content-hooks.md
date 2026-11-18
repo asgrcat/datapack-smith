@@ -14,7 +14,7 @@ sources: [{"id": "source-4221dd7e43", "resource": "https://www.minecraft.net/en-
 
 ## 読み方
 
-コンテンツごとに次の順で調べます。
+コンテンツごとに、同梱資料と対象バージョンのMojang公式資料・JARを使って次の順で調べます。
 
 1. **存在**: `registries.json`、block/item report、vanilla dataでIDを確定
 2. **観測**: selector、block predicate、advancement trigger、predicate、loot context

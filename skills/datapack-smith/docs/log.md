@@ -2,6 +2,7 @@
 
 ## 2026-11-18
 
+- **参照手順**: スキルが外部仕様を確認する際の取得先をMojangの一次資料に限定。コミュニティ編集ページのリンクは保守時の照合と出典記録に使用。
 - **追加**: [26.4 Snapshot 9](snapshots/26.4-snapshot-9.md)（format 128.0）と[Dispenser behavior](reference/dispense-behaviors.md)を収録。公式JARの生成物・codecを照合。
 - **更新**: 2D local座標、文字列引数report、particle field、entity_data、honeycomb transformerとslot sourceの修正を各referenceへ反映。
 - **検証範囲**: 2D parserとbehaviorのlist codecをserver起動なしで確認。server reload／ゲーム内動作と、取得できなかったMinecraft Wikiの照合は未実施。

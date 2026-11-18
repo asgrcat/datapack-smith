@@ -41,5 +41,5 @@ okf_version: "0.2"
 - [実装パターン](implementation-patterns.md) - 状態機械、timer、event queue、API、性能とtestの実装パターン。
 - [JSON、SNBT、データ種別](json-formats.md) - pack.mcmeta、データ種別の配置、JSONとSNBTの基本構造。
 - [OKF knowledgeの構造と参照方法](okf.md) - Datapack SmithのOKF v0.2バンドル、metadata、索引と更新手順。
-- [資料と検証方針](sources.md) - Mojangの一次資料、公式JAR、Minecraft Wikiの優先順位と検証方針。
+- [資料と検証方針](sources.md) - Mojangの一次資料と公式JARで仕様を確認する手順、および保守時の出典記録。
 - [状態管理](state-management.md) - scoreboard、storage、entity tagによる永続状態とmigration。

@@ -810,7 +810,6 @@ load成功とgameplay結果は別のassertionにします。
 2. 公式version manifestから取得した対象release server JAR
 3. JAR data generatorの`generated/data/minecraft/{loot_table,loot_tables,recipe,recipes}`とregistry report
 4. 対象serverのreload logと実際のloot/crafting結果
-5. Minecraft WikiのLoot table、Item modifier、Recipe、各正式リリースページによるcross-check
 
 JARのvanilla JSONにfieldがないことは、そのcodecで使用不能という証明ではありません。反対に、別バージョンのvanilla JSONで観測したfieldは対象バージョンで有効という証明になりません。必須性、任意field、値域、相互排他、context parameterは同じ正式リリースで検査します。
 

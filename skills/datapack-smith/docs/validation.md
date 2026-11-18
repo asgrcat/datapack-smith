@@ -91,7 +91,7 @@ catalog作成時は`reports` commandが生成した`.datapack-harness-report.jso
 - `children`: 次の分岐
 - `redirect`: 別 node へ接続する alias/redirect
 
-AI は Wiki の短縮構文より command graph を優先し、`parser` の単数/複数 entity、resource/tag、整数/浮動小数、range を維持します。
+AI は対象バージョンの command graph を使い、`parser` の単数/複数 entity、resource/tag、整数/浮動小数、range を維持します。
 
 ### 26.4 Snapshot 8のcontext検証
 

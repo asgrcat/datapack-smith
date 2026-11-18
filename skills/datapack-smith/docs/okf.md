@@ -46,7 +46,7 @@ metadataはトップレベルの`key: value`とし、文字列はJSONの引用�
 2. 正式／開発の索引から完全一致する`Minecraft Version`を選び、Minecraft固有metadataと本文を読む
 3. `title`・`description`・`tags`で必要なconceptを選び、本文のバージョン境界と参照リンクを辿る
 4. 相対リンクは文書の場所、`/`始まりのbundle内pathはこの`docs`を基準に解決する
-5. `sources`を辿り、対象バージョンの公式資料やJARで未確定の詳細を確認する
+5. `sources`で出典を確認し、未確定の仕様は対象バージョンのMojang公式資料とJARで確認する。利用時にコミュニティ編集の出典を取得せず、一次資料で確定できない詳細は未確認として報告する
 
 未知の`type`や追加fieldを理由に文書を捨てません。`verified`等の任意fieldがなくても参照できます。未知のゲームバージョンや不正なMinecraft profileは引き続き受け付けません。tagの一致や文書の新しさだけで、別バージョンの構文を対象へ適用しません。
 

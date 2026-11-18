@@ -549,11 +549,10 @@ worldgenはdispatch codecが多重に入れ子になります。次の情報だ�
 
 - `registries.json` にtype IDがある
 - vanilla fileが1例だけある
-- Wikiに現在のバージョンのfield一覧がある
 - 別バージョンで同名fieldが動いた
 - `/reload` でその場のdimensionが見えた
 
-対象バージョンの公式JAR generated data、Mojang release note、reload log、新規world/未生成chunkの実動作を組み合わせて判断します。Wikiは意味の確認と例の探索に使い、対象バージョンのcodec判断では公式JARを優先します。
+対象バージョンの公式JAR generated data、Mojang release note、reload log、新規world/未生成chunkの実動作を組み合わせて判断します。
 
 ## 出典
 

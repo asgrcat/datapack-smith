@@ -101,7 +101,7 @@ The documentation and templates are sufficient for design and generation. Where 
 
 This skill covers official Java Edition releases and explicitly bundled 26.3/26.4 development versions. Bedrock Edition, mod-loader-specific behavior, resource-pack-only formats, and unbundled development versions are out of scope.
 
-Mojang release notes and the exact release's official server JAR are authoritative. Minecraft Wiki is used to cross-check boundaries and explanations.
+Mojang release notes and the exact release's official server JAR are authoritative. Minecraft Wiki citations record cross-checks for repository maintenance.
 
 Datapack Smith is published and maintained by [asgrcat](https://github.com/asgrcat). Please use [GitHub Issues](https://github.com/asgrcat/datapack-smith/issues) for contact and support.
 

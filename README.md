@@ -102,7 +102,7 @@ AIは利用中の環境を判別し、スキル一式を対応する領域へ配
 
 Java Editionの正式リリースと、明示的に収録した26.3／26.4開発バージョンを対象とします。Bedrock Edition、Modローダー固有仕様、リソースパックだけの仕様、未収録の開発バージョンは対象外です。
 
-仕様の正本はMojangのリリースノートと対象バージョンの公式server JARです。Minecraft Wikiは境界と説明の照合に使用します。
+仕様の正本はMojangのリリースノートと対象バージョンの公式server JARです。Minecraft Wikiの出典は、配布元リポジトリの保守時に行う照合のために記録しています。
 
 Datapack Smithの公開・管理者は[asgrcat](https://github.com/asgrcat)です。問い合わせは[GitHub Issues](https://github.com/asgrcat/datapack-smith/issues)で受け付けます。
 
