@@ -8,9 +8,9 @@ sources: [{"resource": "/sources.md", "title": "資料と検証方針", "id": "s
 
 # Datapack Smith仕様リファレンス
 
-このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.3 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3、26.4 Snapshot 1〜10を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
+このディレクトリは、データパックが正式導入された Java Edition 1.13 から 26.3 までの正式リリースと、26.3 Snapshot 1〜10／Pre-Release 1〜3／Release Candidate 1〜3、26.4 Snapshot 1〜10／Pre-Release 1を対象にした実装用の仕様索引です。開発バージョンは収録済みlauncher IDへ完全一致する場合だけ扱い、正式リリースとは分離します。Bedrock Edition、Mod ローダー固有仕様、リソースパックだけの仕様は対象外です。
 
-正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ参照します。最新収録開発バージョンは [`26.4-snapshot-10`](snapshots/26.4-snapshot-10.md) です。
+正式26.3の入口は [`versions/26.3.md`](versions/26.3.md) → [`reference/26.3-migration.md`](reference/26.3-migration.md) です。開発バージョンは明示指定時だけ参照します。最新収録開発バージョンは [`26.4-pre-1`](snapshots/26.4-pre-1.md) です。
 この`docs`は[OKF v0.2 knowledge bundle](okf.md)です。[index.md](index.md)から、各conceptの`title`・`description`・`tags`を使って参照先を選びます。正式／開発の発見には[正式索引](versions/index.md)と[開発索引](snapshots/index.md)、詳細には[書式索引](reference/index.md)と[JSON family索引](json-parameters/index.md)を使います。
 
 ## 最短の使い方

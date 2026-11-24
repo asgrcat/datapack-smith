@@ -1,14 +1,14 @@
 ---
 type: "Reference"
 title: "Dispenserのデータ駆動behavior"
-description: "26.4 Snapshot 9のdispense_behavior registry、item component、動作順序とtype別field。"
-tags: ["minecraft-java", "dispense-behavior", "item-components", "26.4-snapshot-9"]
-sources: [{"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
+description: "26.4 Snapshot 9で追加されたdispense_behaviorの書式・動作順序と26.4 Pre-Release 1の変更。"
+tags: ["minecraft-java", "dispense-behavior", "item-components", "26.4-snapshot-9", "26.4-pre-1"]
+sources: [{"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}, {"id": "pre-1", "resource": "/snapshots/26.4-pre-1.md", "title": "Java Edition 26.4 Pre-Release 1"}]
 ---
 
 # Dispenserのデータ駆動behavior
 
-対象は`26.4-snapshot-9`（format 128.0）です。Dispenserがitemを出すときの処理をregistry resourceまたはitem componentのinline listで選びます。Snapshot 8以前へこの書式を流用しません。[^snapshot-9]
+この書式は`26.4-snapshot-9`（format 128.0）で導入されました。Dispenserがitemを出すときの処理をregistry resourceまたはitem componentのinline listで選びます。Pre-Release 1の動作差分は後述します。[^snapshot-9][^pre-1]
 
 ## 配置とitemからの参照
 
@@ -109,6 +109,12 @@ Boat／Minecart itemは`minecraft:entity_data`をdefault componentとして持�
 `armor_stand`、`boat`、`bone_meal`、`brush`、`carved_pumpkin`、`chest`、`default`、`default_projectile`、`dropper`、`empty_bucket`、`equipment`、`filled_bucket`、`fire_charge`、`firework_rocket`、`flint_and_steel`、`glass_bottle`、`glowstone`、`honeycomb`、`minecart`、`potion`、`shears`、`shulker_box`、`spawn_egg`、`thrown_potion`、`tnt`、`wind_charge`、`wither_skeleton_skull`。
 
 各entryの正確な動作順とfieldは対象JARの`data/minecraft/dispense_behavior/`を正本として確認します。
+
+## 26.4 Pre-Release 1の動作差分
+
+`carved_pumpkin`は`spawn_golem_from_carved_pumpkin`と`equip`の間、`glowstone`は`charge_respawn_anchor`と`drop_item`の間に`equip_sulfur_cube`を挟みます。満充電時など先行behaviorが停止した場合は、後続へ進みません。`shoot_projectile`は射出できないitemに対して次のbehaviorへ進みます。射出不能時に落とす構成では`drop_item`を後続に指定します。[^pre-1]
+
+[^pre-1]: [Java Edition 26.4 Pre-Release 1の公式資料・JAR照合](../snapshots/26.4-pre-1.md)
 
 ## 検証範囲
 

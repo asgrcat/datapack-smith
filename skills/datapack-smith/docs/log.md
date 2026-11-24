@@ -1,5 +1,10 @@
 # Knowledge更新履歴
 
+## 2026-11-25
+
+- **追加**: [26.4 Pre-Release 1](snapshots/26.4-pre-1.md)（format 128.1）を収録。tooltipの折り返し、upscale補間順、Dispenser・loot・コマンドの修正を記録。
+- **検証**: 公式JARとMinecraft Wikiを照合し、Snapshot 10のWiki再照合結果も追記。
+
 ## 2026-11-19
 
 - **追加**: [26.4 Snapshot 10](snapshots/26.4-snapshot-10.md)（format 128.0）を収録。マルチプレイ画面の修正と、バニラ構造NBT 1,511件のDataVersion更新（5129 → 5130）を記録。

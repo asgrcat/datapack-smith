@@ -8,7 +8,7 @@ sources: [{"id": "source-9c296fb69d", "resource": "https://piston-meta.mojang.co
 
 # 開発バージョン索引
 
-正式26.3向けの生成は [`../versions/26.3.md`](../versions/26.3.md) を使います。26.4の開発バージョンを明示指定する場合は [`26.4-snapshot-10`](26.4-snapshot-10.md) を使います。26.3開発バージョンは再現・移行用の履歴として保存しています。[^source-9c296fb69d][^source-e83de81a07]
+正式26.3向けの生成は [`../versions/26.3.md`](../versions/26.3.md) を使います。26.4の最新収録開発バージョンは [`26.4-pre-1`](26.4-pre-1.md) です。明示指定されたlauncher IDを下表から選びます。26.3開発バージョンは再現・移行用の履歴として保存しています。[^source-9c296fb69d][^source-e83de81a07]
 
 このディレクトリは Java Edition 26.3／26.4 のsnapshot、pre-release、release candidateを、Mojang 公式 version manifest の ID へ完全一致させて扱います。開発バージョンは仕様変更・削除や world 破損の可能性があるため、正式リリースの [`../versions/catalog.md`](../versions/catalog.md) とは分離しています。version manifestではいずれも`type: snapshot`です。
 
@@ -28,6 +28,7 @@ sources: [{"id": "source-9c296fb69d", "resource": "https://piston-meta.mojang.co
 | [`26.4-snapshot-8`](26.4-snapshot-8.md) | 2026-11-10 | 127.0 | 26.4-snapshot-7 |
 | [`26.4-snapshot-9`](26.4-snapshot-9.md) | 2026-11-17 | 128.0 | 26.4-snapshot-8 |
 | [`26.4-snapshot-10`](26.4-snapshot-10.md) | 2026-11-17 | 128.0 | 26.4-snapshot-9 |
+| [`26.4-pre-1`](26.4-pre-1.md) | 2026-11-24 | 128.1 | 26.4-snapshot-10 |
 
 ## 26.3 開発バージョン履歴
 

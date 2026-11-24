@@ -30,6 +30,7 @@
 - [Java Edition 26.4 Snapshot 8](26.4-snapshot-8.md) - Java Edition 26.4-snapshot-8のdata pack format 127.0、仕様差分、JSONパラメータと生成規則。
 - [Java Edition 26.4 Snapshot 10](26.4-snapshot-10.md) - Java Edition 26.4-snapshot-10のformat 128.0、Snapshot 9からの継承、マルチプレイ画面の修正と構造NBTのDataVersion差分。
 - [Java Edition 26.4 Snapshot 9](26.4-snapshot-9.md) - Java Edition 26.4-snapshot-9のformat 128.0、Dispenserのデータ駆動化、2D local座標と修正差分。
+- [Java Edition 26.4 Pre-Release 1](26.4-pre-1.md) - Java Edition 26.4-pre-1のformat 128.1、tooltipのsplit_lines、upscaleの軸順とコマンド・loot・Dispenserの修正差分。
 
 ## Playbook
 

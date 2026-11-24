@@ -2,6 +2,12 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.11.7
+
+- Java Edition `26.4-pre-1`プロファイルを追加（data pack format 128.1、Snapshot 10を継承）
+- tooltipの`split_lines`、upscale補間順、座標・loot・Dispenserの修正と検証結果を収録
+- OKF索引と開発バージョンの検査を更新
+
 ## 2026.11.6
 
 - Java Edition `26.4-snapshot-10`プロファイルを追加（data pack format 128.0、Snapshot 9を継承）

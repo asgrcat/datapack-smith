@@ -3,7 +3,7 @@ type: "Reference"
 title: "world generation"
 description: "biome、feature、placement、noise、structure、dimension generator"
 tags: ["minecraft-java", "reference", "worldgen"]
-sources: [{"id": "source-37f5e68f2b", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2", "title": "Mojang: Java Edition 1.16.2"}, {"id": "source-657b15e94e", "resource": "https://www.minecraft.net/en-us/article/caves---cliffs--part-ii-out-today-java", "title": "Mojang: Java Edition 1.18"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}]
+sources: [{"id": "source-37f5e68f2b", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-16-2", "title": "Mojang: Java Edition 1.16.2"}, {"id": "source-657b15e94e", "resource": "https://www.minecraft.net/en-us/article/caves---cliffs--part-ii-out-today-java", "title": "Mojang: Java Edition 1.18"}, {"id": "source-c9f084f2e6", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11", "title": "Mojang: Java Edition 1.21.11"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "pre-1", "resource": "/snapshots/26.4-pre-1.md", "title": "Java Edition 26.4 Pre-Release 1"}]
 ---
 
 # world generation
@@ -650,3 +650,9 @@ biome tagは`spawns_strays_without_powder_snow`から`spawns_cold_variants_under
 生成したfeature 30件では、tuff中の鉱石が高さ0〜3でdeepslate鉱石にならない不具合の修正に伴い、`height_match` ruleの下限を0から4へ変更しています。同じformatでもtarget ruleの内容・順序は生成結果へ影響するため、独自oreとice cave oreは対象vanilla JSONと比較します。Abandoned Campの欠落structure／tree修正もありますが、任意のpoolへ同じ修正fieldを推測で追加しません。
 
 Snapshot 6の`domain_warp`・Y軸`gradient` anchor・pool elementの`corner_constraint`を継承します。[出典・生成data照合と未検証範囲](../snapshots/26.4-snapshot-7.md#検証)を参照してください。
+
+## 26.4 Pre-Release 1のupscale補間順
+
+`26.4-pre-1`（format 128.1）では`minecraft:upscale`をX→Z→Yの順に評価します。Snapshot 5〜10のZ→X→Yから変わります。`input`と各軸の`mode`・`cell_size`は引き続き同じfieldへ記述し、JSON内のkey順で補間順を調整しません。同じseed・設定で対象地形がどう変わるかを確認します。共有density functionを使う`ore_vein` material ruleの性能問題（MC-313429）も修正されました。[^pre-1]
+
+[^pre-1]: [Java Edition 26.4 Pre-Release 1の公式資料・JAR照合](../snapshots/26.4-pre-1.md)
