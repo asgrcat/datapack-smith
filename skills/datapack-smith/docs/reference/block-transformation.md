@@ -3,7 +3,7 @@ type: "Reference"
 title: "Block transformerとblock state provider"
 description: "block transformer、block state provider、rule、配置、migration"
 tags: ["minecraft-java", "reference", "block-transformation"]
-sources: [{"id": "source-d848b11912", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2", "title": "Mojang: Minecraft 26.3 Snapshot 2"}, {"id": "source-2e6de5499b", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10", "title": "Mojang: Minecraft 26.3 Snapshot 10"}, {"id": "source-f7dee05da4", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1", "title": "Mojang: Minecraft 26.3 Pre-Release 1"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}]
+sources: [{"id": "source-d848b11912", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-2", "title": "Mojang: Minecraft 26.3 Snapshot 2"}, {"id": "source-2e6de5499b", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48394701938573-Minecraft-Java-Edition-26-3-Snapshot-10", "title": "Mojang: Minecraft 26.3 Snapshot 10"}, {"id": "source-f7dee05da4", "resource": "https://www.minecraft.net/en-us/article/minecraft-26-3-pre-release-1", "title": "Mojang: Minecraft 26.3 Pre-Release 1"}, {"id": "source-f351b8ed57", "resource": "https://feedback.minecraft.net/hc/en-us/articles/48913133328013-Minecraft-Java-Edition-26-3", "title": "Mojang: Java Edition 26.3"}, {"id": "snapshot-9", "resource": "/snapshots/26.4-snapshot-9.md", "title": "Java Edition 26.4 Snapshot 9"}, {"id": "pre-2", "resource": "/snapshots/26.4-pre-2.md", "title": "Java Edition 26.4 Pre-Release 2"}]
 ---
 
 # Block transformerとblock state provider
@@ -281,3 +281,9 @@ Pre-Release 1の公式JARでは、transformer resource `axe`、`hoe`、`shovel`�
 `minecraft:axe`のscrape／wax除去ruleは`consume_on_use: false`を明示するよう変わります。このfieldはSnapshot 8のcodecにも存在し、省略時trueというschema自体の追加ではありません。対象vanillaのitem消費・耐久値設定を比較し、既存ruleへ推測で一律適用しません。[^snapshot-9]
 
 [^snapshot-9]: [Java Edition 26.4 Snapshot 9の公式資料・JAR照合](../snapshots/26.4-snapshot-9.md)
+
+## 26.4 Pre-Release 2のblock state provider修正
+
+`block_transformer` componentで`minecraft:random_block`を利用したとき、候補が意図せず巡回する問題を修正しました。`minecraft:randomized_int`は動的に解決したinteger propertyの許容値を確認し、providerの範囲に無効な値がある場合は元のblock stateを返します。無効値がある場合に範囲を切り詰める挙動を前提にせず、すべての候補blockで使用可能な範囲を指定します。[^pre-2]
+
+[^pre-2]: [Java Edition 26.4 Pre-Release 2の公式資料・JAR照合](../snapshots/26.4-pre-2.md)

@@ -2,6 +2,12 @@
 
 このファイルは、スキルと付属ハーネスの利用者へ影響する変更を記録します。
 
+## 2026.11.8
+
+- Java Edition `26.4-pre-2`プロファイルを追加（data pack format 128.2、Pre-Release 1を継承）
+- 壁用の`#minecraft:wall_side_shape_override`とjigsaw、block state provider、効果コマンドの修正を収録
+- OKF索引と開発バージョンの検査を更新
+
 ## 2026.11.7
 
 - Java Edition `26.4-pre-1`プロファイルを追加（data pack format 128.1、Snapshot 10を継承）

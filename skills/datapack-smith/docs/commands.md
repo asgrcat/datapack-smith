@@ -236,6 +236,7 @@ entity tag は resource location ではなく文字列で、保存 NBT の `Tags
 | [26.4-snapshot-8](snapshots/26.4-snapshot-8.md) | loot系引数のcontext検証とcompile error、`commands.json`の`argument`形式 |
 | [26.4-snapshot-9](snapshots/26.4-snapshot-9.md) | 2D local座標、文字列引数reportの分離、slot source・schedule・execute・rotateの修正 |
 | [26.4-pre-1](snapshots/26.4-pre-1.md) | server起動中のconsole入力拒否、3D絶対整数座標のY中央補正を解除、`rotate`／`debug function`の修正 |
+| [26.4-pre-2](snapshots/26.4-pre-2.md) | 生物でないentityを対象にした際の`effect`の失敗メッセージを修正 |
 
 効果tag定義と時間parserの適用範囲は[引数リファレンス](reference/command-arguments-and-selectors.md#264-snapshot-7の効果tagと時間引数)を参照してください。
 

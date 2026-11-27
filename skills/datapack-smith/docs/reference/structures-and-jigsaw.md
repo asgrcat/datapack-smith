@@ -3,7 +3,7 @@ type: "Reference"
 title: "Structure NBT、jigsaw、worldgen structure"
 description: "structure NBT、template pool、processor、structure set、jigsaw、GameTest"
 tags: ["minecraft-java", "reference", "structures-and-jigsaw"]
-sources: [{"id": "source-d3a888b74b", "resource": "対象server JARのvanilla structure、template pool、processor、structure、structure set", "title": "対象server JARのvanilla structure、template pool、processor、structure、structure set"}, {"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}]
+sources: [{"id": "source-d3a888b74b", "resource": "対象server JARのvanilla structure、template pool、processor、structure、structure set", "title": "対象server JARのvanilla structure、template pool、processor、structure、structure set"}, {"id": "source-1297269d29", "resource": "/versions/catalog.md", "title": "`../versions/<version>.md`"}, {"id": "pre-2", "resource": "/snapshots/26.4-pre-2.md", "title": "Java Edition 26.4 Pre-Release 2"}]
 ---
 
 # Structure NBT、jigsaw、worldgen structure
@@ -270,3 +270,9 @@ structure setは候補structureと配置typeを結びます。
 ```
 
 JARの`StructurePoolElement`、`CornerConstraint`と`DensityPredicate` codecで、配置位置、件数、必須field、値域、上下面の4角制限を確認しました。worldgenでの配置結果は未検証です。[出典・検証](../snapshots/26.4-snapshot-6.md#検証)を参照してください。
+
+## 26.4 Pre-Release 2のcorner constraintと候補配置
+
+`26.4-pre-2`では`corner_constraint`を満たした場合に配置候補の領域を確保します。制約が候補を棄却した場合、その領域を確保せず後続の候補を試します。fieldの配置・型・値域はSnapshot 6から継承します。生成結果を比較するときは、棄却候補の直後に同じ領域へ収まる候補を含めます。[^pre-2]
+
+[^pre-2]: [Java Edition 26.4 Pre-Release 2の公式資料・JAR照合](../snapshots/26.4-pre-2.md)

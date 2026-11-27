@@ -31,9 +31,9 @@ class ProfileTests(unittest.TestCase):
         profiles = HARNESS.load_profiles()
         self.assertEqual([], HARNESS.validate_all_profiles(profiles))
         order = HARNESS.ordered_versions(profiles)
-        self.assertEqual(78, len(order))
+        self.assertEqual(79, len(order))
         self.assertEqual("1.13", order[0])
-        self.assertEqual(["26.4-snapshot-10", "26.4-pre-1"], order[-2:])
+        self.assertEqual(["26.4-pre-1", "26.4-pre-2"], order[-2:])
 
     def test_release_chain_excludes_development_history(self) -> None:
         profiles = HARNESS.load_profiles()
@@ -340,6 +340,8 @@ class PackValidationTests(unittest.TestCase):
             ("26.4-snapshot-10", [128, 1], False),
             ("26.4-pre-1", [128, 0], False),
             ("26.4-pre-1", [128, 1], True),
+            ("26.4-pre-2", [128, 1], False),
+            ("26.4-pre-2", [128, 2], True),
         )
         for version, pack_format, accepted in cases:
             with self.subTest(version=version, pack_format=pack_format), tempfile.TemporaryDirectory() as temporary:

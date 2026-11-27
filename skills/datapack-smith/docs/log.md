@@ -1,5 +1,10 @@
 # Knowledge更新履歴
 
+## 2026-11-28
+
+- **追加**: [26.4 Pre-Release 2](snapshots/26.4-pre-2.md)（format 128.2）を収録。壁形状tag、jigsawの候補配置、block state provider、効果コマンドの失敗表示を記録。
+- **検証**: 公式JARの生成report・バニラデータとMinecraft Wikiを照合し、構造NBT 1,511件のDataVersion更新（5131 → 5132）を確認。
+
 ## 2026-11-25
 
 - **追加**: [26.4 Pre-Release 1](snapshots/26.4-pre-1.md)（format 128.1）を収録。tooltipの折り返し、upscale補間順、Dispenser・loot・コマンドの修正を記録。

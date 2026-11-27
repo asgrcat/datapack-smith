@@ -3,7 +3,7 @@ type: "Reference"
 title: "JSON、SNBT、データ種別"
 description: "pack.mcmeta、データ種別の配置、JSONとSNBTの基本構造。"
 tags: ["minecraft-java", "json-formats"]
-sources: [{"id": "source-ae3fbb3bad", "resource": "https://minecraft.wiki/w/Data_pack#Folder_structure", "title": "Minecraft Wiki: Data pack folder structure"}, {"id": "source-b89bc169ea", "resource": "https://minecraft.wiki/w/Pack.mcmeta", "title": "Minecraft Wiki: `pack.mcmeta`"}, {"id": "source-0461fe3c07", "resource": "https://minecraft.wiki/w/Tag", "title": "Minecraft Wiki: Tag"}, {"id": "source-bacc83b747", "resource": "https://minecraft.wiki/w/Advancement_definition", "title": "Minecraft Wiki: Advancement definition"}, {"id": "source-20984d0b6f", "resource": "https://minecraft.wiki/w/Predicate", "title": "Minecraft Wiki: Predicate"}, {"id": "source-960584726f", "resource": "https://minecraft.wiki/w/Item_modifier", "title": "Minecraft Wiki: Item modifier"}, {"id": "source-6d2516bc41", "resource": "https://minecraft.wiki/w/Loot_table", "title": "Minecraft Wiki: Loot table"}, {"id": "source-5747e48bd8", "resource": "https://minecraft.wiki/w/Recipe", "title": "Minecraft Wiki: Recipe"}, {"id": "source-06f4b7e35e", "resource": "https://minecraft.wiki/w/Custom_world_generation", "title": "Minecraft Wiki: Custom world generation"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}]
+sources: [{"id": "source-ae3fbb3bad", "resource": "https://minecraft.wiki/w/Data_pack#Folder_structure", "title": "Minecraft Wiki: Data pack folder structure"}, {"id": "source-b89bc169ea", "resource": "https://minecraft.wiki/w/Pack.mcmeta", "title": "Minecraft Wiki: `pack.mcmeta`"}, {"id": "source-0461fe3c07", "resource": "https://minecraft.wiki/w/Tag", "title": "Minecraft Wiki: Tag"}, {"id": "source-bacc83b747", "resource": "https://minecraft.wiki/w/Advancement_definition", "title": "Minecraft Wiki: Advancement definition"}, {"id": "source-20984d0b6f", "resource": "https://minecraft.wiki/w/Predicate", "title": "Minecraft Wiki: Predicate"}, {"id": "source-960584726f", "resource": "https://minecraft.wiki/w/Item_modifier", "title": "Minecraft Wiki: Item modifier"}, {"id": "source-6d2516bc41", "resource": "https://minecraft.wiki/w/Loot_table", "title": "Minecraft Wiki: Loot table"}, {"id": "source-5747e48bd8", "resource": "https://minecraft.wiki/w/Recipe", "title": "Minecraft Wiki: Recipe"}, {"id": "source-06f4b7e35e", "resource": "https://minecraft.wiki/w/Custom_world_generation", "title": "Minecraft Wiki: Custom world generation"}, {"id": "source-3e7c128593", "resource": "https://www.minecraft.net/en-us/article/minecraft-java-edition-26-2", "title": "Mojang: Java Edition 26.2"}, {"id": "pre-2", "resource": "/snapshots/26.4-pre-2.md", "title": "Java Edition 26.4 Pre-Release 2"}]
 ---
 
 # JSON、SNBT、データ種別
@@ -248,6 +248,20 @@ data/example/tags/blocks/mineable.json         # 1.20.6以前
 - optional object の使用可否と field 名は対象バージョンで確認する
 - tag file があるだけでは registry entry 自体を新規作成できない。存在する entry を分類する
 - function tag の `values` は順序に意味がある
+
+### 26.4 Pre-Release 2の壁形状tag
+
+`26.4-pre-2`では、壁の直上blockが`#minecraft:wall_side_shape_override`に含まれる場合、壁の形状判定にそのblockの基本形状の下面を使います。通常は衝突形状の下面を使います。vanillaのtagは`minecraft:honey_block`だけを含みます。[^pre-2]
+
+独自packから対象blockを追加する場合は、`data/minecraft/tags/block/wall_side_shape_override.json`に配置します。次の例は既存の値に`minecraft:slime_block`を加える書式例です。
+
+```json
+{
+  "values": ["minecraft:slime_block"]
+}
+```
+
+[^pre-2]: [Java Edition 26.4 Pre-Release 2の公式資料・JAR照合](snapshots/26.4-pre-2.md)
 
 ## advancement
 

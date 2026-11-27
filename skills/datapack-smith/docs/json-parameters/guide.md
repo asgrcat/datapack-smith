@@ -175,6 +175,7 @@ patchリリースを含む全正式リリースの履歴は各versionページ�
 | [`26.4-snapshot-9`](../snapshots/26.4-snapshot-9.md) | 128.0 | dispense_behavior registry／component、Boat・Minecart entity_data、particle field、slot source修正 |
 | [`26.4-snapshot-10`](../snapshots/26.4-snapshot-10.md) | 128.0 | Snapshot 9のJSONを継承。バニラ構造NBTのDataVersionを5130へ更新 |
 | [`26.4-pre-1`](../snapshots/26.4-pre-1.md) | 128.1 | tooltip_displayのsplit_lines、upscale補間順、Dispenserとloot groupの修正 |
+| [`26.4-pre-2`](../snapshots/26.4-pre-2.md) | 128.2 | 壁形状tag、jigsawの候補配置、block state providerの修正 |
 
 ## 対象バージョンの機械カタログ
 
